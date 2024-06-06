@@ -1,0 +1,5 @@
+DROP USER IF EXISTS websites;
+CREATE USER websites WITH SUPERUSER PASSWORD 'websites';
+
+DROP DATABASE IF EXISTS websites;
+CREATE DATABASE websites WITH OWNER websites;

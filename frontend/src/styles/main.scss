@@ -1,0 +1,13 @@
+@use "variables";
+@use "typography";
+
+body {
+  margin: 0;
+  font-family: 'geist', sans-serif;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+}

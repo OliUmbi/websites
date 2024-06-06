@@ -1,0 +1,35 @@
+$breakpoint-xs: 20rem;
+$breakpoint-s: 40rem;
+$breakpoint-m: 60rem;
+$breakpoint-l: 80rem;
+$breakpoint-xl: 100rem;
+
+$background: hsl(0, 0%, 10%);
+$layer-default: hsla(0, 0%, 100%, 0.05);
+$layer-default-hover: hsla(0, 0%, 100%, 0.1);
+$layer-highlight: hsla(0, 0%, 100%, 0.2);
+$layer-highlight-hover: hsla(0, 0%, 100%, 0.25);
+$text-default: hsl(0, 0%, 0%);
+$text-highlight: hsl(0, 0%, 100%);
+
+@mixin layer-default {
+  background-color: $layer-default;
+}
+
+@mixin layer-default-hover {
+  &:hover, &:focus-visible {
+    background-color: $layer-default-hover;
+    outline: none;
+  }
+}
+
+@mixin layer-highlight {
+  background-color: $layer-highlight;
+}
+
+@mixin layer-highlight-hover {
+  &:hover, &:focus-visible {
+    background-color: $layer-highlight-hover;
+    outline: none;
+  }
+}
