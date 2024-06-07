@@ -25,11 +25,10 @@ body {
 }
 
 h1, h2, h3, h4, p, small {
+  display: inline;
   margin: 0;
   font-family: "geist", sans-serif;
-  color: variables.$text-default;
-  font-weight: 400;
-  display: inline;
+  color: inherit;
 }
 
 h1 {

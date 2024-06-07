@@ -1,0 +1,35 @@
+@use "../../../styles/variables";
+
+.button {
+  min-width: 16rem;
+  height: 3.5rem;
+  padding: 1rem 2rem;
+  color: inherit;
+  border: none;
+  border-radius: 0.25rem;
+  text-align: left;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  &.default {
+    background-color: variables.$background;
+    color: variables.$foreground;
+
+    &:hover {
+      background-color: variables.$background-secondary;
+    }
+  }
+
+  &.highlight {
+    background-color: variables.$foreground;
+    color: variables.$background;
+
+    &:hover {
+      background-color: variables.$foreground-secondary;
+    }
+  }
+}
