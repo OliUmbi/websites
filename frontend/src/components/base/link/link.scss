@@ -1,0 +1,12 @@
+@use "../../../styles/variables";
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+
+  &:hover {
+    border-bottom: 0.2rem solid;
+    margin-bottom: -0.2rem;
+  }
+}
