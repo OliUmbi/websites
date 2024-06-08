@@ -1,5 +1,16 @@
+@use "normalize";
 @use "variables";
 @use "typography";
+
+*, :before, :after {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+}
+
+head, script, style, link {
+  display: none;
+}
 
 body {
   margin: 0;

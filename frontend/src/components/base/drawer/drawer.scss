@@ -1,0 +1,24 @@
+@use "../../../styles/variables";
+
+.drawer {
+  all: unset;
+
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 15rem;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: inherit;
+  color: inherit;
+  border: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  transition: 200ms ease-in all;
+
+  &[open] {
+    translate: none;
+  }
+}
