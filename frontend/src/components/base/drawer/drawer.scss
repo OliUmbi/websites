@@ -9,15 +9,35 @@
   height: 100%;
   display: grid;
   grid-template-columns: auto variables.$breakpoint-m;
+  visibility: hidden;
 
   &__backdrop {
-    background-color: hsla(0, 0%, 0%, 0.5);
+    background-color: variables.$foreground;
+    opacity: 0;
+    transition: opacity 150ms ease-in;
   }
 
   &__content {
+    translate: 100%;
+    padding: 4rem;
+    background-color: variables.$background;
+    transition: translate 150ms ease-in;
+  }
+
+  &[data-open="true"] {
+    visibility: visible;
+    background-color: red;
   }
 
   &.open {
+    visibility: visible;
 
+    &__backdrop {
+      opacity: 0.5;
+    }
+
+    &__content {
+      translate: 0;
+    }
   }
 }
