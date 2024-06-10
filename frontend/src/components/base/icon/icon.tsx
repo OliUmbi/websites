@@ -1,5 +1,4 @@
 import "./icon.scss";
-import {IconProps} from "./icon.props.ts";
 import {ReactNode} from "react";
 
 export interface IconProps {

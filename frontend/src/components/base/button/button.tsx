@@ -11,8 +11,8 @@ export interface ButtonProps {
 const Button = (props: ButtonProps) => {
 
   return (
-      <button className={"button " + (props.highlight ? "highlight" : "default")} onClick={() => props.onClick()}>
-        <Text type="s" highlight={true} mono={false}>{props.children}</Text>
+      <button className="button" onClick={() => props.onClick()} data-highlight={props.highlight}>
+        <Text type="s">{props.children}</Text>
       </button>
   )
 }

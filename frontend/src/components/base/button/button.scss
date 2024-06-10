@@ -8,28 +8,28 @@
   border: none;
   border-radius: 0.25rem;
   text-align: left;
+  transition: all 150ms ease-in;
 
-  display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
 
-  &.default {
-    background-color: variables.$background;
-    color: variables.$foreground;
-
-    &:hover {
-      background-color: variables.$background-secondary;
-    }
-  }
-
-  &.highlight {
+  &[data-highlight="true"] {
     background-color: variables.$foreground;
     color: variables.$background;
 
     &:hover {
       background-color: variables.$foreground-secondary;
+    }
+  }
+
+  &[data-highlight="false"] {
+    background-color: variables.$background;
+    color: variables.$foreground;
+
+    &:hover {
+      background-color: variables.$background-secondary;
     }
   }
 }

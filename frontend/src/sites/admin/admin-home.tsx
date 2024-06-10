@@ -13,9 +13,9 @@ const AdminHome = () => {
         <>
             <Text type="h1">Admin</Text>
             <Text type="s">A oliUmbi production</Text>
-            <Button highlight={true} onClick={() => {}}>Test</Button>
+            <Button onClick={() => {}} highlight={true}>Test</Button>
             <IconButton onClick={() => setDrawer(!drawer)} highlight={true}>add</IconButton>
-            <Drawer open={drawer}>
+            <Drawer open={drawer} setOpen={setDrawer}>
                 <Text type="p">
                     Lorem ipsum dolor sit amet <Link to="/aldfjs">external website</Link>, consectetur adipiscing elit.
                     Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem

@@ -11,7 +11,7 @@ export interface IconButtonProps {
 const IconButton = (props: IconButtonProps) => {
 
   return (
-      <button className={"icon-button " + (props.highlight ? "highlight" : "default")} onClick={() => props.onClick()}>
+      <button className="icon-button" onClick={() => props.onClick()} data-highlight={props.highlight}>
         <Icon>{props.children}</Icon>
       </button>
   )

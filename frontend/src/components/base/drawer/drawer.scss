@@ -1,43 +1,45 @@
 @use "../../../styles/variables";
 
 .drawer {
-  z-index: 999;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: auto variables.$breakpoint-m;
-  visibility: hidden;
+  z-index: 999;
+  transition: all 150ms ease-in;
 
-  &__backdrop {
-    background-color: variables.$foreground;
-    opacity: 0;
-    transition: opacity 150ms ease-in;
-  }
-
-  &__content {
-    translate: 100%;
-    padding: 4rem;
-    background-color: variables.$background;
-    transition: translate 150ms ease-in;
-  }
+  justify-content: flex-end;
 
   &[data-open="true"] {
     visibility: visible;
-    background-color: red;
+    background-color: rgba(variables.$foreground, 0.5);
   }
 
-  &.open {
-    visibility: visible;
+  &[data-open="false"] {
+    visibility: hidden;
+    background-color: rgba(variables.$foreground, 0);
+  }
 
-    &__backdrop {
-      opacity: 0.5;
+  &__content {
+    width: variables.$breakpoint-m;
+    padding: 4rem;
+    background-color: variables.$background;
+    transition: all 150ms ease-in;
+
+    flex-direction: column;
+    gap: 2rem;
+
+    .icon-button {
+      align-self: flex-end;
     }
 
-    &__content {
+    &[data-open="true"] {
       translate: 0;
+    }
+
+    &[data-open="false"] {
+      translate: 100%;
     }
   }
 }
