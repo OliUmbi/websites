@@ -31,8 +31,8 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 0.8rem;
-  height: 0.4rem;
+  width: 0.35rem;
+  height: 0.35rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -40,8 +40,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  border-left: 0.6rem solid transparent;
-  border-top: 0.2rem solid transparent;
-  background-color: variables.$background;
-  background-clip: content-box;
+  background-color: variables.$foreground;
 }
