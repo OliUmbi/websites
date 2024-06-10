@@ -1,0 +1,28 @@
+@use "../../../styles/variables";
+
+.input {
+  min-width: 16rem;
+  padding: 1rem;
+  background-color: variables.$background;
+  border-radius: 0.25rem;
+  transition: all 150ms ease-in;
+
+  flex-direction: column;
+
+  &__head {
+    user-select: none;
+  }
+
+  &__body {
+    padding: 0.5rem 0;
+    border: none;
+  }
+
+  &__foot {
+
+  }
+
+  &:hover, &:focus-within {
+    background-color: variables.$background-secondary;
+  }
+}

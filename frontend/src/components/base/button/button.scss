@@ -4,22 +4,21 @@
   min-width: 16rem;
   height: 3.5rem;
   padding: 1rem 2rem;
-  color: inherit;
   border: none;
   border-radius: 0.25rem;
   text-align: left;
+  user-select: none;
   transition: all 150ms ease-in;
 
-  flex-direction: row;
-  flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
+  gap: 0.25rem;
 
   &[data-highlight="true"] {
     background-color: variables.$foreground;
     color: variables.$background;
 
-    &:hover {
+    &:hover, &:focus {
       background-color: variables.$foreground-secondary;
     }
   }
@@ -28,7 +27,7 @@
     background-color: variables.$background;
     color: variables.$foreground;
 
-    &:hover {
+    &:hover, &:focus {
       background-color: variables.$background-secondary;
     }
   }
