@@ -12,7 +12,14 @@ head, script, style, link {
   display: none;
 }
 
+html {
+  width: 100%;
+  height: 100%;
+}
+
 body {
+  width: 100%;
+  height: 100%;
   margin: 0;
   font-family: 'geist', sans-serif;
   background-color: variables.$background;
@@ -20,9 +27,11 @@ body {
 }
 
 #root {
+  width: 100%;
+  height: 100%;
+  padding: 4rem;
   display: flex;
   flex-direction: column;
-  padding: 4rem;
 }
 
 ::selection {

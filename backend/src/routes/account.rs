@@ -19,14 +19,14 @@ pub struct AccountCreate {
 }
 
 #[derive(Serialize)]
-pub struct Account {
+pub struct AccountLoad {
     account_id: Uuid,
     name: String,
 }
 
-async fn load(database: Extension<PgPool>) -> Json<Vec<Account>> {
-    let accounts = sqlx::query_as!(
-        Account,
+async fn load(database: Extension<PgPool>) -> Json<Vec<AccountLoad>> {
+    let accounts = sqlx::query_as_with!(
+        AccountLoad,
         r#"
         SELECT  account_id,
                 name
@@ -40,12 +40,7 @@ async fn load(database: Extension<PgPool>) -> Json<Vec<Account>> {
 async fn create(Json(body): Json<AccountCreate>) -> Json<&'static str> {
     body.validate().expect("TODO: panic message");
 
-    let account = Account {
-        account_id: Uuid::new_v4(),
-        name: body.name,
-    };
-
-    info!(account.name);
+    info!(body.name);
 
     Json("Success")
 }

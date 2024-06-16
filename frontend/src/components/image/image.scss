@@ -1,0 +1,15 @@
+@use "../../styles/variables";
+
+.image {
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  overflow: hidden;
+
+  &[data-rounded="true"] {
+    border-radius: 0.5rem;
+  }
+
+  &[data-rounded="false"] {
+  }
+}

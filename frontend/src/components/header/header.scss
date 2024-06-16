@@ -1,0 +1,23 @@
+@use "../../styles/variables";
+
+.header {
+  width: 100%;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  &__navigation {
+    margin: auto;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+
+    &__links {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+}

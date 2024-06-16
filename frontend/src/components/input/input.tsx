@@ -23,7 +23,7 @@ const Input = (props: InputProps) => {
   return (
       <label className="input">
         <div className="input__head">
-          <Text type="s">{props.label} {props.required ? "*" : ""}</Text>
+          <Text type="s" primary={false}>{props.label} {props.required ? "*" : ""}</Text>
         </div>
         {
           props.rows! ? (
@@ -33,7 +33,7 @@ const Input = (props: InputProps) => {
           )
         }
         <div className="input__foot">
-          <Text type="s">{props.message}</Text>
+          <Text type="s" primary={true}>{props.message}</Text>
         </div>
       </label>
   )

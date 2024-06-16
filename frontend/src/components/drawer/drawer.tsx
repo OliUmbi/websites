@@ -16,7 +16,7 @@ const Drawer = (props: DialogProps) => {
       <div className="drawer" data-open={props.open}>
         <div className="drawer__content" data-open={props.open}>
           <div className="drawer__content-head">
-            <Text type="p">{props.title}</Text>
+            <Text type="p" primary={true}>{props.title}</Text>
             <IconButton onClick={() => props.setOpen(false)} highlight={false}>close</IconButton>
           </div>
           {props.children}

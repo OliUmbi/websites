@@ -1,10 +1,10 @@
-import Text from "../../components/base/text/text";
-import Button from "../../components/base/button/button";
-import IconButton from "../../components/base/icon/button/icon-button";
-import Link from "../../components/base/link/link";
-import Drawer from "../../components/base/drawer/drawer";
+import Text from "../../components/text/text";
+import Button from "../../components/button/button";
+import IconButton from "../../components/icon/button/icon-button";
+import Link from "../../components/link/link";
+import Drawer from "../../components/drawer/drawer";
 import {useState} from "react";
-import Input from "../../components/base/input/input";
+import Input from "../../components/input/input";
 
 const AdminHome = () => {
 
@@ -15,12 +15,12 @@ const AdminHome = () => {
 
   return (
       <>
-        <Text type="h1">Admin</Text>
-        <Text type="s">A oliUmbi production</Text>
+        <Text type="h1" primary={true}>Admin</Text>
+        <Text type="s" primary={true}>A oliUmbi production</Text>
         <Button onClick={() => setDrawer(!drawer)} highlight={true}>Test</Button>
         <IconButton onClick={() => setDrawer(!drawer)} highlight={false}>menu</IconButton>
         <Drawer open={drawer} setOpen={setDrawer} title="Test">
-          <Text type="p">
+          <Text type="p" primary={true}>
             Lorem ipsum dolor sit amet <Link to="/aldfjs">external website</Link>, consectetur adipiscing elit.
             Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
             a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In
@@ -32,7 +32,7 @@ const AdminHome = () => {
         </Drawer>
         <Input value={input} setValue={setInput} type="text" label="Firstname" required={true} placeholder="Example example"
                message=""/>
-        <Text type="p">
+        <Text type="p" primary={true}>
           Lorem ipsum dolor sit amet <Link to="/aldfjs">external website</Link>, consectetur adipiscing elit.
           Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
           a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In
@@ -41,7 +41,7 @@ const AdminHome = () => {
           massa. Donec quam nunc, vulputate eget sapien in, lobortis sagittis felis. Vestibulum ante ipsum primis
           in faucibus orci luctus et ultrices posuere cubilia curae; Aenean rhoncus rutrum lectus non bibendum.
         </Text>
-        <Text type="h2">Login</Text>
+        <Text type="h2" primary={true}>Login</Text>
         <Input value={username} setValue={setUsername} type="text" label="Lastname" required={true} placeholder="oliumbi"
                message=""/>
         <Input value={password} setValue={setPassword} type="password" label="Password" required={true}
@@ -50,7 +50,7 @@ const AdminHome = () => {
           <Button onClick={() => setDrawer(!drawer)} highlight={true}>Login</Button>
           <Button onClick={() => setDrawer(!drawer)} highlight={false}>Register</Button>
         </div>
-        <Text type="p">
+        <Text type="p" primary={true}>
           Lorem ipsum dolor sit amet <Link to="/aldfjs">external website</Link>, consectetur adipiscing elit.
           Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
           a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In
@@ -60,7 +60,7 @@ const AdminHome = () => {
           in faucibus orci luctus et ultrices posuere cubilia curae; Aenean rhoncus rutrum lectus non bibendum.
         </Text>
 
-        <Text type="p">
+        <Text type="p" primary={false}>
           Lorem ipsum dolor sit amet <Link to="/aldfjs">external website</Link>, consectetur adipiscing elit.
           Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
           a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In
@@ -70,7 +70,7 @@ const AdminHome = () => {
           in faucibus orci luctus et ultrices posuere cubilia curae; Aenean rhoncus rutrum lectus non bibendum.
         </Text>
 
-        <Text type="p">
+        <Text type="p" primary={true}>
           Lorem ipsum dolor sit amet <Link to="/aldfjs">external website</Link>, consectetur adipiscing elit.
           Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
           a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In

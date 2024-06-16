@@ -1,0 +1,12 @@
+@use "../../styles/variables";
+
+.text {
+
+  &[data-primary="true"] {
+    color: variables.$foreground;
+  }
+
+  &[data-primary="false"] {
+    color: variables.$foreground-secondary;
+  }
+}

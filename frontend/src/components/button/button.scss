@@ -1,4 +1,4 @@
-@use "../../../styles/variables";
+@use "../../styles/variables";
 
 .button {
   min-width: 16rem;
@@ -19,7 +19,7 @@
     color: variables.$background;
 
     &:hover, &:focus {
-      background-color: variables.$foreground-secondary;
+      background-color: variables.$foreground-hover;
     }
   }
 
@@ -28,7 +28,7 @@
     color: variables.$foreground;
 
     &:hover, &:focus {
-      background-color: variables.$background-secondary;
+      background-color: variables.$background-hover;
     }
   }
 }
