@@ -1,7 +1,7 @@
 import Text from "../../components/text/text";
 import Button from "../../components/button/button";
 import IconButton from "../../components/icon/button/icon-button";
-import Link from "../../components/link/link";
+import Anchor from "../../components/anchor/anchor";
 import Drawer from "../../components/drawer/drawer";
 import {useState} from "react";
 import Input from "../../components/input/input";
@@ -21,7 +21,7 @@ const AdminHome = () => {
         <IconButton onClick={() => setDrawer(!drawer)} highlight={false}>menu</IconButton>
         <Drawer open={drawer} setOpen={setDrawer} title="Test">
           <Text type="p" primary={true}>
-            Lorem ipsum dolor sit amet <Link to="/aldfjs">external website</Link>, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet <Anchor to="/aldfjs">external website</Anchor>, consectetur adipiscing elit.
             Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
             a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In
             porttitor erat eu massa molestie suscipit. Cras laoreet et lacus quis dictum. Duis vulputate mattis
@@ -33,7 +33,7 @@ const AdminHome = () => {
         <Input value={input} setValue={setInput} type="text" label="Firstname" required={true} placeholder="Example example"
                message=""/>
         <Text type="p" primary={true}>
-          Lorem ipsum dolor sit amet <Link to="/aldfjs">external website</Link>, consectetur adipiscing elit.
+          Lorem ipsum dolor sit amet <Anchor to="/aldfjs">external website</Anchor>, consectetur adipiscing elit.
           Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
           a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In
           porttitor erat eu massa molestie suscipit. Cras laoreet et lacus quis dictum. Duis vulputate mattis
@@ -51,7 +51,7 @@ const AdminHome = () => {
           <Button onClick={() => setDrawer(!drawer)} highlight={false}>Register</Button>
         </div>
         <Text type="p" primary={true}>
-          Lorem ipsum dolor sit amet <Link to="/aldfjs">external website</Link>, consectetur adipiscing elit.
+          Lorem ipsum dolor sit amet <Anchor to="/aldfjs">external website</Anchor>, consectetur adipiscing elit.
           Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
           a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In
           porttitor erat eu massa molestie suscipit. Cras laoreet et lacus quis dictum. Duis vulputate mattis
@@ -61,7 +61,7 @@ const AdminHome = () => {
         </Text>
 
         <Text type="p" primary={false}>
-          Lorem ipsum dolor sit amet <Link to="/aldfjs">external website</Link>, consectetur adipiscing elit.
+          Lorem ipsum dolor sit amet <Anchor to="/aldfjs">external website</Anchor>, consectetur adipiscing elit.
           Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
           a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In
           porttitor erat eu massa molestie suscipit. Cras laoreet et lacus quis dictum. Duis vulputate mattis
@@ -71,7 +71,7 @@ const AdminHome = () => {
         </Text>
 
         <Text type="p" primary={true}>
-          Lorem ipsum dolor sit amet <Link to="/aldfjs">external website</Link>, consectetur adipiscing elit.
+          Lorem ipsum dolor sit amet <Anchor to="/aldfjs">external website</Anchor>, consectetur adipiscing elit.
           Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
           a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In
           porttitor erat eu massa molestie suscipit. Cras laoreet et lacus quis dictum. Duis vulputate mattis

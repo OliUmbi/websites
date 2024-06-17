@@ -22,7 +22,8 @@
   }
 
   &__content {
-    width: variables.$breakpoint-m;
+    width: variables.$m;
+    height: 100%;
     padding: 4rem;
     background-color: variables.$background;
     transition: all 350ms ease-in-out;
@@ -38,9 +39,24 @@
       translate: 100%;
     }
 
-    &-head {
+    @media screen and (max-width: variables.$s) {
+      padding: 2rem;
+    }
+
+    @media screen and (max-width: variables.$xs) {
+      padding: 1rem;
+    }
+
+    &__head {
       justify-content: space-between;
       align-items: center;
+    }
+
+    &__body {
+      height: 100%;
+      overflow-y: scroll;
+
+      flex-direction: column;
     }
   }
 }

@@ -36,7 +36,7 @@ one project to rule them all
   - how to do it
 - members
   - donations
-    - t-shirts request
+  - t-shirts request
 
 ## uncle-t
 - home

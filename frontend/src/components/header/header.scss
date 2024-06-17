@@ -8,12 +8,15 @@
   justify-content: space-between;
 
   &__navigation {
-    margin: auto;
+    margin: auto 0;
     width: 100%;
 
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 2rem;
+    gap: 8rem;
+
+    @media screen and (max-width: variables.$s) {
+      flex-direction: column-reverse;
+      gap: 4rem;
+    }
 
     &__links {
       flex-direction: column;

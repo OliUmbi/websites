@@ -1,4 +1,10 @@
 @use "../../../styles/variables";
 
 .header-sublink {
+  cursor: pointer;
+  transition: all 150ms ease-in;
+
+  &:hover, &:focus {
+    translate: 0.25rem 0;
+  }
 }

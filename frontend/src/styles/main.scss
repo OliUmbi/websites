@@ -29,9 +29,10 @@ body {
 #root {
   width: 100%;
   height: 100%;
-  padding: 4rem;
   display: flex;
   flex-direction: column;
+  padding: 4rem;
+  gap: 2rem;
 }
 
 ::selection {

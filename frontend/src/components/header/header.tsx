@@ -1,15 +1,15 @@
 import "./header.scss";
 import {useState} from "react";
 import Drawer from "../drawer/drawer";
-import HeaderLink, {HeaderLinkProps} from "./link/header-link";
+import HeaderLink from "./link/header-link";
 import IconButton from "../icon/button/icon-button";
 import Image from "../image/image";
-import HeaderSublink, {HeaderSublinkProps} from "./sublink/header-sublink";
+import HeaderSublink from "./sublink/header-sublink";
 import Text from "../text/text";
 
 export interface HeaderProps {
-  links: HeaderLinkProps[],
-  sublinks: HeaderSublinkProps[],
+  links: {name: string, to: string}[],
+  sublinks: {name: string, to: string}[],
 }
 
 const Header = (props: HeaderProps) => {
@@ -22,16 +22,16 @@ const Header = (props: HeaderProps) => {
         <IconButton onClick={() => setOpen(!open)} highlight={false}>menu</IconButton>
         <Drawer open={open} setOpen={setOpen} title="">
           <div className="header__navigation">
-            <Text type="s" primary={false}>Weiteres</Text>
-            <Text type="s" primary={false}>Menu</Text>
             <div className="header__navigation__links">
+              <Text type="s" primary={false}>Weiteres</Text>
               {
-                props.sublinks.map((sublink, index) => <HeaderSublink {...sublink} key={index}/>)
+                props.sublinks.map((sublink, index) => <HeaderSublink {...sublink} onClick={() => setOpen(false)} key={index}/>)
               }
             </div>
             <div className="header__navigation__links">
+              <Text type="s" primary={false}>Menu</Text>
               {
-                props.links.map((link, index) => <HeaderLink {...link} key={index}/>)
+                props.links.map((link, index) => <HeaderLink {...link} onClick={() => setOpen(false)} key={index}/>)
               }
             </div>
           </div>
