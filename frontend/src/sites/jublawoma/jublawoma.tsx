@@ -1,6 +1,17 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import JublawomaHome from "./jublawoma-home";
 import Header from "../../components/header/header";
+import JublawomaEvents from "./jublawoma-events";
+import JublawomaPosts from "./jublawoma-posts";
+import JublawomaPost from "./jublawoma-post";
+import JublawomaAbout from "./jublawoma-about";
+import JublawomaJoin from "./jublawoma-join";
+import JublawomaMembers from "./jublawoma-members";
+import JublawomaDonate from "./jublawoma-donate";
+import JublawomaClothes from "./jublawoma-clothes";
+import JublawomaContact from "./jublawoma-contact";
+import JublawomaLegal from "./jublawoma-legal";
+import JublawomaPrivacy from "./jublawoma-privacy";
 
 const Jublawoma = () => {
 
@@ -21,17 +32,17 @@ const Jublawoma = () => {
           ]}/>
           <Routes>
             <Route path="/" element={<JublawomaHome/>}/>
-            <Route path="/veranstaltungen" element={<JublawomaHome/>}/>
-            <Route path="/beitraege" element={<JublawomaHome/>}/>
-            <Route path="/beitraege/:id" element={<JublawomaHome/>}/>
-            <Route path="/ueber-uns" element={<JublawomaHome/>}/>
-            <Route path="/beitreten" element={<JublawomaHome/>}/>
-            <Route path="/mitglieder" element={<JublawomaHome/>}/>
-            <Route path="/mitglieder/spenden" element={<JublawomaHome/>}/>
-            <Route path="/mitglieder/kleider" element={<JublawomaHome/>}/>
-            <Route path="/kontakt" element={<JublawomaHome/>}/>
-            <Route path="/impressum" element={<JublawomaHome/>}/>
-            <Route path="/datenschutz" element={<JublawomaHome/>}/>
+            <Route path="/veranstaltungen" element={<JublawomaEvents/>}/>
+            <Route path="/beitraege" element={<JublawomaPosts/>}/>
+            <Route path="/beitraege/:id" element={<JublawomaPost/>}/>
+            <Route path="/ueber-uns" element={<JublawomaAbout/>}/>
+            <Route path="/beitreten" element={<JublawomaJoin/>}/>
+            <Route path="/mitglieder" element={<JublawomaMembers/>}/>
+            <Route path="/spenden" element={<JublawomaDonate/>}/>
+            <Route path="/kleider" element={<JublawomaClothes/>}/>
+            <Route path="/kontakt" element={<JublawomaContact/>}/>
+            <Route path="/impressum" element={<JublawomaLegal/>}/>
+            <Route path="/datenschutz" element={<JublawomaPrivacy/>}/>
           </Routes>
         </Router>
   )

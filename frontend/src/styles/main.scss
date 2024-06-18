@@ -33,6 +33,18 @@ body {
   flex-direction: column;
   padding: 4rem;
   gap: 2rem;
+
+  @media screen and (max-width: variables.$m) {
+    padding: 3rem;
+  }
+
+  @media screen and (max-width: variables.$s) {
+    padding: 2rem;
+  }
+
+  @media screen and (max-width: variables.$xs) {
+    padding: 1rem;
+  }
 }
 
 ::selection {

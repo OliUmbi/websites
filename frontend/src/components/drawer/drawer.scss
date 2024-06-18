@@ -39,6 +39,10 @@
       translate: 100%;
     }
 
+    @media screen and (max-width: variables.$m) {
+      padding: 3rem;
+    }
+
     @media screen and (max-width: variables.$s) {
       padding: 2rem;
     }
