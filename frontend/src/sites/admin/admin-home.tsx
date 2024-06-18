@@ -46,10 +46,8 @@ const AdminHome = () => {
                message=""/>
         <Input value={password} setValue={setPassword} type="password" label="Password" required={true}
                placeholder="Password1234" message=""/>
-        <div>
-          <Button onClick={() => setDrawer(!drawer)} highlight={true}>Login</Button>
-          <Button onClick={() => setDrawer(!drawer)} highlight={false}>Register</Button>
-        </div>
+        <Button onClick={() => setDrawer(!drawer)} highlight={true}>Login</Button>
+        <Button onClick={() => setDrawer(!drawer)} highlight={false}>Register</Button>
         <Text type="p" primary={true}>
           Lorem ipsum dolor sit amet <Anchor to="/aldfjs">external website</Anchor>, consectetur adipiscing elit.
           Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem

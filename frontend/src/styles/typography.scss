@@ -28,115 +28,94 @@ h1, h2, h3, h4, p, small, a {
   display: inline;
   margin: 0;
   font-family: "geist", sans-serif;
+  word-break: break-word;
 }
 
 h1 {
-  font-size: 1.9rem;
+  font-size: 3.1rem;
   line-height: 1.35;
   font-weight: 800;
 
   @media screen and (max-width: variables.$l) {
-    font-size: 1.85rem;
+    font-size: 2.9rem;
   }
 
   @media screen and (max-width: variables.$m) {
-    font-size: 1.8rem;
+    font-size: 2.7rem;
   }
 
   @media screen and (max-width: variables.$s) {
-    font-size: 1.75rem;
+    font-size: 2.5rem;
   }
 
   @media screen and (max-width: variables.$xs) {
-    font-size: 1.7rem;
+    font-size: 2.4rem;
   }
 }
 
 h2 {
-  font-size: 1.7rem;
+  font-size: 2.6rem;
   line-height: 1.35;
   font-weight: 700;
 
   @media screen and (max-width: variables.$l) {
-    font-size: 1.65rem;
+    font-size: 2.4rem;
   }
 
   @media screen and (max-width: variables.$m) {
-    font-size: 1.6rem;
+    font-size: 2.2rem;
   }
 
   @media screen and (max-width: variables.$s) {
-    font-size: 1.55rem;
+    font-size: 2rem;
   }
 
   @media screen and (max-width: variables.$xs) {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
   }
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 2.1rem;
   line-height: 1.35;
   font-weight: 600;
 
   @media screen and (max-width: variables.$l) {
-    font-size: 1.45rem;
+    font-size: 1.9rem;
   }
 
   @media screen and (max-width: variables.$m) {
+    font-size: 1.7rem;
+  }
+
+  @media screen and (max-width: variables.$s) {
+    font-size: 1.5rem;
+  }
+
+  @media screen and (max-width: variables.$xs) {
     font-size: 1.4rem;
   }
-
-  @media screen and (max-width: variables.$s) {
-    font-size: 1.35rem;
-  }
-
-  @media screen and (max-width: variables.$xs) {
-    font-size: 1.3rem;
-  }
 }
 
-h4 {
+p, button, input, span {
   font-size: 1.3rem;
-  line-height: 1.35;
-  font-weight: 500;
-
-  @media screen and (max-width: variables.$l) {
-    font-size: 1.25rem;
-  }
-
-  @media screen and (max-width: variables.$m) {
-    font-size: 1.2rem;
-  }
-
-  @media screen and (max-width: variables.$s) {
-    font-size: 1.15rem;
-  }
-
-  @media screen and (max-width: variables.$xs) {
-    font-size: 1.1rem;
-  }
-}
-
-p, button, input {
-  font-size: 1.1rem;
   line-height: 1.35;
   font-weight: 400;
 
   @media screen and (max-width: variables.$l) {
-    font-size: 1.05rem;
+    font-size: 1.2rem;
   }
 
   @media screen and (max-width: variables.$m) {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   @media screen and (max-width: variables.$s) {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   @media screen and (max-width: variables.$xs) {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 }
 
@@ -144,25 +123,24 @@ button, input {
   font-weight: 500;
 }
 
-
 small {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   line-height: 1.35;
   font-weight: 400;
 
   @media screen and (max-width: variables.$l) {
-    font-size: 0.85rem;
+    font-size: 1rem;
   }
 
   @media screen and (max-width: variables.$m) {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
   @media screen and (max-width: variables.$s) {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
 
   @media screen and (max-width: variables.$xs) {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
 }

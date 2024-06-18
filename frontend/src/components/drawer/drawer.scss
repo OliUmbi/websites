@@ -59,6 +59,7 @@
     &__body {
       height: 100%;
       overflow-y: scroll;
+      overflow-x: hidden;
 
       flex-direction: column;
     }

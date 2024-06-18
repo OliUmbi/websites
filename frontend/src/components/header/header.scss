@@ -13,6 +13,10 @@
 
     gap: 8rem;
 
+    @media screen and (max-width: variables.$m) {
+      gap: 6rem;
+    }
+
     @media screen and (max-width: variables.$s) {
       flex-direction: column-reverse;
       gap: 4rem;

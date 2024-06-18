@@ -2,7 +2,7 @@
 
 .input {
   min-width: 16rem;
-  padding: 1rem;
+  padding: 1em;
   background-color: variables.$background;
   border-radius: 0.25rem;
   transition: all 150ms ease-in;
@@ -14,7 +14,7 @@
   }
 
   &__body {
-    padding: 0.5rem 0;
+    padding: 0.5em 0;
     border: none;
   }
 

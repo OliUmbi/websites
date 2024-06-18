@@ -18,7 +18,7 @@ const Header = (props: HeaderProps) => {
 
   return (
       <header className="header">
-        <Image src="https://jublawoma.ch/static/media/woma.ab034472385e8e5df883.png" alt="logo" rounded={false} height={5}/>
+        <Image src="https://jublawoma.ch/static/media/woma.ab034472385e8e5df883.png" alt="logo" side="height" rounded={false}/>
         <IconButton onClick={() => setOpen(!open)} highlight={false}>menu</IconButton>
         <Drawer open={open} setOpen={setOpen} title="">
           <div className="header__navigation">
