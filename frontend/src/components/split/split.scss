@@ -52,31 +52,31 @@
     @media screen and (max-width: variables.$l) {
       grid-template-columns: 1fr;
 
-      &[data-breakGap="0"] {
+      &[data-breakgap="0"] {
         gap: 0;
       }
 
-      &[data-breakGap="1"] {
+      &[data-breakgap="1"] {
         gap: 1rem;
       }
 
-      &[data-breakGap="2"] {
+      &[data-breakgap="2"] {
         gap: 2rem;
       }
 
-      &[data-breakGap="4"] {
+      &[data-breakgap="4"] {
         gap: 4rem;
       }
 
-      &[data-breakGap="6"] {
+      &[data-breakgap="6"] {
         gap: 6rem;
       }
 
-      &[data-breakGap="8"] {
+      &[data-breakgap="8"] {
         gap: 8rem;
       }
 
-      &[data-breakReverse="true"] {
+      &[data-breakreverse="true"] {
         :first-child {
           order: 2;
         }
@@ -88,31 +88,31 @@
     @media screen and (max-width: variables.$m) {
       grid-template-columns: 1fr;
 
-      &[data-breakGap="0"] {
+      &[data-breakgap="0"] {
         gap: 0;
       }
 
-      &[data-breakGap="1"] {
+      &[data-breakgap="1"] {
         gap: 1rem;
       }
 
-      &[data-breakGap="2"] {
+      &[data-breakgap="2"] {
         gap: 2rem;
       }
 
-      &[data-breakGap="4"] {
+      &[data-breakgap="4"] {
         gap: 4rem;
       }
 
-      &[data-breakGap="6"] {
+      &[data-breakgap="6"] {
         gap: 6rem;
       }
 
-      &[data-breakGap="8"] {
+      &[data-breakgap="8"] {
         gap: 8rem;
       }
 
-      &[data-breakReverse="true"] {
+      &[data-breakreverse="true"] {
         :first-child {
           order: 2;
         }
@@ -124,31 +124,31 @@
     @media screen and (max-width: variables.$s) {
       grid-template-columns: 1fr;
 
-      &[data-breakGap="0"] {
+      &[data-breakgap="0"] {
         gap: 0;
       }
 
-      &[data-breakGap="1"] {
+      &[data-breakgap="1"] {
         gap: 1rem;
       }
 
-      &[data-breakGap="2"] {
+      &[data-breakgap="2"] {
         gap: 2rem;
       }
 
-      &[data-breakGap="4"] {
+      &[data-breakgap="4"] {
         gap: 4rem;
       }
 
-      &[data-breakGap="6"] {
+      &[data-breakgap="6"] {
         gap: 6rem;
       }
 
-      &[data-breakGap="8"] {
+      &[data-breakgap="8"] {
         gap: 8rem;
       }
 
-      &[data-breakReverse="true"] {
+      &[data-breakreverse="true"] {
         :first-child {
           order: 2;
         }
@@ -160,31 +160,31 @@
     @media screen and (max-width: variables.$xs) {
       grid-template-columns: 1fr;
 
-      &[data-breakGap="0"] {
+      &[data-breakgap="0"] {
         gap: 0;
       }
 
-      &[data-breakGap="1"] {
+      &[data-breakgap="1"] {
         gap: 1rem;
       }
 
-      &[data-breakGap="2"] {
+      &[data-breakgap="2"] {
         gap: 2rem;
       }
 
-      &[data-breakGap="4"] {
+      &[data-breakgap="4"] {
         gap: 4rem;
       }
 
-      &[data-breakGap="6"] {
+      &[data-breakgap="6"] {
         gap: 6rem;
       }
 
-      &[data-breakGap="8"] {
+      &[data-breakgap="8"] {
         gap: 8rem;
       }
 
-      &[data-breakReverse="true"] {
+      &[data-breakreverse="true"] {
         :first-child {
           order: 2;
         }

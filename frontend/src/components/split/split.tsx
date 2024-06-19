@@ -13,7 +13,7 @@ export interface SectionProps {
 const Split = (props: SectionProps) => {
 
   return (
-      <div className="split" data-ratio={props.ratio} data-gap={props.gap} data-break={props.break} data-breakGap={props.breakGap} data-breakReverse={props.breakReverse}>
+      <div className="split" data-ratio={props.ratio} data-gap={props.gap} data-break={props.break} data-breakgap={props.breakGap} data-breakreverse={props.breakReverse}>
         {props.children}
       </div>
   )
