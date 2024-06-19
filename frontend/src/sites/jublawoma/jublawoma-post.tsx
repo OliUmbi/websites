@@ -16,10 +16,10 @@ const JublawomaPost = () => {
         <Section width="m">
           <Column gap="2">
             <Column gap="0">
-              <Text type="p" primary={true}>Samstag, 30. September 2023</Text>
+              <Text type="s" primary={true}>Samstag, 30. September 2023</Text>
               <Text type="h1" primary={true}>Der Diebstahl von Walter</Text>
             </Column>
-            <Text type="p" primary={true}><Text type="s" primary={false}>Erstellt von</Text> Julian und Caithlyn</Text>
+            <Text type="p" primary={true}><Text type="p" primary={false}>Erstellt von</Text> Julian und Caithlyn</Text>
           </Column>
         </Section>
         <Section width="m">

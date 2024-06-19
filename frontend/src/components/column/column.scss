@@ -28,4 +28,8 @@
   &[data-gap="8"] {
     gap: 8rem;
   }
+
+  &[data-justify="true"] {
+    justify-content: space-between;
+  }
 }
