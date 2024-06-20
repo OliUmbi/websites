@@ -15,7 +15,7 @@ const JublawomaPost = () => {
         </Section>
         <Section width="m">
           <Column gap="2">
-            <Column gap="0">
+            <Column gap="0" justify={false}>
               <Text type="s" primary={true}>Samstag, 30. September 2023</Text>
               <Text type="h1" primary={true}>Der Diebstahl von Walter</Text>
             </Column>
