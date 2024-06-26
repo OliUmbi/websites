@@ -1,13 +1,13 @@
+import OliUmbi from "./sites/oliumbi/oliumbi";
+import OliumbiAdmin from "./sites/oliumbi/admin/oliumbi-admin";
 import Jublawoma from "./sites/jublawoma/jublawoma";
 import Unclet from "./sites/unclet/unclet";
-import OliUmbi from "./sites/oliumbi/oliumbi";
-import Admin from "./sites/admin/admin";
 
 const App = () => {
   return (
       <>
-        <Admin/>
         <OliUmbi/>
+        <OliumbiAdmin/>
         <Jublawoma/>
         <Unclet/>
       </>

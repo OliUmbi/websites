@@ -1,13 +1,9 @@
 -----------
 -- enums --
 -----------
-DROP TYPE IF EXISTS website CASCADE;
-CREATE TYPE website AS ENUM ('JUBLA_WOMA', 'UNCLE_T');
-CREATE CAST (varchar AS website) WITH INOUT AS IMPLICIT;
-
-DROP TYPE IF EXISTS role CASCADE;
-CREATE TYPE role AS ENUM ('USER', 'ADMINISTRATOR');
-CREATE CAST (varchar AS role) WITH INOUT AS IMPLICIT;
+DROP TYPE IF EXISTS permission CASCADE;
+CREATE TYPE permission AS ENUM ('OLIUMBI_ADMIN', 'JUBLAWOMA_ADMIN', 'UNCLET_ADMIN');
+CREATE CAST (varchar AS permission) WITH INOUT AS IMPLICIT;
 
 ------------
 -- account --
@@ -32,8 +28,7 @@ CREATE TABLE account_session
 DROP TABLE IF EXISTS account_permission CASCADE;
 CREATE TABLE account_permission
 (
-    account_permission_id UUID    NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
-    account_id            UUID    NOT NULL REFERENCES account ON UPDATE CASCADE ON DELETE CASCADE,
-    website               website NOT NULL,
-    role                  role    NOT NULL
+    account_permission_id UUID       NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
+    account_id            UUID       NOT NULL REFERENCES account ON UPDATE CASCADE ON DELETE CASCADE,
+    permission            permission NOT NULL
 );

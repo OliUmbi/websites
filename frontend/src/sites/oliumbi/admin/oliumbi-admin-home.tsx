@@ -1,12 +1,12 @@
-import Text from "../../components/text/text";
-import Button from "../../components/button/button";
-import IconButton from "../../components/icon/button/icon-button";
-import Anchor from "../../components/anchor/anchor";
-import Drawer from "../../components/drawer/drawer";
 import {useState} from "react";
-import Input from "../../components/input/input";
+import Button from "../../../components/button/button";
+import IconButton from "../../../components/icon/button/icon-button";
+import Drawer from "../../../components/drawer/drawer";
+import Anchor from "../../../components/anchor/anchor";
+import Input from "../../../components/input/input";
+import Text from "../../../components/text/text";
 
-const AdminHome = () => {
+const OliumbiAdminHome = () => {
 
   const [drawer, setDrawer] = useState<boolean>(false)
   const [input, setInput] = useState<string>("")
@@ -81,4 +81,4 @@ const AdminHome = () => {
   )
 }
 
-export default AdminHome
+export default OliumbiAdminHome

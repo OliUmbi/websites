@@ -1,6 +1,5 @@
 import Section from "../../components/section/section";
 import Text from "../../components/text/text";
-import Anchor from "../../components/anchor/anchor";
 import Column from "../../components/column/column";
 import Split from "../../components/split/split";
 
