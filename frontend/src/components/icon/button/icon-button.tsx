@@ -2,13 +2,13 @@ import "./icon-button.scss";
 import {ReactNode} from "react";
 import Icon from "../icon";
 
-export interface IconButtonProps {
+export interface Props {
   children: ReactNode,
   onClick: () => void,
   highlight: boolean
 }
 
-const IconButton = (props: IconButtonProps) => {
+const IconButton = (props: Props) => {
 
   return (
       <button className="icon-button" onClick={() => props.onClick()} data-highlight={props.highlight}>

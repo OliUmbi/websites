@@ -1,12 +1,52 @@
 @use "../../styles/variables";
 
 .row {
-  width: 100%;
 
+  display: flex;
   flex-direction: row;
 
-  &[data-gap="0"] {
-    gap: 0;
+  &[data-width="true"] {
+    width: 100%;
+  }
+
+  &[data-width="false"] {
+    width: fit-content;
+  }
+
+  &[data-height="true"] {
+    height: 100%;
+  }
+
+  &[data-height="false"] {
+    height: fit-content;
+  }
+
+  &[data-align="top"] {
+    align-items: flex-start;
+  }
+
+  &[data-align="center"] {
+    align-items: center;
+  }
+
+  &[data-align="bottom"] {
+    align-items: flex-end;
+  }
+
+  &[data-justify="left"] {
+    justify-content: flex-start;
+  }
+
+  &[data-justify="center"] {
+    justify-content: center;
+  }
+
+  &[data-justify="right"] {
+    justify-content: flex-end;
+  }
+
+  &[data-justify="between"] {
+    justify-content: space-between;
   }
 
   &[data-gap="1"] {
@@ -17,19 +57,31 @@
     gap: 2rem;
   }
 
+  &[data-gap="3"] {
+    gap: 3rem;
+  }
+
   &[data-gap="4"] {
     gap: 4rem;
+  }
+
+  &[data-gap="5"] {
+    gap: 5rem;
   }
 
   &[data-gap="6"] {
     gap: 6rem;
   }
 
-  &[data-gap="8"] {
-    gap: 8rem;
+  &[data-wrap="never"] {
+    flex-wrap: nowrap;
   }
 
-  &[data-justify="true"] {
-    justify-content: space-between;
+  &[data-wrap="wrap"] {
+    flex-wrap: wrap;
+  }
+
+  &[data-wrap="reverse"] {
+    flex-wrap: wrap-reverse;
   }
 }

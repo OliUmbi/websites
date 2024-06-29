@@ -1,13 +1,13 @@
 import "./text.scss";
 import {ReactNode} from "react";
 
-export interface TextProps {
+export interface Props {
     children: ReactNode,
     type: "h1" | "h2" | "h3" | "p" | "s",
     primary: boolean
 }
 
-const Text = (props: TextProps) => {
+const Text = (props: Props) => {
 
     switch (props.type) {
         case "h1":

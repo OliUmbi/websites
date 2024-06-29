@@ -2,27 +2,33 @@ import "./drawer.scss";
 import {ReactNode} from "react";
 import IconButton from "../icon/button/icon-button";
 import Text from "../text/text";
+import Column from "../column/column";
+import Row from "../row/row";
 
-export interface DialogProps {
+export interface Props {
   children: ReactNode,
   open: boolean,
   setOpen: (open: boolean) => void,
   title: string
 }
 
-const Drawer = (props: DialogProps) => {
+const Drawer = (props: Props) => {
 
   return (
       <div className="drawer" data-open={props.open}>
-        <div className="drawer__content" data-open={props.open}>
-          <div className="drawer__content__head">
-            <Text type="p" primary={true}>{props.title}</Text>
-            <IconButton onClick={() => props.setOpen(false)} highlight={false}>close</IconButton>
+        <Row width={true} height={true} justify="right">
+          <div className="drawer__content" data-open={props.open}>
+            <Column width={true} height={true} gap="4" wrap={false}>
+              <Row align="center" justify="between">
+                <Text type="p" primary={true}>{props.title}</Text>
+                <IconButton onClick={() => props.setOpen(false)} highlight={false}>close</IconButton>
+              </Row>
+              <div className="drawer__content__body">
+                {props.children}
+              </div>
+            </Column>
           </div>
-          <div className="drawer__content__body">
-            {props.children}
-          </div>
-        </div>
+        </Row>
       </div>
   )
 }

@@ -12,7 +12,7 @@ const JublawomaEvents = () => {
           <Text type="h1" primary={true}>Veranstaltungen</Text>
         </Section>
         <Section width="xl">
-          <Column gap="8" justify={false}>
+          <Column gap="6">
             <Split ratio="1-2" gap="4" break="m" breakGap="1" breakReverse={false}>
               <Image
                   src="https://assets-global.website-files.com/5d5e2ff58f10c53dcffd8683/5d99f7054aefbe78f094a9ca_composition-7.svg"

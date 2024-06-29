@@ -5,7 +5,6 @@
 *, :before, :after {
   all: unset;
   box-sizing: border-box;
-  display: flex;
 }
 
 head, script, style, link {
@@ -29,9 +28,11 @@ body {
 #root {
   width: 100%;
   height: 100%;
+  padding: 4rem;
+
   display: flex;
   flex-direction: column;
-  padding: 4rem;
+  flex-wrap: nowrap;
   gap: 8rem;
 
   @media screen and (max-width: variables.$m) {

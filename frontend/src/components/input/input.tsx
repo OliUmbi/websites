@@ -2,23 +2,25 @@ import "./input.scss";
 import {ChangeEvent} from "react";
 import Text from "../text/text"
 
-export interface InputProps {
-  value: string,
-  setValue: (value: string) => void,
-  type: "text" | "password" | "email"
-  label: string,
-  required: boolean,
-  placeholder: string,
-  message: string,
+export interface Props {
+  value: string
+  setValue: (value: string) => void
+  error: string
+  label: string
+  required: boolean;
+  hidden: boolean
+  placeholder: string
   rows?: number
 }
 
-const Input = (props: InputProps) => {
+const Input = (props: Props) => {
 
   const handleOnChange = (event: ChangeEvent<any>) => {
     event.preventDefault()
     props.setValue(event.target.value)
   }
+
+  // todo max length + validation (email, number, date, password min) + options (hori, vert) + range
 
   return (
       <label className="input">
@@ -26,14 +28,14 @@ const Input = (props: InputProps) => {
           <Text type="s" primary={true}>{props.label} {props.required ? "*" : ""}</Text>
         </div>
         {
-          props.rows! ? (
+          props.rows ? (
               <textarea className="input__body" value={props.value} onChange={handleOnChange} rows={props.rows} required={props.required} placeholder={props.placeholder}/>
           ) : (
-              <input className="input__body" type={props.type} value={props.value} onChange={handleOnChange} required={props.required} placeholder={props.placeholder}/>
+              <input className="input__body" type={props.hidden ? "password" : "text"} value={props.value} onChange={handleOnChange} required={props.required} placeholder={props.placeholder}/>
           )
         }
         <div className="input__foot">
-          <Text type="s" primary={true}>{props.message}</Text>
+          <Text type="s" primary={true}>{props.error}</Text>
         </div>
       </label>
   )

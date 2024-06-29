@@ -1,7 +1,7 @@
 import "./split.scss";
 import {ReactNode} from "react";
 
-export interface SectionProps {
+export interface Props {
   children: ReactNode,
   ratio: "1-1" | "1-2" | "2-1" | "1-3" | "3-1"
   gap: "0" | "1" | "2" | "4" | "6" | "8"
@@ -10,7 +10,9 @@ export interface SectionProps {
   breakReverse: boolean
 }
 
-const Split = (props: SectionProps) => {
+const Split = (props: Props) => {
+
+  // todo review
 
   return (
       <div className="split" data-ratio={props.ratio} data-gap={props.gap} data-break={props.break} data-breakgap={props.breakGap} data-breakreverse={props.breakReverse}>

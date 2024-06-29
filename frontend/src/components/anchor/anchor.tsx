@@ -2,12 +2,12 @@ import "./anchor.scss";
 import {ReactNode} from "react";
 import {Link} from "react-router-dom";
 
-export interface ButtonProps {
+export interface Props {
     children: ReactNode,
     to: string
 }
 
-const Anchor = (props: ButtonProps) => {
+const Anchor = (props: Props) => {
 
     return (
         <Link className="anchor" to={props.to}>

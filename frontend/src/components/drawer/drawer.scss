@@ -9,8 +9,6 @@
   z-index: 999;
   transition: all 350ms ease-in-out;
 
-  justify-content: flex-end;
-
   &[data-open="true"] {
     visibility: visible;
     background-color: rgba(variables.$foreground, 0.5);
@@ -27,9 +25,6 @@
     padding: 4rem;
     background-color: variables.$background;
     transition: all 350ms ease-in-out;
-
-    flex-direction: column;
-    gap: 2rem;
 
     &[data-open="true"] {
       translate: 0;
@@ -51,17 +46,10 @@
       padding: 1rem;
     }
 
-    &__head {
-      justify-content: space-between;
-      align-items: center;
-    }
-
     &__body {
       height: 100%;
       overflow-y: scroll;
       overflow-x: hidden;
-
-      flex-direction: column;
     }
   }
 }

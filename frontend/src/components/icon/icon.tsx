@@ -1,11 +1,11 @@
 import "./icon.scss";
 import {ReactNode} from "react";
 
-export interface IconProps {
+export interface Props {
   children: ReactNode
 }
 
-const Icon = (props: IconProps) => {
+const Icon = (props: Props) => {
 
   return (
       <span className="icon">{props.children}</span>

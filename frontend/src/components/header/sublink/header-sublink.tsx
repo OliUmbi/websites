@@ -1,19 +1,19 @@
 import "./header-sublink.scss";
 import Text from "../../text/text";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
-export interface HeaderSublinkProps {
+export interface Props {
     name: string,
     to: string,
     onClick: () => void
 }
 
-const HeaderSublink = (props: HeaderSublinkProps) => {
+const HeaderSublink = (props: Props) => {
 
     return (
-        <Link className="header-sublink" to={props.to} onClick={() => props.onClick()}>
+        <NavLink className="header-sublink" to={props.to} onClick={() => props.onClick()}>
             <Text type="p" primary={true}>{props.name}</Text>
-        </Link>
+        </NavLink>
     )
 }
 
