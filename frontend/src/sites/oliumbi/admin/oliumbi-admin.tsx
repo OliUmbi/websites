@@ -3,8 +3,20 @@ import Protected from "../../../components/protected/protected";
 import {Permission} from "../../../enums/permission";
 import OliumbiAdminLogin from "./oliumbi-admin-login";
 import OliumbiAdminHome from "./oliumbi-admin-home";
+import {useEffect} from "react";
+import useLocal from "../../../hooks/use-local";
+import {Configuration} from "../../../interfaces/configuration";
+import {Language} from "../../../enums/language";
 
 const OliumbiAdmin = () => {
+
+  const [, setConfiguration] = useLocal<Configuration>("configuration")
+
+  useEffect(() => {
+    setConfiguration({
+      language: Language.ENGLISH
+    })
+  }, [])
 
   return (
       <Router basename="oliumbi-admin">

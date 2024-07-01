@@ -9,4 +9,12 @@
   &[data-primary="false"] {
     color: variables.$foreground-secondary;
   }
+
+  &[data-mono="true"] {
+    font-family: "geist-mono", monospace;
+  }
+
+  &[data-mono="false"] {
+    font-family: "geist", sans-serif;
+  }
 }

@@ -5,8 +5,17 @@ import Drawer from "../../../components/drawer/drawer";
 import Anchor from "../../../components/anchor/anchor";
 import Input from "../../../components/input/input";
 import Text from "../../../components/text/text";
+import Grid from "../../../components/grid/grid";
+import GridItem from "../../../components/grid/item/grid-item";
+import useLanguage from "../../../hooks/use-lanugage";
+import useLocal from "../../../hooks/use-local";
+import {Configuration} from "../../../interfaces/configuration";
+import {Language} from "../../../enums/language";
+import Loading from "../../../components/loading/loading";
 
 const OliumbiAdminHome = () => {
+
+  const translation = useLanguage()
 
   const [drawer, setDrawer] = useState<boolean>(false)
   const [input, setInput] = useState<string>("")
@@ -15,9 +24,41 @@ const OliumbiAdminHome = () => {
 
   return (
       <>
+        <Grid gap="2">
+          <GridItem xl="4" m="8">
+            <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
+          </GridItem>
+          <GridItem xl="2" m="4" xs="8">
+            <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
+          </GridItem>
+          <GridItem xl="2" m="4" xs="8">
+            <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
+          </GridItem>
+          <GridItem xl="4" m="8">
+            <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
+          </GridItem>
+          <GridItem xl="2" m="4" xs="8">
+            <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
+          </GridItem>
+          <GridItem xl="2" m="4" xs="8">
+            <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
+          </GridItem>
+          <GridItem xl="4" m="8">
+            <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
+          </GridItem>
+          <GridItem xl="2" m="4" xs="8">
+            <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
+          </GridItem>
+          <GridItem xl="2" m="4" xs="8">
+            <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
+          </GridItem>
+        </Grid>
+        <Loading/>
+
+        <Text type="h1" primary={true}>{translation("test")}</Text>
         <Text type="h1" primary={true}>Admin</Text>
         <Text type="s" primary={true}>A oliUmbi production</Text>
-        <Button onClick={() => setDrawer(!drawer)} highlight={true}>Test</Button>
+        <Button onClick={() => setDrawer(true)} highlight={true}>Test</Button>
         <IconButton onClick={() => setDrawer(!drawer)} highlight={false}>menu</IconButton>
         <Drawer open={drawer} setOpen={setDrawer} title="Test">
           <Text type="p" primary={true}>
