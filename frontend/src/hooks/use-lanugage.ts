@@ -8,19 +8,18 @@ const useLanguage = (): (key: string) => string => {
 
   const [configuration] = useLocal<Configuration>("configuration")
 
-  const translation = (key: string): string => {
-
+  return (key: string): string => {
     switch (configuration?.language) {
       case Language.ENGLISH:
+        // @ts-ignore
         return english[key] || "Translation not found."
       case Language.GERMAN:
+        // @ts-ignore
         return german[key] || "Übersetzung wurde nicht gefunden."
       default:
         return "No language is set."
     }
   }
-
-  return translation
 }
 
 export default useLanguage;
