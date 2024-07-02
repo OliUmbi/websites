@@ -25,7 +25,7 @@ const Input = (props: Props) => {
   return (
       <label className="input">
         <div className="input__head">
-          <Text type="s" primary={true}>{props.label} {props.required ? "*" : ""}</Text>
+          <Text type="s" primary={true} mono={false}>{props.label} {props.required ? "*" : ""}</Text>
         </div>
         {
           props.rows ? (
@@ -35,7 +35,7 @@ const Input = (props: Props) => {
           )
         }
         <div className="input__foot">
-          <Text type="s" primary={true}>{props.error}</Text>
+          <Text type="s" primary={true} mono={true}>{props.error}</Text>
         </div>
       </label>
   )

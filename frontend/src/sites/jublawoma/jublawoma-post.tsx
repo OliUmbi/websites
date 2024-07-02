@@ -1,8 +1,9 @@
 import Section from "../../components/section/section";
 import Text from "../../components/text/text";
-import Split from "../../components/split/split";
 import Image from "../../components/image/image";
 import Column from "../../components/column/column";
+import Grid from "../../components/grid/grid";
+import GridItem from "../../components/grid/item/grid-item";
 
 const JublawomaPost = () => {
 
@@ -32,10 +33,14 @@ const JublawomaPost = () => {
           </Column>
         </Section>
         <Section width="xl">
-          <Split ratio="1-1" gap="2" break="m" breakGap="2" breakReverse={false}>
-            <Image src="https://jublawoma.ch/images/hela-2023/samstag-1.jpg" alt="image" side="width" rounded={true}/>
-            <Image src="https://jublawoma.ch/images/hela-2023/samstag-2.jpg" alt="image" side="width" rounded={true}/>
-          </Split>
+          <Grid>
+            <GridItem xl={5}>
+              <Image src="https://jublawoma.ch/images/hela-2023/samstag-1.jpg" alt="image" side="width" rounded={true}/>
+            </GridItem>
+            <GridItem xl={5}>
+              <Image src="https://jublawoma.ch/images/hela-2023/samstag-2.jpg" alt="image" side="width" rounded={true}/>
+            </GridItem>
+          </Grid>
         </Section>
         <Section width="m">
           <Text type="p" primary={true}>Da leider alle Seiten aus dem Buch ausgerissen worden sind, müssen wir diese Seiten

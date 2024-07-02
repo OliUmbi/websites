@@ -18,9 +18,9 @@ const Drawer = (props: Props) => {
       <div className="drawer" data-open={props.open}>
         <Row width={true} height={true} justify="right">
           <div className="drawer__content" data-open={props.open}>
-            <Column width={true} height={true} gap="4" wrap={false}>
+            <Column width={true} height={true} gap={4} wrap="never">
               <Row align="center" justify="between">
-                <Text type="p" primary={true}>{props.title}</Text>
+                <Text type="p" primary={true} mono={false}>{props.title}</Text>
                 <IconButton onClick={() => props.setOpen(false)} highlight={false}>close</IconButton>
               </Row>
               <div className="drawer__content__body">

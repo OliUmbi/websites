@@ -26,17 +26,17 @@ const Header = (props: Props) => {
             <Image src="https://jublawoma.ch/static/media/woma.ab034472385e8e5df883.png" alt="logo" side="height" rounded={false}/>
           </NavLink>
           <IconButton onClick={() => setOpen(!open)} highlight={false}>menu</IconButton>
-          <Drawer open={open} setOpen={setOpen} title="">
+          <Drawer open={open} setOpen={setOpen} title="Navigation">
             <Column height={true} justify="center">
-              <Row gap="4" wrap="reverse">
-                <Column gap="1">
-                  <Text type="s" primary={false}>Weiteres</Text>
+              <Row gap={4} wrap="reverse">
+                <Column gap={1}>
+                  <Text type="s" primary={false} mono={true}>Weiteres</Text>
                   {
                     props.sublinks.map((sublink, index) => <HeaderSublink {...sublink} onClick={() => setOpen(false)} key={index}/>)
                   }
                 </Column>
-                <Column gap="1">
-                  <Text type="s" primary={false}>Menu</Text>
+                <Column gap={1}>
+                  <Text type="s" primary={false} mono={true}>Menu</Text>
                   {
                     props.links.map((link, index) => <HeaderLink {...link} onClick={() => setOpen(false)} key={index}/>)
                   }

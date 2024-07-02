@@ -8,9 +8,6 @@ import Text from "../../../components/text/text";
 import Grid from "../../../components/grid/grid";
 import GridItem from "../../../components/grid/item/grid-item";
 import useLanguage from "../../../hooks/use-lanugage";
-import useLocal from "../../../hooks/use-local";
-import {Configuration} from "../../../interfaces/configuration";
-import {Language} from "../../../enums/language";
 import Loading from "../../../components/loading/loading";
 
 const OliumbiAdminHome = () => {
@@ -24,44 +21,44 @@ const OliumbiAdminHome = () => {
 
   return (
       <>
-        <Grid gap="2">
-          <GridItem xl="4" m="8">
+        <Grid gap={2}>
+          <GridItem xl={4} m={8}>
             <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
           </GridItem>
-          <GridItem xl="2" m="4" xs="8">
+          <GridItem xl={2} m={4} xs={8}>
             <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
           </GridItem>
-          <GridItem xl="2" m="4" xs="8">
+          <GridItem xl={2} m={4} xs={8}>
             <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
           </GridItem>
-          <GridItem xl="4" m="8">
+          <GridItem xl={3} m={8}>
             <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
           </GridItem>
-          <GridItem xl="2" m="4" xs="8">
+          <GridItem xl={3} m={6} xs={8}>
             <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
           </GridItem>
-          <GridItem xl="2" m="4" xs="8">
+          <GridItem xl={2} m={2} xs={8}>
             <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
           </GridItem>
-          <GridItem xl="4" m="8">
+          <GridItem xl={1} m={1} xs={8}>
             <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
           </GridItem>
-          <GridItem xl="2" m="4" xs="8">
+          <GridItem xl={4} m={7} xs={8}>
             <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
           </GridItem>
-          <GridItem xl="2" m="4" xs="8">
+          <GridItem xl={3} m={4} xs={8}>
             <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
           </GridItem>
         </Grid>
         <Loading/>
 
-        <Text type="h1" primary={true}>{translation("test")}</Text>
-        <Text type="h1" primary={true}>Admin</Text>
-        <Text type="s" primary={true}>A oliUmbi production</Text>
+        <Text type="h1" primary={true} mono={false}>{translation("test")}</Text>
+        <Text type="h1" primary={true} mono={false}>Admin</Text>
+        <Text type="s" primary={true} mono={false}>A oliUmbi production</Text>
         <Button onClick={() => setDrawer(true)} highlight={true}>Test</Button>
         <IconButton onClick={() => setDrawer(!drawer)} highlight={false}>menu</IconButton>
         <Drawer open={drawer} setOpen={setDrawer} title="Test">
-          <Text type="p" primary={true}>
+          <Text type="p" primary={true} mono={false}>
             Lorem ipsum dolor sit amet <Anchor to="/aldfjs">external website</Anchor>, consectetur adipiscing elit.
             Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
             a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In
@@ -73,7 +70,7 @@ const OliumbiAdminHome = () => {
         </Drawer>
         <Input value={input} setValue={setInput} type="text" label="Firstname" required={true} placeholder="Example example"
                message=""/>
-        <Text type="p" primary={true}>
+        <Text type="p" primary={true} mono={false}>
           Lorem ipsum dolor sit amet <Anchor to="/aldfjs">external website</Anchor>, consectetur adipiscing elit.
           Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
           a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In
@@ -82,14 +79,14 @@ const OliumbiAdminHome = () => {
           massa. Donec quam nunc, vulputate eget sapien in, lobortis sagittis felis. Vestibulum ante ipsum primis
           in faucibus orci luctus et ultrices posuere cubilia curae; Aenean rhoncus rutrum lectus non bibendum.
         </Text>
-        <Text type="h2" primary={true}>Login</Text>
+        <Text type="h2" primary={true} mono={false}>Login</Text>
         <Input value={username} setValue={setUsername} type="text" label="Lastname" required={true} placeholder="oliumbi"
                message=""/>
         <Input value={password} setValue={setPassword} type="password" label="Password" required={true}
                placeholder="Password1234" message=""/>
         <Button onClick={() => setDrawer(!drawer)} highlight={true}>Login</Button>
         <Button onClick={() => setDrawer(!drawer)} highlight={false}>Register</Button>
-        <Text type="p" primary={true}>
+        <Text type="p" primary={true} mono={false}>
           Lorem ipsum dolor sit amet <Anchor to="/aldfjs">external website</Anchor>, consectetur adipiscing elit.
           Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
           a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In
@@ -99,7 +96,7 @@ const OliumbiAdminHome = () => {
           in faucibus orci luctus et ultrices posuere cubilia curae; Aenean rhoncus rutrum lectus non bibendum.
         </Text>
 
-        <Text type="p" primary={false}>
+        <Text type="p" primary={false} mono={false}>
           Lorem ipsum dolor sit amet <Anchor to="/aldfjs">external website</Anchor>, consectetur adipiscing elit.
           Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
           a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In
@@ -109,7 +106,7 @@ const OliumbiAdminHome = () => {
           in faucibus orci luctus et ultrices posuere cubilia curae; Aenean rhoncus rutrum lectus non bibendum.
         </Text>
 
-        <Text type="p" primary={true}>
+        <Text type="p" primary={true} mono={false}>
           Lorem ipsum dolor sit amet <Anchor to="/aldfjs">external website</Anchor>, consectetur adipiscing elit.
           Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
           a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In

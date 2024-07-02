@@ -7,7 +7,7 @@ export interface Props {
   height?: boolean
   align?: "top" | "center" | "bottom"
   justify?: "left" | "center" | "right" | "between"
-  gap?: "1" | "2" | "3" | "4" | "5" | "6"
+  gap?: number
   wrap?: "never" | "wrap" | "reverse"
 }
 

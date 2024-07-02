@@ -12,7 +12,7 @@ const HeaderLink = (props: Props) => {
 
     return (
         <NavLink className="header-link" to={props.to} onClick={() => props.onClick()}>
-            <Text type="h2" primary={true}>{props.name}</Text>
+            <Text type="h2" primary={true} mono={false}>{props.name}</Text>
         </NavLink>
     )
 }

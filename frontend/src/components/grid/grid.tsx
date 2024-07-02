@@ -3,7 +3,7 @@ import {ReactNode} from "react";
 
 export interface Props {
   children: ReactNode,
-  gap?: "1" | "2" | "4" | "6" | "8"
+  gap?: number
 }
 
 const Grid = (props: Props) => {

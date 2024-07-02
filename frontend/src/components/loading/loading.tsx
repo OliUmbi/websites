@@ -5,7 +5,7 @@ import Row from "../row/row";
 import Column from "../column/column";
 
 const loading = () => {
-  const chars = "---___...:::,;$£!?^~?=/\|&%*#@+¦§{}[]()ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const chars = "---___...,,,:::;;;///\\\|||$£!?^~?=&%*#@+¦§{}[]()ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
   const [text, setText] = useState<string>("-");
 
@@ -18,7 +18,6 @@ const loading = () => {
           .map(() => chars[Math.floor(Math.random() * (chars.length - 1))])
           .join("")
       )
-
     }, 50)
 
     return () => clearInterval(interval)
