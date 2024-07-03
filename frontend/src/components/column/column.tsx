@@ -6,7 +6,7 @@ export interface Props {
   width?: boolean
   height?: boolean
   align?: "left" | "center" | "right"
-  justify?: "top" | "center" | "bottom" | "between"
+  justify?: "top" | "center" | "bottom" | "space-between"
   gap?: number
   wrap?: "never" | "wrap" | "reverse"
 }
