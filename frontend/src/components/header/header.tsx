@@ -21,7 +21,7 @@ const Header = (props: Props) => {
 
   return (
       <header className="header">
-        <Row align="center" justify="between">
+        <Row align="center" justify="space-between">
           <NavLink className="header__logo" to="/">
             <Image src="https://jublawoma.ch/static/media/woma.ab034472385e8e5df883.png" alt="logo" side="height" rounded={false}/>
           </NavLink>

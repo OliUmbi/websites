@@ -49,6 +49,14 @@
     justify-content: space-between;
   }
 
+  &[data-justify="space-around"] {
+    justify-content: space-around;
+  }
+
+  &[data-justify="space-evenly"] {
+    justify-content: space-evenly;
+  }
+
   &[data-gap="1"] {
     gap: 1rem;
   }

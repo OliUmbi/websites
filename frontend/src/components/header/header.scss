@@ -5,24 +5,10 @@
 
   &__logo {
     height: 5rem;
-  }
+    transition: all 150ms ease-in;
 
-  &__navigation {
-    width: 100%;
-    margin: auto 0;
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 8rem;
-
-    @media screen and (max-width: variables.$m) {
-      gap: 6rem;
-    }
-
-    @media screen and (max-width: variables.$s) {
-      flex-direction: column-reverse;
-      gap: 4rem;
+    &:hover, &:focus {
+      opacity: 0.8;
     }
   }
 }

@@ -12,6 +12,7 @@ import JublawomaClothes from "./jublawoma-clothes";
 import JublawomaContact from "./jublawoma-contact";
 import JublawomaLegal from "./jublawoma-legal";
 import JublawomaPrivacy from "./jublawoma-privacy";
+import Breadcrumbs from "../../components/breadcrumbs/breadcrumbs";
 
 const Jublawoma = () => {
 
@@ -30,6 +31,7 @@ const Jublawoma = () => {
             {name: "Impressum", to: "/impressum"},
             {name: "Datenschutz", to: "/datenschutz"},
           ]}/>
+          <Breadcrumbs/>
           <Routes>
             <Route path="/" element={<JublawomaHome/>}/>
             <Route path="/veranstaltungen" element={<JublawomaEvents/>}/>
