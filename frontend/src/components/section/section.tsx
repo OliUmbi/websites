@@ -9,9 +9,9 @@ export interface Props {
 const Section = (props: Props) => {
 
   return (
-      <section className="section" data-width={props.width}>
+      <div className="section" data-width={props.width}>
         {props.children}
-      </section>
+      </div>
   )
 }
 

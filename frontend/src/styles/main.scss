@@ -28,24 +28,6 @@ body {
 #root {
   width: 100%;
   height: 100%;
-  padding: 4rem;
-
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  gap: 8rem;
-
-  @media screen and (max-width: variables.$m) {
-    padding: 3rem;
-  }
-
-  @media screen and (max-width: variables.$s) {
-    padding: 2rem;
-  }
-
-  @media screen and (max-width: variables.$xs) {
-    padding: 1rem;
-  }
 }
 
 ::selection {

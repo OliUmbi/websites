@@ -1,0 +1,84 @@
+@use "../../styles/variables";
+
+.shell {
+  padding: 6rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  @media screen and (max-width: variables.$xl) {
+    padding: 5rem;
+  }
+
+  @media screen and (max-width: variables.$l) {
+    padding: 4rem;
+  }
+
+  @media screen and (max-width: variables.$m) {
+    padding: 3rem;
+  }
+
+  @media screen and (max-width: variables.$s) {
+    padding: 2rem;
+  }
+
+  @media screen and (max-width: variables.$xs) {
+    padding: 1rem;
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &__logo {
+      max-height: 6rem;
+      transition: all 150ms ease-in;
+      cursor: pointer;
+      user-select: none;
+
+      &:hover, &:focus {
+        opacity: 0.8;
+      }
+    }
+
+    &__navigation {
+
+      &[data-side="true"] {
+        visibility: hidden;
+
+        @media screen and (max-width: variables.$l) {
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+
+    &__side {
+      position: sticky;
+      top: 4rem;
+      width: variables.$m;
+      height: 100%;
+
+      @media screen and (max-width: variables.$l) {
+        display: none;
+      }
+    }
+
+    &__content {
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      gap: 4rem;
+    }
+  }
+}

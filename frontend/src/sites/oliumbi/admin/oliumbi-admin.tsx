@@ -7,6 +7,7 @@ import {useEffect} from "react";
 import useLocal from "../../../hooks/use-local";
 import {Configuration} from "../../../interfaces/configuration";
 import {Language} from "../../../enums/language";
+import Shell from "../../../components/shell/shell";
 
 const OliumbiAdmin = () => {
 
@@ -20,12 +21,25 @@ const OliumbiAdmin = () => {
 
   return (
       <Router basename="oliumbi-admin">
-        <Routes>
-          <Route path="/login" element={<OliumbiAdminLogin/>}/>
-          <Route element={<Protected permissions={[Permission.OLIUMBI_ADMIN]}/>}>
-            <Route path="/" element={<OliumbiAdminHome/>}/>
-          </Route>
-        </Routes>
+        <Shell title="OliUmbi Admin" side={true} links={[
+          {name: "Home", to: "/", primary: true},
+          {name: "Veranstaltungen", to: "/veranstaltungen", primary: true},
+          {name: "Beiträge", to: "/beitraege", primary: true},
+          {name: "Über uns", to: "/ueber-uns", primary: true},
+          {name: "Beitreten", to: "/beitreten", primary: true},
+          {name: "Mitglieder", to: "/mitglieder", primary: true},
+          {name: "Instagram", to: "https://www.instagram.com/jubla_woma/", primary: false},
+          {name: "Kontakt", to: "/kontakt", primary: false},
+          {name: "Impressum", to: "/impressum", primary: false},
+          {name: "Datenschutz", to: "/datenschutz", primary: false},
+        ]}>
+          <Routes>
+            <Route path="/login" element={<OliumbiAdminLogin/>}/>
+            <Route element={<Protected permissions={[Permission.OLIUMBI_ADMIN]}/>}>
+              <Route path="/" element={<OliumbiAdminHome/>}/>
+            </Route>
+          </Routes>
+        </Shell>
       </Router>
   )
 }

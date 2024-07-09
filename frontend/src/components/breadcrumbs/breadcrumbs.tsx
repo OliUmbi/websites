@@ -1,6 +1,6 @@
 import "./breadcrumbs.scss";
 import {Link, useLocation} from "react-router-dom";
-import {Fragment, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import Row from "../row/row";
 import Text from "../text/text";
 import Icon from "../icon/icon";

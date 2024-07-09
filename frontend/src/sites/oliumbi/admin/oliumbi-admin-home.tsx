@@ -10,6 +10,9 @@ import GridItem from "../../../components/grid/item/grid-item";
 import useLanguage from "../../../hooks/use-lanugage";
 import Loading from "../../../components/loading/loading";
 import Breadcrumbs from "../../../components/breadcrumbs/breadcrumbs";
+import Column from "../../../components/column/column";
+import Icon from "../../../components/icon/icon";
+import Row from "../../../components/row/row";
 
 const OliumbiAdminHome = () => {
 
@@ -51,6 +54,17 @@ const OliumbiAdminHome = () => {
             <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
           </GridItem>
         </Grid>
+
+        <Column>
+          <Icon>close</Icon>
+          <IconButton onClick={() => {}} highlight={true}>close</IconButton>
+          <Button onClick={() => {}} highlight={true}>Test</Button>
+        </Column>
+        <Row gap={1}>
+          <Button onClick={() => {}} highlight={true}>Test</Button>
+          <IconButton onClick={() => {}} highlight={true}>close</IconButton>
+        </Row>
+
         <Loading/>
 
         <Text type="h1" primary={true} mono={false}>{translation("test")}</Text>

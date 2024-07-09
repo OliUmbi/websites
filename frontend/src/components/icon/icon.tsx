@@ -8,7 +8,7 @@ export interface Props {
 const Icon = (props: Props) => {
 
   return (
-      <span className="icon">{props.children}</span>
+      <div className="icon">{props.children}</div>
   )
 }
 
