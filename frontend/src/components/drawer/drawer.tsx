@@ -2,7 +2,6 @@ import "./drawer.scss";
 import {ReactNode} from "react";
 import IconButton from "../icon/button/icon-button";
 import Text from "../text/text";
-import Column from "../column/column";
 import Row from "../row/row";
 
 export interface Props {
@@ -18,15 +17,13 @@ const Drawer = (props: Props) => {
       <div className="drawer" data-open={props.open}>
         <Row width={true} height={true} justify="right">
           <div className="drawer__content" data-open={props.open}>
-            <Column width={true} height={true} gap={4} wrap="never">
-              <Row align="center" justify="space-between">
-                <Text type="p" primary={true} mono={true}>{props.title}</Text>
-                <IconButton onClick={() => props.setOpen(false)} highlight={false}>close</IconButton>
-              </Row>
-              <div className="drawer__content__body">
-                {props.children}
-              </div>
-            </Column>
+            <Row align="center" justify="space-between">
+              <Text type="p" primary={true} mono={true}>{props.title}</Text>
+              <IconButton onClick={() => props.setOpen(false)} highlight={false}>close</IconButton>
+            </Row>
+            <div className="drawer__content__body">
+              {props.children}
+            </div>
           </div>
         </Row>
       </div>

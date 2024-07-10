@@ -25,6 +25,11 @@
     padding: 4rem;
     background-color: variables.$background;
     transition: all 350ms ease-in-out;
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
 
     &[data-open="true"] {
       translate: 0;
@@ -48,8 +53,6 @@
 
     &__body {
       height: 100%;
-      overflow-y: scroll;
-      overflow-x: hidden;
     }
   }
 }
