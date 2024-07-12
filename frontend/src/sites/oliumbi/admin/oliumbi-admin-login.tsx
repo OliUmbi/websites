@@ -1,10 +1,11 @@
 import Text from "../../../components/text/text";
+import Input from "../../../components/input/input";
 
 const OliumbiAdminLogin = () => {
 
   return (
       <>
-        <Text type="h1" primary={true}>Login</Text>
+        <Input value={} setValue={} error={} label={} required={} hidden={} placeholder={}/>
       </>
   )
 }

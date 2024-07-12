@@ -13,6 +13,25 @@ export interface Props {
   rows?: number
 }
 
+/**
+ * types:
+ * - text
+ * - password
+ * - email
+ * - number
+ * - time
+ * - date
+ * - datetime
+ * - multiline
+ * - file upload
+ * - multi select (list type of shit?)
+ * - single select (square cards?)
+ *
+ * validation
+ * - custom function?
+ * - is empty / required
+ */
+
 const Input = (props: Props) => {
 
   const handleOnChange = (event: ChangeEvent<any>) => {
