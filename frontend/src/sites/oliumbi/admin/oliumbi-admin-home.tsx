@@ -13,6 +13,8 @@ import Breadcrumbs from "../../../components/breadcrumbs/breadcrumbs";
 import Column from "../../../components/column/column";
 import Icon from "../../../components/icon/icon";
 import Row from "../../../components/row/row";
+import Flex from "../../../components/flex/flex";
+import column from "../../../components/column/column";
 
 const OliumbiAdminHome = () => {
 
@@ -55,15 +57,33 @@ const OliumbiAdminHome = () => {
           </GridItem>
         </Grid>
 
+        <Breadcrumbs/>
+
         <Column>
           <Icon>close</Icon>
           <IconButton onClick={() => {}} highlight={true}>close</IconButton>
           <Button onClick={() => {}} highlight={true}>Test</Button>
         </Column>
         <Row gap={1}>
-          <Button onClick={() => {}} highlight={true}>Test</Button>
-          <IconButton onClick={() => {}} highlight={true}>close</IconButton>
+          <Button onClick={() => {}} highlight={true}>Generate</Button>
+          <Button onClick={() => {}} highlight={false}>Delete</Button>
+          <IconButton onClick={() => {}} highlight={false}>open_in_new</IconButton>
         </Row>
+
+        <Flex xl={{direction: "column", gap: 2}}>
+          <Button onClick={() => {}} highlight={true}>Generate</Button>
+          <Button onClick={() => {}} highlight={true}>Delete</Button>
+          <IconButton onClick={() => {}} highlight={true}>open_in_new</IconButton>
+          <Text type="p" primary={true} mono={false}>
+            Lorem ipsum dolor sit amet <Anchor to="/aldfjs">external website</Anchor>, consectetur adipiscing elit.
+            Phasellus volutpat enim in lobortis sollicitudin. Nullam porta nec dolor et aliquet. Aenean ultrices sem
+            a pretium porttitor. Donec quis pellentesque tellus. Phasellus eu enim lacus. Nunc vel commodo augue. In
+            porttitor erat eu massa molestie suscipit. Cras laoreet et lacus quis dictum. Duis vulputate mattis
+            orci, sed hendrerit quam tempus eu. Vivamus velit urna, laoreet sit amet fringilla et, cursus eget
+            massa. Donec quam nunc, vulputate eget sapien in, lobortis sagittis felis. Vestibulum ante ipsum primis
+            in faucibus orci luctus et ultrices posuere cubilia curae; Aenean rhoncus rutrum lectus non bibendum.
+          </Text>
+        </Flex>
 
         <Loading/>
 

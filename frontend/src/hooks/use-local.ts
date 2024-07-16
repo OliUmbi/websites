@@ -14,6 +14,8 @@ const useLocal = <T>(name: string): [T | null, (value: T) => void] => {
     local.set(name, JSON.stringify(value))
   }
 
+  // todo return single object
+
   return [value, setValue]
 }
 

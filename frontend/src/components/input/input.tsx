@@ -15,21 +15,32 @@ export interface Props {
 
 /**
  * types:
- * - text
+ * - text (rows)
  * - password
  * - email
- * - number
+ *
+ * - number (steps, min, max)
+ *
  * - time
- * - date
+ * - date (min)
  * - datetime
- * - multiline
+ *
  * - file upload
+ *
  * - multi select (list type of shit?)
  * - single select (square cards?)
+ *
+ * - range / slider
+ *
+ * - dropdown
  *
  * validation
  * - custom function?
  * - is empty / required
+ *
+ * operation while updating
+ *
+ * disabled
  */
 
 const Input = (props: Props) => {

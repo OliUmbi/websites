@@ -1,15 +1,22 @@
 # websites
 one project to rule them all
 
+## components
+- progress (timeline, step by step, etc)
+- carousel
+- accordion
+- pagination (complete system with different strategies?)
+
 ## sites
 - jublawoma
 - unlce-t
 - oliumbi
 - admin
 
+
 ## jublawoma
 
-### pdges
+### pages
 - home
   - marketing 
   - upcoming event
