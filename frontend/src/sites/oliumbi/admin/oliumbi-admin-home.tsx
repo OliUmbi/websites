@@ -15,6 +15,8 @@ import Icon from "../../../components/icon/icon";
 import Row from "../../../components/row/row";
 import Flex from "../../../components/flex/flex";
 import column from "../../../components/column/column";
+import InputText from "../../../components/input/text/input-text";
+import InputNumber from "../../../components/input/number/input-number";
 
 const OliumbiAdminHome = () => {
 
@@ -24,6 +26,9 @@ const OliumbiAdminHome = () => {
   const [input, setInput] = useState<string>("")
   const [username, setUsername] = useState<string>("")
   const [password, setPassword] = useState<string>("")
+
+  const [test, setTest] = useState<string>("")
+  const [test2, setTest2] = useState<number>(0)
 
   return (
       <>
@@ -56,6 +61,9 @@ const OliumbiAdminHome = () => {
             <div style={{width: "100%", height: "10rem", background: "lightgrey", display: "block"}}></div>
           </GridItem>
         </Grid>
+
+        <InputText value={test} setValue={setTest} error={""} label="Test" required={true} disabled={false} placeholder={"This is the placeholder"} characters={100} hidden={false} rows={1}/>
+        <InputNumber value={test2} setValue={setTest2} error="" label="Test 2" required={true} placeholder="xxx" min={-100} max={100} step={10}/>
 
         <Breadcrumbs/>
 

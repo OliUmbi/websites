@@ -1,0 +1,39 @@
+@use "../../../styles/variables";
+
+.input-number {
+  width: 100%;
+  height: 2rem;
+
+  display: grid;
+  grid-template-columns: auto 2rem 2rem;
+  gap: 0.5rem;
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  &__button {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 0.125rem;
+    transition: all 150ms ease-in;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover, &:focus {
+      background-color: variables.$background-secondary;
+    }
+  }
+}

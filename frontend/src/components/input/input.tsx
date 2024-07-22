@@ -1,23 +1,13 @@
 import "./input.scss";
-import {ChangeEvent} from "react";
+import {ReactNode} from "react";
 import Text from "../text/text"
-import IconButton from "../icon/button/icon-button";
-import Icon from "../icon/icon";
 
 export interface Props {
-  value: string | number | Date
-  setValue: (value: string | number | Date) => void
-  type: "text" | "email" | "password" | "number" | "datetime" | "date" | "time"
-  error: string
+  children: ReactNode
   label: string
   required: boolean
+  error: string
   disabled: boolean
-  placeholder: string
-  min: number
-  max: number
-  step: number
-  characters: string
-  rows?: number
 }
 
 /**
@@ -52,33 +42,16 @@ export interface Props {
 
 const Input = (props: Props) => {
 
-  const handleOnChange = (event: ChangeEvent<any>) => {
-    event.preventDefault()
-    props.setValue(event.target.value)
-  }
-
-  // todo max length + validation (email, number, date, password min) + options (hori, vert) + range
-
   return (
-      <label className="input">
+      <label className="input" data-disabled={props.disabled}>
         <div className="input__head">
           <Text type="s" primary={true} mono={false}>{props.label} {props.required ? "*" : ""}</Text>
         </div>
-        <div>
-          {
-            props.rows ? (
-                <textarea className="input__body" value={props.value} onChange={handleOnChange} rows={props.rows} required={props.required} placeholder={props.placeholder}/>
-            ) : (
-                <input className="input__body" type={props.hidden ? "password" : "text"} value={props.value} onChange={handleOnChange} required={props.required} placeholder={props.placeholder}/>
-            )
-          }
-          <div>
-            <Icon>remove</Icon>
-            <Icon>add</Icon>
-          </div>
-          </div>
+        <div className="input__body">
+          {props.children}
+        </div>
         <div className="input__foot">
-          <Text type="s" primary={true} mono={true}>{props.error}</Text>
+          <Text type="s" primary={false} mono={false}>{props.error}</Text>
         </div>
       </label>
   )

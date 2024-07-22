@@ -4,31 +4,33 @@
   width: 100%;
   padding: 1em;
   background-color: variables.$background;
-  border-radius: 0.25em;
+  border-radius: 0.25rem;
   transition: all 150ms ease-in;
 
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
 
+  &:hover, &:focus-within {
+    background-color: variables.$background-hover;
+  }
+
+  &[data-disabled="true"] {
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
   &__head {
     user-select: none;
   }
 
   &__body {
+    min-height: 2rem;
     padding: 0.5em 0;
-    border: none;
   }
 
   &__foot {
 
-  }
-
-  &:hover, &:focus-within {
-    background-color: variables.$background-hover;
-  }
-
-  input:-webkit-autofill, input:-webkit-autofill:focus {
-    transition: background-color 0s 600000s, color 0s 600000s !important;
   }
 }
