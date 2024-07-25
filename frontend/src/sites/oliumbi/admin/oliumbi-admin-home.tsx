@@ -17,6 +17,7 @@ import Flex from "../../../components/flex/flex";
 import column from "../../../components/column/column";
 import InputText from "../../../components/input/text/input-text";
 import InputNumber from "../../../components/input/number/input-number";
+import InputDate from "../../../components/input/date/input-date";
 
 const OliumbiAdminHome = () => {
 
@@ -28,7 +29,8 @@ const OliumbiAdminHome = () => {
   const [password, setPassword] = useState<string>("")
 
   const [test, setTest] = useState<string>("")
-  const [test2, setTest2] = useState<number>(0)
+  const [test2, setTest2] = useState<number | null>(null)
+  const [test3, setTest3] = useState<Date | null>(new Date())
 
   return (
       <>
@@ -64,6 +66,7 @@ const OliumbiAdminHome = () => {
 
         <InputText value={test} setValue={setTest} error={""} label="Test" required={true} disabled={false} placeholder={"This is the placeholder"} characters={100} hidden={false} rows={1}/>
         <InputNumber value={test2} setValue={setTest2} error="" label="Test 2" required={true} placeholder="xxx" min={-100} max={100} step={10}/>
+        <InputDate value={test3} setValue={setTest3} error="" label="Test 3" required={false} placeholder="" type="datetime"/>
 
         <Breadcrumbs/>
 

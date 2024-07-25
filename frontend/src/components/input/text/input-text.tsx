@@ -10,8 +10,8 @@ export interface Props {
   label: string
   required: boolean
   placeholder: string
+  password?: boolean
   disabled?: boolean
-  hidden?: boolean
   rows?: number
   characters?: number
 }
@@ -28,7 +28,7 @@ const InputText = (props: Props) => {
         <div className="input-text">
           {
             props.rows === 1 ? (
-                <input className="input-text__input" value={props.value} onChange={handleOnChange} type={props.hidden ? "password" : "text"} required={props.required} disabled={props.disabled} placeholder={props.placeholder} maxLength={props.characters}/>
+                <input className="input-text__input" value={props.value} onChange={handleOnChange} type={props.password ? "password" : "text"} required={props.required} disabled={props.disabled} placeholder={props.placeholder} maxLength={props.characters}/>
             ) : (
                 <textarea className="input-text__input" value={props.value} onChange={handleOnChange} rows={props.rows} required={props.required} disabled={props.disabled} placeholder={props.placeholder} maxLength={props.characters}/>
             )

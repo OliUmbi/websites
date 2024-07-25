@@ -8,6 +8,7 @@ import useLocal from "../../../hooks/use-local";
 import {Configuration} from "../../../interfaces/configuration";
 import {Language} from "../../../enums/language";
 import Shell from "../../../components/shell/shell";
+import OliumbiAdminTest from "./oliumbi-admin-test";
 
 const OliumbiAdmin = () => {
 
@@ -35,6 +36,7 @@ const OliumbiAdmin = () => {
         ]}>
           <Routes>
             <Route path="/login" element={<OliumbiAdminLogin/>}/>
+            <Route path="/test" element={<OliumbiAdminTest/>}/>
             <Route element={<Protected permissions={[Permission.OLIUMBI_ADMIN]}/>}>
               <Route path="/" element={<OliumbiAdminHome/>}/>
             </Route>
