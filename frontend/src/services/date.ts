@@ -8,7 +8,7 @@ export const date = {
 
     if (value.length === 10) {
       const [day, month, year] = value.split('.').map(Number)
-      if (!year || !month || !day) {
+      if (year === undefined || month === undefined || day === undefined) {
         return null
       }
 
@@ -17,13 +17,13 @@ export const date = {
 
     if (value.length === 17) {
       const [datePart, timePart] = value.split(', ')
-      if (!datePart || !timePart) {
+      if (datePart === undefined || timePart === undefined) {
         return null
       }
 
       const [day, month, year] = datePart.split('.').map(Number)
       const [hours, minutes] = timePart.split(':').map(Number)
-      if (!year || !month || !day || !hours || !minutes) {
+      if (year === undefined || month === undefined || day === undefined || hours === undefined || minutes === undefined) {
         return null
       }
 
@@ -33,7 +33,6 @@ export const date = {
     return null
   },
   valid(value: string, type: "date" | "time"): boolean {
-
     let regexDate = /^\d{2}\.\d{2}\.\d{4}$/;
     let regexTime = /^\d{2}\.\d{2}\.\d{4}, \d{2}:\d{2}$/;
 
@@ -49,13 +48,16 @@ export const date = {
         }
         break;
     }
-    console.log(date.convert(value))
 
     return date.convert(value) !== null;
   },
   locale(value: Date | string, type: "date" | "time") {
     if (typeof value === "string") {
       value = date.convert(value)
+      if (!value) {
+        // todo translate?
+        return "-"
+      }
     }
 
     switch (type) {

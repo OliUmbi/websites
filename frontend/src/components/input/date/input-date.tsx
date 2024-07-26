@@ -8,9 +8,7 @@ export interface Props {
   validation: ((value: string) => string | null) | null,
   internal: string
   setInternal: (internal: string) => void
-  value: any | null,
   setValue: (value: any | null) => void,
-  valid: boolean,
   setValid: (valid: boolean) => void,
   error: string,
   setError: (error: string) => void
@@ -27,27 +25,41 @@ const InputNumber = (props: Props) => {
   const handleOnChange = (event: ChangeEvent<any>) => {
     event.preventDefault()
 
-    props.setError("")
-
     let value = event.target.value
-
     value = value.trim()
 
     props.setInternal(value)
   }
 
   useEffect(() => {
+    // todo idk
+    props.setValid(date.valid(props.internal, props.time ? "time" : "date"))
+    props.setValue(date.convert(props.internal))
+  }, [props.internal]);
+
+  useEffect(() => {
     if (props.validation) {
       let error = props.validation(props.internal)
 
       if (error) {
+        // todo group and move to hook
         props.setError(error)
+        props.setValid(false)
+        return;
       }
     }
 
     if (!date.valid(props.internal, props.time ? "time" : "date")) {
+      // todo translation (probably to different translations)???
+      // todo group and move to hook
       props.setError("Not in correct format " + (props.time ? "dd.mm.yyyy, mm:ss" : "dd.mm.yyyy"))
+      props.setValid(false)
+      return
     }
+
+    // todo group and move to hook
+    props.setError("")
+    props.setValid(true)
   }, [props.internal, props.time, props.setError, props.validation]);
 
   return (
