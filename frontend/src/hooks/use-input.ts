@@ -19,6 +19,10 @@ const useInput = <T extends string | string[] | number | boolean | Date | File>(
       return ""
     }
 
+    if (typeof defaultValue === "string") {
+      return defaultValue
+    }
+
     if (typeof defaultValue === "number") {
       return defaultValue.toString()
     }
