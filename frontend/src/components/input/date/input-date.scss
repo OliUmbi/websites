@@ -2,9 +2,9 @@
 
 .input-date {
   width: 100%;
-  height: 2rem;
+  min-height: 2rem;
 
-  display: flex;
+  display: grid;
 
   &__input {
     width: 100%;

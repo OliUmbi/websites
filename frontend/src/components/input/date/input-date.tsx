@@ -5,70 +5,114 @@ import {date} from "../../../services/date";
 
 export interface Props {
   required: boolean,
-  validation: ((value: string) => string | null) | null,
+  validation: ((value: Date) => string | null) | null,
   internal: string
   setInternal: (internal: string) => void
-  setValue: (value: any | null) => void,
+  value: Date | null,
+  setValue: (value: Date | null) => void,
   setValid: (valid: boolean) => void,
   error: string,
   setError: (error: string) => void
   label: string
   placeholder: string
+  disabled?: boolean
   time?: boolean
   past?: boolean
   future?: boolean
-  disabled?: boolean
 }
 
-const InputNumber = (props: Props) => {
+const InputDate = (props: Props) => {
 
-  const handleOnChange = (event: ChangeEvent<any>) => {
-    event.preventDefault()
-
+  const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     let value = event.target.value
     value = value.trim()
+
+    if (event.target.value.endsWith(", ")) {
+      value += " "
+    }
+
+    if (props.time) {
+      value = value.slice(0, 17)
+    } else {
+      value = value.slice(0, 10)
+    }
 
     props.setInternal(value)
   }
 
   useEffect(() => {
-    // todo idk
-    props.setValid(date.valid(props.internal, props.time ? "time" : "date"))
-    props.setValue(date.convert(props.internal))
-  }, [props.internal]);
+    let value = props.internal
+
+    if (value === "") {
+      props.setValue(null)
+      return
+    }
+
+    if (props.time) {
+      props.setInternal(value.slice(0, 17))
+    } else {
+      props.setInternal(value.slice(0, 10))
+    }
+  }, [props.time, props.internal]);
 
   useEffect(() => {
-    if (props.validation) {
-      let error = props.validation(props.internal)
+    props.setValue(date.convert(props.internal))
+  }, [props.setValue, props.internal]);
 
-      if (error) {
-        // todo group and move to hook
-        props.setError(error)
+  useEffect(() => {
+    if (props.internal === "") {
+      if (props.required) {
+        props.setError("Field is empty")
         props.setValid(false)
         return;
       }
+      props.setError("")
+      props.setValid(true)
+      return;
     }
 
     if (!date.valid(props.internal, props.time ? "time" : "date")) {
       // todo translation (probably to different translations)???
-      // todo group and move to hook
       props.setError("Not in correct format " + (props.time ? "dd.mm.yyyy, mm:ss" : "dd.mm.yyyy"))
       props.setValid(false)
       return
     }
 
-    // todo group and move to hook
+    if (props.value) {
+      if (props.future && props.value < new Date()) {
+        props.setError("Date cannot be in the past")
+        props.setValid(false)
+        return
+      }
+
+      if (props.past && props.value > new Date()) {
+        props.setError("Date cannot be in the future")
+        props.setValid(false)
+        return
+      }
+
+      if (props.validation) {
+        let error = props.validation(props.value)
+
+        if (error) {
+          props.setError(error)
+          props.setValid(false)
+          return;
+        }
+      }
+    }
+
     props.setError("")
     props.setValid(true)
-  }, [props.internal, props.time, props.setError, props.validation]);
+  }, [props.internal, props.required, props.setError, props.setValid, props.time, props.value, props.future, props.past, props.validation]);
 
   return (
       <Input label={props.label} required={props.required} error={props.error} disabled={props.disabled || false}>
         <div className="input-date">
-          <input className="input-date__input" value={props.time ? props.internal : props.internal.slice(0,10)} onChange={handleOnChange} type="text" placeholder={props.placeholder}/>
+          <input className="input-date__input" value={props.internal} onChange={handleOnChange} type="text" inputMode="text" placeholder={props.placeholder}/>
         </div>
       </Input>
   )
 }
 
-export default InputNumber
+export default InputDate

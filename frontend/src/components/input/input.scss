@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  gap: 0.5rem;
 
   &:hover, &:focus-within {
     background-color: variables.$background-hover;
@@ -27,7 +28,6 @@
 
   &__body {
     min-height: 2rem;
-    padding: 0.5em 0;
   }
 
   &__foot {

@@ -1,9 +1,9 @@
 import {useState} from "react";
 import {date} from "../services/date";
 
-const useInput = <T extends string | number | boolean | Date>(required: boolean, defaultValue?: T, validation?: (value: string) => string | null): {
+const useInput = <T extends string | number | boolean | Date>(required: boolean, defaultValue?: T, validation?: (value: T) => string | null): {
   required: boolean,
-  validation: ((value: string) => string | null) | null,
+  validation: ((value: T) => string | null) | null,
   internal: string
   setInternal: (internal: string) => void,
   value: T | null,

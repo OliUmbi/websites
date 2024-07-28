@@ -45,14 +45,18 @@ const Input = (props: Props) => {
   return (
       <label className="input" data-disabled={props.disabled}>
         <div className="input__head">
-          <Text type="s" primary={true} mono={false}>{props.label} {props.required ? "*" : ""}</Text>
+          <Text type="s" primary={true} mono={false}>{props.label} {props.required ? "" : "[optional]"}</Text>
         </div>
         <div className="input__body">
           {props.children}
         </div>
-        <div className="input__foot">
-          <Text type="s" primary={false} mono={false}>{props.error}</Text>
-        </div>
+        {
+          props.error ? (
+              <div className="input__foot">
+                <Text type="s" primary={false} mono={false}>{props.error}</Text>
+              </div>
+          ) : ""
+        }
       </label>
   )
 }
