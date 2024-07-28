@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {date} from "../services/date";
 
-const useInput = <T extends string | number | boolean | Date>(required: boolean, defaultValue?: T, validation?: (value: T) => string | null): {
+const useInput = <T extends string | string[] | number | boolean | Date | File>(required: boolean, defaultValue?: T, validation?: (value: T) => string | null): {
   required: boolean,
   validation: ((value: T) => string | null) | null,
   internal: string
@@ -29,6 +29,14 @@ const useInput = <T extends string | number | boolean | Date>(required: boolean,
 
     if (defaultValue instanceof Date) {
       return date.locale(defaultValue, "time")
+    }
+
+    if (Array.isArray(defaultValue)) {
+      return defaultValue.join("|")
+    }
+
+    if (defaultValue instanceof File) {
+      return defaultValue.name
     }
 
     return ""

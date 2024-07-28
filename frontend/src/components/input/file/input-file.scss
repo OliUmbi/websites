@@ -1,0 +1,51 @@
+@use "../../../styles/variables";
+
+.input-file {
+  width: 100%;
+  min-height: 2rem;
+
+  display: grid;
+  grid-template-columns: auto auto auto 1fr;
+  align-items: center;
+  gap: 1rem;
+
+  @media screen and (max-width: variables.$s) {
+    grid-template-columns: 1fr;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__button {
+    width: fit-content;
+    height: 100%;
+    padding: 0.5em 1em;
+    border-radius: 0.25em;
+    background-color: variables.$foreground;
+    color: variables.$background;
+    pointer-events: none;
+    transition: all 150ms ease-in;
+
+    &:hover, &:focus {
+      background-color: variables.$foreground-hover;
+    }
+  }
+
+  &__remove {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
+    border-radius: 0.125rem;
+    transition: all 150ms ease-in;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover, &:focus {
+      background-color: variables.$background-secondary;
+    }
+  }
+}

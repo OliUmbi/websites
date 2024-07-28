@@ -4,6 +4,8 @@ import Column from "../../../components/column/column";
 import Text from "../../../components/text/text";
 import InputText from "../../../components/input/text/input-text";
 import InputNumber from "../../../components/input/number/input-number";
+import InputFile from "../../../components/input/file/input-file";
+import InputOptions from "../../../components/input/options/input-options";
 
 const OliumbiAdminTest = () => {
 
@@ -28,13 +30,30 @@ const OliumbiAdminTest = () => {
     return null
   });
 
+  const image = useInput<File>(true, undefined, value => {
+    if (value.name === "yeet") {
+      return "This is already mine"
+    }
+    return null
+  });
+
+  const type = useInput<string[]>(false, undefined, value => {
+    if (value.includes("admin")) {
+      return "This is already mine"
+    }
+    return null
+  });
+
   return (
-      <Column gap={2}>
+      <Column gap={1}>
         <InputText {...name} label="Name" placeholder="Oliver" characters={10}/>
         <InputNumber {...age} label="Age" placeholder="18+" max={25} step={2}/>
         <InputDate {...birthday} label="Birthday" placeholder="20.04.2024" time={true} past={true}/>
-        <Text type="p" primary={true} mono={true}>{name.valid ? "valid" : "invalid"}</Text>
-        <Text type="p" primary={true} mono={true}>{name.value ? name.value : "null"}</Text>
+        <InputFile {...image} label="Image" placeholder="yeet" image={true} />
+        <InputOptions {...type} label="Type" options={["Admin", "Author", "Student", "Default"]} multiple={false}/>
+
+        <Text type="p" primary={true} mono={true}>{type.valid ? "valid" : "invalid"}</Text>
+        <Text type="p" primary={true} mono={true}>{type.value ? type.value.join(", ") : "null"}</Text>
       </Column>
   )
 }

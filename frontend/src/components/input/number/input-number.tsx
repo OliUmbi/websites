@@ -128,10 +128,10 @@ const InputNumber = (props: Props) => {
       <Input label={props.label} required={props.required} error={props.error} disabled={props.disabled || false}>
         <div className="input-number">
           <input className="input-number__input" value={props.internal} onChange={handleOnChange} type="text" inputMode="decimal" placeholder={props.placeholder}/>
-          <div className="input-number__button" onClick={() => subtract()}>
+          <div className="input-number__button" onClick={subtract}>
             <Icon>remove</Icon>
           </div>
-          <div className="input-number__button" onClick={() => add()}>
+          <div className="input-number__button" onClick={add}>
             <Icon>add</Icon>
           </div>
         </div>

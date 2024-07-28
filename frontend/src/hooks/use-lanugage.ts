@@ -9,6 +9,7 @@ const useLanguage = (): (key: string) => string => {
   const [configuration] = useLocal<Configuration>("configuration")
 
   return (key: string): string => {
+    // todo depending on mode fall back to "translation not found" or to the key itself
     switch (configuration?.language) {
       case Language.ENGLISH:
         // @ts-ignore
