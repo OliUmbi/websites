@@ -2,7 +2,7 @@
 
 .shell-link {
   cursor: pointer;
-  transition: all 150ms ease-in;
+  transition: variables.$transition-fast;
 
   &:hover, &:focus {
     translate: 0.5rem 0;

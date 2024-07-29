@@ -25,7 +25,6 @@
     height: 100%;
     padding: 4rem;
     background-color: variables.$background;
-    transition: all 350ms ease-in-out;
     overflow-y: scroll;
 
     display: flex;
@@ -33,10 +32,12 @@
     gap: 4rem;
 
     &[data-open="true"] {
+      transition: variables.$transition-in-slow;
       translate: 0;
     }
 
     &[data-open="false"] {
+      transition: variables.$transition-out-slow;
       translate: 100%;
     }
 

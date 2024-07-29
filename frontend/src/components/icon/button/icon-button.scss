@@ -6,7 +6,7 @@
   border: none;
   border-radius: 0.25em;
   text-align: center;
-  transition: all 150ms ease-in;
+  transition: variables.$transition-fast;
 
   &[data-highlight="true"] {
     background-color: variables.$foreground;

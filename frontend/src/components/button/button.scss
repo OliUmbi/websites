@@ -6,7 +6,7 @@
   border: none;
   border-radius: 0.25em;
   user-select: none;
-  transition: all 150ms ease-in;
+  transition: variables.$transition-fast;
 
   display: flex;
   flex-direction: row;

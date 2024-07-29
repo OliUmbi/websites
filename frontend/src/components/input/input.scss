@@ -5,7 +5,7 @@
   padding: 1em;
   background-color: variables.$background;
   border-radius: 0.25rem;
-  transition: all 150ms ease-in;
+  transition: variables.$transition-fast;
 
   display: flex;
   flex-direction: column;

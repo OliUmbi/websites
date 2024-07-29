@@ -35,7 +35,7 @@
 
     &__logo {
       max-height: 6rem;
-      transition: all 150ms ease-in;
+      transition: variables.$transition-fast;
       cursor: pointer;
       user-select: none;
 
