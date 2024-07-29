@@ -32,71 +32,70 @@ h1, h2, h3, h4, p, small, a {
   max-width: 80ch;
 }
 
-// todo maybe change to different type scale like 1.333, 1.414, 1.618
 
 h1 {
-  font-size: 3.1rem;
-  line-height: 1.35;
+  font-size: 3.5672rem;
+  line-height: 1.25;
   font-weight: 800;
 
   @media screen and (max-width: variables.$l) {
-    font-size: 2.9rem;
+    font-size: 3.2928rem;
   }
 
   @media screen and (max-width: variables.$m) {
-    font-size: 2.7rem;
+    font-size: 3.0184rem;
   }
 
   @media screen and (max-width: variables.$s) {
-    font-size: 2.5rem;
+    font-size: 2.744rem;
   }
 
   @media screen and (max-width: variables.$xs) {
-    font-size: 2.4rem;
+    font-size: 2.4696rem;
   }
 }
 
 h2 {
-  font-size: 2.6rem;
-  line-height: 1.35;
+  font-size: 2.548rem;
+  line-height: 1.25;
   font-weight: 700;
 
   @media screen and (max-width: variables.$l) {
-    font-size: 2.4rem;
+    font-size: 2.352rem;
   }
 
   @media screen and (max-width: variables.$m) {
-    font-size: 2.2rem;
+    font-size: 2.156rem;
   }
 
   @media screen and (max-width: variables.$s) {
-    font-size: 2rem;
+    font-size: 1.96rem;
   }
 
   @media screen and (max-width: variables.$xs) {
-    font-size: 1.9rem;
+    font-size: 1.764rem;
   }
 }
 
 h3 {
-  font-size: 2.1rem;
-  line-height: 1.35;
+  font-size: 1.82rem;
+  line-height: 1.25;
   font-weight: 600;
 
   @media screen and (max-width: variables.$l) {
-    font-size: 1.9rem;
+    font-size: 1.68rem;
   }
 
   @media screen and (max-width: variables.$m) {
-    font-size: 1.7rem;
+    font-size: 1.54rem;
   }
 
   @media screen and (max-width: variables.$s) {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   @media screen and (max-width: variables.$xs) {
-    font-size: 1.4rem;
+    font-size: 1.26rem;
   }
 }
 
@@ -118,7 +117,7 @@ body, p, button, input, textarea {
   }
 
   @media screen and (max-width: variables.$xs) {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -127,16 +126,16 @@ button, input, textarea {
 }
 
 small {
-  font-size: 1.1rem;
+  font-size: 1.04rem;
   line-height: 1.35;
   font-weight: 400;
 
   @media screen and (max-width: variables.$l) {
-    font-size: 1rem;
+    font-size: 0.96rem;
   }
 
   @media screen and (max-width: variables.$m) {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
 
   @media screen and (max-width: variables.$s) {
@@ -144,6 +143,6 @@ small {
   }
 
   @media screen and (max-width: variables.$xs) {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
   }
 }

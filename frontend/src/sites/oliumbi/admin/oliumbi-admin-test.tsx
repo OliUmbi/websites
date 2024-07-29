@@ -54,6 +54,12 @@ const OliumbiAdminTest = () => {
 
         <Text type="p" primary={true} mono={true}>{type.valid ? "valid" : "invalid"}</Text>
         <Text type="p" primary={true} mono={true}>{type.value ? type.value.join(", ") : "null"}</Text>
+
+        <Text type="h1" primary={true} mono={false}>Type tokens and sets</Text>
+        <Text type="h2" primary={true} mono={false}>Type tokens and sets</Text>
+        <Text type="h3" primary={true} mono={false}>Type tokens and sets</Text>
+        <Text type="p" primary={true} mono={false}>Type tokens and sets</Text>
+        <Text type="s" primary={true} mono={false}>Type tokens and sets</Text>
       </Column>
   )
 }
