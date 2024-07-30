@@ -10,7 +10,7 @@ export interface Props {
 const Image = (props: Props) => {
 
   return (
-      <img className="image" src={props.src} alt={props.alt} data-side={props.side} data-rounded={props.rounded}/>
+      <img className="image" src={props.src} alt={props.alt} loading="lazy" data-side={props.side} data-rounded={props.rounded}/>
   )
 }
 

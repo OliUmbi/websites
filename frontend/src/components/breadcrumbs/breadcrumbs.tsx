@@ -42,10 +42,10 @@ const Breadcrumbs = () => {
 
   return (
       <>
-        <Row width={true} align="center" gap={1} wrap="wrap">
+        <Row width={true} align="center" wrap="wrap">
           {
             breadcrumbs.map((breadcrumb, index) => (
-                <Row align="center" gap={1} wrap="never" key={index}>
+                <Row align="center" wrap="never" key={index}>
                   <Icon>chevron_forward</Icon>
                   <Link className="breadcrumbs" to={breadcrumb.path}>
                     <Text type="s" primary={breadcrumbs.length - 1 === index} mono={true}>{breadcrumb.name}</Text>

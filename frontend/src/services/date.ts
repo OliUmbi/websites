@@ -51,7 +51,11 @@ export const date = {
 
     return date.convert(value) !== null;
   },
-  locale(value: Date | string, type: "date" | "time") {
+  locale(value: Date | string | null, type: "date" | "time") {
+    if (!value) {
+      return "-"
+    }
+
     if (typeof value === "string") {
       value = date.convert(value)
       if (!value) {

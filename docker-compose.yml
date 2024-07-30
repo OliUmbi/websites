@@ -1,0 +1,20 @@
+services:
+
+  websites-backend:
+    image: websites-backend:${VERSION_BACKEND}
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - websites-network
+    volumes:
+      - "websites-backend-volume:/data"
+    environment:
+      - SECRET_DATABASE=${SECRET_DATABASE}
+
+networks:
+  websites-network:
+
+volumes:
+  websites-database-volume:
+  websites-backend-volume:
