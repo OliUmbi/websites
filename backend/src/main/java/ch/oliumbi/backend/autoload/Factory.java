@@ -1,5 +1,6 @@
 package ch.oliumbi.backend.autoload;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class Factory {
       if (type.isArray()) {
         Class<?> arrayType = type.componentType();
 
-        List<Object> interfaceImplementations = new ArrayList<arrayType>();
+        List<Object> interfaceImplementations = new ArrayList<>();
 
         for (Class<?> clazz1 : classes) {
           List<Class<?>> interfaces = List.of(clazz1.getInterfaces());
@@ -49,7 +50,11 @@ public class Factory {
           }
         }
 
-        arguments.add(interfaceImplementations.toArray());
+        Object[] array = (Object[]) Array.newInstance(arrayType, interfaceImplementations.size());
+
+        interfaceImplementations.toArray(array);
+
+        arguments.add(array);
       } else {
         arguments.add(load(type));
       }

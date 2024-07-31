@@ -56,9 +56,20 @@
     <!-- sql -->
     <dependency>
       <groupId>org.jdbi</groupId>
+      <artifactId>jdbi3-core</artifactId>
+      <version>3.45.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jdbi</groupId>
       <artifactId>jdbi3-postgres</artifactId>
       <version>3.45.2</version>
-      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.7.3</version>
     </dependency>
 
     <!-- hashing -->
@@ -80,7 +91,13 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.18.34</version>
-      <scope>provided</scope>
+    </dependency>
+
+    <!-- logging -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.5.6</version>
     </dependency>
   </dependencies>
 

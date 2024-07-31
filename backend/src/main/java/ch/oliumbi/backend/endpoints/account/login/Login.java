@@ -3,25 +3,24 @@ package ch.oliumbi.backend.endpoints.account.login;
 import ch.oliumbi.backend.autoload.Autoload;
 import ch.oliumbi.backend.autoload.Autoloader;
 import ch.oliumbi.backend.confguration.Configuration;
+import ch.oliumbi.backend.database.Database;
 import ch.oliumbi.backend.server.Endpoint;
 import ch.oliumbi.backend.server.Method;
 import ch.oliumbi.backend.server.Request;
 import ch.oliumbi.backend.server.Response;
 import ch.oliumbi.backend.server.Server;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import org.jdbi.v3.core.result.ResultIterable;
 
 @Autoload
 public class Login implements Endpoint<LoginResponse, LoginRequest> {
 
-  /*
   private final Database database;
 
   public Login(Database database) {
     this.database = database;
-  }
-  */
-
-  public Login(Configuration configuration) {
   }
 
   @Override
@@ -37,21 +36,18 @@ public class Login implements Endpoint<LoginResponse, LoginRequest> {
   @Override
   public Response<LoginResponse> handle(Request<LoginRequest> request) {
 
-    /*
-    Optional<String> password = database.createQuery("")
-        .bind("username": request.body.getUsername())
-        .mapTo(String.class)
-        .findOne();
+    Optional<List<Map<String, Object>>> result = database.handle(handle ->
+        handle.createQuery("""
+                SELECT *
+                FROM account
+                """)
+            .mapToMap()
+            .list()
+    );
 
-    if (password.isEmpty()) {
-      return Response.error("User not found");
+    for (Map<String, Object> stringObjectMap : result.get()) {
+      System.out.println(stringObjectMap);
     }
-
-    if (password.equals(request.body.getPassword)) {
-
-    }
-
-     */
 
     return null;
   }

@@ -10,7 +10,6 @@ import Picture from "../../../components/picture/picture";
 import Image from "../../../components/image/image";
 import Grid from "../../../components/grid/grid";
 import GridItem from "../../../components/grid/item/grid-item";
-import {useEffect} from "react";
 
 const OliumbiAdminTest = () => {
 
@@ -54,7 +53,7 @@ const OliumbiAdminTest = () => {
         <InputText {...name} label="Name" placeholder="Oliver" characters={10}/>
         <InputNumber {...age} label="Age" placeholder="18+" max={25} step={2}/>
         <InputDate {...birthday} label="Birthday" placeholder="20.04.2024" time={true} past={true}/>
-        <InputFile {...image} label="Picture" image={true} />
+        <InputFile {...image} label="Picture" image={true}/>
         <InputOptions {...type} label="Type" options={["Admin", "Author", "Student", "Default"]} multiple={true}/>
 
         <Text type="p" primary={true} mono={true}>{type.valid ? "valid" : "invalid"}</Text>
@@ -74,7 +73,8 @@ const OliumbiAdminTest = () => {
             <Picture id="sadfdasf" alt="image" side="both" rounded={true}/>
           </GridItem>
           <GridItem xl={4}>
-            <Image src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg" alt="image" side="both" rounded={true}/>
+            <Image src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg" alt="image"
+                   side="both" rounded={true}/>
           </GridItem>
         </Grid>
       </Column>

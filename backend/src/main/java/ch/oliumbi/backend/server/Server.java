@@ -13,6 +13,11 @@ public class Server {
   public Server(Configuration configuration, Endpoint<?, ?>[] endpoints) {
     this.configuration = configuration;
     this.endpoints = List.of(endpoints);
+
+    for (Endpoint<?, ?> endpoint : endpoints) {
+      endpoint.handle(null);
+    }
+
   }
 
   public void start() {

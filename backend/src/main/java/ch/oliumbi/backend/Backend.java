@@ -13,6 +13,5 @@ public class Backend {
     Autoloader autoloader = new Autoloader(Backend.class);
     Factory factory = autoloader.load();
 
-    factory.all().forEach(System.out::println);
   }
 }
