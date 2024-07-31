@@ -14,7 +14,7 @@ public class LoaderJar extends Loader {
   }
 
   @Override
-  public List<Class<?>> classes(ClassLoader classLoader, URL url, String packageName) {
+  public List<Class<?>> load(ClassLoader classLoader, URL url, String packageName) {
     try {
       if (url.openConnection() instanceof JarURLConnection jarURLConnection) {
         return jarURLConnection.getJarFile().stream()
@@ -26,14 +26,14 @@ public class LoaderJar extends Loader {
               try {
                return classLoader.loadClass(className);
               } catch (Exception e) {
-                throw new RuntimeException("Class not found, class: " + className, e);
+                throw new RuntimeException("Failed to load classes, reason: class not found, class: " + className, e);
               }
             }).collect(Collectors.toList());
       } else {
-        throw new RuntimeException("Not a JarUrlConnection");
+        throw new RuntimeException("Failed to load classes, reason: missing JarUrlConnection");
       }
     } catch (Exception e) {
-      throw new RuntimeException("Failed to load class, url: " + url, e);
+      throw new RuntimeException("Failed to load classes, url: " + url, e);
     }
   }
 }

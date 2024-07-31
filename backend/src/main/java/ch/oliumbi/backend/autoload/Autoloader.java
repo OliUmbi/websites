@@ -3,26 +3,25 @@ package ch.oliumbi.backend.autoload;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class Autoloader {
 
-  public static final Logger LOGGER = LoggerFactory.getLogger(Autoloader.class);
-
-  private final Factory factory = new Factory();
+  private final List<Loader> loaders = List.of(
+      new LoaderFile(),
+      new LoaderJar()
+  );
   private final Class<?> rootClass;
 
   public Autoloader(Class<?> rootClass) {
     this.rootClass = rootClass;
   }
 
-  public List<Object> load() {
+  public Factory load() {
     List<Class<?>> allClasses = allClasses();
 
     List<Class<?>> annotatedClasses = annotatedClasses(allClasses);
 
-    return annotatedClasses.stream().map(factory::instantiate).toList();
+    return new Factory(annotatedClasses);
   }
 
   private List<Class<?>> allClasses() {
@@ -34,20 +33,14 @@ public class Autoloader {
       throw new RuntimeException("Failed to create url of project root for autoloader");
     }
 
-    List<Loader> loaders = List.of(
-        new LoaderFile(),
-        new LoaderJar()
-    );
-
-    List<Class<?>> classes = new ArrayList<>();
-
+    List<Class<?>> allClasses = new ArrayList<>();
     for (Loader loader : loaders) {
       if (url.getProtocol().equals(loader.protocol())) {
-        classes.addAll(loader.classes(classLoader, url, packageName));
+        allClasses.addAll(loader.load(classLoader, url, packageName));
       }
     }
 
-    return classes;
+    return allClasses;
   }
 
   private List<Class<?>> annotatedClasses(List<Class<?>> classes) {

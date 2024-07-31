@@ -23,6 +23,10 @@ const InputOptions = (props: Props) => {
   const handleOnClick = (value: string) => {
     let selected = props.internal.split("|")
 
+    if (!props.internal) {
+      selected = []
+    }
+
     if (selected.includes(value)) {
       selected = selected.filter(select => select !== value)
     } else if (props.multiple) {

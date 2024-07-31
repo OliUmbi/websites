@@ -1,5 +1,7 @@
 package ch.oliumbi.backend;
 
+import ch.oliumbi.backend.autoload.Autoloader;
+import ch.oliumbi.backend.autoload.Factory;
 import ch.oliumbi.backend.confguration.Configuration;
 import java.io.InputStream;
 import java.util.List;
@@ -8,10 +10,9 @@ import java.util.Properties;
 public class Backend {
 
   public static void main(String[] args) {
-    Configuration configuration = new Configuration();
+    Autoloader autoloader = new Autoloader(Backend.class);
+    Factory factory = autoloader.load();
 
-    System.out.println(configuration.string("database.host"));
-    System.out.println(configuration.string("database.password"));
-    System.out.println(configuration.integer("database.port") == 5432);
+    factory.all().forEach(System.out::println);
   }
 }

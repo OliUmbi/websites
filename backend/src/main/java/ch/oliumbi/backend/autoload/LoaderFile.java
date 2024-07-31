@@ -16,7 +16,7 @@ public class LoaderFile extends Loader {
   }
 
   @Override
-  public List<Class<?>> classes(ClassLoader classLoader, URL url, String packageName) {
+  public List<Class<?>> load(ClassLoader classLoader, URL url, String packageName) {
     try (Stream<Path> paths = Files.walk(Paths.get(url.toURI()))) {
       return paths
           .filter(Files::isRegularFile)
@@ -27,13 +27,13 @@ public class LoaderFile extends Loader {
             try {
               return classLoader.loadClass(className);
             } catch (Exception e) {
-              throw new RuntimeException(e);
+              throw new RuntimeException("Failed to load classes, reason: class not found, class: " + className, e);
             }
           })
           .collect(Collectors.toList());
 
     } catch (Exception e) {
-      throw new RuntimeException("Failed to load class, url: " + url, e);
+      throw new RuntimeException("Failed to load classes, url: " + url, e);
     }
   }
 }

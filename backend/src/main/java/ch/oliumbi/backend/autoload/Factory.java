@@ -3,14 +3,25 @@ package ch.oliumbi.backend.autoload;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Factory {
 
   private final List<Object> instances = new ArrayList<>();
 
-  public Object instantiate(Class<?> clazz) {
+  private final List<Class<?>> classes;
 
+  public Factory(List<Class<?>> classes) {
+    this.classes = classes;
+    classes.forEach(this::load);
+  }
+
+  public List<Object> all() {
+    return instances;
+  }
+
+  private Object load(Class<?> clazz) {
     for (Object instance : instances) {
       if (clazz.isInstance(instance)) {
         return instance;
@@ -19,62 +30,91 @@ public class Factory {
 
     Constructor<?> constructor = getConstructor(clazz);
 
-    List<Object> constructorArguments = new ArrayList<>();
-    for (Class<?> parameterType : constructor.getParameterTypes()) {
-      if (isCircular(clazz, parameterType)) {
-        throw new RuntimeException(clazz.getName() + ", has circular dependency from parameter: " + parameterType.getName());
+    if (isCircular(clazz, List.of(constructor.getParameterTypes()))) {
+      throw new RuntimeException("Failed to create class, reason: circular reference, class: " + clazz.getName());
+    }
+
+    List<Object> arguments = new ArrayList<>();
+    for (Class<?> type : constructor.getParameterTypes()) {
+      if (type.isArray()) {
+        Class<?> arrayType = type.componentType();
+
+        List<Object> interfaceImplementations = new ArrayList<arrayType>();
+
+        for (Class<?> clazz1 : classes) {
+          List<Class<?>> interfaces = List.of(clazz1.getInterfaces());
+
+          if (interfaces.contains(arrayType)) {
+            interfaceImplementations.add(load(clazz1));
+          }
+        }
+
+        arguments.add(interfaceImplementations.toArray());
+      } else {
+        arguments.add(load(type));
       }
-
-      constructorArguments.add(instantiate(parameterType));
     }
 
-    try {
-      Object instance = constructor.newInstance(constructorArguments.toArray());
-
-      instances.add(instance);
-
-      return instance;
-    } catch (InstantiationException e) {
-      // todo proper error handling
-      throw new RuntimeException(clazz.getName() + ", is an abstract class", e);
-    } catch (IllegalAccessException e) {
-      // todo proper error handling
-      throw new RuntimeException(clazz.getName() + ", constructor is inaccessible", e);
-    } catch (InvocationTargetException e) {
-      // todo proper error handling
-      throw new RuntimeException(clazz.getName() + ", constructor threw an exception", e);
-    }
+    return instantiate(constructor, arguments.toArray());
   }
 
   private Constructor<?> getConstructor(Class<?> clazz) {
     Constructor<?>[] constructors = clazz.getConstructors();
 
     if (constructors.length == 0) {
-      // todo proper error handling
-      throw new RuntimeException(clazz.getName() + ", has no public constructors, or if the class is an array class, or if the class reflects a primitive type or void");
+      throw new RuntimeException("Failed to get constructor, reason: has no public constructors or array class or primitive or void, class: " + clazz.getName());
     }
     if (constructors.length > 1) {
-      // todo proper error handling
-      throw new RuntimeException(clazz.getName() + ", has multiple constructors");
+      throw new RuntimeException("Failed to get constructor, reason: has multiple constructors, class: " + clazz.getName());
     }
 
     return constructors[0];
   }
 
-  private boolean isCircular(Class<?> clazz, Class<?> parameter) {
+  private boolean isCircular(Class<?> clazz, List<Class<?>> types) {
 
-    if (clazz.equals(parameter)) {
-      return true;
-    }
+    for (Class<?> type : types) {
+      if (clazz.equals(type)) {
+        return true;
+      }
 
-    for (Class<?> parameterType : getConstructor(parameter).getParameterTypes()) {
-      boolean circular = isCircular(clazz, parameterType);
+      List<Class<?>> children = new ArrayList<>();
 
-      if (circular) {
+      if (type.isArray()) {
+        Class<?> arrayType = type.componentType();
+
+        for (Class<?> clazz1 : classes) {
+          List<Class<?>> interfaces = List.of(clazz1.getInterfaces());
+
+          if (interfaces.contains(arrayType)) {
+            children.add(clazz1);
+          }
+        }
+      } else {
+        children = List.of(getConstructor(type).getParameterTypes());
+      }
+
+      if (isCircular(clazz, children)) {
         return true;
       }
     }
 
     return false;
+  }
+
+  private Object instantiate(Constructor<?> constructor, Object[] arguments) {
+    try {
+      Object instance = constructor.newInstance(arguments);
+
+      instances.add(instance);
+
+      return instance;
+    } catch (InstantiationException e) {
+      throw new RuntimeException("Failed to instantiate class, reason: class is abstract, constructor: " + constructor.getName(), e);
+    } catch (IllegalAccessException e) {
+      throw new RuntimeException("Failed to instantiate class, reason: constructor is inaccessible, constructor: " + constructor.getName(), e);
+    } catch (InvocationTargetException e) {
+      throw new RuntimeException("Failed to instantiate class, reason: constructor threw an exception, constructor: " + constructor.getName(), e);
+    }
   }
 }

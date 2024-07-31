@@ -7,5 +7,5 @@ public abstract class Loader {
 
   public abstract String protocol();
 
-  public abstract List<Class<?>> classes(ClassLoader classLoader, URL url, String packageName);
+  public abstract List<Class<?>> load(ClassLoader classLoader, URL url, String packageName);
 }

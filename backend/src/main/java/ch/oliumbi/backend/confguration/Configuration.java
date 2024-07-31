@@ -1,10 +1,12 @@
 package ch.oliumbi.backend.confguration;
 
 import ch.oliumbi.backend.Backend;
+import ch.oliumbi.backend.autoload.Autoload;
+import ch.oliumbi.backend.server.Server;
 import java.io.InputStream;
 import java.util.Properties;
 
-// todo uncomment @Autoload
+@Autoload
 public class Configuration {
 
   private final Properties properties;
