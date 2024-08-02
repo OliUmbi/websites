@@ -6,6 +6,7 @@
   border: none;
   border-radius: 0.25em;
   user-select: none;
+  white-space: nowrap;
   transition: variables.$transition-fast;
 
   display: flex;

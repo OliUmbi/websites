@@ -13,7 +13,6 @@ one project to rule them all
 - oliumbi
 - admin
 
-
 ## jublawoma
 
 ### pages
@@ -69,6 +68,10 @@ one project to rule them all
   - contact
 - about
   - reviews
+
+- stories ?? 
+  - catering events done
+  - short case studies
 
 ## oliumbi
 - projects (technology, methedology, process, result)
