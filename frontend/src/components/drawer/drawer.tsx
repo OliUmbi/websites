@@ -4,7 +4,7 @@ import IconButton from "../icon/button/icon-button";
 import Text from "../text/text";
 import Row from "../row/row";
 
-export interface Props {
+interface Props {
   children: ReactNode,
   open: boolean,
   setOpen: (open: boolean) => void,

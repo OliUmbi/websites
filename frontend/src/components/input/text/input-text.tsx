@@ -3,7 +3,7 @@ import Input from "../input";
 import {ChangeEvent, useEffect} from "react";
 import Text from "../../text/text";
 
-export interface Props {
+interface Props {
   required: boolean,
   validation: ((value: string) => string | null) | null,
   internal: string

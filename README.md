@@ -6,6 +6,10 @@ one project to rule them all
 - carousel
 - accordion
 - pagination (complete system with different strategies?)
+- image input with presets
+- not found / empty
+- error
+- pagination
 
 ## sites
 - jublawoma

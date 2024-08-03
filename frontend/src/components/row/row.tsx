@@ -1,7 +1,7 @@
 import "./row.scss";
 import {ReactNode} from "react";
 
-export interface Props {
+interface Props {
   children: ReactNode
   width?: boolean
   height?: boolean

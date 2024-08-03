@@ -2,7 +2,7 @@ import "./shell-link.scss";
 import {NavLink} from "react-router-dom";
 import Text from "../../text/text";
 
-export interface Props {
+interface Props {
   name: string,
   to: string,
   primary: boolean,

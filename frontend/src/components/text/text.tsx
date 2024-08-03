@@ -1,7 +1,7 @@
 import "./text.scss";
 import {ReactNode} from "react";
 
-export interface Props {
+interface Props {
     children: ReactNode,
     type: "h1" | "h2" | "h3" | "p" | "s",
     primary: boolean,

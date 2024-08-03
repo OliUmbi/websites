@@ -2,7 +2,7 @@ import "./input.scss";
 import {ReactNode} from "react";
 import Text from "../text/text"
 
-export interface Props {
+interface Props {
   children: ReactNode
   label: string
   required: boolean

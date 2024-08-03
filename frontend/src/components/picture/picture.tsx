@@ -2,7 +2,7 @@ import "./picture.scss";
 import {enviroment} from "../../services/enviroment";
 import Image from "../image/image";
 
-export interface Props {
+interface Props {
   id: string,
   alt: string,
   side: "width" | "height" | "both",

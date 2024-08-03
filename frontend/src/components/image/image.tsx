@@ -1,6 +1,6 @@
 import "./image.scss";
 
-export interface Props {
+interface Props {
   src: string,
   alt: string,
   side: "width" | "height" | "both",

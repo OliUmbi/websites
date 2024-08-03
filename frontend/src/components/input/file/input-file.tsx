@@ -4,7 +4,7 @@ import {ChangeEvent, MouseEvent, useEffect} from "react";
 import Text from "../../text/text";
 import Icon from "../../icon/icon";
 
-export interface Props {
+interface Props {
   required: boolean,
   validation: ((value: File) => string | null) | null,
   value: File | null,

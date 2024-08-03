@@ -1,7 +1,7 @@
 import "./section.scss";
 import {ReactNode} from "react";
 
-export interface Props {
+interface Props {
   children: ReactNode,
   width: "xl" | "l" | "m" | "s" | "xs"
 }

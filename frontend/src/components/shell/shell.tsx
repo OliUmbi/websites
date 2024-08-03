@@ -9,7 +9,7 @@ import Row from "../row/row";
 import IconButton from "../icon/button/icon-button";
 import ShellLink from "./link/shell-link";
 
-export interface Props {
+interface Props {
   children: ReactNode
   title: string
   links: { name: string, to: string, primary: boolean }[]

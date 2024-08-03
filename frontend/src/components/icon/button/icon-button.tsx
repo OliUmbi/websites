@@ -2,7 +2,7 @@ import "./icon-button.scss";
 import {ReactNode} from "react";
 import Icon from "../icon";
 
-export interface Props {
+interface Props {
   children: ReactNode,
   onClick: () => void,
   highlight: boolean

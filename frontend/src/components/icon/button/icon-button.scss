@@ -7,6 +7,7 @@
   border-radius: 0.25em;
   text-align: center;
   transition: variables.$transition-fast;
+  cursor: pointer;
 
   &[data-highlight="true"] {
     background-color: variables.$foreground;

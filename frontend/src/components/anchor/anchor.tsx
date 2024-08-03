@@ -2,7 +2,7 @@ import "./anchor.scss";
 import {ReactNode} from "react";
 import {Link} from "react-router-dom";
 
-export interface Props {
+interface Props {
     children: ReactNode,
     to: string
 }

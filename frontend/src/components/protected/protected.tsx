@@ -4,7 +4,7 @@ import {Account} from "../../interfaces/account";
 import Unauthorized from "../unauthorized/unauthorized";
 import useLocal from "../../hooks/use-local";
 
-export interface Props {
+interface Props {
   permissions: Permission[]
 }
 

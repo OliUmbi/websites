@@ -5,7 +5,8 @@ import Row from "../row/row";
 import Column from "../column/column";
 
 const loading = () => {
-  const chars = "---___...,,,:::;;;///\\\|||!?=&%#@{}[]()0123456789";
+ // const chars = "---___...,,,:::;;;///\\\|||!?=&%#@{}[]()0123456789";
+  const chars = ":;/\|!?&#{}[]()";
 
   const [text1, setText1] = useState<string>("::::::::");
   const [text2, setText2] = useState<string>(":");
