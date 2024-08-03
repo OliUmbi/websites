@@ -2,18 +2,28 @@ import "./grid-item.scss";
 import {ReactNode} from "react";
 
 export interface Props {
-  children: ReactNode,
-  xl?: number
-  l?: number
-  m?: number
-  s?: number
-  xs?: number
+  children: ReactNode
+  xl?: GridItem
+  l?: GridItem
+  m?: GridItem
+  s?: GridItem
+  xs?: GridItem
+}
+
+interface GridItem {
+  span?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
 }
 
 const GridItem = (props: Props) => {
 
   return (
-      <div className="grid-item" data-xl={props.xl} data-l={props.l} data-m={props.m} data-s={props.s} data-xs={props.xs}>
+      <div className="grid-item"
+           data-xlspan={props.xl?.span}
+           data-lspan={props.l?.span}
+           data-mspan={props.m?.span}
+           data-sspan={props.s?.span}
+           data-xsspan={props.xs?.span}
+      >
         {props.children}
       </div>
   )
