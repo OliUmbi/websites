@@ -20,7 +20,7 @@
       border-radius: 0.25em;
       overflow: hidden;
       cursor: pointer;
-      transition: variables.$transition-fast;
+      transition: variables.$transition-slow;
 
       &:hover, &:focus {
         background-color: variables.$foreground-hover;

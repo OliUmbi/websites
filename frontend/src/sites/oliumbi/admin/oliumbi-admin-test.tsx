@@ -9,11 +9,14 @@ import Section from "../../../components/section/section";
 import Flex from "../../../components/flex/flex";
 import Carousel from "../../../components/carousel/carousel";
 import Text from "../../../components/text/text";
+import Pagination from "../../../components/pagination/pagination";
+import usePagination from "../../../hooks/use-pagination";
 
 const OliumbiAdminTest = () => {
 
   const quantity = useInput<number>(true, 1)
   const size = useInput<string[]>(true, ["M"]);
+  const pagination = usePagination(99, 10)
 
   return (
       <Section width="xl">
@@ -46,6 +49,7 @@ const OliumbiAdminTest = () => {
               </Flex>
             </GridItem>
           </Grid>
+          <Pagination {...pagination}/>
         </Flex>
       </Section>
   )

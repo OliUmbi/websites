@@ -3,13 +3,11 @@ one project to rule them all
 
 ## components
 - progress (timeline, step by step, etc)
-- carousel
 - accordion
 - pagination (complete system with different strategies?)
 - image input with presets
 - not found / empty
 - error
-- pagination
 
 ## sites
 - jublawoma
