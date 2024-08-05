@@ -11,6 +11,7 @@ import Carousel from "../../../components/carousel/carousel";
 import Text from "../../../components/text/text";
 import Pagination from "../../../components/pagination/pagination";
 import usePagination from "../../../hooks/use-pagination";
+import Intersect from "../../../components/intersect/intersect";
 
 const OliumbiAdminTest = () => {
 
@@ -51,6 +52,7 @@ const OliumbiAdminTest = () => {
           </Grid>
           <Pagination {...pagination}/>
         </Flex>
+        <Intersect onIntersect={() => console.log("visible")}/>
       </Section>
   )
 }
