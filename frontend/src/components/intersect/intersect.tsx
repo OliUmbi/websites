@@ -13,7 +13,7 @@ const Intersect = (props: Props) => {
     if (!intersected) {
       const observer = new IntersectionObserver((entries) => {
         const target = entries[0];
-        if (target.isIntersecting) {
+        if (target?.isIntersecting) {
           props.onIntersect();
           setIntersected(true)
         }
@@ -34,7 +34,7 @@ const Intersect = (props: Props) => {
   }, [props.onIntersect, intersected]);
 
   return (
-      <div ref={intersect}></div>
+      <div className="intersect" ref={intersect} data-intersected={intersected}></div>
   )
 }
 

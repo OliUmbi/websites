@@ -3,7 +3,6 @@ import {Link, useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import Row from "../row/row";
 import Text from "../text/text";
-import Icon from "../icon/icon";
 
 const Breadcrumbs = () => {
 
@@ -46,9 +45,9 @@ const Breadcrumbs = () => {
           {
             breadcrumbs.map((breadcrumb, index) => (
                 <Row align="center" wrap="never" key={index}>
-                  <Icon>chevron_forward</Icon>
+                  <Text type="p" primary={false} mono={true}>/</Text>
                   <Link className="breadcrumbs" to={breadcrumb.path}>
-                    <Text type="s" primary={breadcrumbs.length - 1 === index} mono={true}>{breadcrumb.name}</Text>
+                    <Text type="p" primary={breadcrumbs.length - 1 === index} mono={true}>{breadcrumb.name}</Text>
                   </Link>
                 </Row>
             ))
