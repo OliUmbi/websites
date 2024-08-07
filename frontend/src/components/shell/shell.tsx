@@ -8,6 +8,7 @@ import Column from "../column/column";
 import Row from "../row/row";
 import IconButton from "../icon/button/icon-button";
 import ShellLink from "./link/shell-link";
+import Breadcrumbs from "../breadcrumbs/breadcrumbs";
 
 interface Props {
   children: ReactNode
@@ -26,8 +27,11 @@ const Shell = (props: Props) => {
         <div className="shell__head">
           <Link className="shell__head__logo" to="/">
             {
-              props.logo ? <Image src={props.logo} alt={props.title} side="height" rounded={false}/> :
+              props.logo ? (
+                  <Image src={props.logo} alt={props.title} side="height" rounded={false}/>
+              ) : (
                   <Text type="h3" primary={true} mono={false}>{props.title}</Text>
+              )
             }
           </Link>
           <div className="shell__head__navigation" data-side={props.side}>

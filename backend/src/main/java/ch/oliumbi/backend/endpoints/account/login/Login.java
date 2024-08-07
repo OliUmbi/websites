@@ -1,18 +1,14 @@
 package ch.oliumbi.backend.endpoints.account.login;
 
 import ch.oliumbi.backend.autoload.Autoload;
-import ch.oliumbi.backend.autoload.Autoloader;
-import ch.oliumbi.backend.confguration.Configuration;
 import ch.oliumbi.backend.database.Database;
 import ch.oliumbi.backend.server.Endpoint;
 import ch.oliumbi.backend.server.Method;
 import ch.oliumbi.backend.server.Request;
 import ch.oliumbi.backend.server.Response;
-import ch.oliumbi.backend.server.Server;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import org.jdbi.v3.core.result.ResultIterable;
 
 @Autoload
 public class Login implements Endpoint<LoginResponse, LoginRequest> {

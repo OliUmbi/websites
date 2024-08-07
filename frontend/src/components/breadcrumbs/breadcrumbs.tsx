@@ -47,7 +47,7 @@ const Breadcrumbs = () => {
                 <Row align="center" wrap="never" key={index}>
                   <Text type="p" primary={false} mono={true}>/</Text>
                   <Link className="breadcrumbs" to={breadcrumb.path}>
-                    <Text type="p" primary={breadcrumbs.length - 1 === index} mono={true}>{breadcrumb.name}</Text>
+                    <Text type="s" primary={breadcrumbs.length - 1 === index} mono={true}>{breadcrumb.name}</Text>
                   </Link>
                 </Row>
             ))

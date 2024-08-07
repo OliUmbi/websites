@@ -16,7 +16,12 @@ import Breadcrumbs from "../../../components/breadcrumbs/breadcrumbs";
 
 const OliumbiAdminTest = () => {
 
-  const quantity = useInput<number>(true, 1)
+  const quantity = useInput<number>(true, 1, value => {
+    if (value == 69) {
+      return "Noice"
+    }
+    return null
+  })
   const size = useInput<string[]>(true, ["M"]);
   const pagination = usePagination(99, 10)
 
@@ -63,38 +68,6 @@ const OliumbiAdminTest = () => {
             <Pagination {...pagination}/>
           </Flex>
           <Intersect onIntersect={() => console.log("visible")}/>
-        </Section>
-        <Section width="xs">
-          <Grid xl={{columns: 7, gap: 0.5}}>
-            <Text type="s" primary={false} mono={true}>Mo</Text>
-            <Text type="s" primary={false} mono={true}>Tu</Text>
-            <Text type="s" primary={false} mono={true}>We</Text>
-            <Text type="s" primary={false} mono={true}>Th</Text>
-            <Text type="s" primary={false} mono={true}>Fr</Text>
-            <Text type="s" primary={false} mono={true}>Sa</Text>
-            <Text type="s" primary={false} mono={true}>Su</Text>
-            <Text type="p" primary={false} mono={true}>29</Text>
-            <Text type="p" primary={false} mono={true}>30</Text>
-            <Text type="p" primary={false} mono={true}>31</Text>
-            <Text type="p" primary={true} mono={true}>01</Text>
-            <Text type="p" primary={true} mono={true}>02</Text>
-            <Text type="p" primary={true} mono={true}>03</Text>
-            <Text type="p" primary={true} mono={true}>04</Text>
-            <Text type="p" primary={true} mono={true}>05</Text>
-            <Text type="p" primary={true} mono={true}>06</Text>
-            <Text type="p" primary={true} mono={true}>07</Text>
-            <Text type="p" primary={true} mono={true}>08</Text>
-            <Text type="p" primary={true} mono={true}>09</Text>
-            <Text type="p" primary={true} mono={true}>10</Text>
-            <Text type="p" primary={true} mono={true}>11</Text>
-            <Text type="p" primary={true} mono={true}>12</Text>
-            <Text type="p" primary={true} mono={true}>13</Text>
-            <Text type="p" primary={true} mono={true}>14</Text>
-            <Text type="p" primary={true} mono={true}>15</Text>
-            <Text type="p" primary={true} mono={true}>16</Text>
-            <Text type="p" primary={true} mono={true}>17</Text>
-            <Text type="p" primary={true} mono={true}>18</Text>
-          </Grid>
         </Section>
       </>
   )
