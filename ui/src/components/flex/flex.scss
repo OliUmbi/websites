@@ -1,0 +1,107 @@
+@use "../../styles/variables";
+
+.flex {
+  display: flex;
+
+  @mixin flex__style($name, $size) {
+    @media screen and (max-width: $size) {
+      &[data-#{$name}width="true"] {
+        width: 100%;
+      }
+
+      &[data-#{$name}width="false"] {
+        width: fit-content;
+      }
+
+      &[data-#{$name}height="true"] {
+        height: 100%;
+      }
+
+      &[data-#{$name}height="false"] {
+        height: fit-content;
+      }
+
+      &[data-#{$name}direction="row"] {
+        flex-direction: row;
+      }
+
+      &[data-#{$name}direction="column"] {
+        flex-direction: column;
+      }
+
+      &[data-#{$name}align="start"] {
+        align-items: flex-start;
+      }
+
+      &[data-#{$name}align="center"] {
+        align-items: center;
+      }
+
+      &[data-#{$name}align="end"] {
+        align-items: flex-end;
+      }
+
+      &[data-#{$name}justify="start"] {
+        justify-content: flex-start;
+      }
+
+      &[data-#{$name}justify="center"] {
+        justify-content: center;
+      }
+
+      &[data-#{$name}justify="end"] {
+        justify-content: flex-end;
+      }
+
+      &[data-#{$name}justify="between"] {
+        justify-content: space-between;
+      }
+
+      &[data-#{$name}justify="around"] {
+        justify-content: space-around;
+      }
+
+      &[data-#{$name}justify="evenly"] {
+        justify-content: space-evenly;
+      }
+
+      &[data-#{$name}gap="0.5"] {
+        gap: 0.5rem;
+      }
+
+      &[data-#{$name}gap="1"] {
+        gap: 1rem;
+      }
+
+      &[data-#{$name}gap="2"] {
+        gap: 2rem;
+      }
+
+      &[data-#{$name}gap="3"] {
+        gap: 3rem;
+      }
+
+      &[data-#{$name}gap="4"] {
+        gap: 4rem;
+      }
+
+      &[data-#{$name}wrap="never"] {
+        flex-wrap: nowrap;
+      }
+
+      &[data-#{$name}wrap="wrap"] {
+        flex-wrap: wrap;
+      }
+
+      &[data-#{$name}wrap="reverse"] {
+        flex-wrap: wrap-reverse;
+      }
+    }
+  }
+
+  @include flex__style("xl", 100vw);
+  @include flex__style("l", variables.$l);
+  @include flex__style("m", variables.$m);
+  @include flex__style("s", variables.$s);
+  @include flex__style("xs", variables.$xs);
+}

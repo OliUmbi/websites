@@ -1,0 +1,36 @@
+@use "../../styles/variables";
+
+.button {
+  width: fit-content;
+  padding: 1em 2em;
+  border: none;
+  border-radius: 0.25em;
+  user-select: none;
+  white-space: nowrap;
+  transition: variables.$transition-fast;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.25rem;
+
+  &[data-highlight="true"] {
+    background-color: variables.$foreground;
+    color: variables.$background;
+
+    &:hover, &:focus {
+      background-color: variables.$foreground-hover;
+    }
+  }
+
+  &[data-highlight="false"] {
+    background-color: variables.$background;
+    color: variables.$foreground;
+
+    &:hover, &:focus {
+      background-color: variables.$background-hover;
+    }
+  }
+}

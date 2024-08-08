@@ -1,0 +1,26 @@
+@use "../../styles/variables";
+
+.section {
+  width: 100%;
+  margin: 0 auto;
+
+  &[data-width="xl"] {
+    max-width: variables.$xl;
+  }
+
+  &[data-width="l"] {
+    max-width: variables.$l;
+  }
+
+  &[data-width="m"] {
+    max-width: variables.$m;
+  }
+
+  &[data-width="s"] {
+    max-width: variables.$s;
+  }
+
+  &[data-width="xs"] {
+    max-width: variables.$xs;
+  }
+}

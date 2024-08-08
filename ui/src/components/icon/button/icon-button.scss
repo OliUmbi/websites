@@ -1,0 +1,29 @@
+@use "../../../styles/variables";
+
+.icon-button {
+  width: fit-content;
+  padding: 0.55em;
+  border: none;
+  border-radius: 0.25em;
+  text-align: center;
+  transition: variables.$transition-fast;
+  cursor: pointer;
+
+  &[data-highlight="true"] {
+    background-color: variables.$foreground;
+    color: variables.$background;
+
+    &:hover, &:focus {
+      background-color: variables.$foreground-hover;
+    }
+  }
+
+  &[data-highlight="false"] {
+    background-color: variables.$background;
+    color: variables.$foreground;
+
+    &:hover, &:focus {
+      background-color: variables.$background-hover;
+    }
+  }
+}

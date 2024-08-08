@@ -1,0 +1,13 @@
+@use "../../../styles/variables";
+
+.input-date {
+  width: 100%;
+  min-height: 2rem;
+
+  display: grid;
+
+  &__input {
+    width: 100%;
+    height: 100%;
+  }
+}
