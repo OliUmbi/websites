@@ -5,79 +5,128 @@
   height: 100%;
   padding: 6rem;
 
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto 1fr;
+  gap: 6rem;
 
   @media screen and (max-width: variables.$xl) {
     padding: 5rem;
+    gap: 5rem;
   }
 
   @media screen and (max-width: variables.$l) {
     padding: 4rem;
+    gap: 4rem;
   }
 
   @media screen and (max-width: variables.$m) {
     padding: 3rem;
+    gap: 3rem;
   }
 
   @media screen and (max-width: variables.$s) {
     padding: 2rem;
+    gap: 2rem;
   }
 
   @media screen and (max-width: variables.$xs) {
     padding: 1rem;
+    gap: 1rem;
   }
 
-  &__head {
+  &__logo {
+    grid-row: 1;
+    grid-column: 1;
+    max-height: 6rem;
+    transition: variables.$transition-fast;
+    cursor: pointer;
+    user-select: none;
+
+    display: flex;
+    align-items: center;
+
+    &:hover, &:focus {
+      opacity: 0.6;
+    }
+  }
+
+  &__breadcrumbs {
+    grid-row: 1;
+    grid-column: 2;
+
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
 
-    &__logo {
-      max-height: 6rem;
-      transition: variables.$transition-fast;
-      cursor: pointer;
-      user-select: none;
+    @media screen and (max-width: variables.$m) {
+      grid-row: 2;
+      grid-column: span 3;
+    }
+  }
 
-      &:hover, &:focus {
-        opacity: 0.6;
-      }
+  &__navigation {
+    grid-row: 1;
+    grid-column: 3;
+    visibility: hidden;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+
+    &[data-side="false"] {
+      visibility: visible;
     }
 
-    &__navigation {
+    @media screen and (max-width: variables.$l) {
+      visibility: visible;
+    }
 
-      &[data-side="true"] {
-        visibility: hidden;
+    @media screen and (max-width: variables.$m) {
+      grid-row: 1;
+      grid-column: span 2;
+    }
+  }
 
-        @media screen and (max-width: variables.$l) {
-          visibility: visible;
-        }
-      }
+  &__side {
+    grid-row: span 2;
+    grid-column: 1;
+    position: sticky;
+    top: 4rem;
+    height: fit-content;
+
+    &[data-side="false"] {
+      display: none;
+    }
+
+    @media screen and (max-width: variables.$l) {
+      display: none;
     }
   }
 
   &__body {
+    grid-row: span 2;
+    grid-column: span 2;
+    width: 100%;
+
     display: flex;
-    flex-direction: row;
-    gap: 4rem;
+    flex-direction: column;
 
-    &__side {
-      position: sticky;
-      top: 4rem;
-      width: variables.$m;
-      height: 100%;
-
-      @media screen and (max-width: variables.$l) {
-        display: none;
-      }
+    &[data-side="false"] {
+      grid-row: span 2;
+      grid-column: span 3;
     }
 
-    &__content {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
+    @media screen and (max-width: variables.$l) {
+      grid-row: span 2;
+      grid-column: span 3;
+    }
+
+    @media screen and (max-width: variables.$m) {
+      grid-row: 3;
+      grid-column: span 3;
     }
   }
 }

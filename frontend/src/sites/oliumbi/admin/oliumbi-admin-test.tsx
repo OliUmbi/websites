@@ -12,7 +12,6 @@ import Text from "../../../components/text/text";
 import Pagination from "../../../components/pagination/pagination";
 import usePagination from "../../../hooks/use-pagination";
 import Intersect from "../../../components/intersect/intersect";
-import Breadcrumbs from "../../../components/breadcrumbs/breadcrumbs";
 
 const OliumbiAdminTest = () => {
 
@@ -29,7 +28,6 @@ const OliumbiAdminTest = () => {
       <>
         <Section width="xl">
           <Flex xl={{direction: "column", gap: 4}}>
-            <Breadcrumbs/>
             <Grid xl={{columns: 3, gap: 4}} m={{columns: 1, gap: 2}}>
               <GridItem xl={{span: 2}} m={{span: 1}}>
                 <Carousel>
