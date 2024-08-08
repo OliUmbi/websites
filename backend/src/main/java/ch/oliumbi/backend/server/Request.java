@@ -17,5 +17,14 @@ public class Request<T> {
   private Method method;
   private String url;
   private Map<String, String> headers;
-  private T body;
+  private Object body;
+
+  public Request(Object body) {
+    this.body = body;
+  }
+
+  public T getBody() {
+    //noinspection unchecked
+    return (T) body;
+  }
 }

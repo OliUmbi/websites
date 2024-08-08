@@ -1,6 +1,8 @@
 package ch.oliumbi.backend.server;
 
 import ch.oliumbi.backend.autoload.Autoload;
+import ch.oliumbi.backend.enums.Method;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import java.lang.reflect.ParameterizedType;
@@ -18,8 +20,7 @@ public class Handle {
     this.endpoints = List.of(endpoints);
   }
 
-  public ByteBuffer request() {
-
+  public ByteBuffer request(String ip, Method method, String url, String params, List<Header> headers, ByteBuffer body) {
 
     for (Endpoint<?, ?> endpoint : endpoints) {
       Type[] genericInterfaces = endpoint.getClass().getGenericInterfaces();
@@ -38,11 +39,16 @@ public class Handle {
         ObjectMapper objectMapper = new ObjectMapper();
         TypeFactory typeFactory = objectMapper.getTypeFactory();
 
-        Object o = objectMapper.readValue("{\"username\": \"test\", \"password\": \"test\"}", typeFactory.constructType(requestType));
+        Object o = null;
+        try {
+          o = objectMapper.readValue("{\"username\": \"test\", \"password\": \"test\"}", typeFactory.constructType(requestType));
+        } catch (JsonProcessingException e) {
+          throw new RuntimeException(e);
+        }
 
         System.out.println(o);
 
-        endpoint.handle(new ch.oliumbi.backend.server.Request<>(o));
+        endpoint.handle(new Request<>(o));
       }
     }
 
