@@ -20,7 +20,9 @@ public class Handle {
     this.endpoints = List.of(endpoints);
   }
 
-  public ByteBuffer request(String ip, Method method, String url, String params, List<Header> headers, ByteBuffer body) {
+  public ByteBuffer request(String ip, Method method, String url, List<Parameter> parameters, List<Header> headers, ByteBuffer body) {
+
+    Request<Object> request = new Request<>();
 
     for (Endpoint<?, ?> endpoint : endpoints) {
       Type[] genericInterfaces = endpoint.getClass().getGenericInterfaces();
@@ -41,14 +43,20 @@ public class Handle {
 
         Object o = null;
         try {
-          o = objectMapper.readValue("{\"username\": \"test\", \"password\": \"test\"}", typeFactory.constructType(requestType));
+          o = objectMapper.readValue(BufferUtil.toString(body), typeFactory.constructType(requestType));
         } catch (JsonProcessingException e) {
           throw new RuntimeException(e);
         }
 
         System.out.println(o);
 
-        endpoint.handle(new Request<>(o));
+        Response<?> response = endpoint.handle(new Request<>(ip, method, url, parameters, headers, o));
+
+        try {
+          return BufferUtil.toBuffer(objectMapper.writeValueAsString(response.getBody()));
+        } catch (JsonProcessingException e) {
+          throw new RuntimeException(e);
+        }
       }
     }
 

@@ -17,4 +17,4 @@ networks:
 
 volumes:
   websites-database-volume:
-  websites-backend-volume:
+  websites-api-volume:

@@ -1,7 +1,7 @@
 package ch.oliumbi.api.server;
 
 import ch.oliumbi.api.enums.Method;
-import java.util.Map;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
@@ -16,12 +16,9 @@ public class Request<T> {
   private String ip;
   private Method method;
   private String url;
-  private Map<String, String> headers;
+  private List<Parameter> parameters;
+  private List<Header> headers;
   private Object body;
-
-  public Request(Object body) {
-    this.body = body;
-  }
 
   public T getBody() {
     //noinspection unchecked

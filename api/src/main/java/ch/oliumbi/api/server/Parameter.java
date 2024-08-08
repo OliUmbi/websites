@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Response<T> {
+public class Parameter {
 
-  private T body;
+  private String name;
+  private String value;
 }

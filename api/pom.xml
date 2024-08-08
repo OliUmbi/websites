@@ -10,7 +10,7 @@
 
   <packaging>jar</packaging>
 
-  <name>backend</name>
+  <name>api</name>
 
   <properties>
     <java>21</java>
