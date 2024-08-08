@@ -2,8 +2,9 @@ package ch.oliumbi.backend.endpoints.account.login;
 
 import ch.oliumbi.backend.autoload.Autoload;
 import ch.oliumbi.backend.database.Database;
+import ch.oliumbi.backend.enums.Permission;
 import ch.oliumbi.backend.server.Endpoint;
-import ch.oliumbi.backend.server.Method;
+import ch.oliumbi.backend.enums.Method;
 import ch.oliumbi.backend.server.Request;
 import ch.oliumbi.backend.server.Response;
 import java.util.List;
@@ -27,6 +28,13 @@ public class Login implements Endpoint<LoginResponse, LoginRequest> {
   @Override
   public String route() {
     return "/account/login";
+  }
+
+  @Override
+  public List<Permission> permissions() {
+    return List.of(
+        Permission.OLIUMBI_ADMIN
+    );
   }
 
   @Override

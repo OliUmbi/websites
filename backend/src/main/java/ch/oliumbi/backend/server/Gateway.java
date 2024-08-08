@@ -1,26 +1,22 @@
 package ch.oliumbi.backend.server;
 
 import ch.oliumbi.backend.autoload.Autoload;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.TypeFactory;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.nio.file.PathMatcher;
-import java.util.List;
+import java.net.SocketAddress;
+import java.nio.ByteBuffer;
+import org.eclipse.jetty.http.HttpFields;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Response;
-import org.eclipse.jetty.server.handler.gzip.GzipHandler;
 import org.eclipse.jetty.util.BufferUtil;
 import org.eclipse.jetty.util.Callback;
 
 @Autoload
 public class Gateway extends Handler.Abstract {
 
-  private final List<Endpoint<?, ?>> endpoints;
+  private final Handle handle;
 
-  public Gateway(Endpoint<?, ?>[] endpoints) {
-    this.endpoints = List.of(endpoints);
+  public Gateway(Handle handle) {
+    this.handle = handle;
   }
 
   @Override
@@ -30,34 +26,16 @@ public class Gateway extends Handler.Abstract {
     System.out.println(request.getHttpURI().getCanonicalPath());
     System.out.println(request.getHttpURI().getDecodedPath());
 
-    // method, url, body
-    response.write(true, BufferUtil.toBuffer("test"), callback);
+    SocketAddress ip = request.getConnectionMetaData().getRemoteSocketAddress();
+    String url = request.getHttpURI().getDecodedPath();
+    String params = request.getHttpURI().getQuery();
+    String method = request.getMethod();
+    HttpFields headers = request.getHeaders();
+    ByteBuffer body = request.read().getByteBuffer();
 
-    for (Endpoint<?, ?> endpoint : endpoints) {
-      Type[] genericInterfaces = endpoint.getClass().getGenericInterfaces();
+    ByteBuffer buffer = handle.request();
 
-      if (genericInterfaces.length > 0 && genericInterfaces[0] instanceof ParameterizedType parameterizedType && parameterizedType.getRawType() == Endpoint.class) {
-
-        Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
-
-        if (actualTypeArguments.length != 2) {
-          throw new RuntimeException("Failed to handle endpoint, reason: too many generic types");
-        }
-
-        Type responseType = actualTypeArguments[0];
-        Type requestType = actualTypeArguments[1];
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        TypeFactory typeFactory = objectMapper.getTypeFactory();
-
-        Object o = objectMapper.readValue("{\"username\": \"test\", \"password\": \"test\"}",
-            typeFactory.constructType(requestType));
-
-        System.out.println(o);
-
-        endpoint.handle(new ch.oliumbi.backend.server.Request<>(o));
-      }
-    }
+    response.write(true, buffer, callback);
 
     return true;
   }

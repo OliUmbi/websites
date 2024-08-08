@@ -1,4 +1,4 @@
-package ch.oliumbi.backend.confguration;
+package ch.oliumbi.backend.enums;
 
 public enum Environment {
   DEVELOPMENT,

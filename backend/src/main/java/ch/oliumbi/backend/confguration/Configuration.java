@@ -2,7 +2,7 @@ package ch.oliumbi.backend.confguration;
 
 import ch.oliumbi.backend.Backend;
 import ch.oliumbi.backend.autoload.Autoload;
-import ch.oliumbi.backend.server.Server;
+import ch.oliumbi.backend.enums.Environment;
 import java.io.InputStream;
 import java.util.Properties;
 

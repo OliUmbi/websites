@@ -22,7 +22,7 @@ const OliumbiAdminTest = () => {
     return null
   })
   const size = useInput<string[]>(true, ["M"]);
-  const pagination = usePagination(99, 10)
+  const pagination = usePagination(100, 10)
 
   return (
       <>
