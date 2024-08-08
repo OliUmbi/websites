@@ -23,6 +23,10 @@ public class Gateway extends Handler.Abstract {
 
   @Override
   public boolean handle(Request request, Response response, Callback callback) {
+    // todo handle unsupported methods
+    // todo handle exceptions
+    // todo determine where validation happens?
+
     String ip = request.getConnectionMetaData().getRemoteSocketAddress().toString();
     String url = request.getHttpURI().getDecodedPath();
     String params = request.getHttpURI().getQuery();
