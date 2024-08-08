@@ -1,9 +1,0 @@
-@use "../../styles/variables";
-
-.intersect {
-  visibility: hidden;
-
-  &[data-intersected="true"] {
-    display: none;
-  }
-}
