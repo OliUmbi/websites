@@ -16,12 +16,12 @@ public class Autoloader {
     this.rootClass = rootClass;
   }
 
-  public Factory load() {
+  public void load() {
     List<Class<?>> allClasses = allClasses();
 
     List<Class<?>> annotatedClasses = annotatedClasses(allClasses);
 
-    return new Factory(annotatedClasses);
+    new Factory(annotatedClasses);
   }
 
   private List<Class<?>> allClasses() {

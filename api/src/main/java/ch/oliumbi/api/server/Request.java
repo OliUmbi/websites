@@ -17,6 +17,7 @@ public class Request<T> {
   private Method method;
   private String url;
   private List<Parameter> parameters;
+  private List<PathVariable> pathVariables;
   private List<Header> headers;
   private Object body;
 

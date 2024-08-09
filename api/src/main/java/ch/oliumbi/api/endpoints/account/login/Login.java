@@ -3,6 +3,7 @@ package ch.oliumbi.api.endpoints.account.login;
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
 import ch.oliumbi.api.enums.Permission;
+import ch.oliumbi.api.enums.Status;
 import ch.oliumbi.api.server.Endpoint;
 import ch.oliumbi.api.enums.Method;
 import ch.oliumbi.api.server.Request;
@@ -55,6 +56,6 @@ public class Login implements Endpoint<LoginResponse, LoginRequest> {
       System.out.println(stringObjectMap);
     }
 
-    return new Response<>(new LoginResponse(request.getBody().getUsername(), "token"));
+    return new Response<>(Status.OK, new LoginResponse(request.getBody().getUsername(), "token"));
   }
 }

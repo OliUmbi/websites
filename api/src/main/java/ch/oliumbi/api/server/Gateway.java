@@ -1,19 +1,25 @@
 package ch.oliumbi.api.server;
 
 import ch.oliumbi.api.autoload.Autoload;
-import ch.oliumbi.api.enums.Method;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import org.eclipse.jetty.http.HttpFields;
+import org.eclipse.jetty.http.HttpURI;
+import org.eclipse.jetty.http.HttpVersion;
+import org.eclipse.jetty.server.ConnectionMetaData;
+import org.eclipse.jetty.server.Context;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Response;
+import org.eclipse.jetty.util.BufferUtil;
 import org.eclipse.jetty.util.Callback;
+import org.eclipse.jetty.util.HostPort;
 
 @Autoload
 public class Gateway extends Handler.Abstract {
 
+  private final ObjectMapper objectMapper = new ObjectMapper();
   private final Handle handle;
 
   public Gateway(Handle handle) {
@@ -22,21 +28,23 @@ public class Gateway extends Handler.Abstract {
 
   @Override
   public boolean handle(Request request, Response response, Callback callback) {
-    // todo handle unsupported methods
-    // todo handle exceptions
-    // todo determine where validation happens?
-
-    String ip = request.getConnectionMetaData().getRemoteSocketAddress().toString();
-    String url = request.getHttpURI().getDecodedPath();
-    List<Parameter> parameters = Arrays.stream(request.getHttpURI().getQuery().split("&")).map(s -> s.split("=")).map(strings -> new Parameter(strings[0], strings[1])).collect(
-        Collectors.toList());
-    Method method = Method.valueOf(request.getMethod());
-    List<Header> headers = request.getHeaders().stream().map(httpField -> new Header(httpField.getName(), httpField.getValue())).toList();
+    ConnectionMetaData metaData = request.getConnectionMetaData();
+    HttpURI uri = request.getHttpURI();
+    String method = request.getMethod();
+    HttpFields headers = request.getHeaders();
     ByteBuffer body = request.read().getByteBuffer();
 
-    ByteBuffer buffer = handle.request(ip, method, url, parameters, headers, body);
+    ch.oliumbi.api.server.Response<Object> internal = handle.request(metaData, uri, method, headers, body);
 
-    response.write(true, buffer, callback);
+    response.setStatus(internal.getStatus().code());
+    response.getHeaders().add("Content-Type", "application/json");
+
+    try {
+      ByteBuffer buffer = BufferUtil.toBuffer(objectMapper.writeValueAsString(internal.getBody()));
+      response.write(true, buffer, callback);
+    } catch (JsonProcessingException e) {
+      throw new RuntimeException(e);
+    }
 
     return true;
   }
