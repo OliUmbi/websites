@@ -13,12 +13,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Request<T> {
 
-  private String ip;
+  private Session session;
+  private Meta meta;
   private Method method;
-  private String url;
-  private List<Parameter> parameters;
-  private List<PathVariable> pathVariables;
-  private List<Header> headers;
+  private Path path;
+  private Headers headers;
   private Object body;
 
   public T getBody() {

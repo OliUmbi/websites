@@ -1,61 +1,34 @@
 package ch.oliumbi.api.server;
 
-import java.util.UUID;
+import java.util.List;
+import java.util.Optional;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Path {
-  private final String pattern;
-  private final String url;
 
-  public Path(String pattern, String url) {
-    this.pattern = pattern;
-    this.url = url;
+  private String url;
+  private String route;
+  private List<Parameter> parameters;
+
+  public Optional<String> pathVariable(String name) {
+    return Optional.of("");
+  }
+
+  public Optional<String> parameter(String name) {
+    return parameters.stream()
+        .filter(parameter -> parameter.getName().equals(name))
+        .map(Parameter::getValue)
+        .findFirst();
   }
 
   public boolean matches() {
-    String[] patternParts = pattern.split("/");
-    String[] urlParts = url.split("/");
-
-    if (patternParts.length != urlParts.length) {
-      return false;
-    }
-
-    for (int i = 0; i < patternParts.length; i++) {
-      String patternPart = patternParts[i];
-      String urlPart = urlParts[i];
-
-      if (patternPart.startsWith(":")) {
-        continue;
-      }
-
-      if (!patternPart.equals(urlPart)) {
-        return false;
-      }
-    }
-
     return true;
-  }
-
-  public String string(String name) {
-    String[] patternParts = pattern.split("/");
-    String[] urlParts = url.split("/");
-
-    for (int i = 0; i < patternParts.length; i++) {
-      String patternPart = patternParts[i];
-      String urlPart = urlParts[i];
-
-      if (patternPart.startsWith(":") && patternPart.substring(1).equals(name)) {
-        return urlPart;
-      }
-    }
-
-    return null;
-  }
-
-  public Integer integer(String name) {
-    return Integer.valueOf(string(name));
-  }
-
-  public UUID uuid(String name) {
-    return UUID.fromString(string(name));
   }
 }

@@ -1,4 +1,4 @@
-package ch.oliumbi.api.endpoints.account.login;
+package ch.oliumbi.api.services.account.login;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
@@ -28,7 +28,7 @@ public class Login implements Endpoint<LoginResponse, LoginRequest> {
 
   @Override
   public String route() {
-    return "/account/login";
+    return "/account/login/:id";
   }
 
   @Override

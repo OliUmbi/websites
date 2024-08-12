@@ -1,24 +1,24 @@
 package ch.oliumbi.api.server;
 
-import ch.oliumbi.api.autoload.Autoload;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import ch.oliumbi.api.enums.Method;
+import ch.oliumbi.api.enums.Status;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.List;
 import org.eclipse.jetty.http.HttpFields;
 import org.eclipse.jetty.http.HttpURI;
-import org.eclipse.jetty.http.HttpVersion;
 import org.eclipse.jetty.server.ConnectionMetaData;
-import org.eclipse.jetty.server.Context;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Response;
-import org.eclipse.jetty.util.BufferUtil;
 import org.eclipse.jetty.util.Callback;
-import org.eclipse.jetty.util.HostPort;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@Autoload
 public class Gateway extends Handler.Abstract {
 
+  public static final Logger LOGGER = LoggerFactory.getLogger(Gateway.class);
   private final ObjectMapper objectMapper = new ObjectMapper();
   private final Handle handle;
 
@@ -28,14 +28,33 @@ public class Gateway extends Handler.Abstract {
 
   @Override
   public boolean handle(Request request, Response response, Callback callback) {
-    ConnectionMetaData metaData = request.getConnectionMetaData();
-    HttpURI uri = request.getHttpURI();
-    String method = request.getMethod();
-    HttpFields headers = request.getHeaders();
-    ByteBuffer body = request.read().getByteBuffer();
 
-    ch.oliumbi.api.server.Response<?> internal = handle.request(metaData, uri, method, headers, body);
 
+    // todo get header, get session, etc.
+    Meta meta = Meta.convert(request.getConnectionMetaData());
+    Method method = Method.convert(request.getMethod());
+    Path path = Path.convert(request.getHttpURI());
+    Headers headers = Headers.convert(request.getHeaders());
+    ByteBuffer buffer = request.read().getByteBuffer();
+
+
+
+    ch.oliumbi.api.server.Response<?> internal = handle.request(meta, method, path, headers, buffer);
+
+
+
+
+
+    try {
+      byte[] bytes = [];
+
+      response.write(true, ByteBuffer.wrap(bytes), callback);
+      return true;
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+
+    /**
     response.setStatus(internal.getStatus().code());
     response.getHeaders().add("Content-Type", "application/json");
 
@@ -53,5 +72,6 @@ public class Gateway extends Handler.Abstract {
     }
 
     return true;
+     */
   }
 }

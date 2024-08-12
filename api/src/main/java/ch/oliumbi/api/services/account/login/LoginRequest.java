@@ -1,4 +1,4 @@
-package ch.oliumbi.api.endpoints.account.login;
+package ch.oliumbi.api.services.account.login;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginResponse {
+public class LoginRequest {
 
   private String username;
-  private String token;
+  private String password;
 }
