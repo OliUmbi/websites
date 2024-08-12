@@ -6,36 +6,68 @@
 
   @mixin grid-item__style($name, $size) {
     @media screen and (max-width: $size) {
-      &[data-#{$name}span="1"] {
+      &[data-#{$name}columns="1"] {
         grid-column: span 1;
       }
 
-      &[data-#{$name}span="2"] {
+      &[data-#{$name}columns="2"] {
         grid-column: span 2;
       }
 
-      &[data-#{$name}span="3"] {
+      &[data-#{$name}columns="3"] {
         grid-column: span 3;
       }
 
-      &[data-#{$name}span="4"] {
+      &[data-#{$name}columns="4"] {
         grid-column: span 4;
       }
 
-      &[data-#{$name}span="5"] {
+      &[data-#{$name}columns="5"] {
         grid-column: span 5;
       }
 
-      &[data-#{$name}span="6"] {
+      &[data-#{$name}columns="6"] {
         grid-column: span 6;
       }
 
-      &[data-#{$name}span="7"] {
+      &[data-#{$name}columns="7"] {
         grid-column: span 7;
       }
 
-      &[data-#{$name}span="8"] {
+      &[data-#{$name}columns="8"] {
         grid-column: span 8;
+      }
+
+      &[data-#{$name}rows="1"] {
+        grid-row: span 1;
+      }
+
+      &[data-#{$name}rows="2"] {
+        grid-row: span 2;
+      }
+
+      &[data-#{$name}rows="3"] {
+        grid-row: span 3;
+      }
+
+      &[data-#{$name}rows="4"] {
+        grid-row: span 4;
+      }
+
+      &[data-#{$name}rows="5"] {
+        grid-row: span 5;
+      }
+
+      &[data-#{$name}rows="6"] {
+        grid-row: span 6;
+      }
+
+      &[data-#{$name}rows="7"] {
+        grid-row: span 7;
+      }
+
+      &[data-#{$name}rows="8"] {
+        grid-row: span 8;
       }
     }
   }

@@ -29,7 +29,7 @@ const OliumbiAdminTest = () => {
         <Section width="xl">
           <Flex xl={{direction: "column", gap: 4}}>
             <Grid xl={{columns: 3, gap: 4}} m={{columns: 1, gap: 2}}>
-              <GridItem xl={{span: 2}} m={{span: 1}}>
+              <GridItem xl={{columns: 2}} m={{columns: 1}}>
                 <Carousel>
                   <Image
                       src="https://cdn.prod.website-files.com/6256995755a7ea0a3d8fbd11/645924d369c84c1e3dbda2ad_Frame%201.jpg"
@@ -50,7 +50,7 @@ const OliumbiAdminTest = () => {
                   </Flex>
                 </Carousel>
               </GridItem>
-              <GridItem xl={{span: 1}}>
+              <GridItem xl={{columns: 1}}>
                 <Flex xl={{height: true, direction: "column", justify: "between", gap: 2}} m={{direction: "row"}}
                       s={{direction: "column"}}>
                   <InputOptions {...size} label="Grösse" options={["XL", "L", "M", "S", "XS", "XXS"]}/>
@@ -64,6 +64,24 @@ const OliumbiAdminTest = () => {
               </GridItem>
             </Grid>
             <Pagination {...pagination}/>
+            <Grid xl={{columns: 2, gap: 4}}>
+              <GridItem xl={{columns: 1, rows: 3}}>
+                <Image src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg" alt="image"
+                       side="both" rounded={true}/>
+              </GridItem>
+              <GridItem xl={{columns: 1, rows: 1}}>
+                <Text type="h1" primary={true} mono={false}>Lorem ipsum</Text>
+              </GridItem>
+              <GridItem xl={{columns: 1, rows: 1}}>
+                <Flex xl={{direction: "column", gap: 1}}>
+                  <Text type="h3" primary={true} mono={false}>dolor sit amet, consectetur adipiscing elit.</Text>
+                  <Text type="p" primary={true} mono={false}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam metus eros, egestas in nibh non, rutrum pretium justo.</Text>
+                </Flex>
+              </GridItem>
+              <GridItem xl={{columns: 1, rows: 1}}>
+                <Text type="p" primary={true} mono={false}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam metus eros, egestas in nibh non, rutrum pretium justo.</Text>
+              </GridItem>
+            </Grid>
           </Flex>
           <Intersect onIntersect={() => console.log("visible")}/>
         </Section>

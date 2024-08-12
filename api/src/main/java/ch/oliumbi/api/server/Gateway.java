@@ -34,13 +34,19 @@ public class Gateway extends Handler.Abstract {
     HttpFields headers = request.getHeaders();
     ByteBuffer body = request.read().getByteBuffer();
 
-    ch.oliumbi.api.server.Response<Object> internal = handle.request(metaData, uri, method, headers, body);
+    ch.oliumbi.api.server.Response<?> internal = handle.request(metaData, uri, method, headers, body);
 
     response.setStatus(internal.getStatus().code());
     response.getHeaders().add("Content-Type", "application/json");
 
+    Object object = internal.getBody();
+
+    if (internal.getMessage() != null) {
+      object = new Message(internal.getMessage());
+    }
+
     try {
-      ByteBuffer buffer = BufferUtil.toBuffer(objectMapper.writeValueAsString(internal.getBody()));
+      ByteBuffer buffer = BufferUtil.toBuffer(objectMapper.writeValueAsString(object));
       response.write(true, buffer, callback);
     } catch (JsonProcessingException e) {
       throw new RuntimeException(e);

@@ -41,8 +41,6 @@ public class Login implements Endpoint<LoginResponse, LoginRequest> {
   @Override
   public Response<LoginResponse> handle(Request<LoginRequest> request) {
 
-    System.out.println(request);
-
     Optional<List<Map<String, Object>>> result = database.handle(handle ->
         handle.createQuery("""
                 SELECT *
