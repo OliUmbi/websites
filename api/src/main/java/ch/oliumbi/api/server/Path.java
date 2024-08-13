@@ -6,16 +6,25 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.eclipse.jetty.http.HttpURI;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Path {
 
   private String url;
   private String route;
   private List<Parameter> parameters;
+
+  public Path(HttpURI httpURI) {
+
+    this.url = httpURI.getDecodedPath();
+
+
+
+
+
+  }
 
   public Optional<String> pathVariable(String name) {
     return Optional.of("");
@@ -32,3 +41,16 @@ public class Path {
     return true;
   }
 }
+
+/**
+ * method = start
+ * params = start
+ * headers = start
+ * body = endpoint
+ * authentication = endpoint
+ * cors = start
+ * meta = start
+ * path matching = endpoint
+ * path variable = endpoint
+ * path variable datatype = end
+ */

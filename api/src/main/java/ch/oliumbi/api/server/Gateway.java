@@ -33,8 +33,8 @@ public class Gateway extends Handler.Abstract {
     // todo get header, get session, etc.
     Meta meta = Meta.convert(request.getConnectionMetaData());
     Method method = Method.convert(request.getMethod());
-    Path path = Path.convert(request.getHttpURI());
-    Headers headers = Headers.convert(request.getHeaders());
+    Path path = new Path(request.getHttpURI());
+    Headers headers = new Headers(request.getHeaders());
     ByteBuffer buffer = request.read().getByteBuffer();
 
 
