@@ -7,13 +7,15 @@ import ch.oliumbi.api.enums.Status;
 import ch.oliumbi.api.server.Endpoint;
 import ch.oliumbi.api.enums.Method;
 import ch.oliumbi.api.server.Request;
-import ch.oliumbi.api.server.Response;
+import ch.oliumbi.api.server.response.JsonResponse;
+import ch.oliumbi.api.server.response.Response;
+import ch.oliumbi.api.server.sadfasdf;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 @Autoload
-public class Login implements Endpoint<LoginResponse, LoginRequest> {
+public class Login implements Endpoint<LoginRequest> {
 
   private final Database database;
 
@@ -39,7 +41,7 @@ public class Login implements Endpoint<LoginResponse, LoginRequest> {
   }
 
   @Override
-  public Response<LoginResponse> handle(Request<LoginRequest> request) {
+  public Response handle(Request<LoginRequest> request) {
 
     Optional<List<Map<String, Object>>> result = database.handle(handle ->
         handle.createQuery("""
@@ -54,6 +56,6 @@ public class Login implements Endpoint<LoginResponse, LoginRequest> {
       System.out.println(stringObjectMap);
     }
 
-    return new Response<>(Status.OK, new LoginResponse(request.getBody().getUsername(), "token"));
+    return new JsonResponse(Status.OK, new LoginResponse(request.getBody().getUsername(), "token"));
   }
 }

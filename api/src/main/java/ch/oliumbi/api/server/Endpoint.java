@@ -2,9 +2,10 @@ package ch.oliumbi.api.server;
 
 import ch.oliumbi.api.enums.Method;
 import ch.oliumbi.api.enums.Permission;
+import ch.oliumbi.api.server.response.Response;
 import java.util.List;
 
-public interface Endpoint<T, U> {
+public interface Endpoint<T> {
 
   Method method();
 
@@ -12,5 +13,5 @@ public interface Endpoint<T, U> {
 
   List<Permission> permissions();
 
-  Response<T> handle(Request<U> request);
+  Response handle(Request<T> request);
 }
