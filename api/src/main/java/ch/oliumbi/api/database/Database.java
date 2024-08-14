@@ -23,7 +23,7 @@ public class Database {
     try {
       return Optional.of(jdbi.withHandle(callback));
     } catch (Exception e) {
-      LOGGER.error("Error in database handle", e);
+      LOGGER.error("Exception in database handle", e);
       return Optional.empty();
     }
   }

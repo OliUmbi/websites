@@ -2,11 +2,19 @@ package ch.oliumbi.api.server;
 
 import ch.oliumbi.api.enums.ContentType;
 import ch.oliumbi.api.enums.Status;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.net.URI;
+import java.nio.ByteBuffer;
+import java.nio.file.Path;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.eclipse.jetty.util.BufferUtil;
+import org.eclipse.jetty.util.resource.PathResource;
+import org.eclipse.jetty.util.resource.PathResourceFactory;
+import org.eclipse.jetty.util.resource.Resource;
 
 @Getter
 @Setter
@@ -44,11 +52,32 @@ public class Response<T> {
     this.headers = List.of(headers);
   }
 
-  public Object getContent() {
+  public Object getBody() {
     if (message != null) {
       return message;
     }
 
     return body;
+  }
+
+  public ByteBuffer getBuffer() throws Exception {
+    Object value = getBody();
+
+    if (value == null) {
+      return null;
+    }
+
+    if (value instanceof byte[] bytes) {
+      return BufferUtil.toBuffer(bytes);
+    }
+
+    if (value instanceof URI uri) {
+      return BufferUtil.toMappedBuffer(Path.of(uri));
+    }
+
+    ObjectMapper objectMapper = new ObjectMapper();
+    String json = objectMapper.writeValueAsString(value);
+
+    return BufferUtil.toBuffer(json);
   }
 }

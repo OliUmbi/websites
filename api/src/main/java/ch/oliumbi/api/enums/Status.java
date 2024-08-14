@@ -7,7 +7,7 @@ public enum Status {
   FORBIDDEN,
   INTERNAL_SERVER_ERROR;
 
-  public int code() {
+  public int getCode() {
     switch (this) {
       case OK -> {
         return 200;
