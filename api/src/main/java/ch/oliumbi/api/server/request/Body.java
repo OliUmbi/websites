@@ -1,12 +1,12 @@
-package ch.oliumbi.api.server;
+package ch.oliumbi.api.server.request;
 
+import ch.oliumbi.api.server.Endpoint;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.nio.ByteBuffer;
-import java.util.List;
 import org.eclipse.jetty.util.BufferUtil;
 
 public class Body {
@@ -46,5 +46,4 @@ public class Body {
 
     throw new Exception("Failed to handle request, reason: somehow no endpoint interface is defined");
   }
-
 }

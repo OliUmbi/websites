@@ -6,7 +6,7 @@ import ch.oliumbi.api.enums.Permission;
 import ch.oliumbi.api.enums.Status;
 import ch.oliumbi.api.server.Endpoint;
 import ch.oliumbi.api.enums.Method;
-import ch.oliumbi.api.server.Request;
+import ch.oliumbi.api.server.request.Request;
 import ch.oliumbi.api.server.response.JsonResponse;
 import ch.oliumbi.api.server.response.Response;
 import ch.oliumbi.api.server.sadfasdf;

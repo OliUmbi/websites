@@ -1,8 +1,7 @@
 package ch.oliumbi.api.server.response;
 
 import ch.oliumbi.api.enums.Status;
-import ch.oliumbi.api.server.Header;
-import ch.oliumbi.api.server.Message;
+import ch.oliumbi.api.server.request.Header;
 
 public class MessageResponse extends JsonResponse {
 

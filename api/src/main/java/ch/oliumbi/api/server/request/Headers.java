@@ -1,4 +1,4 @@
-package ch.oliumbi.api.server;
+package ch.oliumbi.api.server.request;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,10 +2,8 @@ package ch.oliumbi.api.server.response;
 
 import ch.oliumbi.api.enums.ContentType;
 import ch.oliumbi.api.enums.Status;
-import ch.oliumbi.api.server.Header;
-import ch.oliumbi.api.server.Headers;
-import ch.oliumbi.api.server.Message;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import ch.oliumbi.api.server.request.Header;
+import ch.oliumbi.api.server.request.Headers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.ByteBuffer;
 import org.eclipse.jetty.util.BufferUtil;

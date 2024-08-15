@@ -2,6 +2,7 @@ package ch.oliumbi.api.server;
 
 import ch.oliumbi.api.enums.Method;
 import ch.oliumbi.api.enums.Permission;
+import ch.oliumbi.api.server.request.Request;
 import ch.oliumbi.api.server.response.Response;
 import java.util.List;
 

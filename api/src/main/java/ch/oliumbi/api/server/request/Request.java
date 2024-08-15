@@ -1,7 +1,6 @@
-package ch.oliumbi.api.server;
+package ch.oliumbi.api.server.request;
 
 import ch.oliumbi.api.enums.Method;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;

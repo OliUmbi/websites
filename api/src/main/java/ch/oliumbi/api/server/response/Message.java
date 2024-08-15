@@ -1,4 +1,4 @@
-package ch.oliumbi.api.server;
+package ch.oliumbi.api.server.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

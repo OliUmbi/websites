@@ -1,5 +1,6 @@
 package ch.oliumbi.api.server;
 
+import ch.oliumbi.api.server.request.Header;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Response;

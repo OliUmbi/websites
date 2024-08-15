@@ -1,15 +1,15 @@
-package ch.oliumbi.api.server;
+package ch.oliumbi.api.server.request;
 
-import lombok.Getter;
-import lombok.Setter;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PathVariable {
+public class Parameter {
 
   private String name;
   private String value;

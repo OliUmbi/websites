@@ -2,10 +2,8 @@ package ch.oliumbi.api.server.response;
 
 import ch.oliumbi.api.enums.ContentType;
 import ch.oliumbi.api.enums.Status;
-import ch.oliumbi.api.server.Header;
-import ch.oliumbi.api.server.Headers;
-import java.io.IOException;
-import java.net.URI;
+import ch.oliumbi.api.server.request.Header;
+import ch.oliumbi.api.server.request.Headers;
 import java.nio.ByteBuffer;
 import java.nio.file.Path;
 import org.eclipse.jetty.util.BufferUtil;

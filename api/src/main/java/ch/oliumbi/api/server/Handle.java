@@ -3,6 +3,14 @@ package ch.oliumbi.api.server;
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.enums.Method;
 import ch.oliumbi.api.enums.Status;
+import ch.oliumbi.api.server.request.Body;
+import ch.oliumbi.api.server.request.Headers;
+import ch.oliumbi.api.server.request.Meta;
+import ch.oliumbi.api.server.request.Parameters;
+import ch.oliumbi.api.server.request.Path;
+import ch.oliumbi.api.server.request.PathVariables;
+import ch.oliumbi.api.server.request.Request;
+import ch.oliumbi.api.server.request.Session;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
 import java.nio.ByteBuffer;
@@ -110,7 +118,7 @@ public class Handle {
       }
 
       try {
-        return endpoint.handle(new ch.oliumbi.api.server.Request<>(session, meta, method, path, headers, body));
+        return endpoint.handle(new Request<>(session, meta, method, path, headers, body));
       } catch (Exception e) {
         LOGGER.error("Failed to handle request, reason: unexpected exception from endpoint", e);
         return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to handle request.");
