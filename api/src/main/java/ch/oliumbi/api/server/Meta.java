@@ -13,7 +13,7 @@ import org.eclipse.jetty.server.ConnectionMetaData;
 public class Meta {
   private String ip;
 
-  public static Meta convert(ConnectionMetaData metaData) {
-    return new Meta(metaData.getRemoteSocketAddress().toString());
+  public Meta(ConnectionMetaData metaData) {
+    this.ip = metaData.getRemoteSocketAddress().toString();
   }
 }

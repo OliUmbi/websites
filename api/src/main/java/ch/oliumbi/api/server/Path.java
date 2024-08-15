@@ -1,7 +1,5 @@
 package ch.oliumbi.api.server;
 
-import java.util.List;
-import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,52 +8,37 @@ import org.eclipse.jetty.http.HttpURI;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Path {
 
   private String url;
-  private String route;
-  private List<Parameter> parameters;
 
   public Path(HttpURI httpURI) {
-
     this.url = httpURI.getDecodedPath();
-
-
-
-
-
   }
 
-  public Optional<String> pathVariable(String name) {
-    return Optional.of("");
-  }
+  public boolean matches(String route) {
+    String[] routeParts = route.split("/");
+    String[] urlParts = url.split("/");
 
-  public Optional<String> parameter(String name) {
-    return parameters.stream()
-        .filter(parameter -> parameter.getName().equals(name))
-        .map(Parameter::getValue)
-        .findFirst();
-  }
+    if (routeParts.length != urlParts.length) {
+      return false;
+    }
 
-  public boolean matches() {
+    for (int i = 0; i < routeParts.length; i++) {
+      String routePart = routeParts[i];
+      String urlPart = urlParts[i];
+
+      if (routePart.startsWith(":")) {
+        continue;
+      }
+
+      if (!routePart.equals(urlPart)) {
+        return false;
+      }
+    }
+
     return true;
   }
 }
-
-/**
- *
- * Gateway
- * Validation
- *
- *
- * method = start
- * params = start
- * headers = start
- * body = endpoint
- * authentication = endpoint
- * cors = start
- * meta = start
- * path matching = endpoint
- * path variable = endpoint
- * path variable datatype = end
- */

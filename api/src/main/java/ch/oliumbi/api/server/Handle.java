@@ -7,6 +7,9 @@ import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
 import java.nio.ByteBuffer;
 import java.util.List;
+import org.eclipse.jetty.http.HttpFields;
+import org.eclipse.jetty.http.HttpURI;
+import org.eclipse.jetty.server.ConnectionMetaData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +26,47 @@ public class Handle {
     this.cors = cors;
   }
 
-  public Response request(Meta meta, Method method, Path path, Headers headers, ByteBuffer buffer) {
+  public Response request(ConnectionMetaData connectionMetaData, String methodString, HttpURI httpURI, HttpFields httpFields, ByteBuffer buffer) {
+
+    Meta meta;
+    try {
+      meta = new Meta(connectionMetaData);
+    } catch (Exception e) {
+      LOGGER.error("Failed to convert meta", e);
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to handle request.");
+    }
+
+    Method method;
+    try {
+      method = Method.convert(methodString);
+    } catch (Exception e) {
+      LOGGER.error("Failed to convert method", e);
+      return new MessageResponse(Status.BAD_REQUEST, "Method is unsupported.");
+    }
+
+    Path path;
+    try {
+      path = new Path(httpURI);
+    } catch (Exception e) {
+      LOGGER.error("Failed to convert path", e);
+      return new MessageResponse(Status.BAD_REQUEST, "Url is malformed.");
+    }
+
+    Parameters parameters;
+    try {
+      parameters = new Parameters(httpURI);
+    } catch (Exception e) {
+      LOGGER.error("Failed to convert path", e);
+      return new MessageResponse(Status.BAD_REQUEST, "Url is malformed.");
+    }
+
+    Headers headers;
+    try {
+      headers = new Headers(httpFields);
+    } catch (Exception e) {
+      LOGGER.error("Failed to convert headers", e);
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to handle request.");
+    }
 
     if (method == Method.OPTIONS) {
       return cors.response();
@@ -34,8 +77,7 @@ public class Handle {
         continue;
       }
 
-      path.setRoute(endpoint.route());
-      if (!path.matches()) {
+      if (!path.matches(endpoint.route())) {
         continue;
       }
 
@@ -51,6 +93,14 @@ public class Handle {
         return new MessageResponse(Status.FORBIDDEN, "Missing permission.");
       }
 
+      PathVariables pathVariables;
+      try {
+        pathVariables = new PathVariables(request.getHttpURI(), endpoint.route());
+      } catch (Exception e) {
+        LOGGER.error("Failed to convert path", e);
+        return new MessageResponse(Status.BAD_REQUEST, "Url is malformed.");
+      }
+
       Object body;
       try {
         body = Body.convert(endpoint, buffer);
@@ -60,13 +110,13 @@ public class Handle {
       }
 
       try {
-        return endpoint.handle(new Request<>(session, meta, method, path, headers, body));
+        return endpoint.handle(new ch.oliumbi.api.server.Request<>(session, meta, method, path, headers, body));
       } catch (Exception e) {
         LOGGER.error("Failed to handle request, reason: unexpected exception from endpoint", e);
-        return new sadfsdf<>(Status.INTERNAL_SERVER_ERROR, "Failed to handle request.");
+        return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to handle request.");
       }
     }
 
-    return new sadfsdf<>(Status.BAD_REQUEST, "No matching endpoint found.");
+    return new MessageResponse(Status.BAD_REQUEST, "No matching endpoint found.");
   }
 }

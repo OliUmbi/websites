@@ -10,16 +10,23 @@ import org.slf4j.LoggerFactory;
 public class Gateway extends Handler.Abstract {
 
   public static final Logger LOGGER = LoggerFactory.getLogger(Gateway.class);
-  private final Yeet yeet;
 
-  public Gateway(Yeet yeet) {
-    this.yeet = yeet;
+  private final Handle handle;
+
+  public Gateway(Handle handle) {
+    this.handle = handle;
   }
 
   @Override
   public boolean handle(Request request, Response response, Callback callback) {
 
-    ch.oliumbi.api.server.response.Response internal = yeet.yeet(request);
+    ch.oliumbi.api.server.response.Response internal = handle.request(
+        request.getConnectionMetaData(),
+        request.getMethod(),
+        request.getHttpURI(),
+        request.getHeaders(),
+        request.read().getByteBuffer()
+    );
 
     response.setStatus(internal.getStatus().getCode());
 
