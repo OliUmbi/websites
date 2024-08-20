@@ -1,4 +1,4 @@
-package ch.oliumbi.api.server;
+package ch.oliumbi.api.endpoints;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.confguration.Configuration;
@@ -6,7 +6,6 @@ import ch.oliumbi.api.enums.Status;
 import ch.oliumbi.api.server.request.Header;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
-import ch.oliumbi.api.server.response.sadfsdf;
 
 @Autoload
 public class Cors {

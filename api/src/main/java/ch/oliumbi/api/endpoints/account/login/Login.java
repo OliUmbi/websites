@@ -1,4 +1,4 @@
-package ch.oliumbi.api.services.account.login;
+package ch.oliumbi.api.endpoints.account.login;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
@@ -9,7 +9,6 @@ import ch.oliumbi.api.enums.Method;
 import ch.oliumbi.api.server.request.Request;
 import ch.oliumbi.api.server.response.JsonResponse;
 import ch.oliumbi.api.server.response.Response;
-import ch.oliumbi.api.server.sadfasdf;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;

@@ -11,11 +11,11 @@ import org.eclipse.jetty.server.handler.gzip.GzipHandler;
 public class Server {
 
   private final Configuration configuration;
-  private final Gateway gateway;
+  private final ServerHandler serverHandler;
 
-  public Server(Configuration configuration, Gateway gateway) {
+  public Server(Configuration configuration, ServerHandler serverHandler) {
     this.configuration = configuration;
-    this.gateway = gateway;
+    this.serverHandler = serverHandler;
 
     start();
   }
@@ -36,7 +36,7 @@ public class Server {
 
     GzipHandler gzipHandler = new GzipHandler();
     gzipHandler.setMinGzipSize(1024);
-    gzipHandler.setHandler(gateway);
+    gzipHandler.setHandler(serverHandler);
 
     server.setHandler(gzipHandler);
 

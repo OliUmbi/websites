@@ -1,9 +1,12 @@
 package ch.oliumbi.api.server;
 
 import ch.oliumbi.api.autoload.Autoload;
+import ch.oliumbi.api.endpoints.Cors;
+import ch.oliumbi.api.endpoints.SessionService;
 import ch.oliumbi.api.enums.Method;
 import ch.oliumbi.api.enums.Status;
 import ch.oliumbi.api.server.request.Body;
+import ch.oliumbi.api.server.request.Header;
 import ch.oliumbi.api.server.request.Headers;
 import ch.oliumbi.api.server.request.Meta;
 import ch.oliumbi.api.server.request.Parameters;
@@ -15,6 +18,7 @@ import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
 import java.nio.ByteBuffer;
 import java.util.List;
+import java.util.Optional;
 import org.eclipse.jetty.http.HttpFields;
 import org.eclipse.jetty.http.HttpURI;
 import org.eclipse.jetty.server.ConnectionMetaData;
@@ -22,16 +26,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Autoload
-public class Handle {
+public class EndpointHandler {
 
-  public static final Logger LOGGER = LoggerFactory.getLogger(Handle.class);
+  public static final Logger LOGGER = LoggerFactory.getLogger(EndpointHandler.class);
 
   private final List<Endpoint<?>> endpoints;
   private final Cors cors;
+  private final SessionService sessionService;
 
-  public Handle(Endpoint<?>[] endpoints, Cors cors) {
+  public EndpointHandler(Endpoint<?>[] endpoints, Cors cors, SessionService sessionService) {
     this.endpoints = List.of(endpoints);
     this.cors = cors;
+    this.sessionService = sessionService;
   }
 
   public Response request(ConnectionMetaData connectionMetaData, String methodString, HttpURI httpURI, HttpFields httpFields, ByteBuffer buffer) {
@@ -89,21 +95,30 @@ public class Handle {
         continue;
       }
 
-      Session session;
-      String token = headers.get("Authentication");
-      // todo what to do when no user is defined? is session gonna be optional? and where would this be created?
+      Session session = null;
+      if (!endpoint.permissions().isEmpty()) {
+        Optional<Header> authentication = headers.get("Authentication");
 
-      if (token != null) {
+        if (authentication.isEmpty()) {
+          return new MessageResponse(Status.UNAUTHORIZED, "Authentication missing.");
+        }
 
-      }
+        Optional<Session> optionalSession = sessionService.getSession(authentication.get().getValue());
 
-      if (!endpoint.permissions().isEmpty() && !session.getPermissions().containsAll(endpoint.permissions())) {
-        return new MessageResponse(Status.FORBIDDEN, "Missing permission.");
+        if (optionalSession.isEmpty()) {
+          return new MessageResponse(Status.UNAUTHORIZED, "Authentication missing.");
+        }
+
+        session = optionalSession.get();
+
+        if (!session.getPermissions().containsAll(endpoint.permissions())) {
+          return new MessageResponse(Status.FORBIDDEN, "Missing permission.");
+        }
       }
 
       PathVariables pathVariables;
       try {
-        pathVariables = new PathVariables(request.getHttpURI(), endpoint.route());
+        pathVariables = new PathVariables(httpURI, endpoint.route());
       } catch (Exception e) {
         LOGGER.error("Failed to convert path", e);
         return new MessageResponse(Status.BAD_REQUEST, "Url is malformed.");
@@ -118,7 +133,7 @@ public class Handle {
       }
 
       try {
-        return endpoint.handle(new Request<>(session, meta, method, path, headers, body));
+        return endpoint.handle(new Request<>(meta, method, path, parameters, pathVariables, headers, body, session));
       } catch (Exception e) {
         LOGGER.error("Failed to handle request, reason: unexpected exception from endpoint", e);
         return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to handle request.");

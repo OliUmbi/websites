@@ -8,20 +8,20 @@ import org.eclipse.jetty.util.Callback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Gateway extends Handler.Abstract {
+public class ServerHandler extends Handler.Abstract {
 
-  public static final Logger LOGGER = LoggerFactory.getLogger(Gateway.class);
+  public static final Logger LOGGER = LoggerFactory.getLogger(ServerHandler.class);
 
-  private final Handle handle;
+  private final EndpointHandler endpointHandler;
 
-  public Gateway(Handle handle) {
-    this.handle = handle;
+  public ServerHandler(EndpointHandler endpointHandler) {
+    this.endpointHandler = endpointHandler;
   }
 
   @Override
   public boolean handle(Request request, Response response, Callback callback) {
 
-    ch.oliumbi.api.server.response.Response internal = handle.request(
+    ch.oliumbi.api.server.response.Response internal = endpointHandler.request(
         request.getConnectionMetaData(),
         request.getMethod(),
         request.getHttpURI(),

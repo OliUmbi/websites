@@ -12,12 +12,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Request<T> {
 
-  private Session session;
   private Meta meta;
   private Method method;
   private Path path;
+  private Parameters parameters;
+  private PathVariables pathVariables;
   private Headers headers;
   private Object body;
+  private Session session;
 
   public T getBody() {
     //noinspection unchecked
