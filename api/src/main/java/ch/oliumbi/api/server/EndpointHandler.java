@@ -2,7 +2,7 @@ package ch.oliumbi.api.server;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.endpoints.Cors;
-import ch.oliumbi.api.endpoints.SessionService;
+import ch.oliumbi.api.services.session.SessionService;
 import ch.oliumbi.api.enums.Method;
 import ch.oliumbi.api.enums.Status;
 import ch.oliumbi.api.server.request.Body;
@@ -13,7 +13,7 @@ import ch.oliumbi.api.server.request.Parameters;
 import ch.oliumbi.api.server.request.Path;
 import ch.oliumbi.api.server.request.PathVariables;
 import ch.oliumbi.api.server.request.Request;
-import ch.oliumbi.api.server.request.Session;
+import ch.oliumbi.api.services.session.Session;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
 import java.nio.ByteBuffer;
@@ -95,27 +95,6 @@ public class EndpointHandler {
         continue;
       }
 
-      Session session = null;
-      if (!endpoint.permissions().isEmpty()) {
-        Optional<Header> authentication = headers.get("Authentication");
-
-        if (authentication.isEmpty()) {
-          return new MessageResponse(Status.UNAUTHORIZED, "Authentication missing.");
-        }
-
-        Optional<Session> optionalSession = sessionService.getSession(authentication.get().getValue());
-
-        if (optionalSession.isEmpty()) {
-          return new MessageResponse(Status.UNAUTHORIZED, "Authentication missing.");
-        }
-
-        session = optionalSession.get();
-
-        if (!session.getPermissions().containsAll(endpoint.permissions())) {
-          return new MessageResponse(Status.FORBIDDEN, "Missing permission.");
-        }
-      }
-
       PathVariables pathVariables;
       try {
         pathVariables = new PathVariables(httpURI, endpoint.route());
@@ -133,7 +112,7 @@ public class EndpointHandler {
       }
 
       try {
-        return endpoint.handle(new Request<>(meta, method, path, parameters, pathVariables, headers, body, session));
+        return endpoint.handle(new Request<>(meta, method, path, parameters, pathVariables, headers, body));
       } catch (Exception e) {
         LOGGER.error("Failed to handle request, reason: unexpected exception from endpoint", e);
         return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to handle request.");

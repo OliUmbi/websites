@@ -13,9 +13,9 @@ DROP TYPE IF EXISTS unclet_contact_state CASCADE;
 CREATE TYPE unclet_contact_state AS ENUM ('UNREAD', 'ACKNOWLEDGED', 'DONE');
 CREATE CAST (varchar AS unclet_contact_state) WITH INOUT AS IMPLICIT;
 
-------------
+-------------
 -- account --
-------------
+-------------
 DROP TABLE IF EXISTS account CASCADE;
 CREATE TABLE account
 (
@@ -31,7 +31,7 @@ CREATE TABLE account_session
 (
     account_session_id UUID        NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
     account_id         UUID        NOT NULL REFERENCES account ON UPDATE CASCADE ON DELETE CASCADE,
-    token              VARCHAR(32) NOT NULL,
+    token              VARCHAR(32) NOT NULL UNIQUE,
     expires            TIMESTAMP   NOT NULL
 );
 

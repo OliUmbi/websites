@@ -1,4 +1,4 @@
-package ch.oliumbi.api.server.request;
+package ch.oliumbi.api.services.session;
 
 import ch.oliumbi.api.enums.Permission;
 import java.util.List;

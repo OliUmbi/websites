@@ -42,6 +42,7 @@ public class Login implements Endpoint<LoginRequest> {
   @Override
   public Response handle(Request<LoginRequest> request) {
 
+    /*
     Optional<List<Map<String, Object>>> result = database.handle(handle ->
         handle.createQuery("""
                 SELECT *
@@ -56,5 +57,7 @@ public class Login implements Endpoint<LoginRequest> {
     }
 
     return new JsonResponse(Status.OK, new LoginResponse(request.getBody().getUsername(), "token"));
+     */
+    return null;
   }
 }

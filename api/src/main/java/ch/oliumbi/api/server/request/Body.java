@@ -14,7 +14,7 @@ public class Body {
   private static final ObjectMapper objectMapper = new ObjectMapper();
   private static final TypeFactory typeFactory = objectMapper.getTypeFactory();
 
-  public static Object convert(Endpoint<?, ?> endpoint, ByteBuffer byteBuffer) throws Exception {
+  public static Object convert(Endpoint<?> endpoint, ByteBuffer byteBuffer) throws Exception {
     Type requestType = requestType(endpoint);
 
     try {
@@ -24,7 +24,7 @@ public class Body {
     }
   }
 
-  private static Type requestType(Endpoint<?, ?> endpoint) throws Exception {
+  private static Type requestType(Endpoint<?> endpoint) throws Exception {
     Type[] genericInterfaces = endpoint.getClass().getGenericInterfaces();
 
     if (genericInterfaces.length == 0) {

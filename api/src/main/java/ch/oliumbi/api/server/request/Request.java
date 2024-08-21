@@ -1,6 +1,7 @@
 package ch.oliumbi.api.server.request;
 
 import ch.oliumbi.api.enums.Method;
+import ch.oliumbi.api.services.session.Session;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,6 @@ public class Request<T> {
   private PathVariables pathVariables;
   private Headers headers;
   private Object body;
-  private Session session;
 
   public T getBody() {
     //noinspection unchecked
