@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class ServerHandler extends Handler.Abstract {
 
-  public static final Logger LOGGER = LoggerFactory.getLogger(ServerHandler.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(ServerHandler.class);
 
   private final EndpointHandler endpointHandler;
 

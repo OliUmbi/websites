@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 @Autoload
 public class EndpointHandler {
 
-  public static final Logger LOGGER = LoggerFactory.getLogger(EndpointHandler.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(EndpointHandler.class);
 
   private final List<Endpoint<?>> endpoints;
   private final Cors cors;

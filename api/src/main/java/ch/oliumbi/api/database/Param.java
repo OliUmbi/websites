@@ -1,0 +1,18 @@
+package ch.oliumbi.api.database;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Param {
+
+  private String name;
+  private Object value;
+
+  private Param(String name, Object value) {}
+
+  public static Param from(String name, Object value) {
+    return new Param(name, value);
+  }
+}
