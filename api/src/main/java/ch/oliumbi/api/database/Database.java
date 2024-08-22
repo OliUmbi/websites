@@ -57,8 +57,27 @@ public class Database {
   }
 
   public Optional<List<Row>> query(String query, Object... params) {
+    try (PoolConnection poolConnection = pool.lease()) {
+      List<String> inputs = getInputs(query);
 
-    // todo implement like query
+      query = replaceInputs(query);
+
+      try (PreparedStatement preparedStatement = poolConnection.prepareStatement(query)) {
+        setInputs(preparedStatement, inputs, params);
+
+        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+          List<Row> rows = getRows(resultSet);
+
+          return Optional.of(rows);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
 
     return Optional.empty();
   }
@@ -132,9 +151,15 @@ public class Database {
   private void setInputs(PreparedStatement preparedStatement, List<String> inputs, Object[] params) {
     for (int i = 0; i < inputs.size(); i++) {
       for (Object param : params) {
-        for (Field declaredField : param.getClass().getDeclaredFields()) {
-          if (declaredField.getName().equals(inputs.get(i)) && declaredField.trySetAccessible()) {
-            preparedStatement.setObject(i + 1, declaredField.get(param));
+        if (param instanceof Param param1) {
+          if (param1.getName().equals(inputs.get(i))) {
+            preparedStatement.setObject(i + 1, param1.getValue());
+          }
+        } else {
+          for (Field declaredField : param.getClass().getDeclaredFields()) {
+            if (declaredField.getName().equals(inputs.get(i)) && declaredField.trySetAccessible()) {
+              preparedStatement.setObject(i + 1, declaredField.get(param));
+            }
           }
         }
       }
@@ -159,5 +184,15 @@ public class Database {
     }
 
     return results;
+  }
+
+  private List<Row> getRows(ResultSet resultSet) {
+    List<Row> rows = new ArrayList<>();
+
+    while (resultSet.next()) {
+      rows.add(new Row(resultSet));
+    }
+
+    return rows;
   }
 }
