@@ -20,7 +20,7 @@ public class PoolConnection implements AutoCloseable {
     pool.offer(connection);
   }
 
-  public PreparedStatement prepareStatement(String query) throws SQLException {
+  public PreparedStatement prepareStatement(String query) throws Exception {
     return connection.prepareStatement(query);
   }
 }
