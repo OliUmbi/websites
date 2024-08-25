@@ -2,16 +2,20 @@ package ch.oliumbi.api.endpoints.account.login;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
+import ch.oliumbi.api.database.Param;
+import ch.oliumbi.api.database.Row;
 import ch.oliumbi.api.enums.Permission;
 import ch.oliumbi.api.enums.Status;
 import ch.oliumbi.api.server.Endpoint;
 import ch.oliumbi.api.enums.Method;
 import ch.oliumbi.api.server.request.Request;
 import ch.oliumbi.api.server.response.JsonResponse;
+import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
+import java.util.Random;
 
 @Autoload
 public class Login implements Endpoint<LoginRequest> {
@@ -24,40 +28,63 @@ public class Login implements Endpoint<LoginRequest> {
 
   @Override
   public Method method() {
-    return Method.GET;
+    return Method.POST;
   }
 
   @Override
   public String route() {
-    return "/account/login/:id";
+    return "/account/login";
   }
 
   @Override
   public List<Permission> permissions() {
-    return List.of(
-        Permission.OLIUMBI_ADMIN
-    );
+    return List.of();
   }
 
   @Override
   public Response handle(Request<LoginRequest> request) {
 
-    /*
-    Optional<List<Map<String, Object>>> result = database.handle(handle ->
-        handle.createQuery("""
-                SELECT *
-                FROM account
-                """)
-            .mapToMap()
-            .list()
-    );
+    Optional<Row> account = database.querySingle("""
+            SELECT  account_id,
+                    password
+            FROM    account
+            WHERE   firstname = :username
+            LIMIT   1
+            """,
+        Param.from("username", request.getBody().getUsername()));
 
-    for (Map<String, Object> stringObjectMap : result.get()) {
-      System.out.println(stringObjectMap);
+    if (account.isEmpty()) {
+      return new MessageResponse(Status.BAD_REQUEST, "Login failed.");
     }
 
-    return new JsonResponse(Status.OK, new LoginResponse(request.getBody().getUsername(), "token"));
-     */
-    return null;
+    if (!account.get().getString("password").equals(request.getBody().getPassword())) {
+      return new MessageResponse(Status.BAD_REQUEST, "Login failed.");
+    }
+
+    String donor = "QWERTZUIOPASDFGHJKLYXCVBNM";
+
+    Random random = new Random();
+
+    String token = "";
+
+    for (int i = 0; i < 5; i++) {
+      token += donor.charAt(random.nextInt(donor.length()));
+    }
+
+    database.update("""
+        INSERT INTO account_session (
+                    account_id,
+                    token,
+                    expires)
+        VALUES (
+                    :accountId,
+                    :token,
+                    :expires)
+        """,
+        Param.from("accountId", account.get().getUUID("account_id")),
+        Param.from("token", token),
+        Param.from("expires", LocalDateTime.now().plusHours(8)));
+
+    return new JsonResponse(Status.OK, new LoginResponse(token));
   }
 }

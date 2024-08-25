@@ -10,7 +10,10 @@ public class Param {
   private String name;
   private Object value;
 
-  private Param(String name, Object value) {}
+  private Param(String name, Object value) {
+    this.name = name;
+    this.value = value;
+  }
 
   public static Param from(String name, Object value) {
     return new Param(name, value);

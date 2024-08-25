@@ -36,11 +36,11 @@ public class Body {
 
         Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
 
-        if (actualTypeArguments.length != 2) {
-          throw new Exception("Failed to handle request, reason: number of generic types are not 2");
+        if (actualTypeArguments.length == 0) {
+          throw new Exception("Failed to handle request, reason: no generic types found");
         }
 
-        return actualTypeArguments[1];
+        return actualTypeArguments[0];
       }
     }
 

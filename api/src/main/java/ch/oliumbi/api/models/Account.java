@@ -18,4 +18,7 @@ public class Account {
   private String lastname;
   private String email;
   private String password;
+
+  private List<AccountSession> sessions;
+  private List<AccountPermission> permissions;
 }

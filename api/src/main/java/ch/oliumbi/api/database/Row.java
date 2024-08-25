@@ -1,8 +1,6 @@
 package ch.oliumbi.api.database;
 
-import ch.oliumbi.api.enums.Method;
 import java.math.BigDecimal;
-import java.sql.Array;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,7 +8,6 @@ import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.HashMap;
-import java.util.Optional;
 import java.util.UUID;
 
 public class Row extends HashMap<String, Object> {

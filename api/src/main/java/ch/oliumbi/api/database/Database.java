@@ -193,6 +193,7 @@ public class Database {
     return query.replaceAll("INTO [\\s\\S]*", "");
   }
 
+  // todo rework due to param1 variable
   private void setInputs(PreparedStatement preparedStatement, List<String> inputs, Object[] params) throws Exception {
     for (int i = 0; i < inputs.size(); i++) {
       for (Object param : params) {

@@ -2,7 +2,10 @@ package ch.oliumbi.api.server;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.endpoints.Cors;
-import ch.oliumbi.api.services.session.SessionService;
+import ch.oliumbi.api.enums.Permission;
+import ch.oliumbi.api.models.Account;
+import ch.oliumbi.api.models.AccountPermission;
+import ch.oliumbi.api.services.accounts.AccountService;
 import ch.oliumbi.api.enums.Method;
 import ch.oliumbi.api.enums.Status;
 import ch.oliumbi.api.server.request.Body;
@@ -13,7 +16,6 @@ import ch.oliumbi.api.server.request.Parameters;
 import ch.oliumbi.api.server.request.Path;
 import ch.oliumbi.api.server.request.PathVariables;
 import ch.oliumbi.api.server.request.Request;
-import ch.oliumbi.api.services.session.Session;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
 import java.nio.ByteBuffer;
@@ -32,12 +34,12 @@ public class EndpointHandler {
 
   private final List<Endpoint<?>> endpoints;
   private final Cors cors;
-  private final SessionService sessionService;
+  private final AccountService accountService;
 
-  public EndpointHandler(Endpoint<?>[] endpoints, Cors cors, SessionService sessionService) {
+  public EndpointHandler(Endpoint<?>[] endpoints, Cors cors, AccountService accountService) {
     this.endpoints = List.of(endpoints);
     this.cors = cors;
-    this.sessionService = sessionService;
+    this.accountService = accountService;
   }
 
   public Response request(ConnectionMetaData connectionMetaData, String methodString, HttpURI httpURI, HttpFields httpFields, ByteBuffer buffer) {
@@ -111,8 +113,30 @@ public class EndpointHandler {
         return new MessageResponse(Status.BAD_REQUEST, "Body is malformed.");
       }
 
+      Account session = null;
+      if (!endpoint.permissions().isEmpty()) {
+        Optional<Header> authentication = headers.get("Authentication");
+        if (authentication.isEmpty()) {
+          return new MessageResponse(Status.UNAUTHORIZED, "Authentication is missing.");
+        }
+
+        Optional<Account> account = accountService.loadByToken(authentication.get().getValue());
+
+        if (account.isEmpty()) {
+          return new MessageResponse(Status.UNAUTHORIZED, "Authentication is invalid.");
+        }
+
+        List<Permission> permissions = account.get().getPermissions().stream().map(AccountPermission::getPermission).toList();
+
+        if (!permissions.containsAll(endpoint.permissions())) {
+          return new MessageResponse(Status.FORBIDDEN, "Missing permission.");
+        }
+
+        session = account.get();
+      }
+
       try {
-        return endpoint.handle(new Request<>(meta, method, path, parameters, pathVariables, headers, body));
+        return endpoint.handle(new Request<>(meta, method, path, parameters, pathVariables, headers, body, session));
       } catch (Exception e) {
         LOGGER.error("Failed to handle request, reason: unexpected exception from endpoint", e);
         return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to handle request.");
