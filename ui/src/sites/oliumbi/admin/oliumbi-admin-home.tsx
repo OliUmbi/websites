@@ -114,7 +114,7 @@ const OliumbiAdminHome = () => {
             in faucibus orci luctus et ultrices posuere cubilia curae; Aenean rhoncus rutrum lectus non bibendum.
           </Text>
         </Drawer>
-        <Input value={input} setValue={setInput} type="text" label="Firstname" required={true} placeholder="Example example"
+        <InputText value={input} setValue={setInput} type="text" label="Firstname" required={true} placeholder="Example example"
                message=""/>
         <Text type="p" primary={true} mono={false}>
           Lorem ipsum dolor sit amet <Anchor to="/aldfjs">external website</Anchor>, consectetur adipiscing elit.

@@ -16,6 +16,13 @@ one project to rule them all
 
 ## jublawoma
 
+### ideas
+- new images
+- gallery
+- shirt shop like
+- anonymous invoice send with documents for finances
+- profile / steckbrief of members or groups
+
 ### pages
 - home
   - marketing 

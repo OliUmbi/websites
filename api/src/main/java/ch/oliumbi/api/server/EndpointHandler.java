@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Optional;
 import org.eclipse.jetty.http.HttpFields;
 import org.eclipse.jetty.http.HttpURI;
+import org.eclipse.jetty.io.Content.Chunk;
 import org.eclipse.jetty.server.ConnectionMetaData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +43,7 @@ public class EndpointHandler {
     this.accountService = accountService;
   }
 
-  public Response request(ConnectionMetaData connectionMetaData, String methodString, HttpURI httpURI, HttpFields httpFields, ByteBuffer buffer) {
+  public Response request(ConnectionMetaData connectionMetaData, String methodString, HttpURI httpURI, HttpFields httpFields, Chunk chunk) {
 
     Meta meta;
     try {
@@ -107,7 +108,7 @@ public class EndpointHandler {
 
       Object body;
       try {
-        body = Body.convert(endpoint, buffer);
+        body = Body.convert(endpoint, chunk.getByteBuffer());
       } catch (Exception e) {
         LOGGER.warn(e.getMessage());
         return new MessageResponse(Status.BAD_REQUEST, "Body is malformed.");

@@ -1,5 +1,4 @@
 import {useState} from "react";
-import {date} from "../services/date";
 
 const useInput = (total: number, size: number): {
   total: number

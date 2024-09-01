@@ -26,7 +26,7 @@ public class ServerHandler extends Handler.Abstract {
         request.getMethod(),
         request.getHttpURI(),
         request.getHeaders(),
-        request.read().getByteBuffer()
+        request.read()
     );
 
     response.setStatus(internal.getStatus().getCode());

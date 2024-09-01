@@ -1,5 +1,17 @@
 services:
 
+  websites-db:
+    image: websites-db:${VERSION_API}
+    restart: always
+    ports:
+      - 5432:5432
+    networks:
+      - websites-network
+    volumes:
+      - "websites-db-volume:/data"
+    environment:
+      - SECRET_DB_PASSWORD=${SECRET_DB_PASSWORD}
+
   websites-api:
     image: websites-api:${VERSION_API}
     restart: always
@@ -10,11 +22,19 @@ services:
     volumes:
       - "websites-api-volume:/data"
     environment:
-      - SECRET_DATABASE=${SECRET_DATABASE}
+      - SECRET_DB_PASSWORD=${SECRET_DB_PASSWORD}
+
+  websites-ui:
+    image: websites-ui:${VERSION_API}
+    restart: always
+    ports:
+      - 80:80
+    networks:
+      - websites-network
 
 networks:
   websites-network:
 
 volumes:
-  websites-database-volume:
+  websites-db-volume:
   websites-api-volume:

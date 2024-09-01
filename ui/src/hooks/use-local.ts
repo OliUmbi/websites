@@ -1,7 +1,10 @@
 import {useSyncExternalStore} from "react";
 import {local} from "../services/local";
 
-const useLocal = <T>(name: string): [T | null, (value: T) => void] => {
+const useLocal = <T>(name: string): {
+  value: T | null,
+  setValue: (value: T) => void
+} => {
 
   let value = null
   let stored = useSyncExternalStore(local.subscribe(name), local.get(name))
@@ -14,9 +17,10 @@ const useLocal = <T>(name: string): [T | null, (value: T) => void] => {
     local.set(name, JSON.stringify(value))
   }
 
-  // todo return single object
-
-  return [value, setValue]
+  return {
+    value: value,
+    setValue: setValue
+  }
 }
 
 export default useLocal;
