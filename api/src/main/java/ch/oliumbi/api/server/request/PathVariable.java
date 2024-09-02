@@ -13,4 +13,6 @@ public class PathVariable {
 
   private String name;
   private String value;
+
+  // todo add datatype matching
 }

@@ -13,4 +13,6 @@ public class Parameter {
 
   private String name;
   private String value;
+
+  // todo add datatype matching include lists
 }
