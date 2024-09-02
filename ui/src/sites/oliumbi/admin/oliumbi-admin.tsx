@@ -12,10 +12,10 @@ import OliumbiAdminTest from "./oliumbi-admin-test";
 
 const OliumbiAdmin = () => {
 
-  const [, setConfiguration] = useLocal<Configuration>("configuration")
+  const configuration = useLocal<Configuration>("configuration")
 
   useEffect(() => {
-    setConfiguration({
+    configuration.setValue({
       language: Language.ENGLISH
     })
   }, [])

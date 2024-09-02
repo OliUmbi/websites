@@ -126,14 +126,20 @@ const InputNumber = (props: Props) => {
 
   return (
       <Input label={props.label} required={props.required} error={props.error} disabled={props.disabled || false}>
-        <div className="input-number">
+        <div className="input-number" data-step={!!props.step}>
           <input className="input-number__input" value={props.internal} onChange={handleOnChange} type="text" inputMode="decimal" placeholder={props.placeholder}/>
-          <div className="input-number__button" onClick={subtract}>
-            <Icon>remove</Icon>
-          </div>
-          <div className="input-number__button" onClick={add}>
-            <Icon>add</Icon>
-          </div>
+          {
+            props.step ? (
+                <>
+                  <div className="input-number__button" onClick={subtract}>
+                    <Icon>remove</Icon>
+                  </div>
+                  <div className="input-number__button" onClick={add}>
+                    <Icon>add</Icon>
+                  </div>
+                </>
+            ) : ""
+          }
         </div>
       </Input>
   )

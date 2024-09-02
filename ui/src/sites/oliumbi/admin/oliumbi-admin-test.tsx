@@ -56,7 +56,7 @@ const OliumbiAdminTest = () => {
                   <InputOptions {...size} label="Grösse" options={["XL", "L", "M", "S", "XS", "XXS"]}/>
                   <Flex xl={{direction: "column", align: "end", gap: 2}} m={{height: true, justify: "between"}}
                         s={{height: false, justify: undefined}}>
-                    <InputNumber {...quantity} label="Menge" placeholder="18+" min={1} step={1}/>
+                    <InputNumber {...quantity} label="Menge" placeholder="18+" min={0}/>
                     <Button onClick={() => {
                     }} highlight={true}>Grösse bestellen</Button>
                   </Flex>
