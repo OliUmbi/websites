@@ -1,17 +1,17 @@
 import "./breadcrumbs.scss";
 import {Link, useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
-import Row from "../row/row";
 import Text from "../text/text";
+import Flex from "../flex/flex";
 
 const Breadcrumbs = () => {
 
   let location = useLocation();
-  const [breadcrumbs, setBreadcrumbs] = useState<{name: string, path: string}[]>([])
+  const [breadcrumbs, setBreadcrumbs] = useState<{ name: string, path: string }[]>([])
 
   useEffect(() => {
     const url = decodeURI(location.pathname).split("/");
-    const crumbs: {name: string, path: string}[] = []
+    const crumbs: { name: string, path: string }[] = []
 
     crumbs.push({
       name: "home",
@@ -41,18 +41,18 @@ const Breadcrumbs = () => {
 
   return (
       <>
-        <Row width={true} align="center" wrap="wrap">
+        <Flex xl={{width: true, direction: "row", align: "center", wrap: "wrap"}}>
           {
             breadcrumbs.map((breadcrumb, index) => (
-                <Row align="center" wrap="never" key={index}>
-                  <Text type="p" primary={false} mono={true}>/</Text>
+                <Flex xl={{direction: "row", align: "center", wrap: "never"}} key={index}>
+                  <Text type="p" mono={true}>/</Text>
                   <Link className="breadcrumbs" to={breadcrumb.path}>
                     <Text type="s" primary={breadcrumbs.length - 1 === index} mono={true}>{breadcrumb.name}</Text>
                   </Link>
-                </Row>
+                </Flex>
             ))
           }
-        </Row>
+        </Flex>
       </>
   )
 }

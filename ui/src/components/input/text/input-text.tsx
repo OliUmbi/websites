@@ -93,7 +93,7 @@ const InputText = (props: Props) => {
           {
             props.characters ? (
                 <div className="input-text__characters">
-                  <Text type="s" primary={false} mono={true}>{props.internal.length}/{props.characters}</Text>
+                  <Text type="s" mono={true}>{props.internal.length}/{props.characters}</Text>
                 </div>
             ) : ""
           }

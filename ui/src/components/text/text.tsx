@@ -4,8 +4,8 @@ import {ReactNode} from "react";
 interface Props {
     children: ReactNode,
     type: "h1" | "h2" | "h3" | "p" | "s",
-    primary: boolean,
-    mono: boolean
+    primary?: boolean,
+    mono?: boolean
 }
 
 const Text = (props: Props) => {

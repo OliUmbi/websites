@@ -43,7 +43,7 @@ const loading = () => {
   return (
       <Row width={true} align="center">
         <Column>
-          <Text type="s" primary={false} mono={false}>Loading</Text>
+          <Text type="s">Loading</Text>
           <Text type="p" primary={true} mono={true}>{text1}</Text>
           <Text type="p" primary={true} mono={true}>{text2}</Text>
           <Text type="p" primary={true} mono={true}>{text3}</Text>

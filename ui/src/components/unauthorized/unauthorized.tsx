@@ -1,17 +1,15 @@
 import Text from "../text/text";
-import Column from "../column/column";
+import Flex from "../flex/flex";
 
 const Unauthorized = () => {
   // todo review
 
   return (
-      <div className="unauthorized">
-        <Column>
-          <Text type="p" primary={false} mono={true}>Unauthorized</Text>
-          <Text type="h3" primary={true} mono={false}>You do not have the permission to access this resource.</Text>
-          <Text type="p" primary={false} mono={false}>Try again later.</Text>
-        </Column>
-      </div>
+      <Flex xl={{width: true, height: true, direction: "column"}}>
+        <Text type="p" mono={true}>Unauthorized</Text>
+        <Text type="h3" primary={true}>You do not have the permission to access this resource.</Text>
+        <Text type="p">Try again later.</Text>
+      </Flex>
   )
 }
 

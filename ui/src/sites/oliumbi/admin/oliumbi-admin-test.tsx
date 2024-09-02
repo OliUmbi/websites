@@ -45,8 +45,8 @@ const OliumbiAdminTest = () => {
                       src="https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1722643200&semt=sph"
                       alt="image" side="both" rounded={true}/>
                   <Flex xl={{width: true, height: true, direction: "column", align: "center", justify: "center", gap: 0.5}}>
-                    <Text type="h1" primary={true} mono={false}>Questions?</Text>
-                    <Text type="s" primary={true} mono={false}>Contact us!</Text>
+                    <Text type="h1" primary={true}>Questions?</Text>
+                    <Text type="s" primary={true}>Contact us!</Text>
                   </Flex>
                 </Carousel>
               </GridItem>
@@ -70,16 +70,16 @@ const OliumbiAdminTest = () => {
                        side="both" rounded={true}/>
               </GridItem>
               <GridItem xl={{columns: 1, rows: 1}}>
-                <Text type="h1" primary={true} mono={false}>Lorem ipsum</Text>
+                <Text type="h1" primary={true}>Lorem ipsum</Text>
               </GridItem>
               <GridItem xl={{columns: 1, rows: 1}}>
                 <Flex xl={{direction: "column", gap: 1}}>
-                  <Text type="h3" primary={true} mono={false}>dolor sit amet, consectetur adipiscing elit.</Text>
-                  <Text type="p" primary={true} mono={false}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam metus eros, egestas in nibh non, rutrum pretium justo.</Text>
+                  <Text type="h3" primary={true}>dolor sit amet, consectetur adipiscing elit.</Text>
+                  <Text type="p" primary={true}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam metus eros, egestas in nibh non, rutrum pretium justo.</Text>
                 </Flex>
               </GridItem>
               <GridItem xl={{columns: 1, rows: 1}}>
-                <Text type="p" primary={true} mono={false}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam metus eros, egestas in nibh non, rutrum pretium justo.</Text>
+                <Text type="p" primary={true}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam metus eros, egestas in nibh non, rutrum pretium justo.</Text>
               </GridItem>
             </Grid>
           </Flex>

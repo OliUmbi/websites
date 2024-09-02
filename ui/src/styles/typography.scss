@@ -3,20 +3,22 @@
 @font-face {
   font-family: "geist";
   font-display: swap;
-  src: url("/assets/geist.woff2") format("woff2");
+  font-weight: 1 1000;
+  src: url("/assets/global/fonts/geist.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "geist-mono";
   font-display: swap;
-  src: url("/assets/geist-mono.woff2") format("woff2");
+  font-weight: 1 1000;
+  src: url("/assets/global/fonts/geist-mono.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "icon";
   font-style: normal;
   font-weight: 400;
-  src: url("/assets/icon.woff2") format('woff2');
+  src: url("/assets/global/fonts/icon.woff2") format('woff2');
 }
 
 body {

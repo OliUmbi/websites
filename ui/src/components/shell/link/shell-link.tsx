@@ -13,7 +13,7 @@ const ShellLink = (props: Props) => {
 
   return (
       <NavLink className="shell-link" to={props.to} onClick={() => props.onClick()}>
-        <Text type={props.primary ? "h2" : "p"} primary={true} mono={false}>{props.name}</Text>
+        <Text type={props.primary ? "h2" : "p"} primary={true}>{props.name}</Text>
       </NavLink>
   )
 }
