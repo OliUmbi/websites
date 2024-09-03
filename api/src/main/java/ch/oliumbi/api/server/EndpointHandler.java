@@ -108,7 +108,7 @@ public class EndpointHandler {
 
       Object body;
       try {
-        body = Body.convert(endpoint, chunk.getByteBuffer());
+        body = Body.convert(endpoint, chunk);
       } catch (Exception e) {
         LOGGER.warn(e.getMessage());
         return new MessageResponse(Status.BAD_REQUEST, "Body is malformed.");

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.nio.ByteBuffer;
+import org.eclipse.jetty.io.Content.Chunk;
 import org.eclipse.jetty.util.BufferUtil;
 
 public class Body {
@@ -14,11 +15,24 @@ public class Body {
   private static final ObjectMapper objectMapper = new ObjectMapper();
   private static final TypeFactory typeFactory = objectMapper.getTypeFactory();
 
-  public static Object convert(Endpoint<?> endpoint, ByteBuffer byteBuffer) throws Exception {
+  public static Object convert(Endpoint<?> endpoint, Chunk chunk) throws Exception {
     Type requestType = requestType(endpoint);
 
+    if (requestType == Void.class) {
+      return null;
+    }
+
+    if (chunk == null) {
+      throw new Exception("Failed to handle request, reason: missing body");
+    }
+
+    if (chunk.getFailure() != null) {
+      throw new Exception("Failed to handle request, reason: error in body transfer", chunk.getFailure());
+    }
+
     try {
-      return objectMapper.readValue(BufferUtil.toString(byteBuffer), typeFactory.constructType(requestType));
+      String content = BufferUtil.toString(chunk.getByteBuffer());
+      return objectMapper.readValue(content, typeFactory.constructType(requestType));
     } catch (JsonProcessingException e) {
       throw new Exception("Failed to handle request, reason: failed to map body to request type", e);
     }

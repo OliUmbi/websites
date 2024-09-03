@@ -15,6 +15,6 @@ public class DonationProductResponse {
   private UUID id;
   private String name;
   private Double quantity;
-  private Double remaining;
+  private Double donated;
   private JublawomaDonationProductUnit unit;
 }
