@@ -1,8 +1,8 @@
 import "./shell.scss";
 import Image from "../image/image";
 import Text from "../text/text";
-import {ReactNode, useState} from "react";
-import {Link} from "react-router-dom";
+import {ReactNode, useEffect, useState} from "react";
+import {Link, useLocation} from "react-router-dom";
 import Drawer from "../drawer/drawer";
 import IconButton from "../icon/button/icon-button";
 import ShellLink from "./link/shell-link";
@@ -19,7 +19,12 @@ interface Props {
 
 const Shell = (props: Props) => {
 
+  const location = useLocation();
   const [open, setOpen] = useState<boolean>(false)
+
+  useEffect(() => {
+    window.scrollTo({top: 0, behavior: "smooth"})
+  }, [location.pathname]);
 
   return (
       <div className="shell" data-side={props.side}>

@@ -51,7 +51,8 @@ public class Donation implements Endpoint<Void> {
                 start,
                 finish
         FROM    jublawoma_donation
-        WHERE   finish > current_timestamp
+        WHERE   start < current_timestamp
+        AND     finish > current_timestamp
         LIMIT   1
         INTO    id,
                 title,

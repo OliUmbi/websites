@@ -2,10 +2,13 @@ package ch.oliumbi.api.server;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.confguration.Configuration;
+import java.nio.charset.CharsetEncoder;
 import org.eclipse.jetty.server.HttpConfiguration;
 import org.eclipse.jetty.server.HttpConnectionFactory;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.server.handler.gzip.GzipHandler;
+import org.eclipse.jetty.util.Jetty;
+import org.eclipse.jetty.util.Utf8StringBuilder;
 
 @Autoload
 public class Server {
@@ -43,7 +46,7 @@ public class Server {
     try {
       server.start();
     } catch (Exception e) {
-      // todo
+      // todo error handling
       throw new RuntimeException(e);
     }
   }

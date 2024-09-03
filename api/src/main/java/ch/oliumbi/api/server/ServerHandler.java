@@ -5,6 +5,7 @@ import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Response;
 import org.eclipse.jetty.util.Callback;
+import org.eclipse.jetty.util.Utf8StringBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

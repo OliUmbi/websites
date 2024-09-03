@@ -5,6 +5,7 @@ import ch.oliumbi.api.server.EndpointHandler;
 import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -221,7 +222,7 @@ public class Database {
       for (int i = 0; i < outputs.size(); i++) {
         for (Field declaredField : clazz.getDeclaredFields()) {
           if (declaredField.getName().equals(outputs.get(i)) && declaredField.trySetAccessible()) {
-            declaredField.set(instance, resultSet.getObject(i + 1));
+            declaredField.set(instance, convertToJava(resultSet, i + 1, declaredField.getType()));
           }
         }
       }
@@ -240,5 +241,18 @@ public class Database {
     }
 
     return rows;
+  }
+
+  private <E extends Enum<E>> Object convertToJava(ResultSet resultSet, int index, Class<?> type) throws Exception {
+    if (type == byte[].class) {
+      return resultSet.getBytes(index);
+    }
+
+    if (type.isEnum()) {
+      //noinspection unchecked
+      return Enum.valueOf((Class<E>) type, resultSet.getString(index));
+    }
+
+    return resultSet.getObject(index, type);
   }
 }

@@ -1,6 +1,7 @@
 package ch.oliumbi.api.server.request;
 
 import ch.oliumbi.api.server.Endpoint;
+import ch.oliumbi.api.server.Json;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
@@ -11,9 +12,6 @@ import org.eclipse.jetty.io.Content.Chunk;
 import org.eclipse.jetty.util.BufferUtil;
 
 public class Body {
-
-  private static final ObjectMapper objectMapper = new ObjectMapper();
-  private static final TypeFactory typeFactory = objectMapper.getTypeFactory();
 
   public static Object convert(Endpoint<?> endpoint, Chunk chunk) throws Exception {
     Type requestType = requestType(endpoint);
@@ -32,7 +30,7 @@ public class Body {
 
     try {
       String content = BufferUtil.toString(chunk.getByteBuffer());
-      return objectMapper.readValue(content, typeFactory.constructType(requestType));
+      return Json.read(content, requestType);
     } catch (JsonProcessingException e) {
       throw new Exception("Failed to handle request, reason: failed to map body to request type", e);
     }

@@ -16,7 +16,7 @@ public enum ContentType {
         return null;
       }
       case JSON -> {
-        return "application/json";
+        return "application/json; charset=UTF-8";
       }
       case PDF -> {
         return "application/pdf";

@@ -15,6 +15,8 @@ import Shell from "../../components/shell/shell";
 
 const Jublawoma = () => {
 
+  // todo optimize images
+
   return (
         <Router basename="jublawoma">
           <Shell title="Jubla Woma" side={false} logo="/assets/jublawoma/images/logos/logo.png" links={[

@@ -2,10 +2,13 @@ package ch.oliumbi.api.server.response;
 
 import ch.oliumbi.api.enums.ContentType;
 import ch.oliumbi.api.enums.Status;
+import ch.oliumbi.api.server.Json;
 import ch.oliumbi.api.server.request.Header;
 import ch.oliumbi.api.server.request.Headers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import org.eclipse.jetty.util.BufferUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,10 +26,9 @@ public class JsonResponse implements Response {
     this.headers = new Headers(headers);
 
     try {
-      ObjectMapper objectMapper = new ObjectMapper();
-      String json = objectMapper.writeValueAsString(body);
+      String json = Json.write(body);
 
-      this.body = BufferUtil.toBuffer(json);
+      this.body = BufferUtil.toBuffer(json, StandardCharsets.UTF_8);
     } catch (Exception e) {
       LOGGER.error("Failed to create json", e);
       throw new RuntimeException("Failed to create response.");
