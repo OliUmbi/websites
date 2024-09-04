@@ -11,6 +11,10 @@ const JublawomaDonate = () => {
     donation.execute()
   }, []);
 
+  useEffect(() => {
+    console.log(donation)
+  }, [donation]);
+
   return (
       <>
         <Section width="xl">

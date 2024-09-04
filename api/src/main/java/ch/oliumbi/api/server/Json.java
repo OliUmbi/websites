@@ -1,9 +1,11 @@
 package ch.oliumbi.api.server;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.lang.reflect.Type;
+import java.text.DateFormat;
 
 // todo move
 public class Json {
@@ -14,6 +16,8 @@ public class Json {
   static {
     objectMapper = new ObjectMapper();
     objectMapper.registerModule(new JavaTimeModule());
+
+    // todo date and strings serialization
 
     typeFactory = objectMapper.getTypeFactory();
   }
