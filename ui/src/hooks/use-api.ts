@@ -1,5 +1,5 @@
 import {useCallback, useState} from "react";
-import {Method} from "../enums/method";
+import {Method} from "../enums/global/method";
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -13,7 +13,7 @@ interface Payload {
   params?: Param[]
 }
 
-const useApi = <T>(path: string, method: Method): {
+const useApi = <T>(method: Method, path: string): {
   execute: (payload?: Payload) => void,
   data: T | null,
   error: string | null,
@@ -30,7 +30,7 @@ const useApi = <T>(path: string, method: Method): {
 
     let headers = {}
     let body = null
-    let params = null
+    let params = ""
 
     if (payload) {
       if (payload.body) {
@@ -64,8 +64,7 @@ const useApi = <T>(path: string, method: Method): {
 
     let data;
     try {
-      // todo rework
-      if (response.headers.get("Content-Type") === "application/json") {
+      if (response.headers.get("Content-Type").includes("application/json")) {
         data = await response.json()
       } else {
         data = await response.blob()

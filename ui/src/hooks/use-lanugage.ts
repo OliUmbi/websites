@@ -1,6 +1,6 @@
 import useLocal from "./use-local";
-import {Configuration} from "../interfaces/configuration";
-import {Language} from "../enums/language";
+import {Configuration} from "../interfaces/global/configuration";
+import {Language} from "../enums/global/language";
 import english from "../translations/english.json";
 import german from "../translations/german.json";
 

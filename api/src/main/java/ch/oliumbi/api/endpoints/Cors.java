@@ -17,11 +17,6 @@ public class Cors {
   }
 
   public Response response() {
-    return new MessageResponse(Status.OK, "Pong.",
-        new Header("Access-Control-Allow-Origin", configuration.string("cors.origins")),
-        new Header("Access-Control-Allow-Methods", configuration.string("cors.methods")),
-        new Header("Access-Control-Allow-Headers", configuration.string("cors.headers")),
-        new Header("Access-Control-Max-Age", "86400")
-    );
+    return new MessageResponse(Status.OK, "Pong.");
   }
 }

@@ -1,6 +1,6 @@
 import {Navigate, Outlet} from "react-router-dom";
-import {Permission} from "../../enums/permission";
-import {Account} from "../../interfaces/account";
+import {Permission} from "../../enums/global/permission";
+import {Account} from "../../interfaces/global/account";
 import Unauthorized from "../unauthorized/unauthorized";
 import useLocal from "../../hooks/use-local";
 

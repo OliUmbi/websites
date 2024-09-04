@@ -1,12 +1,12 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Protected from "../../../components/protected/protected";
-import {Permission} from "../../../enums/permission";
+import {Permission} from "../../../enums/global/permission";
 import OliumbiAdminLogin from "./oliumbi-admin-login";
 import OliumbiAdminHome from "./oliumbi-admin-home";
 import {useEffect} from "react";
 import useLocal from "../../../hooks/use-local";
-import {Configuration} from "../../../interfaces/configuration";
-import {Language} from "../../../enums/language";
+import {Configuration} from "../../../interfaces/global/configuration";
+import {Language} from "../../../enums/global/language";
 import Shell from "../../../components/shell/shell";
 import OliumbiAdminTest from "./oliumbi-admin-test";
 
