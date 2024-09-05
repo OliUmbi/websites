@@ -28,7 +28,7 @@ services:
     image: websites-ui:${VERSION_API}
     restart: always
     ports:
-      - 80:80
+      - 8000:8000
     networks:
       - websites-network
 

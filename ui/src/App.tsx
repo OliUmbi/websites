@@ -6,10 +6,10 @@ import Unclet from "./sites/unclet/unclet";
 const App = () => {
   return (
       <>
-        <OliUmbi/>
-        <OliumbiAdmin/>
         <Jublawoma/>
         <Unclet/>
+        <OliUmbi/>
+        <OliumbiAdmin/>
       </>
   );
 };

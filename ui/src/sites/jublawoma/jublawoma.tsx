@@ -15,16 +15,13 @@ import Shell from "../../components/shell/shell";
 
 const Jublawoma = () => {
 
-  // todo optimize images
-
   return (
         <Router basename="jublawoma">
-          <Shell title="Jubla Woma" side={false} logo="/assets/jublawoma/images/logos/logo.png" links={[
+          <Shell title="Jubla Woma" side={false} logo="/assets/jublawoma/images/logos/logo.png" icon="/assets/jublawoma/images/logos/favicon.ico" links={[
             {name: "Home", to: "/", primary: true},
             {name: "Veranstaltungen", to: "/veranstaltungen", primary: true},
             {name: "Über uns", to: "/ueber-uns", primary: true},
             {name: "Beitreten", to: "/beitreten", primary: true},
-            {name: "Spenden", to: "/spenden", primary: true},
             {name: "Instagram", to: "https://www.instagram.com/jubla_woma/", primary: false},
             {name: "Kontakt", to: "/kontakt", primary: false},
             {name: "Impressum", to: "/impressum", primary: false},

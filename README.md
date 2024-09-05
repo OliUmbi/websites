@@ -1,18 +1,17 @@
 # websites
 one project to rule them all
 
-## components
-- progress (timeline, step by step, etc)
-- accordion
-- image input with presets
-- not found / empty
-- error
-
-## sites
-- jublawoma
-- unlce-t
-- oliumbi
-- admin
+## todos
+- ui
+  - robots.txt
+  - manifest
+  - service worker
+  - components
+    - progress (timeline, step by step, etc)
+    - accordion
+    - image input with presets
+    - not found / empty
+    - error
 
 ## jublawoma
 

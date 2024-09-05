@@ -8,6 +8,7 @@ import IconButton from "../icon/button/icon-button";
 import ShellLink from "./link/shell-link";
 import Breadcrumbs from "../breadcrumbs/breadcrumbs";
 import Flex from "../flex/flex";
+import {i} from "vite/dist/node/types.d-aGj9QkWt";
 
 interface Props {
   children: ReactNode
@@ -15,12 +16,24 @@ interface Props {
   links: { name: string, to: string, primary: boolean }[]
   side: boolean
   logo?: string
+  icon?: string
 }
 
 const Shell = (props: Props) => {
 
   const location = useLocation();
   const [open, setOpen] = useState<boolean>(false)
+
+  useEffect(() => {
+    document.title = props.title
+
+    if (props.icon) {
+      let link = document.createElement("link");
+      link.rel = "icon";
+      link.href = props.icon
+      document.head.appendChild(link)
+    }
+  }, [props.title, props.icon]);
 
   useEffect(() => {
     window.scrollTo({top: 0, behavior: "smooth"})
