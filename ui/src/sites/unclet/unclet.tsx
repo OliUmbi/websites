@@ -4,11 +4,9 @@ import UncletHome from "./unclet-home";
 const Unclet = () => {
 
   return (
-      <Router basename="unclet">
-        <Routes>
-          <Route path="/" element={<UncletHome/>}/>
-        </Routes>
-      </Router>
+      <Routes>
+        <Route path="/" element={<UncletHome/>}/>
+      </Routes>
   )
 }
 
