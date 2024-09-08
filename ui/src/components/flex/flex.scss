@@ -65,6 +65,10 @@
         justify-content: space-evenly;
       }
 
+      &[data-#{$name}gap="0"] {
+        gap: 0;
+      }
+
       &[data-#{$name}gap="0.5"] {
         gap: 0.5rem;
       }

@@ -10,6 +10,8 @@ interface Props {
 
 const Text = (props: Props) => {
 
+    // list item
+
     switch (props.type) {
         case "h1":
             return (

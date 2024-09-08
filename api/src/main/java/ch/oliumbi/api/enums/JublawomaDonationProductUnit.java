@@ -6,5 +6,6 @@ public enum JublawomaDonationProductUnit {
   PIECE,
   TUBE,
   JAR,
-  BOX
+  BOX,
+  FRANCS
 }

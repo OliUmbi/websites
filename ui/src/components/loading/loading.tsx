@@ -1,8 +1,8 @@
 import "./loading.scss";
 import Text from "../text/text";
 import {useEffect, useState} from "react";
-import Row from "../row/row";
-import Column from "../column/column";
+import Flex from "../flex/flex";
+import {c} from "vite/dist/node/types.d-aGj9QkWt";
 
 const loading = () => {
  // const chars = "---___...,,,:::;;;///\\\|||!?=&%#@{}[]()0123456789";
@@ -41,14 +41,14 @@ const loading = () => {
   }, []);
 
   return (
-      <Row width={true} align="center">
-        <Column>
+      <Flex xl={{width: true, direction: "row", align: "center"}}>
+        <Flex xl={{direction: "column"}}>
           <Text type="s">Loading</Text>
           <Text type="p" primary={true} mono={true}>{text1}</Text>
           <Text type="p" primary={true} mono={true}>{text2}</Text>
           <Text type="p" primary={true} mono={true}>{text3}</Text>
-        </Column>
-      </Row>
+        </Flex>
+      </Flex>
   )
 }
 

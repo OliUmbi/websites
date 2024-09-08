@@ -2,7 +2,7 @@ import {DonationProductUnit} from "../../enums/jublawoma/donation";
 
 export interface DonationResponse {
   id: string
-  name: string
+  title: string
   description: string
   contact: string
   start: string
@@ -15,5 +15,7 @@ export interface DonationProductResponse {
   name: string
   quantity: number
   donated: number
+  step: number
   unit: DonationProductUnit
+  note: string
 }

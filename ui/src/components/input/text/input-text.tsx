@@ -48,7 +48,7 @@ const InputText = (props: Props) => {
     if (props.internal === "") {
       if (props.required) {
         // todo translation
-        props.setError("Field is empty.")
+        props.setError("Dieses Feld ist pflicht.")
         props.setValid(false)
         return
       }
@@ -59,7 +59,7 @@ const InputText = (props: Props) => {
 
     if (props.characters && props.internal.length > props.characters) {
       // todo translation
-      props.setError("Value is too long")
+      props.setError("Diese Eingabe ist zu lange.")
       props.setValid(false)
       return
     }

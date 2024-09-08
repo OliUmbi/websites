@@ -3,6 +3,7 @@ package ch.oliumbi.api.endpoints.jublawoma.donation;
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
 import ch.oliumbi.api.database.Param;
+import ch.oliumbi.api.endpoints.jublawoma.donation.responses.DonationProductResponse;
 import ch.oliumbi.api.enums.Method;
 import ch.oliumbi.api.enums.Permission;
 import ch.oliumbi.api.enums.Status;
@@ -16,11 +17,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Autoload
-public class ProductById implements Endpoint<Void> {
+public class DonationProductById implements Endpoint<Void> {
 
   private final Database database;
 
-  public ProductById(Database database) {
+  public DonationProductById(Database database) {
     this.database = database;
   }
 
@@ -57,14 +58,19 @@ public class ProductById implements Endpoint<Void> {
                         FROM    jublawoma_donation_product_donor
                         WHERE   donation_product_id = jublawoma_donation_product.id
                     ), 0),
-                    unit
+                    step,
+                    unit,
+                    note
             FROM    jublawoma_donation_product
             WHERE   id = :id
+            LIMIT   1
             INTO    id,
                     name,
                     quantity,
                     donated,
-                    unit
+                    step,
+                    unit,
+                    note
             """,
         Param.from("id", UUID.fromString(id.get())));
 

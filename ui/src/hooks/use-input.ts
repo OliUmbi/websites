@@ -15,7 +15,7 @@ const useInput = <T extends string | string[] | number | boolean | Date | File>(
 } => {
 
   const convertDefault = () => {
-    if (!defaultValue) {
+    if (defaultValue === undefined || defaultValue === null) {
       return ""
     }
 

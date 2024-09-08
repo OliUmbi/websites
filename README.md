@@ -12,6 +12,10 @@ one project to rule them all
     - image input with presets
     - not found / empty
     - error
+    - update loading
+  - hooks
+    - improve use api for simpler responses
+
 
 ## jublawoma
 

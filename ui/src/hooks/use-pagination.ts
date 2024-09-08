@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const useInput = (total: number, size: number): {
+const usePagination = (total: number, size: number): {
   total: number
   size: number
   offset: number
@@ -17,4 +17,4 @@ const useInput = (total: number, size: number): {
   }
 }
 
-export default useInput;
+export default usePagination;

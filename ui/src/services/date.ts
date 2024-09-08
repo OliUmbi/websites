@@ -1,33 +1,47 @@
+// todo rework + consider using prototyping etc.
+
 export const date = {
-  convert(value: string): Date | null {
-    let parsed = Date.parse(value)
-
-    if (!isNaN(parsed)) {
-      return new Date(parsed)
+  convert(value: any): Date | null {
+    if (value == null) {
+      return null
     }
 
-    if (value.length === 10) {
-      const [day, month, year] = value.split('.').map(Number)
-      if (year === undefined || month === undefined || day === undefined) {
-        return null
-      }
-
-      return new Date(year, month - 1, day);
+    if (value instanceof Date) {
+      return value
     }
 
-    if (value.length === 17) {
-      const [datePart, timePart] = value.split(', ')
-      if (datePart === undefined || timePart === undefined) {
-        return null
+    if (typeof value === "string") {
+      let parsed = Date.parse(value)
+
+      if (!isNaN(parsed)) {
+        return new Date(parsed)
       }
 
-      const [day, month, year] = datePart.split('.').map(Number)
-      const [hours, minutes] = timePart.split(':').map(Number)
-      if (year === undefined || month === undefined || day === undefined || hours === undefined || minutes === undefined) {
-        return null
+      if (value.length === 10) {
+        const [day, month, year] = value.split('.').map(Number)
+        if (year === undefined || month === undefined || day === undefined) {
+          return null
+        }
+
+        return new Date(year, month - 1, day);
       }
 
-      return new Date(year, month - 1, day, hours, minutes);
+      if (value.length === 17) {
+        const [datePart, timePart] = value.split(', ')
+        if (datePart === undefined || timePart === undefined) {
+          return null
+        }
+
+        const [day, month, year] = datePart.split('.').map(Number)
+        const [hours, minutes] = timePart.split(':').map(Number)
+        if (year === undefined || month === undefined || day === undefined || hours === undefined || minutes === undefined) {
+          return null
+        }
+
+        return new Date(year, month - 1, day, hours, minutes);
+      }
+
+      return null
     }
 
     return null
@@ -52,16 +66,10 @@ export const date = {
     return date.convert(value) !== null;
   },
   locale(value: Date | string | null, type: "date" | "time") {
+    value = date.convert(value)
+
     if (!value) {
       return "-"
-    }
-
-    if (typeof value === "string") {
-      value = date.convert(value)
-      if (!value) {
-        // todo translate?
-        return "-"
-      }
     }
 
     switch (type) {

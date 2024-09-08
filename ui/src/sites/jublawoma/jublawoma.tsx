@@ -6,12 +6,13 @@ import JublawomaPost from "./jublawoma-post";
 import JublawomaAbout from "./jublawoma-about";
 import JublawomaJoin from "./jublawoma-join";
 import JublawomaMembers from "./jublawoma-members";
-import JublawomaDonate from "./jublawoma-donate";
+import JublawomaDonations from "./jublawoma-donations";
 import JublawomaClothes from "./jublawoma-clothes";
 import JublawomaContact from "./jublawoma-contact";
 import JublawomaLegal from "./jublawoma-legal";
 import JublawomaPrivacy from "./jublawoma-privacy";
 import Shell from "../../components/shell/shell";
+import JublawomaDonate from "./jublawoma-donate";
 
 const Jublawoma = () => {
 
@@ -21,6 +22,7 @@ const Jublawoma = () => {
           {name: "Veranstaltungen", to: "/veranstaltungen", primary: true},
           {name: "Über uns", to: "/ueber-uns", primary: true},
           {name: "Beitreten", to: "/beitreten", primary: true},
+          {name: "Spenden", to: "/spenden", primary: true},
           {name: "Instagram", to: "https://www.instagram.com/jubla_woma/", primary: false},
           {name: "Kontakt", to: "/kontakt", primary: false},
           {name: "Impressum", to: "/impressum", primary: false},
@@ -31,7 +33,8 @@ const Jublawoma = () => {
             <Route path="/veranstaltungen" element={<JublawomaEvents/>}/>
             <Route path="/ueber-uns" element={<JublawomaAbout/>}/>
             <Route path="/beitreten" element={<JublawomaJoin/>}/>
-            <Route path="/spenden" element={<JublawomaDonate/>}/>
+            <Route path="/spenden" element={<JublawomaDonations/>}/>
+            <Route path="/spenden/:id" element={<JublawomaDonate/>}/>
             <Route path="/kontakt" element={<JublawomaContact/>}/>
             <Route path="/impressum" element={<JublawomaLegal/>}/>
             <Route path="/datenschutz" element={<JublawomaPrivacy/>}/>

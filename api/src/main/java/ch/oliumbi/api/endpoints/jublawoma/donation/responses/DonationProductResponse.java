@@ -1,4 +1,4 @@
-package ch.oliumbi.api.endpoints.jublawoma.donation;
+package ch.oliumbi.api.endpoints.jublawoma.donation.responses;
 
 import ch.oliumbi.api.enums.JublawomaDonationProductUnit;
 import java.util.UUID;
@@ -16,5 +16,7 @@ public class DonationProductResponse {
   private String name;
   private Double quantity;
   private Double donated;
+  private Double step;
   private JublawomaDonationProductUnit unit;
+  private String note;
 }

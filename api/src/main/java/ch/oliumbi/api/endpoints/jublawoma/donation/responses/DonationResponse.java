@@ -1,4 +1,4 @@
-package ch.oliumbi.api.endpoints.jublawoma.donation;
+package ch.oliumbi.api.endpoints.jublawoma.donation.responses;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DonationResponse {
   private UUID id;
-  private String name;
+  private String title;
   private String description;
   private String contact;
   private LocalDateTime start;

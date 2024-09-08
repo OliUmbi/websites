@@ -39,6 +39,10 @@
         grid-template-columns: repeat(8, 1fr);
       }
 
+      &[data-#{$name}gap="0"] {
+        gap: 0;
+      }
+
       &[data-#{$name}gap="0.5"] {
         gap: 0.5rem;
       }

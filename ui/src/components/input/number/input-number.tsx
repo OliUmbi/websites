@@ -52,31 +52,30 @@ const InputNumber = (props: Props) => {
     if (props.internal === "") {
       if (props.required) {
         // todo translation
-        props.setError("Field is empty.")
+        props.setError("Dieses Feld ist pflicht.")
         props.setValid(false)
         return
       }
       props.setError("")
       props.setValid(true)
-      return
     }
 
     if (isNaN(Number(props.internal))) {
       // todo translation
-      props.setError("Value is not a number")
+      props.setError("Die Eingabe ist keine Zahl.")
       props.setValid(false)
       return
     }
 
-    if (props.value) {
+    if (props.value !== null) {
       if (props.min && props.value < props.min) {
-        props.setError("Number is too small")
+        props.setError("Die Eingabe ist zu klein.")
         props.setValid(false)
         return
       }
 
       if (props.max && props.value > props.max) {
-        props.setError("Number is too big")
+        props.setError("Die Eingabe ist zu gross.")
         props.setValid(false)
         return
       }
@@ -97,12 +96,12 @@ const InputNumber = (props: Props) => {
   }, [props.internal, props.required, props.setError, props.setValid, props.min, props.max, props.validation, props.value]);
 
   const subtract = () => {
-    if (props.value) {
+    if (props.value !== null) {
       let value = props.value
       let step = props.step || 1
 
       value -= step
-      if (props.min && value < props.min) {
+      if (props.min !== undefined && value < props.min) {
         value = props.min
       }
 
@@ -111,12 +110,12 @@ const InputNumber = (props: Props) => {
   }
 
   const add = () => {
-    if (props.value) {
+    if (props.value !== null) {
       let value = props.value
       let step = props.step || 1
 
       value += step
-      if (props.max && value > props.max) {
+      if (props.max !== undefined && value > props.max) {
         value = props.max
       }
 

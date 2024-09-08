@@ -9,7 +9,7 @@
 -- jublawoma --
 ---------------
 DROP TYPE IF EXISTS JUBLAWOMA_DONATION_PRODUCT_UNIT CASCADE;
-CREATE TYPE JUBLAWOMA_DONATION_PRODUCT_UNIT AS ENUM ('KILOGRAM', 'LITER', 'PIECE', 'TUBE', 'JAR', 'BOX');
+CREATE TYPE JUBLAWOMA_DONATION_PRODUCT_UNIT AS ENUM ('KILOGRAM', 'LITER', 'PIECE', 'TUBE', 'JAR', 'BOX', 'FRANCS');
 CREATE CAST (varchar AS JUBLAWOMA_DONATION_PRODUCT_UNIT) WITH INOUT AS IMPLICIT;
 
 ------------
@@ -80,18 +80,21 @@ CREATE TABLE jublawoma_donation_product
     donation_id UUID                            NOT NULL REFERENCES jublawoma_donation,
     name        VARCHAR(128)                    NOT NULL,
     quantity    FLOAT                           NOT NULL,
-    unit        JUBLAWOMA_DONATION_PRODUCT_UNIT NOT NULL
+    step        FLOAT                           NOT NULL,
+    unit        JUBLAWOMA_DONATION_PRODUCT_UNIT NOT NULL,
+    note        TEXT                            NULL
 );
 
 DROP TABLE IF EXISTS jublawoma_donation_product_donor CASCADE;
 CREATE TABLE jublawoma_donation_product_donor
 (
-    id                  UUID         NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
-    donation_product_id UUID         NOT NULL REFERENCES jublawoma_donation_product,
-    firstname           VARCHAR(255) NOT NULL,
-    lastname            VARCHAR(255) NOT NULL,
-    phone               VARCHAR(255) NOT NULL,
-    quantity            FLOAT        NOT NULL
+    id                  UUID        NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
+    donation_product_id UUID        NOT NULL REFERENCES jublawoma_donation_product,
+    firstname           VARCHAR(32) NOT NULL,
+    lastname            VARCHAR(32) NOT NULL,
+    phone               VARCHAR(32) NOT NULL,
+    quantity            FLOAT       NOT NULL,
+    note                TEXT        NULL
 );
 
 -- DROP TABLE IF EXISTS jublawoma_contact CASCADE;
