@@ -3,12 +3,16 @@ package ch.oliumbi.api.confguration;
 import ch.oliumbi.api.Api;
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.enums.Environment;
+import ch.oliumbi.api.server.ServerHandler;
 import java.io.InputStream;
 import java.util.Properties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Autoload
 public class Configuration {
 
+  private static final Logger LOGGER = LoggerFactory.getLogger(Configuration.class);
   private final Properties properties;
   private final Environment environment;
 
@@ -17,6 +21,8 @@ public class Configuration {
     properties = properties();
 
     String profile = properties.getProperty("profile");
+
+    LOGGER.info("Running with " + profile + " profile");
 
     switch (profile) {
       case "development":

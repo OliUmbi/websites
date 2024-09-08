@@ -15,6 +15,9 @@ one project to rule them all
     - update loading
   - hooks
     - improve use api for simpler responses
+- server
+  - ufw rethink this or uninstall
+  - 
 
 
 ## jublawoma

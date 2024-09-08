@@ -36,7 +36,7 @@ public class ServerHandler extends Handler.Abstract {
     }
     // todo move this
     response.getHeaders().add("Content-Type", internal.getContentType().toString());
-    response.getHeaders().add("Access-Control-Allow-Origin", "http://localhost:8000");
+    response.getHeaders().add("Access-Control-Allow-Origin", "https://jublawoma.ch");
     response.getHeaders().add("Access-Control-Allow-Methods", "OPTIONS,GET,POST,PUT,DELETE");
     response.getHeaders().add("Access-Control-Allow-Headers", "Content-Type,Authentication");
     response.getHeaders().add("Access-Control-Max-Age", "86400");

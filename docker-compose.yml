@@ -1,19 +1,17 @@
 services:
-
-  websites-db:
-    image: websites-db:${VERSION_API}
+  db:
+    image: legacy-db
     restart: always
     ports:
       - 5432:5432
     networks:
       - websites-network
     volumes:
-      - "websites-db-volume:/data"
+      - "websites-db-volume:/var/lib/postgresql/data"
     environment:
-      - SECRET_DB_PASSWORD=${SECRET_DB_PASSWORD}
-
-  websites-api:
-    image: websites-api:${VERSION_API}
+      - POSTGRES_PASSWORD=${SECRET_DB_PASSWORD}
+  api:
+    image: legacy-api
     restart: always
     ports:
       - 8080:8080
@@ -22,10 +20,9 @@ services:
     volumes:
       - "websites-api-volume:/data"
     environment:
-      - SECRET_DB_PASSWORD=${SECRET_DB_PASSWORD}
-
-  websites-ui:
-    image: websites-ui:${VERSION_API}
+      - SECRET_DATABASE=${SECRET_DB_PASSWORD}
+  ui:
+    image: legacy-ui
     restart: always
     ports:
       - 8000:8000
@@ -34,6 +31,7 @@ services:
 
 networks:
   websites-network:
+    driver: bridge
 
 volumes:
   websites-db-volume:
