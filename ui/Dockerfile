@@ -1,8 +1,8 @@
 FROM node:18-alpine as build
 
-WORKDIR /project
+WORKDIR /projects
 
-COPY package.json package-lock.json index.html .env .env.development .env.production tsconfig.json vite.config.mjs ./
+COPY package.json package-lock.json index.html .env.development .env.production tsconfig.json vite.config.mjs ./
 COPY ./src ./src
 COPY ./public ./public
 
@@ -11,7 +11,9 @@ RUN npm run build
 
 FROM nginx:alpine
 
-COPY --from=build /project/build /project
+WORKDIR /projects
+
+COPY --from=build /projects/build ./
 
 COPY nginx.conf /etc/nginx/nginx.conf
 

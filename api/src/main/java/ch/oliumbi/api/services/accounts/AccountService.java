@@ -36,7 +36,7 @@ public class AccountService {
                     email,
                     password
             """,
-        Param.from("token", token));
+        Param.of("token", token));
 
     if (account.isEmpty()) {
       return Optional.empty();

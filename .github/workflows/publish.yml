@@ -1,0 +1,49 @@
+name: publish
+
+on:
+  push:
+    tags:
+      - '*.*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: docker login
+        uses: docker/login-action@v3.0.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: build database
+        run: docker build ./database --tag ghcr.io/oliumbi/websites-database:latest --tag ghcr.io/oliumbi/websites-database:${{ github.ref_name }}
+
+      - name: build migration
+        run: docker build ./migration --tag ghcr.io/oliumbi/websites-migration:latest --tag ghcr.io/oliumbi/websites-migration:${{ github.ref_name }}
+
+      - name: build api
+        run: docker build ./api --tag ghcr.io/oliumbi/websites-api:latest --tag ghcr.io/oliumbi/websites-api:${{ github.ref_name }}
+
+      - name: build ui
+        run: docker build ./ui --tag ghcr.io/oliumbi/websites-ui:latest --tag ghcr.io/oliumbi/websites-ui:${{ github.ref_name }}
+
+      - name: push database
+        run: docker push ghcr.io/oliumbi/websites-database --all-tags
+
+      - name: push migration
+        run: docker push ghcr.io/oliumbi/websites-migration --all-tags
+
+      - name: push api
+        run: docker push ghcr.io/oliumbi/websites-api --all-tags
+
+      - name: push ui
+        run: docker push ghcr.io/oliumbi/websites-ui --all-tags

@@ -10,11 +10,12 @@ import {date} from "../../services/date";
 import Button from "../../components/button/button";
 import {DonationProductUnit} from "../../enums/jublawoma/donation";
 import {useNavigate} from "react-router-dom";
+import {Enviroment} from "../../enums/global/enviroment";
 
 const JublawomaDonations = () => {
 
   let navigate = useNavigate()
-  let donation = useApi<DonationResponse>("GET", "/jublawoma/donation")
+  let donation = useApi<DonationResponse>(Enviroment.JUBLAWOMA, "GET", "/donation")
 
   useEffect(() => {
     donation.execute()

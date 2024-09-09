@@ -23,7 +23,7 @@
 
 TRUNCATE TABLE jublawoma_donation CASCADE;
 INSERT INTO jublawoma_donation(id, title, description, contact, start, finish)
-VALUES ('aaaaaaa1-bbb1-cccc-dddd-eeeeeeeeeeee', 'Hela 2024', 'Wir sind auf Ihre Unterstützung angewiesen, damit wir im Lager leckeres und gesundes Essen zu servieren können. Jede Spende hilft uns, einen vielfältigeren Menuplan zu erstellen. Die Spenden sammeln wir bei der Gepäckabgabe. ', 'Bei Fragen oder Problemen können Sie Oliver Umbricht auf Whatsapp [078 850 04 73] erreichen.', '2024-09-08', '2024-09-28');
+VALUES ('aaaaaaa1-bbb1-cccc-dddd-eeeeeeeeeeee', 'Hela 2024', 'Wir sind auf Ihre Unterstützung angewiesen, damit wir im Lager leckeres und gesundes Essen zu servieren können. Jede Spende hilft uns, einen vielfältigeren Menuplan zu erstellen. Die Spenden sammeln wir bei der Gepäckabgabe. ', 'Bei Fragen oder Problemen können Sie Oliver Umbricht auf Whatsapp [078 850 04 73] erreichen.', '2024-09-08', '2024-09-22');
 
 TRUNCATE TABLE jublawoma_donation_product CASCADE;
 INSERT INTO jublawoma_donation_product(id, donation_id, name, quantity, step, unit, note)

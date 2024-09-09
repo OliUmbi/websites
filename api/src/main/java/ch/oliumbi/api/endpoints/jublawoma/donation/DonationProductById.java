@@ -72,7 +72,7 @@ public class DonationProductById implements Endpoint<Void> {
                     unit,
                     note
             """,
-        Param.from("id", UUID.fromString(id.get())));
+        Param.of("id", UUID.fromString(id.get())));
 
     if (donationProductResponse.isEmpty()) {
       return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Spende nicht gefunden.");

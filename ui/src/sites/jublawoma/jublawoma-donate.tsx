@@ -13,12 +13,13 @@ import InputNumber from "../../components/input/number/input-number";
 import InputText from "../../components/input/text/input-text";
 import Button from "../../components/button/button";
 import {MessageResponse} from "../../interfaces/global/message";
+import {Enviroment} from "../../enums/global/enviroment";
 
 const JublawomaDonate = () => {
 
   const {id} = useParams()
-  const donationProduct = useApi<DonationProductResponse>("GET", "/jublawoma/donation/product/" + id)
-  const donationProductDonor = useApi<MessageResponse>("POST", "/jublawoma/donation/product/donor")
+  const donationProduct = useApi<DonationProductResponse>(Enviroment.JUBLAWOMA, "GET", "/donation/product/" + id)
+  const donationProductDonor = useApi<MessageResponse>(Enviroment.JUBLAWOMA, "POST", "/donation/product/donor")
 
   const firstname = useInput(true, "", value => {
     if (value.length > 32) return "Dieses Feld lässt nur Eingaben bis zu 32 Zeichen zu."

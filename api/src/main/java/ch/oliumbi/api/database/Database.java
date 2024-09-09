@@ -1,11 +1,9 @@
 package ch.oliumbi.api.database;
 
 import ch.oliumbi.api.autoload.Autoload;
-import ch.oliumbi.api.server.EndpointHandler;
 import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -194,13 +192,12 @@ public class Database {
     return query.replaceAll("INTO [\\s\\S]*", "");
   }
 
-  // todo rework due to param1 variable
   private void setInputs(PreparedStatement preparedStatement, List<String> inputs, Object[] params) throws Exception {
     for (int i = 0; i < inputs.size(); i++) {
       for (Object param : params) {
-        if (param instanceof Param param1) {
-          if (param1.getName().equals(inputs.get(i))) {
-            preparedStatement.setObject(i + 1, param1.getValue());
+        if (param instanceof Param customParam) {
+          if (customParam.getName().equals(inputs.get(i))) {
+            preparedStatement.setObject(i + 1, customParam.getValue());
           }
         } else {
           for (Field declaredField : param.getClass().getDeclaredFields()) {
@@ -222,7 +219,7 @@ public class Database {
       for (int i = 0; i < outputs.size(); i++) {
         for (Field declaredField : clazz.getDeclaredFields()) {
           if (declaredField.getName().equals(outputs.get(i)) && declaredField.trySetAccessible()) {
-            declaredField.set(instance, convertToJava(resultSet, i + 1, declaredField.getType()));
+            declaredField.set(instance, convert(resultSet, i + 1, declaredField.getType()));
           }
         }
       }
@@ -243,7 +240,7 @@ public class Database {
     return rows;
   }
 
-  private <E extends Enum<E>> Object convertToJava(ResultSet resultSet, int index, Class<?> type) throws Exception {
+  private <E extends Enum<E>> Object convert(ResultSet resultSet, int index, Class<?> type) throws Exception {
     if (type == byte[].class) {
       return resultSet.getBytes(index);
     }

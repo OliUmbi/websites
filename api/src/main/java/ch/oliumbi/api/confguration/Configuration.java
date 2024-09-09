@@ -5,6 +5,7 @@ import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.enums.Environment;
 import ch.oliumbi.api.server.ServerHandler;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,12 +18,10 @@ public class Configuration {
   private final Environment environment;
 
   public Configuration() {
-
-    properties = properties();
+    this.properties = properties();
 
     String profile = properties.getProperty("profile");
-
-    LOGGER.info("Running with " + profile + " profile");
+    LOGGER.info("Active profile: {}", profile);
 
     switch (profile) {
       case "development":
@@ -50,19 +49,21 @@ public class Configuration {
     return property;
   }
 
+  public List<String> strings(String key) {
+    return List.of(string(key).split(","));
+  }
+
   public Integer integer(String key) {
     return Integer.valueOf(string(key));
+  }
+
+  public List<Integer> integers(String key) {
+    return strings(key).stream().map(Integer::valueOf).toList();
   }
 
   private Properties properties() {
     try (InputStream inputStream = Api.class.getClassLoader().getResourceAsStream("application.properties")) {
       Properties properties = new Properties();
-
-      if (inputStream == null) {
-        // todo appliation failed
-        throw new RuntimeException("Failed to read properties");
-      }
-
       properties.load(inputStream);
 
       return properties;

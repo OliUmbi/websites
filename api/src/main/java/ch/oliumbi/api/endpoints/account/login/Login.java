@@ -51,7 +51,7 @@ public class Login implements Endpoint<LoginRequest> {
             WHERE   firstname = :username
             LIMIT   1
             """,
-        Param.from("username", request.getBody().getUsername()));
+        Param.of("username", request.getBody().getUsername()));
 
     if (account.isEmpty()) {
       return new MessageResponse(Status.BAD_REQUEST, "Login failed.");
@@ -81,9 +81,9 @@ public class Login implements Endpoint<LoginRequest> {
                     :token,
                     :expires)
         """,
-        Param.from("accountId", account.get().getUUID("account_id")),
-        Param.from("token", token),
-        Param.from("expires", LocalDateTime.now().plusHours(8)));
+        Param.of("accountId", account.get().getUUID("account_id")),
+        Param.of("token", token),
+        Param.of("expires", LocalDateTime.now().plusHours(8)));
 
     return new JsonResponse(Status.OK, new LoginResponse(token));
   }

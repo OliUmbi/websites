@@ -1,7 +1,7 @@
 package ch.oliumbi.api.server;
 
 import ch.oliumbi.api.autoload.Autoload;
-import ch.oliumbi.api.endpoints.Cors;
+import ch.oliumbi.api.confguration.Configuration;
 import ch.oliumbi.api.enums.Permission;
 import ch.oliumbi.api.models.Account;
 import ch.oliumbi.api.models.AccountPermission;
@@ -18,7 +18,7 @@ import ch.oliumbi.api.server.request.PathVariables;
 import ch.oliumbi.api.server.request.Request;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
-import java.nio.ByteBuffer;
+import java.net.SocketAddress;
 import java.util.List;
 import java.util.Optional;
 import org.eclipse.jetty.http.HttpFields;
@@ -34,16 +34,37 @@ public class EndpointHandler {
   private static final Logger LOGGER = LoggerFactory.getLogger(EndpointHandler.class);
 
   private final List<Endpoint<?>> endpoints;
-  private final Cors cors;
+  private final Configuration configuration;
   private final AccountService accountService;
 
-  public EndpointHandler(Endpoint<?>[] endpoints, Cors cors, AccountService accountService) {
+  public EndpointHandler(Endpoint<?>[] endpoints, Configuration configuration, AccountService accountService) {
     this.endpoints = List.of(endpoints);
-    this.cors = cors;
+    this.configuration = configuration;
     this.accountService = accountService;
   }
 
   public Response request(ConnectionMetaData connectionMetaData, String methodString, HttpURI httpURI, HttpFields httpFields, Chunk chunk) {
+
+    Response response = yeet(connectionMetaData, methodString, httpURI, httpFields, chunk);
+
+    response.getHeaders().add(new Header("Content-Type", response.getContentType().toString()));
+
+    String origin = httpFields.get("Origin");
+
+    if (origin != null && configuration.strings("cors.origins").contains(origin)) {
+      response.getHeaders().add(new Header("Access-Control-Allow-Origin", origin));
+    } else {
+      response.getHeaders().add(new Header("Access-Control-Allow-Origin", "*"));
+    }
+
+    response.getHeaders().add(new Header("Access-Control-Allow-Methods", configuration.string("cors.methods")));
+    response.getHeaders().add(new Header("Access-Control-Allow-Headers", configuration.string("cors.headers")));
+    response.getHeaders().add(new Header("Access-Control-Max-Age", "86400"));
+
+    return response;
+  }
+
+  private Response yeet(ConnectionMetaData connectionMetaData, String methodString, HttpURI httpURI, HttpFields httpFields, Chunk chunk) {
 
     Meta meta;
     try {
@@ -86,7 +107,7 @@ public class EndpointHandler {
     }
 
     if (method == Method.OPTIONS) {
-      return cors.response();
+      return new MessageResponse(Status.OK, "Pong.");
     }
 
     for (Endpoint<?> endpoint : endpoints) {

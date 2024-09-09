@@ -15,7 +15,7 @@ public class Param {
     this.value = value;
   }
 
-  public static Param from(String name, Object value) {
+  public static Param of(String name, Object value) {
     return new Param(name, value);
   }
 }

@@ -59,7 +59,7 @@ public class DonationProductDonorCreate implements Endpoint<DonationProductDonor
                   :quantity,
                   :note)
         """,
-        Param.from("id", UUID.randomUUID()),
+        Param.of("id", UUID.randomUUID()),
         request.getBody());
 
     return new MessageResponse(Status.OK, "Die Spende wurde erfolgreich empfangen. Vielen herzlichen Dank!");

@@ -34,12 +34,6 @@ public class ServerHandler extends Handler.Abstract {
     for (Header header : internal.getHeaders()) {
       response.getHeaders().add(header.getName(), header.getValue());
     }
-    // todo move this
-    response.getHeaders().add("Content-Type", internal.getContentType().toString());
-    response.getHeaders().add("Access-Control-Allow-Origin", "https://jublawoma.ch");
-    response.getHeaders().add("Access-Control-Allow-Methods", "OPTIONS,GET,POST,PUT,DELETE");
-    response.getHeaders().add("Access-Control-Allow-Headers", "Content-Type,Authentication");
-    response.getHeaders().add("Access-Control-Max-Age", "86400");
 
     response.write(true, internal.getBody(), callback);
 

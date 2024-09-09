@@ -11,14 +11,11 @@ one project to rule them all
     - accordion
     - image input with presets
     - not found / empty
-    - error
     - update loading
   - hooks
     - improve use api for simpler responses
 - server
   - ufw rethink this or uninstall
-  - 
-
 
 ## jublawoma
 
