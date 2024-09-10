@@ -6,7 +6,7 @@ import Loading from "../../components/loading/loading";
 import Error from "../../components/error/error";
 import Text from "../../components/text/text";
 import Flex from "../../components/flex/flex";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {DonationProductUnit} from "../../enums/jublawoma/donation";
 import useInput from "../../hooks/use-input";
 import InputNumber from "../../components/input/number/input-number";
@@ -17,6 +17,7 @@ import {MessageResponse} from "../../interfaces/global/message";
 const JublawomaDonate = () => {
 
   const {id} = useParams()
+  const navigate = useNavigate()
   const donationProduct = useApi<DonationProductResponse>("GET", "/jublawoma/donation/product/" + id)
   const donationProductDonor = useApi<MessageResponse>("POST", "/jublawoma/donation/product/donor")
 
@@ -48,7 +49,9 @@ const JublawomaDonate = () => {
   }, []);
 
   useEffect(() => {
-    donationProduct.execute()
+    if (donationProductDonor.data !== null) {
+      navigate("/spenden/danke")
+    }
   }, [donationProductDonor.data]);
 
   const create = () => {
@@ -93,7 +96,7 @@ const JublawomaDonate = () => {
           donationProduct.data ? (
               <Flex xl={{direction: "column", gap: 4}}>
                 <Flex xl={{direction: "column", gap: 2}}>
-                  <Text type="h1">{donationProduct.data.name}</Text>
+                  <Text type="h2">{donationProduct.data.name}</Text>
                   <Flex xl={{direction: "column"}}>
                     <Text type="s" primary={false}>Bereits gespendet</Text>
                     <Text type="p">{donationProduct.data.donated} von {donationProduct.data.quantity} {DonationProductUnit.translate(donationProduct.data.unit)} [{donationProduct.data.quantity - donationProduct.data.donated} verbleibend]</Text>
@@ -108,7 +111,7 @@ const JublawomaDonate = () => {
                   }
                 </Flex>
                 <Flex xl={{direction: "column", gap: 2}}>
-                  <Text type="h2">Spenden</Text>
+                  <Text type="h3">Spenden</Text>
                   <Flex xl={{direction: "column", gap: 1}}>
                     <InputText {...firstname} label="Vorname" placeholder="Vorname"/>
                     <InputText {...lastname} label="Nachname" placeholder="Nachname" characters={10}/>

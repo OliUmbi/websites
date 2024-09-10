@@ -13,6 +13,7 @@ import JublawomaLegal from "./jublawoma-legal";
 import JublawomaPrivacy from "./jublawoma-privacy";
 import Shell from "../../components/shell/shell";
 import JublawomaDonate from "./jublawoma-donate";
+import JublawomaDonateThanks from "./jublawoma-donate-thanks";
 
 const Jublawoma = () => {
 
@@ -35,6 +36,7 @@ const Jublawoma = () => {
             <Route path="/beitreten" element={<JublawomaJoin/>}/>
             <Route path="/spenden" element={<JublawomaDonations/>}/>
             <Route path="/spenden/:id" element={<JublawomaDonate/>}/>
+            <Route path="/spenden/danke" element={<JublawomaDonateThanks/>}/>
             <Route path="/kontakt" element={<JublawomaContact/>}/>
             <Route path="/impressum" element={<JublawomaLegal/>}/>
             <Route path="/datenschutz" element={<JublawomaPrivacy/>}/>

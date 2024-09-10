@@ -12,7 +12,7 @@ namespace DonationProductUnit {
   export const translate = (value: DonationProductUnit) => {
     switch (value) {
       case DonationProductUnit.KILOGRAM:
-        return "Kilogram";
+        return "Kilogramm";
       case DonationProductUnit.LITER:
         return "Liter";
       case DonationProductUnit.PIECE:
@@ -20,7 +20,7 @@ namespace DonationProductUnit {
       case DonationProductUnit.TUBE:
         return "Tube";
       case DonationProductUnit.JAR:
-        return "Glass";
+        return "Glas";
       case DonationProductUnit.BOX:
         return "Packung";
       case DonationProductUnit.FRANCS:

@@ -45,9 +45,8 @@ const JublawomaDonations = () => {
                           <Flex xl={{direction: "row", align: "center", justify: "between", gap: 2}} key={index}>
                             <Flex xl={{direction: "row", align: "center", gap: 1}}
                                   s={{direction: "column", align: "start", gap: 0}}>
-                              <Text type="h3">{value.name}</Text>
-                              <Text
-                                  type="p">{value.donated} / {value.quantity} {DonationProductUnit.translate(value.unit)}</Text>
+                              <Text type="p">{value.name}</Text>
+                              <Text type="s" primary={false}>{value.donated} / {value.quantity} {DonationProductUnit.translate(value.unit)}</Text>
                             </Flex>
                             <Button onClick={() => navigate("/spenden/" + value.id)} highlight={false}>Spenden</Button>
                           </Flex>
@@ -61,9 +60,8 @@ const JublawomaDonations = () => {
                       donation.data.products.filter(value => value.quantity == value.donated).map((value, index) => (
                           <Flex xl={{direction: "row", align: "center", gap: 1}}
                                 s={{direction: "column", align: "start", gap: 0}}>
-                            <Text type="h3">{value.name}</Text>
-                            <Text
-                                type="p">{value.donated} / {value.quantity} {DonationProductUnit.translate(value.unit)}</Text>
+                            <Text type="p">{value.name}</Text>
+                            <Text type="s" primary={false}>{value.donated} / {value.quantity} {DonationProductUnit.translate(value.unit)}</Text>
                           </Flex>
                       ))
                     }
