@@ -1,4 +1,3 @@
-import Section from "../../components/section/section";
 import Flex from "../../components/flex/flex";
 import Button from "../../components/button/button";
 import Text from "../../components/text/text";
@@ -9,9 +8,8 @@ import Image from "../../components/image/image";
 const JublawomaContact = () => {
 
   return (
-      <Flex xl={{direction: "column", gap: 8}}>
-        <Section width="xl">
-
+      <Flex xl={{direction: "column", align: "center"}}>
+        <Flex xl={{widthMax: "xl", width: true}}>
           <Grid xl={{columns: 2, gap: 2}} m={{columns: 1}}>
             <GridItem xl={{columns: 1}}>
               <Image src="/assets/jublawoma/images/doodles/roller-skating.svg" alt="Beitreten" side="width" rounded={false}/>
@@ -29,7 +27,7 @@ const JublawomaContact = () => {
               </Flex>
             </GridItem>
           </Grid>
-        </Section>
+        </Flex>
       </Flex>
   )
 }

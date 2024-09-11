@@ -8,7 +8,7 @@ export enum DonationProductUnit {
   FRANCS = "FRANCS"
 }
 
-namespace DonationProductUnit {
+export namespace DonationProductUnit {
   export const translate = (value: DonationProductUnit) => {
     switch (value) {
       case DonationProductUnit.KILOGRAM:

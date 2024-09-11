@@ -48,7 +48,7 @@ public class DonationProductDonorCreate implements Endpoint<DonationProductDonor
         request.getBody().getLastname() == null ||
         request.getBody().getPhone() == null ||
         request.getBody().getQuantity() == null) {
-      return new JsonResponse(Status.BAD_REQUEST, "Nicht alle Pflichtfelder sind ausgefüllt.");
+      return new MessageResponse(Status.BAD_REQUEST, "Nicht alle Pflichtfelder sind ausgefüllt.");
     }
 
     Optional<Integer> rows = database.update("""

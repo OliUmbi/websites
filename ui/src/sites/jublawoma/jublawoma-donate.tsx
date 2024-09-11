@@ -1,4 +1,3 @@
-import Section from "../../components/section/section";
 import useApi from "../../hooks/use-api";
 import {DonationProductResponse} from "../../interfaces/jublawoma/donation";
 import {useEffect, useState} from "react";
@@ -89,61 +88,65 @@ const JublawomaDonate = () => {
   }
 
   return (
-      <Section width="m">
-        {
-          donationProduct.data ? (
-              <Flex xl={{direction: "column", gap: 4}}>
-                <Flex xl={{direction: "column", gap: 2}}>
-                  <Text type="h1">{donationProduct.data.name}</Text>
-                  <Flex xl={{direction: "column"}}>
-                    <Text type="s" primary={false}>Bereits gespendet</Text>
-                    <Text type="p">{donationProduct.data.donated} von {donationProduct.data.quantity} {DonationProductUnit.translate(donationProduct.data.unit)} [{donationProduct.data.quantity - donationProduct.data.donated} verbleibend]</Text>
+      <Flex xl={{direction: "column", align: "center"}}>
+        <Flex xl={{widthMax: "m", width: true, direction: "column", gap: 4}}>
+          {
+            donationProduct.data ? (
+                <>
+                  <Flex xl={{direction: "column", gap: 2}}>
+                    <Text type="h1">{donationProduct.data.name}</Text>
+                    <Flex xl={{direction: "column"}}>
+                      <Text type="s" primary={false}>Bereits gespendet</Text>
+                      <Text
+                          type="p">{donationProduct.data.donated} von {donationProduct.data.quantity} {DonationProductUnit.translate(donationProduct.data.unit)} [{donationProduct.data.quantity - donationProduct.data.donated} verbleibend]</Text>
+                    </Flex>
+                    {
+                      donationProduct.data.note ? (
+                          <Flex xl={{direction: "column"}}>
+                            <Text type="s" primary={false}>Bemerkung</Text>
+                            <Text type="p">{donationProduct.data.note}</Text>
+                          </Flex>
+                      ) : null
+                    }
                   </Flex>
-                  {
-                    donationProduct.data.note ? (
-                        <Flex xl={{direction: "column"}}>
-                          <Text type="s" primary={false}>Bemerkung</Text>
-                          <Text type="p">{donationProduct.data.note}</Text>
-                        </Flex>
-                    ) : null
-                  }
-                </Flex>
-                <Flex xl={{direction: "column", gap: 2}}>
-                  <Text type="h2">Spenden</Text>
-                  <Flex xl={{direction: "column", gap: 1}}>
-                    <InputText {...firstname} label="Vorname" placeholder="Vorname"/>
-                    <InputText {...lastname} label="Nachname" placeholder="Nachname" characters={10}/>
-                    <InputText {...phone} label="Telefon" placeholder="123 456 78 90"/>
-                    <InputNumber {...quantity} label={"Menge in " + DonationProductUnit.translate(donationProduct.data.unit)}
-                                 required={true} min={0} max={donationProduct.data.quantity - donationProduct.data.donated}
-                                 step={donationProduct.data.step}/>
-                    <InputText {...note} label="Bemerkung" rows={3}/>
+                  <Flex xl={{direction: "column", gap: 2}}>
+                    <Text type="h2">Spenden</Text>
+                    <Flex xl={{direction: "column", gap: 1}}>
+                      <InputText {...firstname} label="Vorname" placeholder="Vorname"/>
+                      <InputText {...lastname} label="Nachname" placeholder="Nachname" characters={10}/>
+                      <InputText {...phone} label="Telefon" placeholder="123 456 78 90"/>
+                      <InputNumber {...quantity}
+                                   label={"Menge in " + DonationProductUnit.translate(donationProduct.data.unit)}
+                                   required={true} min={0} max={donationProduct.data.quantity - donationProduct.data.donated}
+                                   step={donationProduct.data.step}/>
+                      <InputText {...note} label="Bemerkung" rows={3}/>
+                    </Flex>
+                    <Flex xl={{width: true, direction: "row", justify: "end", gap: 1}}>
+                      <Button onClick={reset} highlight={false}>Verwerfen</Button>
+                      <Button onClick={create} highlight={true}>Senden</Button>
+                    </Flex>
+                    <Text type="p">{submit}</Text>
+                    {
+                      donationProductDonor.data ? <Text type="h3">{donationProductDonor.data.message}</Text> : null
+                    }
+                    {
+                      donationProductDonor.error ? <Error message={donationProductDonor.error}/> : null
+                    }
+                    {
+                      donationProductDonor.loading ? <Loading/> : null
+                    }
                   </Flex>
-                  <Flex xl={{width: true, direction: "row", justify: "end", gap: 1}}>
-                    <Button onClick={reset} highlight={false}>Verwerfen</Button>
-                    <Button onClick={create} highlight={true}>Senden</Button>
-                  </Flex>
-                  <Text type="p">{submit}</Text>
-                  {
-                    donationProductDonor.data ? <Text type="h3">{donationProductDonor.data.message}</Text> : null
-                  }
-                  {
-                    donationProductDonor.error ? <Error message={donationProductDonor.error}/> : null
-                  }
-                  {
-                    donationProductDonor.loading ? <Loading/> : null
-                  }
-                </Flex>
-              </Flex>
-          ) : null
-        }
-        {
-          donationProduct.error ? <Error message={donationProduct.error}/> : null
-        }
-        {
-          donationProduct.loading ? <Loading/> : null
-        }
-      </Section>
+                </>
+            ) : null
+          }
+          {
+            donationProduct.error ? <Error message={donationProduct.error}/> : null
+          }
+          {
+            donationProduct.loading ? <Loading/> : null
+          }
+        </Flex>
+      </Flex>
   )
 }
 

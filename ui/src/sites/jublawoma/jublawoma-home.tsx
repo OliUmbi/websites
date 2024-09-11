@@ -1,4 +1,3 @@
-import Section from "../../components/section/section";
 import Text from "../../components/text/text";
 import Flex from "../../components/flex/flex";
 import Grid from "../../components/grid/grid";
@@ -12,8 +11,8 @@ const JublawomaHome = () => {
   const navigate = useNavigate();
 
   return (
-      <Flex xl={{direction: "column", gap: 8}}>
-        <Section width="xl">
+      <Flex xl={{direction: "column", align: "center", gap: 8}}>
+        <Flex xl={{widthMax: "xl", width: true}}>
           <Grid xl={{columns: 2, gap: 4}} m={{columns: 1}}>
             <GridItem xl={{columns: 1}}>
               <Image src="/assets/jublawoma/images/doodles/swinging.svg" alt="Beitreten" side="width" rounded={false}/>
@@ -26,15 +25,13 @@ const JublawomaHome = () => {
               </Flex>
             </GridItem>
           </Grid>
-        </Section>
-        <Section width="s">
-          <Flex xl={{direction: "column"}}>
-            <Text type="p" primary={true}>Wir sind ca. 100 Kinder und 40 Leiter aus den Gemeinden Wohlenschwil, Mägenwil und
-              Tägerig. Wir nehmen an diversen Anlässen in den Gemeinden teil und haben unsere eigenen Anlässe für Gross und
-              Klein.</Text>
-          </Flex>
-        </Section>
-        <Section width="l">
+        </Flex>
+        <Flex xl={{widthMax: "s", width: true, direction: "column"}}>
+          <Text type="p" primary={true}>Wir sind ca. 100 Kinder und 40 Leiter aus den Gemeinden Wohlenschwil, Mägenwil und
+            Tägerig. Wir nehmen an diversen Anlässen in den Gemeinden teil und haben unsere eigenen Anlässe für Gross und
+            Klein.</Text>
+        </Flex>
+        <Flex xl={{widthMax: "l", width: true}}>
           <Grid xl={{columns: 2, gap: 4}} m={{columns: 1}}>
             <GridItem xl={{columns: 1}}>
               <Image src="/assets/jublawoma/images/doodles/dog.svg" alt="Beitreten" side="width" rounded={false}/>
@@ -88,8 +85,8 @@ const JublawomaHome = () => {
               </Flex>
             </GridItem>
           </Grid>
-        </Section>
-        <Section width="xl">
+        </Flex>
+        <Flex xl={{widthMax: "xl", width: true}}>
           <Grid xl={{columns: 2, gap: 4}} m={{columns: 1}}>
             <GridItem xl={{columns: 1}}>
               <Flex xl={{height: true, direction: "column", justify: "center", gap: 2}}>
@@ -104,7 +101,7 @@ const JublawomaHome = () => {
               <Image src="/assets/jublawoma/images/doodles/loving.svg" alt="Beitreten" side="width" rounded={false}/>
             </GridItem>
           </Grid>
-        </Section>
+        </Flex>
       </Flex>
   )
 }

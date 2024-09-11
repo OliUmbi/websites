@@ -1,4 +1,3 @@
-import Section from "../../components/section/section";
 import Text from "../../components/text/text";
 import Flex from "../../components/flex/flex";
 import {date} from "../../services/date";
@@ -69,36 +68,35 @@ const JublawomaEvents = () => {
   ]
 
   return (
-      <>
-        <Section width="l">
-          <Flex xl={{direction: "column", gap: 4}}>
-            {
-              data.filter(value => date.convert(value.to) > new Date()).map((value, index) => (
-                  <Grid xl={{columns: 2, gap: 4}} m={{columns: 1, gap: 1}} key={index}>
-                    <GridItem xl={{columns: 1}}>
-                      <Image src={value.image} alt="Veranstaltung" side="width" rounded={true}/>
-                    </GridItem>
-                    <GridItem xl={{columns: 1}}>
-                      <Flex xl={{height: true,direction: "column", justify: "center", gap: 4}} m={{gap: 1}}>
-                        <Text type="h2">{value.name}</Text>
-                        <Flex xl={{direction: "column"}}>
-                          <Flex xl={{direction: "row", align: "center", gap: 1}}>
-                            <Icon>event</Icon>
-                            <Text type="p" mono={true}>{date.locale(value.from, "date")}{value.from != value.to ? " - " + date.locale(value.to, "date") : ""}</Text>
-                          </Flex>
-                          <Flex xl={{direction: "row", align: "center", gap: 1}}>
-                            <Icon>location_on</Icon>
-                            <Text type="p" mono={true}>{value.location}</Text>
-                          </Flex>
+      <Flex xl={{direction: "column", align: "center", gap: 4}}>
+        {
+          data.filter(value => date.convert(value.to) > new Date()).map((value, index) => (
+              <Flex xl={{widthMax: "l", width: true}}>
+                <Grid xl={{columns: 2, gap: 4}} m={{columns: 1, gap: 1}} key={index}>
+                  <GridItem xl={{columns: 1}}>
+                    <Image src={value.image} alt="Veranstaltung" side="width" rounded={true}/>
+                  </GridItem>
+                  <GridItem xl={{columns: 1}}>
+                    <Flex xl={{height: true, direction: "column", justify: "center", gap: 4}} m={{gap: 1}}>
+                      <Text type="h2">{value.name}</Text>
+                      <Flex xl={{direction: "column"}}>
+                        <Flex xl={{direction: "row", align: "center", gap: 1}}>
+                          <Icon>event</Icon>
+                          <Text type="p"
+                                mono={true}>{date.locale(value.from, "date")}{value.from != value.to ? " - " + date.locale(value.to, "date") : ""}</Text>
+                        </Flex>
+                        <Flex xl={{direction: "row", align: "center", gap: 1}}>
+                          <Icon>location_on</Icon>
+                          <Text type="p" mono={true}>{value.location}</Text>
                         </Flex>
                       </Flex>
-                    </GridItem>
-                  </Grid>
-              ))
-            }
-          </Flex>
-        </Section>
-      </>
+                    </Flex>
+                  </GridItem>
+                </Grid>
+              </Flex>
+          ))
+        }
+      </Flex>
   )
 }
 

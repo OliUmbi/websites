@@ -13,12 +13,52 @@
         width: fit-content;
       }
 
+      &[data-#{$name}widthmax="xl"] {
+        max-width: variables.$xl;
+      }
+
+      &[data-#{$name}widthmax="l"] {
+        max-width: variables.$l;
+      }
+
+      &[data-#{$name}widthmax="m"] {
+        max-width: variables.$m;
+      }
+
+      &[data-#{$name}widthmax="s"] {
+        max-width: variables.$s;
+      }
+
+      &[data-#{$name}widthmax="xs"] {
+        max-width: variables.$xs;
+      }
+
       &[data-#{$name}height="true"] {
         height: 100%;
       }
 
       &[data-#{$name}height="false"] {
         height: fit-content;
+      }
+
+      &[data-#{$name}heightmax="xl"] {
+        max-height: variables.$xl;
+      }
+
+      &[data-#{$name}heightmax="l"] {
+        max-height: variables.$l;
+      }
+
+      &[data-#{$name}heightmax="m"] {
+        max-height: variables.$m;
+      }
+
+      &[data-#{$name}heightmax="s"] {
+        max-height: variables.$s;
+      }
+
+      &[data-#{$name}heightmax="xs"] {
+        max-height: variables.$xs;
       }
 
       &[data-#{$name}direction="row"] {

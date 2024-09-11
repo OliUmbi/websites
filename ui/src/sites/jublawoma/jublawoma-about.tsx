@@ -3,13 +3,12 @@ import GridItem from "../../components/grid/item/grid-item";
 import Text from "../../components/text/text";
 import Image from "../../components/image/image";
 import Flex from "../../components/flex/flex";
-import Section from "../../components/section/section";
 
 const JublawomaAbout = () => {
 
   return (
-      <Flex xl={{direction: "column", gap: 8}}>
-        <Section width="l">
+      <Flex xl={{direction: "column", align: "center", gap: 8}}>
+        <Flex xl={{widthMax: "l", width: true}}>
           <Grid xl={{columns: 2, gap: 4}} m={{columns: 1, gap: 2}}>
             <GridItem xl={{columns: 2}} m={{columns: 1}}>
               <Text type="h2">Unser Leitungsteam</Text>
@@ -32,8 +31,8 @@ const JublawomaAbout = () => {
                 Kantonsleitung betreut und profitiert dadurch von Ausbildungsangeboten, Hilfsmitteln, Beratung etc.</Text>
             </GridItem>
           </Grid>
-        </Section>
-        <Section width="m">
+        </Flex>
+        <Flex xl={{widthMax: "m", width: true}}>
           <Flex xl={{direction: "column", gap: 2}}>
             <Text type="h2">Scharleitung</Text>
             <Image src="/assets/jublawoma/images/people/scharleitung.jpg" alt="Scharleitung" side="width" rounded={true}/>
@@ -44,8 +43,8 @@ const JublawomaAbout = () => {
               <Text type="h3">Raphael Schreiber</Text>
             </Flex>
           </Flex>
-        </Section>
-        <Section width="m">
+        </Flex>
+        <Flex xl={{widthMax: "m", width: true}}>
           <Grid xl={{columns: 3, gap: 4}} s={{columns: 1, gap: 2}}>
             <GridItem xl={{columns: 3}} s={{columns: 1}}>
             </GridItem>
@@ -62,8 +61,8 @@ const JublawomaAbout = () => {
               </Flex>
             </GridItem>
           </Grid>
-        </Section>
-        <Section width="m">
+        </Flex>
+        <Flex xl={{widthMax: "m", width: true}}>
           <Grid xl={{columns: 3, gap: 4}} s={{columns: 1, gap: 2}}>
             <GridItem xl={{columns: 1}}>
               <Image src="/assets/jublawoma/images/logos/aargau.svg" alt="Jubla Aargau" side="width" rounded={false}/>
@@ -77,8 +76,8 @@ const JublawomaAbout = () => {
               </Flex>
             </GridItem>
           </Grid>
-        </Section>
-        <Section width="m">
+        </Flex>
+        <Flex xl={{widthMax: "m", width: true}}>
           <Grid xl={{columns: 3, gap: 4}} s={{columns: 1, gap: 2}}>
             <GridItem xl={{columns: 1}}>
               <Image src="/assets/jublawoma/images/logos/js.jpg" alt="Jugend und Sport" side="width" rounded={false}/>
@@ -93,7 +92,7 @@ const JublawomaAbout = () => {
               </Flex>
             </GridItem>
           </Grid>
-        </Section>
+        </Flex>
       </Flex>
   )
 }
