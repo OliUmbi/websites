@@ -3,6 +3,7 @@ import OliumbiAdmin from "./sites/oliumbi/admin/oliumbi-admin";
 import Jublawoma from "./sites/jublawoma/jublawoma";
 import Unclet from "./sites/unclet/unclet";
 import {BrowserRouter} from "react-router-dom";
+import JublawomaAdmin from "./sites/jublawoma/admin/jublawoma-admin";
 
 const App = () => {
 
@@ -14,7 +15,10 @@ const App = () => {
   return (
       <BrowserRouter>
         {
-          domain === "jublawoma.ch" || true ? <Jublawoma/> : ""
+          domain === "jublawoma.ch" ? <Jublawoma/> : ""
+        }
+        {
+          domain === "admin.jublawoma.ch" || true ? <JublawomaAdmin/> : ""
         }
         {
           domain === "uncle-t.ch" ? <Unclet/> : ""
