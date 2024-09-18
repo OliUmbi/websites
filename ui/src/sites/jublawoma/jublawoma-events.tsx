@@ -81,12 +81,12 @@ const JublawomaEvents = () => {
                       <Text type="h2">{value.name}</Text>
                       <Flex xl={{direction: "column"}}>
                         <Flex xl={{direction: "row", align: "center", gap: 1}}>
-                          <Icon>event</Icon>
+                          <Icon>calendar</Icon>
                           <Text type="p"
                                 mono={true}>{date.locale(value.from, "date")}{value.from != value.to ? " - " + date.locale(value.to, "date") : ""}</Text>
                         </Flex>
                         <Flex xl={{direction: "row", align: "center", gap: 1}}>
-                          <Icon>location_on</Icon>
+                          <Icon>map-pin</Icon>
                           <Text type="p" mono={true}>{value.location}</Text>
                         </Flex>
                       </Flex>

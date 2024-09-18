@@ -4,6 +4,7 @@
   font-family: "geist";
   font-display: swap;
   font-weight: 1 1000;
+  font-size: inherit;
   src: url("/assets/global/fonts/geist.woff2") format("woff2");
 }
 
@@ -11,6 +12,7 @@
   font-family: "geist-mono";
   font-display: swap;
   font-weight: 1 1000;
+  font-size: inherit;
   src: url("/assets/global/fonts/geist-mono.woff2") format("woff2");
 }
 
@@ -18,12 +20,21 @@
   font-family: "icon";
   font-style: normal;
   font-weight: 400;
+  font-size: inherit;
   src: url("/assets/global/fonts/icon.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: "lucide";
+  font-style: normal;
+  font-size: 24px;
+  src: url("/assets/global/fonts/lucide.woff2") format('woff2');
 }
 
 body {
   font-family: "geist", sans-serif, monospace;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, p, small, a {
@@ -33,7 +44,6 @@ h1, h2, h3, h4, p, small, a {
   word-break: break-word;
   max-width: 80ch;
 }
-
 
 h1 {
   font-size: 3.5672rem;

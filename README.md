@@ -17,6 +17,11 @@ one project to rule them all
     - improve use api for simpler responses
 - server
   - ufw rethink this or uninstall
+- icons
+  - fork lucide / or contribute
+  - fix the with json to assert
+  - useNameAsUnicode: true
+  - remove unicode transform
 
 ## jublawoma
 

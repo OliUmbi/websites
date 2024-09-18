@@ -131,10 +131,10 @@ const InputNumber = (props: Props) => {
             props.step ? (
                 <>
                   <div className="input-number__button" onClick={subtract}>
-                    <Icon>remove</Icon>
+                    <Icon>minus</Icon>
                   </div>
                   <div className="input-number__button" onClick={add}>
-                    <Icon>add</Icon>
+                    <Icon>plus</Icon>
                   </div>
                 </>
             ) : ""
