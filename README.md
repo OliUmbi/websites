@@ -3,6 +3,7 @@ one project to rule them all
 
 ## todos
 - ui
+  - lucide icons
   - robots.txt
   - manifest
   - service worker
