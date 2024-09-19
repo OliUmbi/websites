@@ -96,6 +96,9 @@ one project to rule them all
   - uncle-t
   - gyroscope
   - compass
+- blog
+  - complexity formula
+  - enum to save complexity
 - career (dates, certificastes)
   - school
   - informatics
