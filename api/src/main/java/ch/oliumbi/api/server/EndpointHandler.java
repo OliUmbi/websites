@@ -130,7 +130,7 @@ public class EndpointHandler {
 
       Object body;
       try {
-        body = Body.con vert(endpoint, byteBuffer);
+        body = Body.convert(endpoint, byteBuffer);
       } catch (Exception e) {
         LOGGER.warn(e.getMessage());
         return new MessageResponse(Status.BAD_REQUEST, "Body is malformed.");
