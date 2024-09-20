@@ -1,6 +1,11 @@
 package ch.oliumbi.api.server;
 
 import ch.oliumbi.api.server.request.Header;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.concurrent.CompletableFuture;
+import org.eclipse.jetty.io.Content;
+import org.eclipse.jetty.io.Content.Source;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Response;
@@ -26,7 +31,7 @@ public class ServerHandler extends Handler.Abstract {
         request.getMethod(),
         request.getHttpURI(),
         request.getHeaders(),
-        request.read()
+        Source.asByteBufferAsync(request)
     );
 
     response.setStatus(internal.getStatus().getCode());

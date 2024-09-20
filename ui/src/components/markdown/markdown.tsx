@@ -5,7 +5,7 @@ import Flex from "../flex/flex";
 const Markdown = () => {
 
   return (
-      <Flex xl={{width: true, direction: "column", gap: 2}}>
+      <>
         <MarkdownPosition/>
         <MarkdownPosition/>
         <MarkdownPosition/>
@@ -21,7 +21,7 @@ const Markdown = () => {
         <MarkdownPosition/>
         <MarkdownPosition/>
         <MarkdownPosition/>
-      </Flex>
+      </>
   )
 }
 

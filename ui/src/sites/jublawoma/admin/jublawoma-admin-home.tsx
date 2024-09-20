@@ -1,26 +1,40 @@
 import Flex from "../../../components/flex/flex";
 import Markdown from "../../../components/markdown/markdown";
-import Icon from "../../../components/icon/icon";
-import IconButton from "../../../components/icon/button/icon-button";
+import useApi from "../../../hooks/use-api";
+import {Enviroment} from "../../../enums/global/enviroment";
+import useInput from "../../../hooks/use-input";
+import InputFile from "../../../components/input/file/input-file";
+import {useEffect} from "react";
 import Button from "../../../components/button/button";
 
 const JublawomaHome = () => {
 
+  const api = useApi<File>(Enviroment.JUBLAWOMA_ADMIN, "POST", "/image")
+
+  const input = useInput<File>(true)
+
+  const upload = () => {
+    if (!input.valid) {
+      return
+    }
+
+    api.execute({
+      body: input.value
+    })
+  }
+
+  useEffect(() => {
+    console.log(input)
+  }, [input]);
+
+  useEffect(() => {
+    console.log(api)
+  }, [api]);
+
   return (
-      <Flex xl={{direction: "column", align: "center", gap: 8}}>
-        <Icon size={2}>rabbit</Icon>
-        <Icon size={1.5}>rabbit</Icon>
-        <Icon size={1}>rabbit</Icon>
-        <Icon size={3}>rabbit</Icon>
-        <Icon size={4}>rabbit</Icon>
-        <Flex xl={{direction: "row", align: "center", wrap: "always", gap: 0.5}}>
-          <Button onClick={() => {}} highlight={true}>More</Button>
-          <IconButton size={1.5} onClick={() => {}} highlight={true}>plus</IconButton>
-          <IconButton size={2} onClick={() => {}} highlight={true}>plus</IconButton>
-          <IconButton size={1} onClick={() => {}} highlight={true}>text</IconButton>
-          <IconButton size={3} onClick={() => {}} highlight={false}>plus</IconButton>
-          <IconButton size={4} onClick={() => {}} highlight={false}>arrow-right</IconButton>
-        </Flex>
+      <Flex xl={{direction: "column", gap: 8}}>
+        <InputFile {...input} label="Image"/>
+        <Button onClick={upload} highlight={true}>Upload</Button>
         <Markdown/>
       </Flex>
   )

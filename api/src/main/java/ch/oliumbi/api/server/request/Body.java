@@ -8,28 +8,31 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.nio.ByteBuffer;
+import java.util.concurrent.CompletableFuture;
 import org.eclipse.jetty.io.Content.Chunk;
 import org.eclipse.jetty.util.BufferUtil;
 
 public class Body {
 
-  public static Object convert(Endpoint<?> endpoint, Chunk chunk) throws Exception {
+  public static Object convert(Endpoint<?> endpoint, CompletableFuture<ByteBuffer> byteBuffer) throws Exception {
     Type requestType = requestType(endpoint);
 
     if (requestType == Void.class) {
       return null;
     }
 
-    if (chunk == null) {
+    ByteBuffer body = byteBuffer.get();
+
+    if (body == null) {
       throw new Exception("Failed to handle request, reason: missing body");
     }
 
-    if (chunk.getFailure() != null) {
-      throw new Exception("Failed to handle request, reason: error in body transfer", chunk.getFailure());
+    if (requestType == Bytes.class) {
+      return new Bytes(BufferUtil.toArray(body));
     }
 
     try {
-      String content = BufferUtil.toString(chunk.getByteBuffer());
+      String content = BufferUtil.toString(body);
       return Json.read(content, requestType);
     } catch (JsonProcessingException e) {
       throw new Exception("Failed to handle request, reason: failed to map body to request type", e);

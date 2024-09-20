@@ -62,7 +62,7 @@ const useApi = <T>(enviroment: Enviroment, method: Method, path: string): {
 
     if (payload) {
       if (payload.body) {
-        if (payload.body instanceof FormData) {
+        if (payload.body instanceof File) {
           body = payload.body
         } else {
           headers = {...headers, "Content-Type": "application/json; charset=UTF-8"}

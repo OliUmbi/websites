@@ -18,9 +18,10 @@ import ch.oliumbi.api.server.request.PathVariables;
 import ch.oliumbi.api.server.request.Request;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
-import java.net.SocketAddress;
+import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import org.eclipse.jetty.http.HttpFields;
 import org.eclipse.jetty.http.HttpURI;
 import org.eclipse.jetty.io.Content.Chunk;
@@ -43,9 +44,9 @@ public class EndpointHandler {
     this.accountService = accountService;
   }
 
-  public Response request(ConnectionMetaData connectionMetaData, String methodString, HttpURI httpURI, HttpFields httpFields, Chunk chunk) {
+  public Response request(ConnectionMetaData connectionMetaData, String methodString, HttpURI httpURI, HttpFields httpFields, CompletableFuture<ByteBuffer> byteBuffer) {
 
-    Response response = yeet(connectionMetaData, methodString, httpURI, httpFields, chunk);
+    Response response = handle(connectionMetaData, methodString, httpURI, httpFields, byteBuffer);
 
     response.getHeaders().add(new Header("Content-Type", response.getContentType().toString()));
 
@@ -64,7 +65,7 @@ public class EndpointHandler {
     return response;
   }
 
-  private Response yeet(ConnectionMetaData connectionMetaData, String methodString, HttpURI httpURI, HttpFields httpFields, Chunk chunk) {
+  private Response handle(ConnectionMetaData connectionMetaData, String methodString, HttpURI httpURI, HttpFields httpFields, CompletableFuture<ByteBuffer> byteBuffer) {
 
     Meta meta;
     try {
@@ -129,7 +130,7 @@ public class EndpointHandler {
 
       Object body;
       try {
-        body = Body.convert(endpoint, chunk);
+        body = Body.con vert(endpoint, byteBuffer);
       } catch (Exception e) {
         LOGGER.warn(e.getMessage());
         return new MessageResponse(Status.BAD_REQUEST, "Body is malformed.");

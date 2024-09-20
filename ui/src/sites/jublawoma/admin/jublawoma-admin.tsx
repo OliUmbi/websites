@@ -2,6 +2,7 @@ import {BrowserRouter as Router, Route, Routes, useLocation} from "react-router-
 import Shell from "../../../components/shell/shell";
 import JublawomaAdminHome from "./jublawoma-admin-home";
 import JublawomaAdminNotFound from "./jublawoma-admin-not-found";
+import Drag from "../../../components/drag/drag";
 
 const JublawomaAdmin = () => {
 

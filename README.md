@@ -15,6 +15,9 @@ one project to rule them all
     - update loading
   - hooks
     - improve use api for simpler responses
+  - markdown
+    - quote
+    - list
 - server
   - ufw rethink this or uninstall
 - icons
