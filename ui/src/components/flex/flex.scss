@@ -149,7 +149,7 @@
         flex-wrap: nowrap;
       }
 
-      &[data-#{$name}wrap="wrap"] {
+      &[data-#{$name}wrap="always"] {
         flex-wrap: wrap;
       }
 

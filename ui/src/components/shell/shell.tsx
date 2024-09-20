@@ -54,7 +54,7 @@ const Shell = (props: Props) => {
           <Breadcrumbs/>
         </div>
         <div className="shell__navigation" data-side={props.side}>
-          <IconButton onClick={() => setOpen(!open)} highlight={false}>menu</IconButton>
+          <IconButton size={1.5} onClick={() => setOpen(!open)} highlight={false}>menu</IconButton>
           <Drawer open={open} setOpen={setOpen} title="Navigation">
             <Flex xl={{direction: "column", height: true, justify: "center"}}>
               <Flex xl={{direction: "row", gap: 4, wrap: "reverse"}}>

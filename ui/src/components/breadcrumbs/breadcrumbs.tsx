@@ -41,7 +41,7 @@ const Breadcrumbs = () => {
 
   return (
       <>
-        <Flex xl={{width: true, direction: "row", align: "center", wrap: "wrap"}}>
+        <Flex xl={{width: true, direction: "row", align: "center", wrap: "always"}}>
           {
             breadcrumbs.map((breadcrumb, index) => (
                 <Flex xl={{direction: "row", align: "center", wrap: "never"}} key={index}>

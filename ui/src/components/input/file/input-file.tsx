@@ -95,7 +95,7 @@ const InputFile = (props: Props) => {
                 <>
                   <Text type="s" primary={true} mono={true}>{props.value.name}</Text>
                   <div className="input-file__remove" onClick={clear}>
-                    <Icon>trash-2</Icon>
+                    <Icon size={1}>trash-2</Icon>
                   </div>
                 </>
             ) : ""

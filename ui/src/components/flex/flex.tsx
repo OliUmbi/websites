@@ -19,7 +19,7 @@ interface Flex {
   align?: "start" | "center" | "end"
   justify?: "start" | "center" | "end" | "between" | "around" | "evenly"
   gap?: 0 | 0.5 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
-  wrap?: "never" | "wrap" | "reverse"
+  wrap?: "never" | "always" | "reverse"
 }
 
 const Flex = (props: Props) => {

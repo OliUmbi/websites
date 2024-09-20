@@ -99,6 +99,7 @@ one project to rule them all
 - blog
   - complexity formula
   - enum to save complexity
+  - raw sql / orm
 - career (dates, certificastes)
   - school
   - informatics

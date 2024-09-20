@@ -2,13 +2,14 @@ import "./icon.scss";
 import {ReactNode} from "react";
 
 interface Props {
-  children: ReactNode
+  children: string
+  size: 1 | 1.5 | 2 | 3 | 4
 }
 
 const Icon = (props: Props) => {
 
   return (
-      <div className="icon">{props.children}</div>
+      <div className="icon" data-size={props.size}>{props.children}</div>
   )
 }
 

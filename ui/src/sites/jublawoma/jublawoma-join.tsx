@@ -33,7 +33,7 @@ const JublawomaJoin = () => {
             <GridItem xl={{columns: 1}}>
               <Flex xl={{height: true, direction: "column", justify: "between", gap: 2}}>
                 <Text type="p">Sollten Sie Fragen haben, können Sie sich jederzeit bei uns melden.</Text>
-                <Flex xl={{direction: "row", justify: "end", gap: 2, wrap: "wrap"}}>
+                <Flex xl={{direction: "row", justify: "end", gap: 2, wrap: "always"}}>
                   <Button onClick={() => window.location.href = ("mailto:scharleitung@jublawoma.ch")}
                           highlight={false}>Kontakt</Button>
                   <Button onClick={() => window.open("/assets/jublawoma/documents/Anmeldung-Jubla-Woma.pdf")}

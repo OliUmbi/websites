@@ -1,27 +1,32 @@
 @use "../../styles/variables";
 
 .icon {
-  width: 1.5em;
   aspect-ratio: 1;
-  font-size: 1.5em;
-  line-height: 1.5em;
-  color: inherit;
+  line-height: 0;
+  font-family: 'lucide';
   user-select: none;
 
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
 
-  font-family: 'lucide';
-  font-weight: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  text-transform: none;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
+  &[data-size="1"] {
+    font-size: 1em;
+  }
+
+  &[data-size="1.5"] {
+    font-size: 1.5em;
+  }
+
+  &[data-size="2"] {
+    font-size: 2em;
+  }
+
+  &[data-size="3"] {
+    font-size: 3em;
+  }
+
+  &[data-size="4"] {
+    font-size: 4em;
+  }
 }

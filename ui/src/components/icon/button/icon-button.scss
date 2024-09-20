@@ -1,13 +1,14 @@
 @use "../../../styles/variables";
 
 .icon-button {
-  width: fit-content;
-  padding: 0.55em;
   border: none;
   border-radius: 0.25em;
-  text-align: center;
   transition: variables.$transition-fast;
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &[data-highlight="true"] {
     background-color: variables.$foreground;
@@ -25,5 +26,25 @@
     &:hover, &:focus {
       background-color: variables.$background-hover;
     }
+  }
+
+  &[data-size="1"] {
+    padding: 0.5em;
+  }
+
+  &[data-size="1.5"] {
+    padding: 0.75em;
+  }
+
+  &[data-size="2"] {
+    padding: 1em;
+  }
+
+  &[data-size="3"] {
+    padding: 1.5em;
+  }
+
+  &[data-size="4"] {
+    padding: 2em;
   }
 }

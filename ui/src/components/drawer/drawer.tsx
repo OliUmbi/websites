@@ -19,7 +19,7 @@ const Drawer = (props: Props) => {
           <div className="drawer__content" data-open={props.open}>
             <Flex xl={{direction: "row", align: "center", justify: "between"}}>
               <Text type="p" primary={true} mono={true}>{props.title}</Text>
-              <IconButton onClick={() => props.setOpen(false)} highlight={false}>x</IconButton>
+              <IconButton size={1.5} onClick={() => props.setOpen(false)} highlight={false}>x</IconButton>
             </Flex>
             <div className="drawer__content__body">
               {props.children}

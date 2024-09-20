@@ -2,6 +2,7 @@ import "./input-number.scss";
 import Input from "../input";
 import {ChangeEvent, useEffect} from "react";
 import Icon from "../../icon/icon";
+import IconButton from "../../icon/button/icon-button";
 
 interface Props {
   required: boolean,
@@ -131,10 +132,10 @@ const InputNumber = (props: Props) => {
             props.step ? (
                 <>
                   <div className="input-number__button" onClick={subtract}>
-                    <Icon>minus</Icon>
+                    <Icon size={1.5}>minus</Icon>
                   </div>
                   <div className="input-number__button" onClick={add}>
-                    <Icon>plus</Icon>
+                    <Icon size={1.5}>plus</Icon>
                   </div>
                 </>
             ) : ""

@@ -20,11 +20,11 @@ const MarkdownPosition = (props: Props) => {
   return (
       <Flex xl={{width: true, direction: "row", gap: 2}}>
         <Flex xl={{direction: "row", align: "start"}}>
-          <IconButton onClick={() => setSelected("h2")} highlight={selected === "h2"}>heading-1</IconButton>
-          <IconButton onClick={() => setSelected("h3")} highlight={selected === "h3"}>heading-2</IconButton>
-          <IconButton onClick={() => setSelected("p")} highlight={selected === "p"}>letter-text</IconButton>
-          <IconButton onClick={() => setSelected("q")} highlight={selected === "q"}>quote</IconButton>
-          <IconButton onClick={() => setSelected("image")} highlight={selected === "image"}>image</IconButton>
+          <IconButton size={1} onClick={() => setSelected("h2")} highlight={selected === "h2"}>heading-1</IconButton>
+          <IconButton size={1} onClick={() => setSelected("h3")} highlight={selected === "h3"}>heading-2</IconButton>
+          <IconButton size={1} onClick={() => setSelected("p")} highlight={selected === "p"}>letter-text</IconButton>
+          <IconButton size={1} onClick={() => setSelected("q")} highlight={selected === "q"}>quote</IconButton>
+          <IconButton size={1} onClick={() => setSelected("image")} highlight={selected === "image"}>image</IconButton>
         </Flex>
         <Flex xl={{width: true, direction: "row"}}>
           {
