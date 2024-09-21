@@ -1,13 +1,7 @@
 import {useCallback, useState} from "react";
 import {Method} from "../enums/global/method";
 import {Enviroment} from "../enums/global/enviroment";
-
-const API_JUBLAWOMA = import.meta.env.VITE_API_JUBLAWOMA
-const API_JUBLAWOMA_ADMIN = import.meta.env.VITE_API_JUBLAWOMA_ADMIN
-const API_UNCLET = import.meta.env.VITE_API_UNCLET
-const API_UNCLET_ADMIN = import.meta.env.VITE_API_UNCLET_ADMIN
-const API_OLIUMBI = import.meta.env.VITE_API_OLIUMBI
-const API_OLIUMBI_ADMIN = import.meta.env.VITE_API_OLIUMBI_ADMIN
+import {configuration} from "../services/configuration";
 
 interface Param {
   key: string,
@@ -39,24 +33,25 @@ const useApi = <T>(enviroment: Enviroment, method: Method, path: string): {
     let body = null
     let params = ""
 
+    // todo move this somewhere else
     switch (enviroment) {
       case Enviroment.JUBLAWOMA:
-        url = API_JUBLAWOMA
+        url = configuration.api.jublawoma
         break;
       case Enviroment.JUBLAWOMA_ADMIN:
-        url = API_JUBLAWOMA_ADMIN
+        url = configuration.api.jublawomaAdmin
         break;
       case Enviroment.UNCLET:
-        url = API_UNCLET
+        url = configuration.api.unclet
         break;
       case Enviroment.UNCLET_ADMIN:
-        url = API_UNCLET_ADMIN
+        url = configuration.api.uncletAdmin
         break;
       case Enviroment.OLIUMBI:
-        url = API_OLIUMBI
+        url = configuration.api.oliumbi
         break;
       case Enviroment.OLIUMBI_ADMIN:
-        url = API_OLIUMBI_ADMIN
+        url = configuration.api.oliumbiAdmin
         break;
     }
 

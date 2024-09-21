@@ -7,6 +7,7 @@ import JublawomaAdmin from "./sites/jublawoma/admin/jublawoma-admin";
 
 const App = () => {
 
+  // todo make this global and return a enviroment object to get configurations and so on
   let domain = window.location.hostname
 
   // todo configure with .env

@@ -1,6 +1,7 @@
 package ch.oliumbi.api.endpoints.jublawomaadmin.image;
 
 import ch.oliumbi.api.autoload.Autoload;
+import ch.oliumbi.api.confguration.Configuration;
 import ch.oliumbi.api.enums.Method;
 import ch.oliumbi.api.enums.Permission;
 import ch.oliumbi.api.enums.Status;
@@ -10,15 +11,29 @@ import ch.oliumbi.api.server.request.Header;
 import ch.oliumbi.api.server.request.Request;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
-import java.io.File;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.Transparency;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import javax.imageio.ImageIO;
 
 @Autoload
 public class ImageCreate implements Endpoint<Bytes> {
+
+  private final Configuration configuration;
+
+  public ImageCreate(Configuration configuration) {
+    this.configuration = configuration;
+  }
 
   @Override
   public Method method() {
@@ -44,13 +59,47 @@ public class ImageCreate implements Endpoint<Bytes> {
       return new MessageResponse(Status.BAD_REQUEST, "Missing or unsupported Content-Type.");
     }
 
-    File file = new File(UUID.randomUUID() + ".jpg");
+    UUID id = UUID.randomUUID();
+
     try {
-      Files.write(file.toPath(), request.getBody().getData());
-    } catch (IOException e) {
+      // todo create folder if not exist
+      Files.write(Path.of(configuration.string("files.images") + "/xl/" + id + ".jpg"), scale(request.getBody().getData(), 1600));
+      Files.write(Path.of(configuration.string("files.images") + "/l/" + id + ".jpg"), scale(request.getBody().getData(), 1280));
+      Files.write(Path.of(configuration.string("files.images") + "/m/" + id + ".jpg"), scale(request.getBody().getData(), 960));
+      Files.write(Path.of(configuration.string("files.images") + "/s/" + id + ".jpg"), scale(request.getBody().getData(), 640));
+      Files.write(Path.of(configuration.string("files.images") + "/xs/" + id + ".jpg"), scale(request.getBody().getData(), 320));
+    } catch (Exception e) {
+      e.printStackTrace();
       return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to save image");
     }
 
     return new MessageResponse(Status.OK, "Successfully created image");
+  }
+
+  private byte[] scale(byte[] bytes, int width) throws Exception {
+    BufferedImage original = ImageIO.read(new ByteArrayInputStream(bytes));
+
+    if (original == null) {
+      throw new Exception("Failed to read image.");
+    }
+
+    int height = (int) ((double) original.getHeight() / original.getWidth() * width);
+
+    BufferedImage scaledImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    Graphics2D g2d = scaledImage.createGraphics();
+
+    g2d.setPaint(Color.WHITE);
+    g2d.fillRect(0, 0, width, height);
+
+    g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+    g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+    g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+    g2d.drawImage(original, 0, 0, width, height, null);
+    g2d.dispose();
+
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    ImageIO.write(scaledImage, "jpg", outputStream);
+    return outputStream.toByteArray();
   }
 }
