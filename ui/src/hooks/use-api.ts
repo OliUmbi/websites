@@ -1,6 +1,6 @@
 import {useCallback, useState} from "react";
-import {Method} from "../enums/global/method";
-import {Enviroment} from "../enums/global/enviroment";
+import {Method} from "../enums/shared/method";
+import {Enviroment} from "../enums/shared/enviroment";
 import {configuration} from "../services/configuration";
 
 interface Param {

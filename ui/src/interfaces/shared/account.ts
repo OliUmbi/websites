@@ -1,4 +1,4 @@
-import {Permission} from "../enums/global/permission";
+import {Permission} from "../../enums/shared/permission";
 
 export interface Account {
   account_id: string,

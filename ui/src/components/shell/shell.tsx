@@ -26,6 +26,7 @@ const Shell = (props: Props) => {
 
   useEffect(() => {
     document.title = props.title
+    document.documentElement.lang = navigator.language
 
     if (props.icon) {
       let link = document.createElement("link");

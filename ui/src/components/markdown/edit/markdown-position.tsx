@@ -64,7 +64,6 @@ const MarkdownPosition = (props: Props) => {
           selected === "grid" ? (
               <>
                 <InputNumber {...number} label="Anzahl Spalten" placeholder="Paragraph" min={2} max={4} step={1}/>
-                <Markdown/>
               </>
           ) : null
         }

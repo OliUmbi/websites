@@ -3,6 +3,7 @@ package ch.oliumbi.api.database;
 import lombok.Getter;
 import lombok.Setter;
 
+// todo rename since it is shortened and Parameters already exist
 @Getter
 @Setter
 public class Param {

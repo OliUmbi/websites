@@ -9,7 +9,7 @@ import {date} from "../../services/date";
 import Button from "../../components/button/button";
 import {DonationProductUnit} from "../../enums/jublawoma/donation";
 import {useNavigate} from "react-router-dom";
-import {Enviroment} from "../../enums/global/enviroment";
+import {Enviroment} from "../../enums/shared/enviroment";
 
 const JublawomaDonations = () => {
 

@@ -2,6 +2,8 @@ package ch.oliumbi.api.endpoints.jublawomaadmin.image;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.confguration.Configuration;
+import ch.oliumbi.api.database.Database;
+import ch.oliumbi.api.database.Param;
 import ch.oliumbi.api.enums.Method;
 import ch.oliumbi.api.enums.Permission;
 import ch.oliumbi.api.enums.Status;
@@ -30,9 +32,11 @@ import javax.imageio.ImageIO;
 public class ImageCreate implements Endpoint<Bytes> {
 
   private final Configuration configuration;
+  private final Database database;
 
-  public ImageCreate(Configuration configuration) {
+  public ImageCreate(Configuration configuration, Database database) {
     this.configuration = configuration;
+    this.database = database;
   }
 
   @Override
@@ -62,18 +66,43 @@ public class ImageCreate implements Endpoint<Bytes> {
     UUID id = UUID.randomUUID();
 
     try {
-      // todo create folder if not exist
-      Files.write(Path.of(configuration.string("files.images") + "/xl/" + id + ".jpg"), scale(request.getBody().getData(), 1600));
-      Files.write(Path.of(configuration.string("files.images") + "/l/" + id + ".jpg"), scale(request.getBody().getData(), 1280));
-      Files.write(Path.of(configuration.string("files.images") + "/m/" + id + ".jpg"), scale(request.getBody().getData(), 960));
-      Files.write(Path.of(configuration.string("files.images") + "/s/" + id + ".jpg"), scale(request.getBody().getData(), 640));
-      Files.write(Path.of(configuration.string("files.images") + "/xs/" + id + ".jpg"), scale(request.getBody().getData(), 320));
+      String root = configuration.string("files.images");
+
+      Path pathXl = Path.of(root + "/xl/" + id + ".jpg");
+      Path pathL = Path.of(root + "/l/" + id + ".jpg");
+      Path pathM = Path.of(root + "/m/" + id + ".jpg");
+      Path pathS = Path.of(root + "/s/" + id + ".jpg");
+      Path pathXs = Path.of(root + "/xs/" + id + ".jpg");
+
+      Files.createDirectories(pathXl.getParent());
+      Files.createDirectories(pathL.getParent());
+      Files.createDirectories(pathM.getParent());
+      Files.createDirectories(pathS.getParent());
+      Files.createDirectories(pathXs.getParent());
+
+      Files.write(pathXl, scale(request.getBody().getData(), 1600));
+      Files.write(pathL, scale(request.getBody().getData(), 1280));
+      Files.write(pathM, scale(request.getBody().getData(), 960));
+      Files.write(pathS, scale(request.getBody().getData(), 640));
+      Files.write(pathXs, scale(request.getBody().getData(), 320));
     } catch (Exception e) {
       e.printStackTrace();
       return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to save image");
     }
 
-    return new MessageResponse(Status.OK, "Successfully created image");
+    Optional<Integer> rows = database.update("""
+            INSERT INTO shared_image (
+                    id)
+            VALUES (
+                    :id)
+            """,
+        Param.of("id", id));
+
+    if (rows.isEmpty() || rows.get() != 1) {
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to save image.");
+    }
+
+    return new MessageResponse(Status.OK, id.toString());
   }
 
   private byte[] scale(byte[] bytes, int width) throws Exception {

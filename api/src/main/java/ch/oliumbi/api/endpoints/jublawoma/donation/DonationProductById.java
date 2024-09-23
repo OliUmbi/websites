@@ -46,7 +46,7 @@ public class DonationProductById implements Endpoint<Void> {
     Optional<String> id = request.getPathVariables().get("id");
 
     if (id.isEmpty()) {
-      return new MessageResponse(Status.BAD_REQUEST, "Keine id gefunden.");
+      return new MessageResponse(Status.BAD_REQUEST, "Spende nicht gefunden.");
     }
 
     Optional<DonationProductResponse> donationProductResponse = database.querySingle(DonationProductResponse.class, """

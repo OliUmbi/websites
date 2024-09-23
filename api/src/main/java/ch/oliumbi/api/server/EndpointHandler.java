@@ -107,7 +107,7 @@ public class EndpointHandler {
       return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to handle request.");
     }
 
-    if (method == Method.OPTIONS) {
+    if (method == Method.OPTIONS || method == Method.HEAD) {
       return new MessageResponse(Status.OK, "Pong.");
     }
 

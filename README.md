@@ -20,6 +20,9 @@ one project to rule them all
     - list
 - server
   - ufw rethink this or uninstall
+  - images only visible to certain domains
+  - whole global domain management
+  - maybe rename global to shared
 - icons
   - fork lucide / or contribute
   - fix the with json to assert

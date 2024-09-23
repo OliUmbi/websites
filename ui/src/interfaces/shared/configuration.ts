@@ -1,4 +1,4 @@
-import {Language} from "../../enums/global/language";
+import {Language} from "../../enums/shared/language";
 
 export interface Configuration {
   language: Language

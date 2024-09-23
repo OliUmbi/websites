@@ -19,13 +19,13 @@ public class ResourceResponse implements Response {
   private final ContentType contentType;
   private final ByteBuffer body;
 
-  public ResourceResponse(Status status, String path, ContentType contentType, Header... headers) {
+  public ResourceResponse(Status status, Path path, ContentType contentType, Header... headers) {
     this.status = status;
     this.contentType = contentType;
     this.headers = new Headers(headers);
 
     try {
-      this.body = BufferUtil.toMappedBuffer(Path.of(path));
+      this.body = BufferUtil.toMappedBuffer(path);
     } catch (Exception e) {
       LOGGER.error("Failed to create buffer of resource", e);
       throw new RuntimeException("Failed to create response.");

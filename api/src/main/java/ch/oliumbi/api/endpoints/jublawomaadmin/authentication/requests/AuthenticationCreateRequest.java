@@ -1,4 +1,4 @@
-package ch.oliumbi.api.endpoints.account.login;
+package ch.oliumbi.api.endpoints.jublawomaadmin.authentication.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginRequest {
+public class AuthenticationCreateRequest {
 
   private String username;
   private String password;

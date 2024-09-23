@@ -1,9 +1,11 @@
-package ch.oliumbi.api.endpoints.account.login;
+package ch.oliumbi.api.endpoints.jublawomaadmin.authentication;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
 import ch.oliumbi.api.database.Param;
 import ch.oliumbi.api.database.Row;
+import ch.oliumbi.api.endpoints.jublawomaadmin.authentication.requests.AuthenticationCreateRequest;
+import ch.oliumbi.api.endpoints.jublawomaadmin.authentication.responses.AuthenticationCreateResponse;
 import ch.oliumbi.api.enums.Permission;
 import ch.oliumbi.api.enums.Status;
 import ch.oliumbi.api.server.Endpoint;
@@ -18,11 +20,11 @@ import java.util.Optional;
 import java.util.Random;
 
 @Autoload
-public class Login implements Endpoint<LoginRequest> {
+public class AuthenticationCreate implements Endpoint<AuthenticationCreateRequest> {
 
   private final Database database;
 
-  public Login(Database database) {
+  public AuthenticationCreate(Database database) {
     this.database = database;
   }
 
@@ -42,7 +44,7 @@ public class Login implements Endpoint<LoginRequest> {
   }
 
   @Override
-  public Response handle(Request<LoginRequest> request) {
+  public Response handle(Request<AuthenticationCreateRequest> request) {
 
     Optional<Row> account = database.querySingle("""
             SELECT  account_id,
@@ -85,6 +87,6 @@ public class Login implements Endpoint<LoginRequest> {
         Param.of("token", token),
         Param.of("expires", LocalDateTime.now().plusHours(8)));
 
-    return new JsonResponse(Status.OK, new LoginResponse(token));
+    return new JsonResponse(Status.OK, new AuthenticationCreateResponse(token));
   }
 }

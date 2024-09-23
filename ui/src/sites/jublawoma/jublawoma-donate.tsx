@@ -11,8 +11,8 @@ import useInput from "../../hooks/use-input";
 import InputNumber from "../../components/input/number/input-number";
 import InputText from "../../components/input/text/input-text";
 import Button from "../../components/button/button";
-import {MessageResponse} from "../../interfaces/global/message";
-import {Enviroment} from "../../enums/global/enviroment";
+import {MessageResponse} from "../../interfaces/shared/message";
+import {Enviroment} from "../../enums/shared/enviroment";
 
 const JublawomaDonate = () => {
 

@@ -5,7 +5,8 @@ public enum Method {
   POST,
   PUT,
   DELETE,
-  OPTIONS;
+  OPTIONS,
+  HEAD;
 
   public static Method convert(String string) throws Exception {
     try {
