@@ -3,7 +3,7 @@ one project to rule them all
 
 ## todos
 - ui
-  - lucide icons
+  - deno instead of node
   - robots.txt
   - manifest
   - service worker

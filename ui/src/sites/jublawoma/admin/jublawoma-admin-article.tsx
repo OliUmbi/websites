@@ -10,7 +10,7 @@ import Picture from "../../../components/picture/picture";
 import {configuration} from "../../../services/configuration";
 import {MarkdownItem} from "../../../interfaces/shared/markdown";
 
-const JublawomaAdminHome = () => {
+const JublawomaAdminArticle = () => {
 
   const api = useApi<File>(Enviroment.JUBLAWOMA_ADMIN, "POST", "/image")
 
@@ -134,4 +134,4 @@ const JublawomaAdminHome = () => {
   )
 }
 
-export default JublawomaAdminHome
+export default JublawomaAdminArticle

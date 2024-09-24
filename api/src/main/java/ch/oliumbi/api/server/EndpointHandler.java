@@ -116,13 +116,13 @@ public class EndpointHandler {
         continue;
       }
 
-      if (!path.matches(endpoint.route())) {
+      if (!path.matches(endpoint.routes())) {
         continue;
       }
 
       PathVariables pathVariables;
       try {
-        pathVariables = new PathVariables(httpURI, endpoint.route());
+        pathVariables = new PathVariables(httpURI, endpoint.routes().getFirst());
       } catch (Exception e) {
         LOGGER.error("Failed to convert path", e);
         return new MessageResponse(Status.BAD_REQUEST, "Url is malformed.");
@@ -151,6 +151,7 @@ public class EndpointHandler {
 
         List<Permission> permissions = account.get().getPermissions().stream().map(AccountPermission::getPermission).toList();
 
+        // todo change to one hase to be there not all
         if (!permissions.containsAll(endpoint.permissions())) {
           return new MessageResponse(Status.FORBIDDEN, "Missing permission.");
         }

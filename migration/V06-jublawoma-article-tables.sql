@@ -7,5 +7,6 @@ CREATE TABLE jublawoma_article
     description VARCHAR(128) NOT NULL,
     author      VARCHAR(32)  NOT NULL,
     published   TIMESTAMP    NOT NULL,
-    markdown    TEXT         NOT NULL
+    markdown    TEXT         NOT NULL,
+    visible     BOOLEAN      NOT NULL
 );

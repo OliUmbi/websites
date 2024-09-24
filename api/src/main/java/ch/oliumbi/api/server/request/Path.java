@@ -1,5 +1,6 @@
 package ch.oliumbi.api.server.request;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,15 @@ public class Path {
 
   public Path(HttpURI httpURI) {
     this.url = httpURI.getDecodedPath();
+  }
+
+  public boolean matches(List<String> routes) {
+    for (String route : routes) {
+      if (matches(route)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public boolean matches(String route) {

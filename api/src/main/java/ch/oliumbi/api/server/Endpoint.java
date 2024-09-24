@@ -10,7 +10,7 @@ public interface Endpoint<T> {
 
   Method method();
 
-  String route(); // todo allow multiple for global endpoints
+  List<String> routes();
 
   List<Permission> permissions();
 
