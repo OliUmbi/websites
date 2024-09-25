@@ -44,7 +44,7 @@ public class Row extends HashMap<String, Object> {
     }
   }
 
-  public Integer getInt(String name) {
+  public Integer getInteger(String name) {
     if (get(name) instanceof Integer getInt) {
       return getInt;
     } else {

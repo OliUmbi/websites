@@ -1,5 +1,5 @@
 import useApi from "../../hooks/use-api";
-import {DonationProductResponse} from "../../interfaces/jublawoma/donation";
+import {DonationAllProductResponse, DonationProductByIdResponse} from "../../interfaces/jublawoma/donation";
 import {useEffect, useState} from "react";
 import Loading from "../../components/loading/loading";
 import Error from "../../components/error/error";
@@ -17,7 +17,7 @@ import {Enviroment} from "../../enums/shared/enviroment";
 const JublawomaDonate = () => {
 
   const {id} = useParams()
-  const donationProduct = useApi<DonationProductResponse>(Enviroment.JUBLAWOMA, "GET", "/donation/product/" + id)
+  const donationProduct = useApi<DonationProductByIdResponse>(Enviroment.JUBLAWOMA, "GET", "/donation/product/" + id)
   const donationProductDonor = useApi<MessageResponse>(Enviroment.JUBLAWOMA, "POST", "/donation/product/donor")
 
   const firstname = useInput(true, "", value => {

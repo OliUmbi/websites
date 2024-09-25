@@ -9,13 +9,15 @@ interface Props {
 }
 
 const Protected = (props: Props) => {
-  const [account] = useLocal<Account>("account")
+  const account = useLocal<Account>("account")
 
-  if (!account) {
+  if (!account.value) {
     return <Navigate to="/login" state={{path: location.pathname}} replace={true}/>
   }
 
-  return props.permissions.some(permission => account.permissions.includes(permission)) ? <Outlet/> : <Unauthorized/>
+  let permissions = account.value.permissions;
+  // todo review this
+  return props.permissions.some(permission => permissions.includes(permission)) ? <Outlet/> : <Unauthorized/>
 }
 
 export default Protected;

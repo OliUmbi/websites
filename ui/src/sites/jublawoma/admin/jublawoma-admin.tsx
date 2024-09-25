@@ -7,6 +7,7 @@ import Protected from "../../../components/protected/protected";
 import {Permission} from "../../../enums/shared/permission";
 import JublawomaAdminArticle from "./jublawoma-admin-article";
 import JublawomaAdminArticles from "./jublawoma-admin-articles";
+import JublawomaAdminLogin from "./jublawoma-admin-login";
 
 const JublawomaAdmin = () => {
 
@@ -16,7 +17,7 @@ const JublawomaAdmin = () => {
           {name: "News", to: "/article", primary: true},
           ]}>
           <Routes>
-            <Route path="/login" element={<OliumbiAdminLogin/>}/>
+            <Route path="/login" element={<JublawomaAdminLogin/>}/>
             <Route path="/*" element={<JublawomaAdminNotFound/>}/>
             <Route element={<Protected permissions={[Permission.JUBLAWOMA_ADMIN]}/>}>
               <Route path="/" element={<JublawomaAdminHome/>}/>

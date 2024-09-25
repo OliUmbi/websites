@@ -1,5 +1,5 @@
 import useApi from "../../hooks/use-api";
-import {DonationResponse} from "../../interfaces/jublawoma/donation";
+import {DonationAllResponse} from "../../interfaces/jublawoma/donation";
 import {useEffect} from "react";
 import Loading from "../../components/loading/loading";
 import Error from "../../components/error/error";
@@ -14,7 +14,7 @@ import {Enviroment} from "../../enums/shared/enviroment";
 const JublawomaDonations = () => {
 
   let navigate = useNavigate()
-  let donation = useApi<DonationResponse>(Enviroment.JUBLAWOMA, "GET", "/donation")
+  let donation = useApi<DonationAllResponse>(Enviroment.JUBLAWOMA, "GET", "/donation")
 
   useEffect(() => {
     donation.execute()

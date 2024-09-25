@@ -2,6 +2,7 @@ package ch.oliumbi.api.server.request;
 
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.UUID;
 import org.eclipse.jetty.http.HttpURI;
 
 public class PathVariables extends ArrayList<PathVariable> {
@@ -27,5 +28,19 @@ public class PathVariables extends ArrayList<PathVariable> {
         .filter(pathVariable -> pathVariable.getName().equals(name))
         .map(PathVariable::getValue)
         .findFirst();
+  }
+
+  public Optional<UUID> getUUID(String name) {
+    Optional<String> value = get(name);
+
+    if (value.isEmpty()) {
+      return Optional.empty();
+    }
+
+    try {
+      return Optional.of(UUID.fromString(value.get()));
+    } catch (Exception e) {
+      return Optional.empty();
+    }
   }
 }
