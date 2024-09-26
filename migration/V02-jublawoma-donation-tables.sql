@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS jublawoma_donation_product CASCADE;
 CREATE TABLE jublawoma_donation_product
 (
     id          UUID                            NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
-    donation_id UUID                            NOT NULL REFERENCES jublawoma_donation,
+    donation_id UUID                            NOT NULL REFERENCES jublawoma_donation ON UPDATE CASCADE ON DELETE CASCADE,
     name        VARCHAR(128)                    NOT NULL,
     quantity    FLOAT                           NOT NULL,
     step        FLOAT                           NOT NULL,
@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS jublawoma_donation_product_donor CASCADE;
 CREATE TABLE jublawoma_donation_product_donor
 (
     id                  UUID        NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
-    donation_product_id UUID        NOT NULL REFERENCES jublawoma_donation_product,
+    donation_product_id UUID        NOT NULL REFERENCES jublawoma_donation_product ON UPDATE CASCADE ON DELETE CASCADE,
     firstname           VARCHAR(32) NOT NULL,
     lastname            VARCHAR(32) NOT NULL,
     phone               VARCHAR(32) NOT NULL,

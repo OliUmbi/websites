@@ -1,4 +1,4 @@
-package ch.oliumbi.api.enums;
+package ch.oliumbi.api.enums.server;
 
 public enum Method {
   GET,

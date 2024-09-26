@@ -1,13 +1,11 @@
 package ch.oliumbi.api.server.response;
 
-import ch.oliumbi.api.enums.ContentType;
-import ch.oliumbi.api.enums.Status;
+import ch.oliumbi.api.enums.server.ContentType;
+import ch.oliumbi.api.enums.server.Status;
 import ch.oliumbi.api.server.Json;
 import ch.oliumbi.api.server.request.Header;
 import ch.oliumbi.api.server.request.Headers;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import org.eclipse.jetty.util.BufferUtil;
 import org.slf4j.Logger;

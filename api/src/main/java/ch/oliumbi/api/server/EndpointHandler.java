@@ -2,12 +2,12 @@ package ch.oliumbi.api.server;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.confguration.Configuration;
-import ch.oliumbi.api.enums.Permission;
-import ch.oliumbi.api.models.Account;
-import ch.oliumbi.api.models.AccountPermission;
-import ch.oliumbi.api.services.accounts.AccountService;
-import ch.oliumbi.api.enums.Method;
-import ch.oliumbi.api.enums.Status;
+import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
+import ch.oliumbi.api.shared.account.Account;
+import ch.oliumbi.api.shared.account.AccountPermission;
+import ch.oliumbi.api.shared.account.AccountService;
+import ch.oliumbi.api.enums.server.Method;
+import ch.oliumbi.api.enums.server.Status;
 import ch.oliumbi.api.server.request.Body;
 import ch.oliumbi.api.server.request.Header;
 import ch.oliumbi.api.server.request.Headers;
@@ -24,7 +24,6 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import org.eclipse.jetty.http.HttpFields;
 import org.eclipse.jetty.http.HttpURI;
-import org.eclipse.jetty.io.Content.Chunk;
 import org.eclipse.jetty.server.ConnectionMetaData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -132,6 +131,7 @@ public class EndpointHandler {
       try {
         body = Body.convert(endpoint, byteBuffer);
       } catch (Exception e) {
+        // todo rethink logging this error due to it just being malformed bodies
         LOGGER.warn(e.getMessage());
         return new MessageResponse(Status.BAD_REQUEST, "Body is malformed.");
       }
@@ -149,10 +149,7 @@ public class EndpointHandler {
           return new MessageResponse(Status.UNAUTHORIZED, "Authentication is invalid.");
         }
 
-        List<Permission> permissions = account.get().getPermissions().stream().map(AccountPermission::getPermission).toList();
-
-        // todo change to one hase to be there not all
-        if (!permissions.containsAll(endpoint.permissions())) {
+        if (!hasPermission(account.get().getPermissions(), endpoint.permissions())) {
           return new MessageResponse(Status.FORBIDDEN, "Missing permission.");
         }
 
@@ -168,5 +165,17 @@ public class EndpointHandler {
     }
 
     return new MessageResponse(Status.BAD_REQUEST, "No matching endpoint found.");
+  }
+
+  private boolean hasPermission(List<AccountPermission> accountPermissions, List<SharedAccountPermissionPermission> endpointPermissions) {
+    for (SharedAccountPermissionPermission endpointPermission : endpointPermissions) {
+      for (AccountPermission accountPermission : accountPermissions) {
+        if (accountPermission.getPermission().equals(endpointPermission)) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 }

@@ -1,6 +1,6 @@
-package ch.oliumbi.api.models;
+package ch.oliumbi.api.shared.account;
 
-import ch.oliumbi.api.enums.Permission;
+import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,5 +15,5 @@ public class AccountPermission {
 
   private UUID id;
   private UUID accountId;
-  private Permission permission;
+  private SharedAccountPermissionPermission permission;
 }

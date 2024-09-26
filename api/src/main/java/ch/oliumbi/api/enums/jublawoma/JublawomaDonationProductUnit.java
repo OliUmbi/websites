@@ -1,4 +1,4 @@
-package ch.oliumbi.api.enums;
+package ch.oliumbi.api.enums.jublawoma;
 
 public enum JublawomaDonationProductUnit {
   KILOGRAM,

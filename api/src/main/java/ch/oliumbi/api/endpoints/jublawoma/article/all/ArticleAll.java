@@ -4,14 +4,12 @@ import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
 import ch.oliumbi.api.database.Param;
 import ch.oliumbi.api.database.Row;
-import ch.oliumbi.api.endpoints.jublawoma.article.all.ArticleAllResponse;
-import ch.oliumbi.api.enums.Method;
-import ch.oliumbi.api.enums.Permission;
-import ch.oliumbi.api.enums.Status;
+import ch.oliumbi.api.enums.server.Method;
+import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
+import ch.oliumbi.api.enums.server.Status;
 import ch.oliumbi.api.server.Endpoint;
 import ch.oliumbi.api.server.request.Parameters;
 import ch.oliumbi.api.server.request.Request;
-import ch.oliumbi.api.server.response.JsonResponse;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.PaginationResponse;
 import ch.oliumbi.api.server.response.Response;
@@ -38,7 +36,7 @@ public class ArticleAll implements Endpoint<Void> {
   }
 
   @Override
-  public List<Permission> permissions() {
+  public List<SharedAccountPermissionPermission> permissions() {
     return List.of();
   }
 

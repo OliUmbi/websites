@@ -1,7 +1,7 @@
 package ch.oliumbi.api.server.response;
 
-import ch.oliumbi.api.enums.ContentType;
-import ch.oliumbi.api.enums.Status;
+import ch.oliumbi.api.enums.server.ContentType;
+import ch.oliumbi.api.enums.server.Status;
 import ch.oliumbi.api.server.request.Header;
 import ch.oliumbi.api.server.request.Headers;
 import java.nio.ByteBuffer;

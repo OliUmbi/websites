@@ -1,36 +1,64 @@
 import Flex from "../../../components/flex/flex";
-import Markdown from "../../../components/markdown/markdown";
 import useApi from "../../../hooks/use-api";
 import {Enviroment} from "../../../enums/shared/enviroment";
 import useInput from "../../../hooks/use-input";
-import InputFile from "../../../components/input/file/input-file";
-import {useEffect} from "react";
 import Button from "../../../components/button/button";
-import Picture from "../../../components/picture/picture";
-import {configuration} from "../../../services/configuration";
-import {MarkdownItem} from "../../../interfaces/shared/markdown";
-import {MessageResponse} from "../../../interfaces/shared/message";
 import InputText from "../../../components/input/text/input-text";
+import {AuthenticationCreateResponse} from "../../../interfaces/shared/authentication";
+import {useNavigate} from "react-router-dom";
+import Error from "../../../components/error/error";
+import Loading from "../../../components/loading/loading";
+import {useEffect} from "react";
+import useLocal from "../../../hooks/use-local";
 
 const JublawomaAdminHome = () => {
 
-  const authenticationCreate = useApi<MessageResponse>(Enviroment.JUBLAWOMA_ADMIN, "POST", "/authentication")
+  const authentication = useLocal<AuthenticationCreateResponse>("authentication")
+  const navigate = useNavigate()
+  const authenticationCreate = useApi<AuthenticationCreateResponse>(Enviroment.JUBLAWOMA_ADMIN, "POST", "/authentication")
 
-  const username = useInput<String>(true)
-  const password = useInput<String>(true)
+  const name = useInput<string>(false)
+  const password = useInput<string>(false)
 
-  const cancel = () => {}
-  const login = () => {}
+  const cancel = () => {
+    name.setInternal("")
+    password.setInternal("")
+    navigate(-1)
+  }
+
+  const login = () => {
+    const payload = {
+      body: {
+        name: name.value,
+        password: password.value
+      }
+    }
+
+    authenticationCreate.execute(payload)
+  }
+
+  useEffect(() => {
+    if (authenticationCreate.data) {
+      authentication.setValue(authenticationCreate.data)
+      navigate("/")
+    }
+  }, [authenticationCreate.data]);
 
   return (
       <Flex xl={{direction: "column", align: "center", gap: 8}}>
         <Flex xl={{widthMax: "s", width: true, direction: "column", gap: 1}}>
-          <InputText {...username} label="Username / E-Mail"/>
-          <InputText {...password} label="Passwort" password={true}/>
+          <InputText {...name} label="Name" placeholder="Name"/>
+          <InputText {...password} label="Passwort" placeholder="Passwort" password={true}/>
           <Flex xl={{direction: "row", justify: "end", gap: 1}}>
             <Button onClick={cancel} highlight={false}>Abbrechen</Button>
             <Button onClick={login} highlight={true}>Anmelden</Button>
           </Flex>
+          {
+            authenticationCreate.error ? <Error message={authenticationCreate.error}/> : null
+          }
+          {
+            authenticationCreate.loading ? <Loading/> : null
+          }
         </Flex>
       </Flex>
   )

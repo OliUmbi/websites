@@ -1,7 +1,7 @@
 package ch.oliumbi.api.server.request;
 
-import ch.oliumbi.api.enums.Method;
-import ch.oliumbi.api.models.Account;
+import ch.oliumbi.api.enums.server.Method;
+import ch.oliumbi.api.shared.account.Account;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;

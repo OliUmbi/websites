@@ -19,11 +19,16 @@ one project to rule them all
     - quote
     - list
 - api
-  - ufw rethink this or uninstall
   - images only visible to certain domains
   - whole global domain management
   - maybe rename global to shared
   - rework old component, they have errors, minimal validation and unsafe conversions like uuid casts
+  - earlier wildcard import
+  - avaluate reworking the api to map according to name of column like (select person_id id FROM person_idk) it would safe the into
+- infrastructure
+  - ufw rethink this or uninstall
+- github
+  - build with docker/build-push-action@v4
 - icons
   - fork lucide / or contribute
   - fix the with json to assert

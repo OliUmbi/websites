@@ -2,31 +2,21 @@ package ch.oliumbi.api.endpoints.shared.image.byid;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.confguration.Configuration;
-import ch.oliumbi.api.enums.ContentType;
-import ch.oliumbi.api.enums.Method;
-import ch.oliumbi.api.enums.Permission;
-import ch.oliumbi.api.enums.Status;
+import ch.oliumbi.api.enums.server.ContentType;
+import ch.oliumbi.api.enums.server.Method;
+import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
+import ch.oliumbi.api.enums.server.Status;
 import ch.oliumbi.api.server.Endpoint;
-import ch.oliumbi.api.server.request.Bytes;
-import ch.oliumbi.api.server.request.Header;
 import ch.oliumbi.api.server.request.Parameters;
 import ch.oliumbi.api.server.request.PathVariables;
 import ch.oliumbi.api.server.request.Request;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.ResourceResponse;
 import ch.oliumbi.api.server.response.Response;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import javax.imageio.ImageIO;
 
 @Autoload
 public class ImageById implements Endpoint<Void> {
@@ -48,7 +38,7 @@ public class ImageById implements Endpoint<Void> {
   }
 
   @Override
-  public List<Permission> permissions() {
+  public List<SharedAccountPermissionPermission> permissions() {
     return List.of();
   }
 

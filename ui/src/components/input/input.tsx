@@ -45,7 +45,7 @@ const Input = (props: Props) => {
   return (
       <label className="input" data-disabled={props.disabled}>
         <div className="input__head">
-          <Text type="s" primary={true}>{props.label} {props.required ? "" : "[optional]"}</Text>
+          <Text type="s" primary={true}>{props.label}</Text>
         </div>
         <div className="input__body">
           {props.children}

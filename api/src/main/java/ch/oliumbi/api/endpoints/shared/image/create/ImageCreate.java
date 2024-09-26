@@ -4,9 +4,9 @@ import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.confguration.Configuration;
 import ch.oliumbi.api.database.Database;
 import ch.oliumbi.api.database.Param;
-import ch.oliumbi.api.enums.Method;
-import ch.oliumbi.api.enums.Permission;
-import ch.oliumbi.api.enums.Status;
+import ch.oliumbi.api.enums.server.Method;
+import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
+import ch.oliumbi.api.enums.server.Status;
 import ch.oliumbi.api.server.Endpoint;
 import ch.oliumbi.api.server.request.Bytes;
 import ch.oliumbi.api.server.request.Header;
@@ -16,11 +16,9 @@ import ch.oliumbi.api.server.response.Response;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -50,8 +48,8 @@ public class ImageCreate implements Endpoint<Bytes> {
   }
 
   @Override
-  public List<Permission> permissions() {
-    return List.of(Permission.JUBLAWOMA_ADMIN);
+  public List<SharedAccountPermissionPermission> permissions() {
+    return List.of(SharedAccountPermissionPermission.JUBLAWOMA_ADMIN);
   }
 
   @Override

@@ -1,4 +1,4 @@
-package ch.oliumbi.api.models;
+package ch.oliumbi.api.shared.account;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

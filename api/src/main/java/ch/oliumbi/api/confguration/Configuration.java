@@ -2,8 +2,7 @@ package ch.oliumbi.api.confguration;
 
 import ch.oliumbi.api.Api;
 import ch.oliumbi.api.autoload.Autoload;
-import ch.oliumbi.api.enums.Environment;
-import ch.oliumbi.api.server.ServerHandler;
+import ch.oliumbi.api.enums.server.Environment;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;

@@ -1,11 +1,9 @@
-package ch.oliumbi.api.services.accounts;
+package ch.oliumbi.api.shared.account;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
 import ch.oliumbi.api.database.Param;
-import ch.oliumbi.api.models.Account;
-import ch.oliumbi.api.models.AccountPermission;
-import ch.oliumbi.api.models.AccountSession;
+import java.util.List;
 import java.util.Optional;
 
 @Autoload
@@ -20,20 +18,16 @@ public class AccountService {
   public Optional<Account> loadByToken(String token) {
 
     Optional<Account> account = database.querySingle(Account.class, """
-            SELECT  account.account_id,
-                    account.firstname,
-                    account.lastname,
-                    account.email,
-                    account.password
-            FROM    account
-            INNER JOIN account_session USING (account_id)
-            WHERE   account_session.token = 'token1'
-            AND     account_session.expires > current_timestamp
+            SELECT  sa.id,
+                    sa.name,
+                    sa.password
+            FROM    shared_account sa
+            INNER JOIN shared_account_session sas ON sa.id = sas.account_id
+            WHERE   sas.token = :token
+            AND     sas.expires > current_timestamp
             LIMIT   1
             INTO    id,
-                    firstname,
-                    lastname,
-                    email,
+                    name,
                     password
             """,
         Param.of("token", token));
@@ -42,31 +36,43 @@ public class AccountService {
       return Optional.empty();
     }
 
-    database.query(AccountSession.class, """
-            SELECT  account_session_id,
+    Optional<List<AccountSession>> accountSessions = database.query(AccountSession.class, """
+            SELECT  id,
                     account_id,
                     token,
                     expires
-            FROM    account_session
+            FROM    shared_account_session
             WHERE   account_id = :id
             INTO    id,
                     accountId,
                     token,
                     expires
             """,
-        account).ifPresent(accountSessions -> account.get().setSessions(accountSessions));
+        account.get());
 
-    database.query(AccountPermission.class, """
-            SELECT  account_permission_id,
+    if (accountSessions.isEmpty()) {
+      return Optional.empty();
+    }
+
+    account.get().setSessions(accountSessions.get());
+
+    Optional<List<AccountPermission>> accountPermissions = database.query(AccountPermission.class, """
+            SELECT  id,
                     account_id,
                     permission
-            FROM    account_session
+            FROM    shared_account_permission
             WHERE   account_id = :id
             INTO    id,
                     accountId,
                     permission
             """,
-        account).ifPresent(accountPermissions -> account.get().setPermissions(accountPermissions));
+        account.get());
+
+    if (accountPermissions.isEmpty()) {
+      return Optional.empty();
+    }
+
+    account.get().setPermissions(accountPermissions.get());
 
     return account;
   }

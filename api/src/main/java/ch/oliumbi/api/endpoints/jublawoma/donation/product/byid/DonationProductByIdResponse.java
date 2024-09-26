@@ -1,6 +1,6 @@
 package ch.oliumbi.api.endpoints.jublawoma.donation.product.byid;
 
-import ch.oliumbi.api.enums.JublawomaDonationProductUnit;
+import ch.oliumbi.api.enums.jublawoma.JublawomaDonationProductUnit;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;

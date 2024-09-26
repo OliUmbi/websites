@@ -2,9 +2,9 @@ package ch.oliumbi.api.endpoints.jublawoma.donation.all;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
-import ch.oliumbi.api.enums.Method;
-import ch.oliumbi.api.enums.Permission;
-import ch.oliumbi.api.enums.Status;
+import ch.oliumbi.api.enums.server.Method;
+import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
+import ch.oliumbi.api.enums.server.Status;
 import ch.oliumbi.api.server.Endpoint;
 import ch.oliumbi.api.server.request.Request;
 import ch.oliumbi.api.server.response.JsonResponse;
@@ -33,7 +33,7 @@ public class DonationAll implements Endpoint<Void> {
   }
 
   @Override
-  public List<Permission> permissions() {
+  public List<SharedAccountPermissionPermission> permissions() {
     return List.of();
   }
 

@@ -1,6 +1,5 @@
 import {Route, Routes} from "react-router-dom";
 import Protected from "../../../components/protected/protected";
-import {Permission} from "../../../enums/shared/permission";
 import OliumbiAdminLogin from "./oliumbi-admin-login";
 import OliumbiAdminHome from "./oliumbi-admin-home";
 import {useEffect} from "react";
@@ -34,7 +33,7 @@ const OliumbiAdmin = () => {
         <Routes>
           <Route path="/login" element={<OliumbiAdminLogin/>}/>
           <Route path="/test" element={<OliumbiAdminTest/>}/>
-          <Route element={<Protected permissions={[Permission.OLIUMBI_ADMIN]}/>}>
+          <Route element={<Protected permissions={[]}/>}>
             <Route path="/" element={<OliumbiAdminHome/>}/>
           </Route>
         </Routes>

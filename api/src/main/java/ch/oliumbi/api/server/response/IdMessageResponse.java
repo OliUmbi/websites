@@ -1,6 +1,6 @@
 package ch.oliumbi.api.server.response;
 
-import ch.oliumbi.api.enums.Status;
+import ch.oliumbi.api.enums.server.Status;
 import ch.oliumbi.api.server.request.Header;
 import java.util.UUID;
 

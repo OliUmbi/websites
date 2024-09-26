@@ -1,4 +1,4 @@
-package ch.oliumbi.api.models;
+package ch.oliumbi.api.shared.account;
 
 import java.util.List;
 import java.util.UUID;
@@ -14,9 +14,7 @@ import lombok.NoArgsConstructor;
 public class Account {
 
   private UUID id;
-  private String firstname;
-  private String lastname;
-  private String email;
+  private String name;
   private String password;
 
   private List<AccountSession> sessions;
