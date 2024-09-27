@@ -3,7 +3,7 @@ CREATE TABLE shared_account
 (
     id       UUID        NOT NULL PRIMARY KEY DEFAULT gen_random_uuid(),
     name     VARCHAR(32) NOT NULL UNIQUE,
-    password VARCHAR(64) NOT NULL
+    password VARCHAR(128) NOT NULL
 );
 
 DROP TABLE IF EXISTS shared_account_session CASCADE;

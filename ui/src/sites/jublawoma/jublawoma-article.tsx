@@ -30,7 +30,7 @@ const JublawomaArticle = () => {
           articleById.data ? (
               <>
                 <Flex xl={{widthMax: "xl", width: true}}>
-                  <Picture api={configuration.api.jublawoma} id={articleById.data.imageId} alt={data.title} side="width" rounded={true}/>
+                  <Picture api={configuration.api.jublawoma} id={articleById.data.imageId} alt={articleById.data.title} side="width" rounded={true}/>
                 </Flex>
                 <Flex xl={{widthMax: "l", width: true, direction: "column", gap: 2}}>
                   <Text type="p" primary={false}>Veröffentlicht am {date.locale(articleById.data.published, "date")}</Text>

@@ -33,7 +33,6 @@ const InputPicture = (props: Props) => {
   useEffect(() => {
     if (imageCreate.data) {
       props.setValue(imageCreate.data.id)
-      console.log(imageCreate.data)
       props.setError("")
     }
   }, [imageCreate.data])
@@ -54,8 +53,13 @@ const InputPicture = (props: Props) => {
     if (props.value) {
       props.setValid(true)
     }
-    console.log(props.value)
   }, [props.value]);
+
+  useEffect(() => {
+    if (!props.required) {
+      props.setValid(true)
+    }
+  }, [props.required]);
 
   const create = () => {
 

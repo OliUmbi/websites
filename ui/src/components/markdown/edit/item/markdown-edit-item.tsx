@@ -96,8 +96,7 @@ const MarkdownEditItem = (props: Props) => {
             <IconButton size={1} onClick={() => setType("heading-1")} highlight={type === "heading-1"}>heading-1</IconButton>
             <IconButton size={1} onClick={() => setType("heading-2")} highlight={type === "heading-2"}>heading-2</IconButton>
             <IconButton size={1} onClick={() => setType("heading-3")} highlight={type === "heading-3"}>heading-3</IconButton>
-            <IconButton size={1} onClick={() => setType("paragraph")}
-                        highlight={type === "paragraph"}>letter-text</IconButton>
+            <IconButton size={1} onClick={() => setType("paragraph")} highlight={type === "paragraph"}>letter-text</IconButton>
             <IconButton size={1} onClick={() => setType("image")} highlight={type === "image"}>image</IconButton>
             <IconButton size={1} onClick={() => setType("flex")} highlight={type === "flex"}>rows-2</IconButton>
             <IconButton size={1} onClick={() => setType("grid")} highlight={type === "grid"}>columns-2</IconButton>
@@ -115,7 +114,7 @@ const MarkdownEditItem = (props: Props) => {
           type === "heading-3" ? <InputText {...text} label="Überschrift 3" placeholder="Überschrift 3"/> : null
         }
         {
-          type === "paragraph" ? <InputText {...text} label="Paragraph" placeholder="Paragraph" rows={10}/> : null
+          type === "paragraph" ? <InputText {...text} label="Paragraph" placeholder="Paragraph" rows={5}/> : null
         }
         {
           type === "image" ? <InputPicture {...text} label="Bild" api={configuration.api.jublawomaAdmin}/> : null
@@ -138,7 +137,7 @@ const MarkdownEditItem = (props: Props) => {
         {
           type === "grid" ? (
               <>
-                <InputNumber {...number} label="Anzahl spalten" placeholder="2" min={2} max={4} step={1}/>
+                <InputNumber {...number} label="Anzahl spalten" placeholder="Min. 2, max. 4" min={2} max={4} step={1}/>
                 <div className="markdown-edit-item__children">
                   <Flex xl={{direction: "column", gap: 1}}>
                     {

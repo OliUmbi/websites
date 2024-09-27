@@ -2,6 +2,7 @@ package ch.oliumbi.api.endpoints.jublawomaadmin.article.update;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
+import ch.oliumbi.api.database.Param;
 import ch.oliumbi.api.enums.server.Method;
 import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
 import ch.oliumbi.api.enums.server.Status;
@@ -62,7 +63,7 @@ public class ArticleUpdate implements Endpoint<ArticleUpdateRequest> {
             WHERE   id = :id
             """,
         request.getBody(),
-        id.get());
+        Param.of("id", id.get()));
 
     if (update.isEmpty()) {
       return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to update article.");

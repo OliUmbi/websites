@@ -46,7 +46,7 @@ const JublawomaArticles = () => {
 
   return (
       <Flex xl={{direction: "column", align: "center"}}>
-        <Flex xl={{widthMax: "xl", width: true}}>
+        <Flex xl={{widthMax: "xl", width: true, direction: "column", gap: 4}}>
           {
             articleAll.data ? (
                 <>
@@ -58,7 +58,7 @@ const JublawomaArticles = () => {
                               <Picture api={configuration.api.jublawoma} id={value.imageId} alt={value.title} side="width"
                                        rounded={true}/>
                               <Flex xl={{direction: "row", justify: "between", gap: 1}}>
-                                <Text type="s" primary={false} mono={true}>{date.locale(value.date, "date")}</Text>
+                                <Text type="s" primary={false} mono={true}>{date.locale(value.published, "date")}</Text>
                                 <Text type="s" primary={false} mono={true}>{value.author}</Text>
                               </Flex>
                               <Text type="h3" primary={true}>{value.title}</Text>

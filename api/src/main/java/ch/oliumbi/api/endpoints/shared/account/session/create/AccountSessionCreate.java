@@ -1,6 +1,7 @@
 package ch.oliumbi.api.endpoints.shared.account.session.create;
 
 import ch.oliumbi.api.autoload.Autoload;
+import ch.oliumbi.api.cryptography.Cryptography;
 import ch.oliumbi.api.database.Database;
 import ch.oliumbi.api.database.Param;
 import ch.oliumbi.api.database.Row;
@@ -22,9 +23,11 @@ import java.util.UUID;
 public class AccountSessionCreate implements Endpoint<AccountSessionCreateRequest> {
 
   private final Database database;
+  private final Cryptography cryptography;
 
-  public AccountSessionCreate(Database database) {
+  public AccountSessionCreate(Database database, Cryptography cryptography) {
     this.database = database;
+    this.cryptography = cryptography;
   }
 
   @Override
@@ -62,7 +65,7 @@ public class AccountSessionCreate implements Endpoint<AccountSessionCreateReques
       return new MessageResponse(Status.BAD_REQUEST, "Authentication failed.");
     }
 
-    if (!account.get().getString("password").equals(request.getBody().getPassword())) {
+    if (!cryptography.matches(request.getBody().getPassword(), account.get().getString("password"))) {
       return new MessageResponse(Status.BAD_REQUEST, "Authentication failed.");
     }
 
