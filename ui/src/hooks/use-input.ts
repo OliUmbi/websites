@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {date} from "../services/date";
 
+// todo rework public interface
 const useInput = <T extends string | string[] | number | boolean | Date | File>(required: boolean, defaultValue?: T, validation?: (value: T) => string | null): {
   required: boolean,
   validation: ((value: T) => string | null) | null,

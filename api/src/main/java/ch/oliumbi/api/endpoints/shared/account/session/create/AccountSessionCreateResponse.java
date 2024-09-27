@@ -1,4 +1,4 @@
-package ch.oliumbi.api.endpoints.shared.authentication.create;
+package ch.oliumbi.api.endpoints.shared.account.session.create;
 
 import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
 import java.util.List;
@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationCreateResponse {
+public class AccountSessionCreateResponse {
 
   private UUID id;
   private String token;

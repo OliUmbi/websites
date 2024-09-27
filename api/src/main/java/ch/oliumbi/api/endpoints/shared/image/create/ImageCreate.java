@@ -11,6 +11,7 @@ import ch.oliumbi.api.server.Endpoint;
 import ch.oliumbi.api.server.request.Bytes;
 import ch.oliumbi.api.server.request.Header;
 import ch.oliumbi.api.server.request.Request;
+import ch.oliumbi.api.server.response.IdMessageResponse;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
 import java.awt.Color;
@@ -44,7 +45,7 @@ public class ImageCreate implements Endpoint<Bytes> {
 
   @Override
   public List<String> routes() {
-    return List.of("/jublawoma/image");
+    return List.of("/jublawoma-admin/image");
   }
 
   @Override
@@ -100,7 +101,7 @@ public class ImageCreate implements Endpoint<Bytes> {
       return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to save image.");
     }
 
-    return new MessageResponse(Status.OK, id.toString());
+    return new IdMessageResponse(Status.OK, "Successfully created image.", id);
   }
 
   private byte[] scale(byte[] bytes, int width) throws Exception {

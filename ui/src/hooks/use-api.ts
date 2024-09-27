@@ -2,6 +2,9 @@ import {useCallback, useState} from "react";
 import {Method} from "../enums/shared/method";
 import {Enviroment} from "../enums/shared/enviroment";
 import {configuration} from "../services/configuration";
+import useLocal from "./use-local";
+import {AccountSessionCreateResponse} from "../interfaces/shared/account";
+import {useNavigate} from "react-router-dom";
 
 interface Param {
   key: string,
@@ -20,9 +23,13 @@ const useApi = <T>(enviroment: Enviroment, method: Method, path: string): {
   loading: boolean
 } => {
 
+  const navigate = useNavigate()
+
   const [data, setData] = useState<T | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
+
+  const session = useLocal<AccountSessionCreateResponse>("session")
 
   const execute = useCallback(async (payload?: Payload) => {
     setError(null)
@@ -70,6 +77,10 @@ const useApi = <T>(enviroment: Enviroment, method: Method, path: string): {
       }
     }
 
+    if (session.value) {
+      headers = {...headers, "Authentication": session.value.token}
+    }
+
     let response;
     try {
       response = await fetch(url + path + params, {
@@ -98,7 +109,15 @@ const useApi = <T>(enviroment: Enviroment, method: Method, path: string): {
       return
     }
 
-    if (!response.ok) {
+    if (response.status == 401) {
+      setError(data.message)
+      setLoading(false)
+
+      navigate("/login")
+      return
+    }
+
+    if (response.status !== 200) {
       setError(data.message)
       setLoading(false)
       return

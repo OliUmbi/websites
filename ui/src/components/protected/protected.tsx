@@ -1,22 +1,21 @@
 import {Navigate, Outlet} from "react-router-dom";
-import {Permission} from "../../enums/shared/permission";
-import {Account} from "../../interfaces/shared/account";
 import Unauthorized from "../unauthorized/unauthorized";
 import useLocal from "../../hooks/use-local";
-import {AuthenticationCreateResponse} from "../../interfaces/shared/authentication";
+import {AccountSessionCreateResponse} from "../../interfaces/shared/account";
+import {SharedAccountPermissionPermission} from "../../enums/shared/permission";
 
 interface Props {
-  permissions: Permission[]
+  permissions: SharedAccountPermissionPermission[]
 }
 
 const Protected = (props: Props) => {
-  const authentication = useLocal<AuthenticationCreateResponse>("authentication")
+  const session = useLocal<AccountSessionCreateResponse>("session")
 
-  if (!authentication.value) {
+  if (!session.value) {
     return <Navigate to="/login" state={{path: location.pathname}} replace={true}/>
   }
 
-  let permissions = authentication.value.permissions;
+  let permissions = session.value.permissions;
   // todo review this
   return props.permissions.some(permission => permissions.includes(permission)) ? <Outlet/> : <Unauthorized/>
 }

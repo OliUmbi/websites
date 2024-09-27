@@ -4,7 +4,7 @@ import {Enviroment} from "../../../enums/shared/enviroment";
 import useInput from "../../../hooks/use-input";
 import Button from "../../../components/button/button";
 import InputText from "../../../components/input/text/input-text";
-import {AuthenticationCreateResponse} from "../../../interfaces/shared/authentication";
+import {AccountSessionCreateResponse} from "../../../interfaces/shared/account";
 import {useNavigate} from "react-router-dom";
 import Error from "../../../components/error/error";
 import Loading from "../../../components/loading/loading";
@@ -13,9 +13,9 @@ import useLocal from "../../../hooks/use-local";
 
 const JublawomaAdminHome = () => {
 
-  const authentication = useLocal<AuthenticationCreateResponse>("authentication")
+  const session = useLocal<AccountSessionCreateResponse>("session")
   const navigate = useNavigate()
-  const authenticationCreate = useApi<AuthenticationCreateResponse>(Enviroment.JUBLAWOMA_ADMIN, "POST", "/authentication")
+  const authenticationCreate = useApi<AccountSessionCreateResponse>(Enviroment.JUBLAWOMA_ADMIN, "POST", "/account/session")
 
   const name = useInput<string>(false)
   const password = useInput<string>(false)
@@ -39,7 +39,7 @@ const JublawomaAdminHome = () => {
 
   useEffect(() => {
     if (authenticationCreate.data) {
-      authentication.setValue(authenticationCreate.data)
+      session.setValue(authenticationCreate.data)
       navigate("/")
     }
   }, [authenticationCreate.data]);

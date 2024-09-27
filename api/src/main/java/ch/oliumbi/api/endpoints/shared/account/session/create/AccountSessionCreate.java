@@ -1,4 +1,4 @@
-package ch.oliumbi.api.endpoints.shared.authentication.create;
+package ch.oliumbi.api.endpoints.shared.account.session.create;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
@@ -19,11 +19,11 @@ import java.util.Random;
 import java.util.UUID;
 
 @Autoload
-public class AuthenticationCreate implements Endpoint<AuthenticationCreateRequest> {
+public class AccountSessionCreate implements Endpoint<AccountSessionCreateRequest> {
 
   private final Database database;
 
-  public AuthenticationCreate(Database database) {
+  public AccountSessionCreate(Database database) {
     this.database = database;
   }
 
@@ -34,7 +34,7 @@ public class AuthenticationCreate implements Endpoint<AuthenticationCreateReques
 
   @Override
   public List<String> routes() {
-    return List.of("/jublawoma-admin/authentication");
+    return List.of("/jublawoma-admin/account/session");
   }
 
   @Override
@@ -43,7 +43,7 @@ public class AuthenticationCreate implements Endpoint<AuthenticationCreateReques
   }
 
   @Override
-  public Response handle(Request<AuthenticationCreateRequest> request) {
+  public Response handle(Request<AccountSessionCreateRequest> request) {
 
     if (!request.getBody().valid()) {
       return new MessageResponse(Status.BAD_REQUEST, "Invalid body.");
@@ -102,7 +102,7 @@ public class AuthenticationCreate implements Endpoint<AuthenticationCreateReques
         .map(row -> row.getEnum("permission", SharedAccountPermissionPermission.class))
         .toList();
 
-    return new JsonResponse(Status.OK, new AuthenticationCreateResponse(id, token, permissions));
+    return new JsonResponse(Status.OK, new AccountSessionCreateResponse(id, token, permissions));
   }
 
   private String generateToken() {

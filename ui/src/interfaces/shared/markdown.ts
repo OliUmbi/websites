@@ -1,5 +1,9 @@
 export interface MarkdownItem {
-  type: "heading-1" | "heading-2" | "heading-3" | "paragraph" | "button" | "image" | "flex" | "grid",
+  id: string
+  type: MarkdownItemType
   value: any
   children: MarkdownItem[]
 }
+
+// todo button, video
+export type MarkdownItemType = "heading-1" | "heading-2" | "heading-3" | "paragraph" | "image" | "flex" | "grid"

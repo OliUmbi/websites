@@ -2,14 +2,18 @@ package ch.oliumbi.api.endpoints.jublawomaadmin.article.create;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
+import ch.oliumbi.api.database.Param;
 import ch.oliumbi.api.enums.server.Method;
 import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
 import ch.oliumbi.api.enums.server.Status;
 import ch.oliumbi.api.server.Endpoint;
 import ch.oliumbi.api.server.request.Request;
 import ch.oliumbi.api.server.response.IdMessageResponse;
+import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Autoload
@@ -41,7 +45,35 @@ public class ArticleCreate implements Endpoint<Void> {
 
     UUID id = UUID.randomUUID();
 
-    // todo implement
+    Optional<Integer> create = database.update("""
+            INSERT INTO jublawoma_article (
+                      id,
+                      title,
+                      description,
+                      author,
+                      published,
+                      markdown,
+                      visible)
+            VALUES (
+                      :id,
+                      :title,
+                      :description,
+                      :author,
+                      :published,
+                      :markdown,
+                      :visible)
+            """,
+        Param.of("id", id),
+        Param.of("title", "Neuer News-Artikel"),
+        Param.of("description", ""),
+        Param.of("author", ""),
+        Param.of("published", LocalDateTime.now()),
+        Param.of("markdown", "[]"),
+        Param.of("visible", false));
+
+    if (create.isEmpty()) {
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to create Article.");
+    }
 
     return new IdMessageResponse(Status.OK, "Successfully created article", id);
   }

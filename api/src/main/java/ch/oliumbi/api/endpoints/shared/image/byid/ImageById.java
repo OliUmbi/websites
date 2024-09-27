@@ -34,7 +34,10 @@ public class ImageById implements Endpoint<Void> {
 
   @Override
   public List<String> routes() {
-    return List.of("/jublawoma/image/:id");
+    return List.of(
+        "/jublawoma/image/:id",
+        "/jublawoma-admin/image/:id"
+    );
   }
 
   @Override

@@ -4,6 +4,7 @@ one project to rule them all
 ## todos
 - ui
   - deno instead of node
+  - fix random jublawoma/admin/ and jublawomaadmin/
   - robots.txt
   - manifest
   - service worker
@@ -34,6 +35,11 @@ one project to rule them all
   - fix the with json to assert
   - useNameAsUnicode: true
   - remove unicode transform
+- documentation
+  - how to create tables
+  - how to create enums
+  - how to add a domain
+  - how to fix errors
 
 ## jublawoma
 

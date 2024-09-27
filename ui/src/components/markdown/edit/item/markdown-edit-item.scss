@@ -1,0 +1,10 @@
+@use "../../../../styles/variables";
+
+.markdown-edit-item {
+
+  &__children {
+    border-left: 0.16rem solid variables.$foreground-secondary;
+    margin: 1rem;
+    padding: 0 1rem;
+  }
+}

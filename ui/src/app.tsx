@@ -4,6 +4,7 @@ import Jublawoma from "./sites/jublawoma/jublawoma";
 import Unclet from "./sites/unclet/unclet";
 import {BrowserRouter} from "react-router-dom";
 import JublawomaAdmin from "./sites/jublawoma/admin/jublawoma-admin";
+import "./prototypes/array";
 
 const App = () => {
 

@@ -1,4 +1,4 @@
-package ch.oliumbi.api.endpoints.shared.authentication.create;
+package ch.oliumbi.api.endpoints.shared.account.session.create;
 
 import ch.oliumbi.api.server.Validatable;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationCreateRequest implements Validatable {
+public class AccountSessionCreateRequest implements Validatable {
 
   private String name;
   private String password;

@@ -14,9 +14,7 @@ import lombok.Setter;
 public class ArticleAllResponse {
 
   private UUID id;
-  private UUID imageId;
   private String title;
-  private String description;
   private String author;
   private LocalDateTime published;
   private Boolean visible;

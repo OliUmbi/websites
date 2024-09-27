@@ -10,6 +10,8 @@ import ch.oliumbi.api.server.request.Request;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Autoload
 public class ArticleUpdate implements Endpoint<ArticleUpdateRequest> {
@@ -38,7 +40,33 @@ public class ArticleUpdate implements Endpoint<ArticleUpdateRequest> {
   @Override
   public Response handle(Request<ArticleUpdateRequest> request) {
 
-    // todo implement
+    Optional<UUID> id = request.getPathVariables().getUUID("id");
+
+    if (id.isEmpty()) {
+      return new MessageResponse(Status.BAD_REQUEST, "Invalid id.");
+    }
+
+    if (!request.getBody().valid()) {
+      return new MessageResponse(Status.BAD_REQUEST, "Invalid body.");
+    }
+
+    Optional<Integer> update = database.update("""
+            UPDATE  jublawoma_article
+            SET     image_id = :imageId,
+                    title = :title,
+                    description = :description,
+                    author = :author,
+                    published = :published,
+                    markdown = :markdown,
+                    visible = :visible
+            WHERE   id = :id
+            """,
+        request.getBody(),
+        id.get());
+
+    if (update.isEmpty()) {
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to update article.");
+    }
 
     return new MessageResponse(Status.OK, "Successfully updated article.");
   }
