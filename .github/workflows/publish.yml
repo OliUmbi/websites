@@ -28,6 +28,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./database
+          push: true
           tags: |
             ghcr.io/oliumbi/websites-database:latest
             ghcr.io/oliumbi/websites-database:${{ github.ref_name }}
@@ -38,6 +39,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./migration
+          push: true
           tags: |
             ghcr.io/oliumbi/websites-migration:latest
             ghcr.io/oliumbi/websites-migration:${{ github.ref_name }}
@@ -48,6 +50,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./api
+          push: true
           tags: |
             ghcr.io/oliumbi/websites-api:latest
             ghcr.io/oliumbi/websites-api:${{ github.ref_name }}
@@ -58,6 +61,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./ui
+          push: true
           tags: |
             ghcr.io/oliumbi/websites-ui:latest
             ghcr.io/oliumbi/websites-ui:${{ github.ref_name }}

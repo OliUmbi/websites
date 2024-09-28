@@ -1,6 +1,6 @@
 services:
   database:
-    image: test-database # ghcr.io/oliumbi/websites-database
+    image: ghcr.io/oliumbi/websites-database:latest
     restart: always
     ports:
       - 5432:5432
@@ -11,7 +11,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=${SECRET_DATABASE_PASSWORD}
   migration:
-    image: test-migration # ghcr.io/oliumbi/websites-migration
+    image: ghcr.io/oliumbi/websites-migration:latest
     restart: on-failure
     networks:
       - websites-network
@@ -20,7 +20,7 @@ services:
     depends_on:
       - database
   api:
-    image: test-api # ghcr.io/oliumbi/websites-api
+    image: ghcr.io/oliumbi/websites-api:latest
     restart: always
     ports:
       - 8080:8080
@@ -33,7 +33,7 @@ services:
     depends_on:
       - database
   ui:
-    image: test-ui # ghcr.io/oliumbi/websites-ui
+    image: ghcr.io/oliumbi/websites-ui:latest
     restart: always
     ports:
       - 8000:8000
@@ -47,10 +47,3 @@ networks:
 volumes:
   websites-database-volume:
   websites-api-volume:
-
-deploy:
-  restart_policy:
-    condition: on-failure
-    delay: 5s
-    max_attempts: 3
-    window: 60s
