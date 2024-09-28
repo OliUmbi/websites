@@ -35,7 +35,6 @@ const JublawomaAdminArticles = () => {
 
   useEffect(() => {
     if (articleAll.data) {
-      console.log(articleAll)
       pagination.setTotal(articleAll.data.total)
     }
   }, [articleAll.data]);

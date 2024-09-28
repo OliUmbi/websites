@@ -140,7 +140,6 @@ public class EndpointHandler {
 
       Account session = null;
       if (!endpoint.permissions().isEmpty()) {
-        System.out.println(headers.stream().map(header -> header.getName() + ": " + header.getValue()).collect(Collectors.joining(" --- ")));
         Optional<Header> authentication = headers.get("Authentication");
         if (authentication.isEmpty()) {
           return new MessageResponse(Status.UNAUTHORIZED, "Authentication is missing.");

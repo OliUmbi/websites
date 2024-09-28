@@ -8,6 +8,8 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 import org.eclipse.jetty.io.Content.Chunk;
 import org.eclipse.jetty.util.BufferUtil;
@@ -32,7 +34,7 @@ public class Body {
     }
 
     try {
-      String content = BufferUtil.toString(body);
+      String content = BufferUtil.toString(body, StandardCharsets.UTF_8);
       return Json.read(content, requestType);
     } catch (JsonProcessingException e) {
       throw new Exception("Failed to handle request, reason: failed to map body to request type", e);
