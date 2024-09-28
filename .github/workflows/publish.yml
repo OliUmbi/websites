@@ -24,26 +24,42 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: build database
-        run: docker build ./database --tag ghcr.io/oliumbi/websites-database:latest --tag ghcr.io/oliumbi/websites-database:${{ github.ref_name }}
+      - name: build and push database
+        uses: docker/build-push-action@v6
+        with:
+          context: ./database
+          tags: |
+            ghcr.io/oliumbi/websites-database:latest
+            ghcr.io/oliumbi/websites-database:${{ github.ref_name }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
-      - name: build migration
-        run: docker build ./migration --tag ghcr.io/oliumbi/websites-migration:latest --tag ghcr.io/oliumbi/websites-migration:${{ github.ref_name }}
+      - name: build and push migration
+        uses: docker/build-push-action@v6
+        with:
+          context: ./migration
+          tags: |
+            ghcr.io/oliumbi/websites-migration:latest
+            ghcr.io/oliumbi/websites-migration:${{ github.ref_name }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
-      - name: build api
-        run: docker build ./api --tag ghcr.io/oliumbi/websites-api:latest --tag ghcr.io/oliumbi/websites-api:${{ github.ref_name }}
+      - name: build and push api
+        uses: docker/build-push-action@v6
+        with:
+          context: ./api
+          tags: |
+            ghcr.io/oliumbi/websites-api:latest
+            ghcr.io/oliumbi/websites-api:${{ github.ref_name }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
-      - name: build ui
-        run: docker build ./ui --tag ghcr.io/oliumbi/websites-ui:latest --tag ghcr.io/oliumbi/websites-ui:${{ github.ref_name }}
-
-      - name: push database
-        run: docker push ghcr.io/oliumbi/websites-database --all-tags
-
-      - name: push migration
-        run: docker push ghcr.io/oliumbi/websites-migration --all-tags
-
-      - name: push api
-        run: docker push ghcr.io/oliumbi/websites-api --all-tags
-
-      - name: push ui
-        run: docker push ghcr.io/oliumbi/websites-ui --all-tags
+      - name: build and push ui
+        uses: docker/build-push-action@v6
+        with:
+          context: ./ui
+          tags: |
+            ghcr.io/oliumbi/websites-ui:latest
+            ghcr.io/oliumbi/websites-ui:${{ github.ref_name }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
