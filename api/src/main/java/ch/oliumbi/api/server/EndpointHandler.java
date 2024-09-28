@@ -22,6 +22,8 @@ import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+
 import org.eclipse.jetty.http.HttpFields;
 import org.eclipse.jetty.http.HttpURI;
 import org.eclipse.jetty.server.ConnectionMetaData;
@@ -138,6 +140,7 @@ public class EndpointHandler {
 
       Account session = null;
       if (!endpoint.permissions().isEmpty()) {
+        System.out.println(headers.stream().map(header -> header.getName() + ": " + header.getValue()).collect(Collectors.joining(" --- ")));
         Optional<Header> authentication = headers.get("Authentication");
         if (authentication.isEmpty()) {
           return new MessageResponse(Status.UNAUTHORIZED, "Authentication is missing.");

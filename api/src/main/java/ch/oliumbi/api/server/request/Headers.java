@@ -19,7 +19,7 @@ public class Headers extends ArrayList<Header> {
 
   public Optional<Header> get(String name) {
     return this.stream()
-        .filter(header -> header.getName().equals(name))
+        .filter(header -> header.getName().equalsIgnoreCase(name))
         .findFirst();
   }
 }
