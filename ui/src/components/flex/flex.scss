@@ -159,7 +159,7 @@
     }
   }
 
-  @include flex__style("xl", 100vw);
+  @include flex__style("xl", 100000px);
   @include flex__style("l", variables.$l);
   @include flex__style("m", variables.$m);
   @include flex__style("s", variables.$s);

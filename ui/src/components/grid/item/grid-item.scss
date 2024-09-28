@@ -72,7 +72,7 @@
     }
   }
 
-  @include grid-item__style("xl", 100vw);
+  @include grid-item__style("xl", 100000px);
   @include grid-item__style("l", variables.$l);
   @include grid-item__style("m", variables.$m);
   @include grid-item__style("s", variables.$s);

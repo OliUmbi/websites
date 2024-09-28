@@ -81,7 +81,7 @@
     }
   }
 
-  @include grid__style("xl", 100vw);
+  @include grid__style("xl", 100000px);
   @include grid__style("l", variables.$l);
   @include grid__style("m", variables.$m);
   @include grid__style("s", variables.$s);
