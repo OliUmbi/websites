@@ -1,16 +1,17 @@
 import "./image.scss";
 
 interface Props {
-  src: string,
-  alt: string,
-  side: "width" | "height" | "both",
+  src: string
+  alt: string
+  side: "width" | "height" | "both"
   rounded: boolean
+  ratio?: "1:1" | "16:9"
 }
 
 const Image = (props: Props) => {
 
   return (
-      <img className="image" src={props.src} alt={props.alt} loading="lazy" data-side={props.side} data-rounded={props.rounded}/>
+      <img className="image" src={props.src} alt={props.alt} loading="lazy" data-side={props.side} data-rounded={props.rounded} data-ratio={props.ratio}/>
   )
 }
 

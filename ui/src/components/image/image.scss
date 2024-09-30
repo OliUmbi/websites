@@ -26,6 +26,14 @@
     border-radius: 0.5rem;
   }
 
+  &[data-ratio="1:1"] {
+    aspect-ratio: 1/1;
+  }
+
+  &[data-ratio="16:9"] {
+    aspect-ratio: 16/9;
+  }
+
   &:after {
     content: "";
     display: block;

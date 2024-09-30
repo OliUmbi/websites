@@ -1,25 +1,18 @@
-import {useEffect, useState} from "react";
 import {MarkdownItem} from "../../../interfaces/shared/markdown";
 import Flex from "../../flex/flex";
 import MarkdownEditItem from "./item/markdown-edit-item";
 import IconButton from "../../icon/button/icon-button";
 
 interface Props {
-  markdown: string
-  setMarkdown: (value: string) => void
+  markdown: MarkdownItem[]
+  setMarkdown: (callback: ((value: MarkdownItem[]) => MarkdownItem[])) => void
   api: string
 }
 
 const MarkdownEdit = (props: Props) => {
 
-  const [markdown, setMarkdown] = useState<MarkdownItem[]>(JSON.parse(props.markdown))
-
-  useEffect(() => {
-    props.setMarkdown(JSON.stringify(markdown))
-  }, [markdown])
-
   const add = () => {
-    setMarkdown(prevState => [...prevState, {
+    props.setMarkdown(prevState => [...prevState, {
       id: Math.random().toString(16).slice(2),
       type: "paragraph",
       value: "",
@@ -28,7 +21,7 @@ const MarkdownEdit = (props: Props) => {
   }
 
   const update = (index: number, item: MarkdownItem) => {
-    setMarkdown(prevState => {
+    props.setMarkdown(prevState => {
       let copy = [...prevState]
       copy[index] = item
       return copy
@@ -38,11 +31,11 @@ const MarkdownEdit = (props: Props) => {
   const position = (index: number, offset: number) => {
     const position = index + offset
 
-    if (position < 0 || position >= markdown.length) {
+    if (position < 0 || position >= props.markdown.length) {
       return
     }
 
-    setMarkdown(prevState => {
+    props.setMarkdown(prevState => {
       let copy = [...prevState]
       copy.splice(index, 0, copy.splice(position, 1)[0]);
       return copy
@@ -50,13 +43,13 @@ const MarkdownEdit = (props: Props) => {
   }
 
   const remove = (index: number) => {
-    setMarkdown(prevState => prevState.filter((_, i) => i != index))
+    props.setMarkdown(prevState => prevState.filter((_, i) => i != index))
   }
 
   return (
       <Flex xl={{direction: "column", gap: 1}}>
         {
-          markdown.map((value, index) =>
+          props.markdown.map((value, index) =>
               <MarkdownEditItem id={value.id} type={value.type} value={value.value} children={value.children} api={props.api}
                                 setItem={item => update(index, item)} setPosition={offset => position(index, offset)}
                                 remove={() => remove(index)} key={value.id}/>)

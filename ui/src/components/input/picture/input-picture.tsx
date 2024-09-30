@@ -31,8 +31,14 @@ const InputPicture = (props: Props) => {
   const imageCreate = useApi<IdMessageResponse>(Enviroment.JUBLAWOMA_ADMIN, "POST", "/image")
 
   useEffect(() => {
+    if (props.internal) {
+      props.setValue(props.internal)
+    }
+  }, [props.internal]);
+
+  useEffect(() => {
     if (imageCreate.data) {
-      props.setValue(imageCreate.data.id)
+      props.setInternal(imageCreate.data.id)
       props.setError("")
     }
   }, [imageCreate.data])
@@ -50,10 +56,10 @@ const InputPicture = (props: Props) => {
   }, [imageCreate.loading])
 
   useEffect(() => {
-    if (props.value) {
+    if (props.internal) {
       props.setValid(true)
     }
-  }, [props.value]);
+  }, [props.internal]);
 
   useEffect(() => {
     if (!props.required) {
@@ -62,7 +68,6 @@ const InputPicture = (props: Props) => {
   }, [props.required]);
 
   const create = () => {
-
     if (!file.valid) {
       return
     }
@@ -75,7 +80,7 @@ const InputPicture = (props: Props) => {
   return (
       <Input label={props.label} required={props.required} error={props.error} disabled={props.disabled || false}>
         <div className="input-picture">
-          <Picture api={props.api} id={props.value} alt="Bild" side="width" rounded={true}/>
+          <Picture api={props.api} id={props.value || ""} alt="Bild" side="width" rounded={true}/>
           <Flex xl={{direction: "row", align: "end", gap: 1}}>
             <InputFile {...file} label="Bild hochladen" image={true}/>
             <Button onClick={create} highlight={false}>Hochladen</Button>

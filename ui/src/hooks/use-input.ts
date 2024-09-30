@@ -40,10 +40,6 @@ const useInput = <T extends string | string[] | number | boolean | Date | File>(
       return defaultValue.join("|")
     }
 
-    if (defaultValue instanceof File) {
-      return defaultValue.name
-    }
-
     return ""
   }
 

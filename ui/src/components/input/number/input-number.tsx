@@ -2,7 +2,6 @@ import "./input-number.scss";
 import Input from "../input";
 import {ChangeEvent, useEffect} from "react";
 import Icon from "../../icon/icon";
-import IconButton from "../../icon/button/icon-button";
 
 interface Props {
   required: boolean,

@@ -56,7 +56,7 @@ const JublawomaArticles = () => {
                           <Link to={value.id} key={index}>
                             <Flex xl={{direction: "column", gap: 1}}>
                               <Picture api={configuration.api.jublawoma} id={value.imageId} alt={value.title} side="width"
-                                       rounded={true}/>
+                                       rounded={true} ratio="16:9"/>
                               <Flex xl={{direction: "row", justify: "between", gap: 1}}>
                                 <Text type="s" primary={false} mono={true}>{date.locale(value.published, "date")}</Text>
                                 <Text type="s" primary={false} mono={true}>{value.author}</Text>

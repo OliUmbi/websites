@@ -1,7 +1,6 @@
 import "./markdown.scss";
 import {MarkdownItem} from "../../interfaces/shared/markdown";
 import Text from "../text/text";
-import Button from "../button/button";
 import Picture from "../picture/picture";
 import Grid from "../grid/grid";
 import Flex from "../flex/flex";
@@ -26,9 +25,6 @@ const Markdown = (props: Props) => {
       }
       case "paragraph": {
         return <Text type="p">{markdown.value}</Text>
-      }
-      case "button": {
-        return <Button onClick={() => window.open(markdown.value.split("|")[1], "_blank")} highlight={true}>{markdown.value.split("|")[0]}</Button>
       }
       case "image": {
         // todo translate alt? or is alt translated in image component? or default fallback?

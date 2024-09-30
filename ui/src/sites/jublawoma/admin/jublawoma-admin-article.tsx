@@ -18,6 +18,7 @@ import Grid from "../../../components/grid/grid";
 import MarkdownEdit from "../../../components/markdown/edit/markdown-edit";
 import InputPicture from "../../../components/input/picture/input-picture";
 import Text from "../../../components/text/text";
+import {MarkdownItem} from "../../../interfaces/shared/markdown";
 
 const JublawomaAdminArticle = () => {
 
@@ -36,7 +37,7 @@ const JublawomaAdminArticle = () => {
     const author = useInput<string>(true)
     const published = useInput<Date>(true)
     const visible = useInput<string[]>(true)
-    const [markdown, setMarkdown] = useState<string>("[]")
+    const [markdown, setMarkdown] = useState<MarkdownItem[]>([])
 
     useEffect(() => {
         articleById.execute()
@@ -50,6 +51,7 @@ const JublawomaAdminArticle = () => {
             published.setInternal(date.locale(articleById.data.published, "time"))
             visible.setInternal(articleById.data.visible ? "Ja" : "Nein")
             image.setValue(articleById.data.imageId)
+            setMarkdown(JSON.parse(articleById.data.markdown))
         }
     }, [articleById.data])
 
@@ -79,7 +81,7 @@ const JublawomaAdminArticle = () => {
                 description: description.value,
                 author: author.value,
                 published: published.value,
-                markdown: markdown,
+                markdown: JSON.stringify(markdown),
                 visible: visible.value[0] === "Ja",
             }
         }
@@ -96,11 +98,10 @@ const JublawomaAdminArticle = () => {
                             <Grid xl={{columns: 2, gap: 1}} m={{columns: 1}}>
                                 <Flex xl={{direction: "column", gap: 1}}>
                                     <InputPicture {...image} label="Bild" api={configuration.api.jublawomaAdmin}/>
-                                    <InputText {...title} label="Titel" placeholder="Titel" characters={32}/>
                                 </Flex>
                                 <Flex xl={{direction: "column", gap: 1}}>
-                                    <InputText {...description} label="Beschreibung" placeholder="Beschreibung"
-                                               characters={128} rows={3}/>
+                                    <InputText {...title} label="Titel" placeholder="Titel" characters={32}/>
+                                    <InputText {...description} label="Beschreibung" placeholder="Beschreibung" characters={128} rows={3}/>
                                     <InputDate {...published} label="Datum" placeholder="TT.MM.JJJJ"/>
                                     <InputText {...author} label="Autor" placeholder="Autor" characters={32}/>
                                     <InputOptions {...visible} label="Öffentlich" options={["Ja", "Nein"]}/>
@@ -108,17 +109,9 @@ const JublawomaAdminArticle = () => {
                             </Grid>
                         </Flex>
                         <Flex xl={{widthMax: "m", width: true, direction: "column"}}>
-                            <MarkdownEdit markdown={articleById.data.markdown} setMarkdown={setMarkdown}
-                                          api={configuration.api.jublawomaAdmin}/>
+                            <MarkdownEdit markdown={markdown} setMarkdown={setMarkdown} api={configuration.api.jublawomaAdmin}/>
                         </Flex>
-                        <Flex xl={{
-                            widthMax: "xl",
-                            width: true,
-                            direction: "row",
-                            align: "center",
-                            justify: "end",
-                            gap: 1
-                        }}>
+                        <Flex xl={{widthMax: "xl", width: true, direction: "row", align: "center", justify: "end", gap: 1}}>
                             {
                                 articleUpdate.data ? <Text type="p">Änderungen gespeichert.</Text> : null
                             }
