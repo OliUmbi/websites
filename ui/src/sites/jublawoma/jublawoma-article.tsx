@@ -45,16 +45,21 @@ const JublawomaArticle = () => {
                     </>
                 ) : null
             }
-            <Flex xl={{widthMax: "l", width: true, direction: "column", gap: 2}}>
-                {
-                    articleById.error ? <Error message={articleById.error}/> : null
-                }
-                {
-                    articleById.loading ? <Loading/> : null
-                }
-            </Flex>
+            {
+                articleById.error ? (
+                    <Flex xl={{widthMax: "l", width: true, direction: "column", gap: 2}}>
+                        <Error message={articleById.error}/>
+                    </Flex>) : null
+            }
+            {
+                articleById.loading ? (
+                    <Flex xl={{widthMax: "l", width: true, direction: "column", gap: 2}}>
+                        <Loading/>
+                    </Flex>) : null
+            }
         </Flex>
-    )
+</Flex>
+)
 }
 
 export default JublawomaArticle

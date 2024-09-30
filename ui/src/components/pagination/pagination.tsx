@@ -43,7 +43,7 @@ const Pagination = (props: Props) => {
 
   return (
       <Flex xl={{direction: "row", align: "center", justify: "end", gap: 1}}>
-        <Text type="p" primary={true} mono={true}>{props.offset + 1}-{elements()} of {props.total} elements</Text>
+        <Text type="p" primary={true} mono={true}>{props.offset + 1}-{elements()} von {props.total} Resultaten</Text>
         <IconButton size={1.5} onClick={previous} highlight={false}>chevron-left</IconButton>
         <IconButton size={1.5} onClick={next} highlight={false}>chevron-right</IconButton>
       </Flex>
