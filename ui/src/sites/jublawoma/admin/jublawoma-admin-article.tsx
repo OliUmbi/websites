@@ -48,7 +48,7 @@ const JublawomaAdminArticle = () => {
             title.setInternal(articleById.data.title)
             description.setInternal(articleById.data.description)
             author.setInternal(articleById.data.author)
-            published.setInternal(date.locale(articleById.data.published, "time"))
+            published.setInternal(date.locale(articleById.data.published, "date"))
             visible.setInternal(articleById.data.visible ? "Ja" : "Nein")
             image.setValue(articleById.data.imageId)
             setMarkdown(JSON.parse(articleById.data.markdown))
@@ -80,7 +80,7 @@ const JublawomaAdminArticle = () => {
                 title: title.value,
                 description: description.value,
                 author: author.value,
-                published: published.value,
+                published: date.iso(published.value),
                 markdown: JSON.stringify(markdown),
                 visible: visible.value[0] === "Ja",
             }

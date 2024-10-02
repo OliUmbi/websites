@@ -58,8 +58,7 @@ const JublawomaArticle = () => {
                     </Flex>) : null
             }
         </Flex>
-</Flex>
-)
+    )
 }
 
 export default JublawomaArticle

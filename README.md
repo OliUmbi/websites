@@ -3,6 +3,8 @@ one project to rule them all
 
 ## todos
 - ui
+  - linter
+  - moment js or something similar
   - deno instead of node
   - fix random jublawoma/admin/ and jublawomaadmin/
   - robots.txt

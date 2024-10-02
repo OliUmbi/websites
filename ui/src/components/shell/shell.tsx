@@ -8,7 +8,6 @@ import IconButton from "../icon/button/icon-button";
 import ShellLink from "./link/shell-link";
 import Breadcrumbs from "../breadcrumbs/breadcrumbs";
 import Flex from "../flex/flex";
-import {i} from "vite/dist/node/types.d-aGj9QkWt";
 
 interface Props {
   children: ReactNode

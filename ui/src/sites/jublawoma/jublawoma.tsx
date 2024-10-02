@@ -8,7 +8,6 @@ import JublawomaLegal from "./jublawoma-legal";
 import JublawomaPrivacy from "./jublawoma-privacy";
 import Shell from "../../components/shell/shell";
 import JublawomaDonate from "./jublawoma-donate";
-import React from "react";
 import JublawomaNotFound from "./jublawoma-not-found";
 import JublawomaArticles from "./jublawoma-articles";
 import JublawomaArticle from "./jublawoma-article";
