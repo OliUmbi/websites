@@ -7,6 +7,7 @@ import ch.oliumbi.api.enums.server.Method;
 import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
 import ch.oliumbi.api.enums.server.Status;
 import ch.oliumbi.api.server.Endpoint;
+import ch.oliumbi.api.server.request.Header;
 import ch.oliumbi.api.server.request.Parameters;
 import ch.oliumbi.api.server.request.PathVariables;
 import ch.oliumbi.api.server.request.Request;
@@ -59,7 +60,7 @@ public class ImageById implements Endpoint<Void> {
 
     Path path = Path.of(root + "/" + size + "/" + id + ".jpg");
 
-    return new ResourceResponse(Status.OK, path, ContentType.JPEG);
+    return new ResourceResponse(Status.OK, path, ContentType.JPEG, new Header("Cache-Control", "max-age=31536000"));
   }
 
   private UUID id(PathVariables pathVariables) throws Exception {
