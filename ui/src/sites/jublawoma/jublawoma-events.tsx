@@ -10,57 +10,43 @@ const JublawomaEvents = () => {
 
   let data = [
     {
-      from: "2024-09-14T00:00:00.000Z",
-      to: "2024-09-14T00:00:00.000Z",
-      name: "Jubla-Tag",
-      location: "Infos folgen",
-      image: "/assets/jublawoma/images/doodles/ice-cream.svg"
-    },
-    {
-      from: "2024-09-28T00:00:00.000Z",
-      to: "2024-10-05T00:00:00.000Z",
-      name: "Herbstlager",
-      location: "Infos folgen",
-      image: "/assets/jublawoma/images/doodles/ballet.svg"
-    },
-    {
-      from: "2024-10-26T00:00:00.000Z",
-      to: "2024-10-26T00:00:00.000Z",
+      from: "26.10.2024",
+      to: "26.10.2024",
       name: "Disco",
       location: "Wohlenschwil Pfarreiheim",
       image: "/assets/jublawoma/images/doodles/dancing.svg"
     },
     {
-      from: "2024-11-10T00:00:00.000Z",
-      to: "2024-11-10T00:00:00.000Z",
+      from: "10.11.2024",
+      to: "10.11.2024",
       name: "Zrog-lueg-Sunntig",
       location: "Wohlenschwil Pfarreiheim",
       image: "/assets/jublawoma/images/doodles/reading-sit.svg"
     },
     {
-      from: "2024-11-23T00:00:00.000Z",
-      to: "2024-11-23T00:00:00.000Z",
+      from: "23.11.2024",
+      to: "23.11.2024",
       name: "Escape-Room",
       location: "Wohlenschwil Pfarreiheim",
       image: "/assets/jublawoma/images/doodles/jumping.svg"
     },
     {
-      from: "2024-12-08T00:00:00.000Z",
-      to: "2024-12-08T00:00:00.000Z",
+      from: "08.12.2024",
+      to: "08.12.2024",
       name: "Waldweihnachten mit Albert Saxer Stiftung",
       location: "Mägenwil Steinbruch",
       image: "/assets/jublawoma/images/doodles/unboxing.svg"
     },
     {
-      from: "2024-12-14T00:00:00.000Z",
-      to: "2024-12-14T00:00:00.000Z",
+      from: "14.12.2024",
+      to: "14.12.2024",
       name: "Turnhallentag",
       location: "Mägenwil Turnhalle",
       image: "/assets/jublawoma/images/doodles/sprinting.svg"
     },
     {
-      from: "2025-01-06T00:00:00.000Z",
-      to: "2025-01-09T00:00:00.000Z",
+      from: "06.01.2025",
+      to: "09.01.2025",
       name: "Sternsingen",
       location: "Wohlenschwil Dorf",
       image: "/assets/jublawoma/images/doodles/loving.svg"
