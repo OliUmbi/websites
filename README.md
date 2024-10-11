@@ -21,6 +21,13 @@ one project to rule them all
   - markdown
     - quote
     - list
+    - placeholder
+    - videos
+    - links / buttons
+  - sitemap
+  - improve site handler
+  - dev env for urls etc
+  - add meta tags etc.
 - api
   - images only visible to certain domains
   - whole global domain management
@@ -31,7 +38,7 @@ one project to rule them all
 - infrastructure
   - ufw rethink this or uninstall
 - github
-  - build with docker/build-push-action@v4
+  - add runner for auto deployment
 - icons
   - fork lucide / or contribute
   - fix the with json to assert
