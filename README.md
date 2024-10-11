@@ -35,6 +35,8 @@ one project to rule them all
   - rework old component, they have errors, minimal validation and unsafe conversions like uuid casts
   - earlier wildcard import
   - avaluate reworking the api to map according to name of column like (select person_id id FROM person_idk) it would safe the into
+  - images data structured by first 4 chars /a/b/1/2/uuid
+  - endpoint knows and checks first the used domain. the path is just one entry without base 
 - infrastructure
   - ufw rethink this or uninstall
 - github

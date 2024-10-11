@@ -10,6 +10,9 @@ public interface Endpoint<T> {
 
   Method method();
 
+  // List<Domain> domains();
+  // String route();
+
   List<String> routes();
 
   List<SharedAccountPermissionPermission> permissions();
