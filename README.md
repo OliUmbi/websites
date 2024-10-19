@@ -129,6 +129,7 @@ one project to rule them all
   - complexity formula
   - enum to save complexity
   - raw sql / orm
+  - bad architecture, learning from prototypes
 - career (dates, certificastes)
   - school
   - informatics
