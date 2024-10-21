@@ -28,6 +28,7 @@ one project to rule them all
   - improve site handler
   - dev env for urls etc
   - add meta tags etc.
+  - analytics (id service)
 - api
   - images only visible to certain domains
   - whole global domain management
@@ -39,6 +40,10 @@ one project to rule them all
   - endpoint knows and checks first the used domain. the path is just one entry without base 
 - infrastructure
   - ufw rethink this or uninstall
+  - backup strategy
+  - google search manager
+  - monitoring
+  - migration testing
 - github
   - add runner for auto deployment
 - icons
@@ -51,6 +56,8 @@ one project to rule them all
   - how to create enums
   - how to add a domain
   - how to fix errors
+- jubla 
+  - migrate blogs
 
 ## jublawoma
 
@@ -114,10 +121,11 @@ one project to rule them all
   - contact
 - about
   - reviews
-
 - stories ?? 
   - catering events done
   - short case studies
+- instagram
+- more logo
 
 ## oliumbi
 - projects (technology, methedology, process, result)
@@ -137,6 +145,7 @@ one project to rule them all
   - github
 - contact
   - email
+- poker
 
 ## admin
 
