@@ -37,7 +37,11 @@ one project to rule them all
   - earlier wildcard import
   - avaluate reworking the api to map according to name of column like (select person_id id FROM person_idk) it would safe the into
   - images data structured by first 4 chars /a/b/1/2/uuid
-  - endpoint knows and checks first the used domain. the path is just one entry without base 
+  - endpoint knows and checks first the used domain. the path is just one entry without base
+  - notification system
+    - periodic emails
+    - event emails
+  - transition to records
 - infrastructure
   - ufw rethink this or uninstall
   - backup strategy
@@ -152,6 +156,17 @@ one project to rule them all
 
 
 ### future
-- notification system
-  - periodic emails
-  - event emails
+create primitives
+- classname
+- reset all css styling
+- only ones directly using a html element
+- hide multiple implementations behind them
+- h1-6, p, small, i, b = text
+- button, links, switch = action / interactable
+- div, spam = box / view / container [flex, scroll, grid]
+- image, picture, (video), (audio) = media
+- input = input
+- modal, toasty, etc = modal
+- carousel
+
+to test build a ui from the internet with a lot of css sugar
