@@ -41,7 +41,7 @@ one project to rule them all
   - notification system
     - periodic emails
     - event emails
-  - transition to records
+  - transition to records and annotate nullable parameters with a getter returning optional
 - infrastructure
   - ufw rethink this or uninstall
   - backup strategy
