@@ -29,6 +29,7 @@ one project to rule them all
   - dev env for urls etc
   - add meta tags etc.
   - analytics (id service)
+  - css light-dark & color-scheme
 - api
   - images only visible to certain domains
   - whole global domain management
