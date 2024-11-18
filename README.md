@@ -30,6 +30,7 @@ one project to rule them all
   - add meta tags etc.
   - analytics (id service)
   - css light-dark & color-scheme
+  - possible application of container queries
 - api
   - images only visible to certain domains
   - whole global domain management
