@@ -3,7 +3,7 @@ import Flex from "../../components/flex/flex";
 import Button from "../../components/button/button";
 import {useNavigate} from "react-router-dom";
 
-const JublawomaNotFound = () => {
+const UncletNotFound = () => {
 
   const navigate = useNavigate()
 
@@ -20,4 +20,4 @@ const JublawomaNotFound = () => {
   )
 }
 
-export default JublawomaNotFound
+export default UncletNotFound

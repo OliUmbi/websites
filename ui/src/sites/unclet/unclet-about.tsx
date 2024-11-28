@@ -6,7 +6,7 @@ const UncletHome = () => {
   return (
       <Flex xl={{direction: "column", align: "center"}}>
         <Flex xl={{widthMax: "m", width: true}}>
-          <Text type="h1">Home</Text>
+          <Text type="h1">Über mich</Text>
         </Flex>
       </Flex>
   )

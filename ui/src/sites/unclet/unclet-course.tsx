@@ -1,15 +1,15 @@
 import Flex from "../../components/flex/flex";
 import Text from "../../components/text/text";
 
-const UncletHome = () => {
+const UncletCourse = () => {
 
   return (
       <Flex xl={{direction: "column", align: "center"}}>
         <Flex xl={{widthMax: "m", width: true}}>
-          <Text type="h1">Home</Text>
+          <Text type="h1">Kurs</Text>
         </Flex>
       </Flex>
   )
 }
 
-export default UncletHome
+export default UncletCourse

@@ -5,6 +5,7 @@ import Unclet from "./sites/unclet/unclet";
 import {BrowserRouter} from "react-router-dom";
 import JublawomaAdmin from "./sites/jublawoma/admin/jublawoma-admin";
 import "./prototypes/array";
+import UncletAdmin from "./sites/unclet/admin/unclet-admin";
 
 const App = () => {
 
@@ -20,10 +21,13 @@ const App = () => {
           domain === "jublawoma.ch" ? <Jublawoma/> : ""
         }
         {
-          domain === "admin.jublawoma.ch" || true ? <JublawomaAdmin/> : ""
+          domain === "admin.jublawoma.ch" ? <JublawomaAdmin/> : ""
         }
         {
           domain === "uncle-t.ch" ? <Unclet/> : ""
+        }
+        {
+          domain === "admin.uncle-t.ch" ? <UncletAdmin/> : ""
         }
         {
           domain === "oliumbi.ch" ? <OliUmbi/> : ""
