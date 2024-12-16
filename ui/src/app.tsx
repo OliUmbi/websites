@@ -24,7 +24,7 @@ const App = () => {
           domain === "admin.jublawoma.ch" ? <JublawomaAdmin/> : ""
         }
         {
-          domain === "uncle-t.ch" ? <Unclet/> : ""
+          domain === "uncle-t.ch" || true ? <Unclet/> : ""
         }
         {
           domain === "admin.uncle-t.ch" ? <UncletAdmin/> : ""
