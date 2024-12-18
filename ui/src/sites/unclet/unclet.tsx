@@ -20,7 +20,7 @@ const Unclet = () => {
         {name: "Privatkoch", to: "/privatkoch", primary: true},
         {name: "Catering", to: "/catering", primary: true},
         {name: "Kurse", to: "/kurse", primary: true},
-        {name: "Über Mich", to: "/ueber-uns", primary: true},
+        {name: "Über Mich", to: "/ueber-mich", primary: true},
         {name: "Instagram", to: "https://www.instagram.com/unclet_gmbh/", primary: false},
         {name: "Kontakt", to: "/kontakt", primary: false},
         {name: "Geschäftsbedingung", to: "/geschaeftsbedingung", primary: false},
@@ -33,7 +33,7 @@ const Unclet = () => {
           <Route path="/catering" element={<UncletCatering/>}/>
           <Route path="/kurse" element={<UncletCourses/>}/>
           <Route path="/kurse/:id" element={<UncletCourse/>}/>
-          <Route path="/ueber-uns" element={<UncletAbout/>}/>
+          <Route path="/ueber-mich" element={<UncletAbout/>}/>
           <Route path="/kontakt" element={<UncletContact/>}/>
           <Route path="/geschaeftsbedingung" element={<UncletTerms/>}/>
           <Route path="/impressum" element={<UncletLegal/>}/>
