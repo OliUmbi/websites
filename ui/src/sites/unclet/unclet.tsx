@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Shell from "../../components/shell/shell";
 import UncletHome from "./unclet-home";
 import UncletNotFound from "./unclet-not-found";

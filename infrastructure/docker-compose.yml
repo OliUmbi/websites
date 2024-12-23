@@ -30,6 +30,7 @@ services:
       - "websites-api-volume:/data"
     environment:
       - SECRET_DATABASE_PASSWORD=${SECRET_DATABASE_PASSWORD}
+      - SECRET_EMAIL_PASSWORD=${SECRET_EMAIL_PASSWORD}
     depends_on:
       - database
   ui:

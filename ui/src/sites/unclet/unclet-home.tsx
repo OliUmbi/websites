@@ -69,7 +69,7 @@ const UncletHome = () => {
                   <Image src="./assets/unclet/images/static/courses.jpg" alt="Kurse" side="width" rounded={true}/>
                   <Flex xl={{direction: "column", gap: 1}}>
                     <Text type="h2">Kurse</Text>
-                    <Text type="s" primary={false}>Kochen lernen, genießen erleben – entdecken Sie Ihre kulinarische Seite.</Text>
+                    <Text type="s" primary={false}>Kochen lernen, geniessen erleben – entdecken Sie Ihre kulinarische Seite.</Text>
                   </Flex>
                   <Text type="p">Erleben Sie eine unterhaltsame und lehrreiche Atmosphäre, die Ihre Kochfähigkeiten auf ein
                     neues Niveau hebt und Ihr Vertrauen in die Küche stärkt. Buchen Sie noch heute einen Kochkurs für sich

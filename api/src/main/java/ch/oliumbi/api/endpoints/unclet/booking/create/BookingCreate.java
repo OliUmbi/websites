@@ -1,28 +1,32 @@
-package ch.oliumbi.api.endpoints.jublawomaadmin.article.create;
+package ch.oliumbi.api.endpoints.unclet.booking.create;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
 import ch.oliumbi.api.database.Param;
 import ch.oliumbi.api.enums.server.Method;
-import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
 import ch.oliumbi.api.enums.server.Status;
+import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
+import ch.oliumbi.api.enums.shared.SharedCommunicationType;
 import ch.oliumbi.api.server.Endpoint;
 import ch.oliumbi.api.server.request.Request;
 import ch.oliumbi.api.server.response.IdMessageResponse;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
+import ch.oliumbi.api.shared.communication.CommunicationService;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @Autoload
-public class ArticleCreate implements Endpoint<Void> {
+public class BookingCreate implements Endpoint<BookingCreateRequest> {
 
   private final Database database;
+  private final CommunicationService communicationService;
 
-  public ArticleCreate(Database database) {
+  public BookingCreate(Database database, CommunicationService communicationService) {
     this.database = database;
+    this.communicationService = communicationService;
   }
 
   @Override
@@ -32,16 +36,16 @@ public class ArticleCreate implements Endpoint<Void> {
 
   @Override
   public List<String> routes() {
-    return List.of("/jublawoma-admin/article");
+    return List.of("/unclet/booking");
   }
 
   @Override
   public List<SharedAccountPermissionPermission> permissions() {
-    return List.of(SharedAccountPermissionPermission.JUBLAWOMA_ADMIN);
+    return List.of();
   }
 
   @Override
-  public Response handle(Request<Void> request) {
+  public Response handle(Request<BookingCreateRequest> request) {
 
     UUID id = UUID.randomUUID();
 
@@ -72,9 +76,12 @@ public class ArticleCreate implements Endpoint<Void> {
         Param.of("visible", false));
 
     if (create.isEmpty()) {
-      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to create article.");
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to create booking.");
     }
 
-    return new IdMessageResponse(Status.OK, "Successfully created article.", id);
+    // todo refine
+    communicationService.create(SharedCommunicationType.EMAIL, "info@uncle-t.ch", "Neue Buchungsanfrage", "admin.uncle-t.ch");
+
+    return new IdMessageResponse(Status.OK, "Successfully created booking.", id);
   }
 }

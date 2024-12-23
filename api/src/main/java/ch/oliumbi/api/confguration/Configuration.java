@@ -36,6 +36,10 @@ public class Configuration {
     }
   }
 
+  public Environment environment() {
+    return environment;
+  }
+
   public String string(String key) {
     String prefix = environment.name().toLowerCase() + ".";
 
