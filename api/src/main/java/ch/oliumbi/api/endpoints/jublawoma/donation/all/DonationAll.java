@@ -59,7 +59,7 @@ public class DonationAll implements Endpoint<Void> {
         """);
 
     if (donationResponse.isEmpty()) {
-      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Keine aktive Spende gefunden.");
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to load donation.");
     }
 
     Optional<List<DonationAllProductResponse>> donationProductResponses = database.query(DonationAllProductResponse.class, """
@@ -87,7 +87,7 @@ public class DonationAll implements Endpoint<Void> {
         donationResponse.get());
 
     if (donationProductResponses.isEmpty()) {
-      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Keine zu spendene Produkte gefunden.");
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to load donation products.");
     }
 
     donationResponse.get().setProducts(donationProductResponses.get());

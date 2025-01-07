@@ -7,13 +7,13 @@ import ch.oliumbi.api.enums.server.Method;
 import ch.oliumbi.api.enums.server.Status;
 import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
 import ch.oliumbi.api.enums.shared.SharedCommunicationType;
+import ch.oliumbi.api.enums.unclet.UncletBookingStatus;
 import ch.oliumbi.api.server.Endpoint;
 import ch.oliumbi.api.server.request.Request;
 import ch.oliumbi.api.server.response.IdMessageResponse;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
 import ch.oliumbi.api.shared.communication.CommunicationService;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -47,41 +47,43 @@ public class BookingCreate implements Endpoint<BookingCreateRequest> {
   @Override
   public Response handle(Request<BookingCreateRequest> request) {
 
+    if (!request.getBody().valid()) {
+      return new MessageResponse(Status.BAD_REQUEST, "Invalid body.");
+    }
+
     UUID id = UUID.randomUUID();
 
     Optional<Integer> create = database.update("""
-            INSERT INTO jublawoma_article (
+            INSERT INTO unclet_booking (
                       id,
-                      title,
-                      description,
-                      author,
-                      published,
-                      markdown,
-                      visible)
+                      status,
+                      name,
+                      email,
+                      date,
+                      location,
+                      people,
+                      note)
             VALUES (
                       :id,
-                      :title,
-                      :description,
-                      :author,
-                      :published,
-                      :markdown,
-                      :visible)
+                      :status,
+                      :name,
+                      :email,
+                      :date,
+                      :location,
+                      :people,
+                      :note)
             """,
         Param.of("id", id),
-        Param.of("title", "Neuer News-Artikel"),
-        Param.of("description", ""),
-        Param.of("author", ""),
-        Param.of("published", LocalDateTime.now()),
-        Param.of("markdown", "[]"),
-        Param.of("visible", false));
+        Param.of("status", UncletBookingStatus.OPEN),
+        request.getBody());
 
     if (create.isEmpty()) {
       return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to create booking.");
     }
 
     // todo refine
-    communicationService.create(SharedCommunicationType.EMAIL, "info@uncle-t.ch", "Neue Buchungsanfrage", "admin.uncle-t.ch");
+    communicationService.create(SharedCommunicationType.EMAIL, "info@uncle-t.ch", "Neue Buchungsanfrage", "https://admin.uncle-t.ch");
 
-    return new IdMessageResponse(Status.OK, "Successfully created booking.", id);
+    return new MessageResponse(Status.OK, "Successfully created booking.");
   }
 }

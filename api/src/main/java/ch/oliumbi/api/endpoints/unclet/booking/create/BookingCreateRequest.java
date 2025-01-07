@@ -17,7 +17,7 @@ public class BookingCreateRequest implements Validatable {
 
   private String name;
   private String email;
-  private LocalDate date;
+  private LocalDateTime date;
   private String location;
   private Integer people;
   private String note;

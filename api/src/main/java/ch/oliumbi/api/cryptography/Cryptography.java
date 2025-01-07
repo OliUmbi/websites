@@ -15,4 +15,10 @@ public class Cryptography {
   public boolean matches(String input, String hash) {
     return argon2PasswordEncoder.matches(input, hash);
   }
+
+  public static void main(String[] args) {
+    Cryptography cryptography = new Cryptography();
+
+    System.out.println(cryptography.encode("tümel-uncle-t-1234"));
+  }
 }

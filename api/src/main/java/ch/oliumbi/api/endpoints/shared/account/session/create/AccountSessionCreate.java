@@ -37,7 +37,10 @@ public class AccountSessionCreate implements Endpoint<AccountSessionCreateReques
 
   @Override
   public List<String> routes() {
-    return List.of("/jublawoma-admin/account/session");
+    return List.of(
+        "/jublawoma-admin/account/session",
+        "/unclet-admin/account/session"
+    );
   }
 
   @Override
@@ -62,11 +65,11 @@ public class AccountSessionCreate implements Endpoint<AccountSessionCreateReques
         request.getBody());
 
     if (account.isEmpty()) {
-      return new MessageResponse(Status.BAD_REQUEST, "Authentication failed.");
+      return new MessageResponse(Status.BAD_REQUEST, "Failed to authenticate.");
     }
 
     if (!cryptography.matches(request.getBody().getPassword(), account.get().getString("password"))) {
-      return new MessageResponse(Status.BAD_REQUEST, "Authentication failed.");
+      return new MessageResponse(Status.BAD_REQUEST, "Failed to authenticate.");
     }
 
     UUID id = account.get().getUUID("id");
@@ -87,7 +90,7 @@ public class AccountSessionCreate implements Endpoint<AccountSessionCreateReques
         Param.of("expires", LocalDateTime.now().plusHours(8)));
 
     if (session.isEmpty()) {
-      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Authentication failed.");
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to create session.");
     }
 
     Optional<List<Row>> rows = database.query("""
@@ -98,7 +101,7 @@ public class AccountSessionCreate implements Endpoint<AccountSessionCreateReques
         Param.of("accountId", id));
 
     if (rows.isEmpty()) {
-      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Authentication failed.");
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to create session.");
     }
 
     List<SharedAccountPermissionPermission> permissions = rows.get().stream()

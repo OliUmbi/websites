@@ -45,7 +45,7 @@ public class ArticleById implements Endpoint<Void> {
     Optional<UUID> id = request.getPathVariables().getUUID("id");
 
     if (id.isEmpty()) {
-      return new MessageResponse(Status.BAD_REQUEST, "News-Beitrag nicht gefunden.");
+      return new MessageResponse(Status.BAD_REQUEST, "Invalid id.");
     }
 
     Optional<ArticleByIdResponse> articleByIdResponse = database.querySingle(ArticleByIdResponse.class, """
@@ -59,7 +59,6 @@ public class ArticleById implements Endpoint<Void> {
         FROM    jublawoma_article
         WHERE   id = :id
         AND     visible = TRUE
-        LIMIT   1
         INTO    id,
                 imageId,
                 title,
@@ -71,7 +70,7 @@ public class ArticleById implements Endpoint<Void> {
         Param.of("id", id.get()));
 
     if (articleByIdResponse.isEmpty()) {
-      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "News-Beitrag konnten nicht geladen werden.");
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to load article.");
     }
 
     return new JsonResponse(Status.OK, articleByIdResponse.get());

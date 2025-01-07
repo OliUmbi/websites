@@ -197,12 +197,12 @@ public class Database {
       for (Object param : params) {
         if (param instanceof Param customParam) {
           if (customParam.getName().equals(inputs.get(i))) {
-            preparedStatement.setObject(i + 1, customParam.getValue());
+            preparedStatement.setObject(i + 1, toDatabase(customParam.getValue()));
           }
         } else {
           for (Field declaredField : param.getClass().getDeclaredFields()) {
             if (declaredField.getName().equals(inputs.get(i)) && declaredField.trySetAccessible()) {
-              preparedStatement.setObject(i + 1, declaredField.get(param));
+              preparedStatement.setObject(i + 1, toDatabase(declaredField.get(param)));
             }
           }
         }
@@ -219,7 +219,7 @@ public class Database {
       for (int i = 0; i < outputs.size(); i++) {
         for (Field declaredField : clazz.getDeclaredFields()) {
           if (declaredField.getName().equals(outputs.get(i)) && declaredField.trySetAccessible()) {
-            declaredField.set(instance, convert(resultSet, i + 1, declaredField.getType()));
+            declaredField.set(instance, fromDatabase(resultSet, i + 1, declaredField.getType()));
           }
         }
       }
@@ -240,7 +240,15 @@ public class Database {
     return rows;
   }
 
-  private <E extends Enum<E>> Object convert(ResultSet resultSet, int index, Class<?> type) throws Exception {
+  private Object toDatabase(Object value) {
+    if (value instanceof Enum<?> valueEnum) {
+      return valueEnum.name();
+    }
+
+    return value;
+  }
+
+  private <E extends Enum<E>> Object fromDatabase(ResultSet resultSet, int index, Class<?> type) throws Exception {
     if (type == byte[].class) {
       return resultSet.getBytes(index);
     }

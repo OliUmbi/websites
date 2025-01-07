@@ -5,12 +5,12 @@ import UncletNotFound from "./unclet-not-found";
 import UncletPrivate from "./unclet-private";
 import UncletCatering from "./unclet-catering";
 import UncletCourses from "./unclet-courses";
-import UncletCourse from "./unclet-course";
 import UncletAbout from "./unclet-about";
 import UncletContact from "./unclet-contact";
 import UncletTerms from "./unclet-terms";
 import UncletLegal from "./unclet-legal";
 import UncletPrivacy from "./unclet-privacy";
+import UncletReview from "./unclet-review";
 
 const Unclet = () => {
 
@@ -32,12 +32,12 @@ const Unclet = () => {
           <Route path="/privatkoch" element={<UncletPrivate/>}/>
           <Route path="/catering" element={<UncletCatering/>}/>
           <Route path="/kurse" element={<UncletCourses/>}/>
-          <Route path="/kurse/:id" element={<UncletCourse/>}/>
           <Route path="/ueber-mich" element={<UncletAbout/>}/>
           <Route path="/kontakt" element={<UncletContact/>}/>
           <Route path="/geschaeftsbedingung" element={<UncletTerms/>}/>
           <Route path="/impressum" element={<UncletLegal/>}/>
           <Route path="/datenschutz" element={<UncletPrivacy/>}/>
+          <Route path="/bewerten" element={<UncletReview/>}/>
           <Route path="/*" element={<UncletNotFound/>}/>
         </Routes>
       </Shell>

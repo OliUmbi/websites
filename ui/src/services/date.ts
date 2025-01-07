@@ -35,7 +35,12 @@ export const date = {
                 return new Date(year, month - 1, day, hours, minutes);
             }
 
-            if (value.length === 19) {
+            if (value.length >= 19) {
+
+                if (value.length > 19) {
+                    value = value.substring(0, value.indexOf("."))
+                }
+
                 const [datePart, timePart] = value.split('T')
                 if (datePart === undefined || timePart === undefined) {
                     return null

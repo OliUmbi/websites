@@ -6,10 +6,24 @@ import Image from "../../components/image/image";
 import Button from "../../components/button/button";
 import {useNavigate} from "react-router-dom";
 import Anchor from "../../components/anchor/anchor";
+import useApi from "../../hooks/use-api";
+import {Enviroment} from "../../enums/shared/enviroment";
+import {ReviewAllResponse} from "../../interfaces/unclet/review";
+import {useEffect} from "react";
+import {date} from "../../services/date";
+import Error from "../../components/error/error";
+import Loading from "../../components/loading/loading";
+import Icon from "../../components/icon/icon";
 
 const UncletHome = () => {
 
   const navigate = useNavigate()
+
+  const reviewAll = useApi<ReviewAllResponse[]>(Enviroment.UNCLET, "GET", "/review")
+
+  useEffect(() => {
+    reviewAll.execute()
+  }, []);
 
   return (
       <Flex xl={{direction: "column", align: "center", gap: 8}}>
@@ -30,6 +44,49 @@ const UncletHome = () => {
               </Flex>
             </GridItem>
           </Grid>
+        </Flex>
+        <Flex xl={{widthMax: "xl", width: true}}>
+          {
+            reviewAll.data && reviewAll.data.length > 0 ? (
+                <>
+                  <Grid xl={{columns: 2, gap: 4}} m={{columns: 1}}>
+                    <GridItem xl={{columns: 1, rows: 1}}>
+                      <Flex xl={{direction: "column", gap: 0.5}}>
+                        <Text type="h3" primary={true}>Bewertungen</Text>
+                        <Text type="p" primary={false}>Lesen Sie, was meine Gäste sagen!</Text>
+                      </Flex>
+                    </GridItem>
+                    {
+                      reviewAll.data.map((value, index) => (
+                          <GridItem xl={{columns: 1, rows: 1}} key={index}>
+                            <Flex xl={{direction: "column", gap: 1}}>
+                              <Flex xl={{direction: "row", gap: 1}}>
+                                <Text type="s" primary={false}>{date.locale(value.date, "date")}</Text>
+                                <Flex xl={{direction: "row", gap: 0.5}}>
+                                  {
+                                    [...Array(value.stars)].map(() => <Icon size={1}>sparkles</Icon>)
+                                  }
+                                  {
+                                    [...Array(5 - value.stars)].map(() => <Icon size={1}>circle-dashed</Icon>)
+                                  }
+                                </Flex>
+                              </Flex>
+                              <Text type="p" primary={true}>{value.name}</Text>
+                              <Text type="s" primary={false}>{value.description}</Text>
+                            </Flex>
+                          </GridItem>
+                      ))
+                    }
+                  </Grid>
+                </>
+            ) : null
+          }
+          {
+            reviewAll.error ? <Error message="Bewertungen konnten nicht geladen werden."/> : null
+          }
+          {
+            reviewAll.loading ? <Loading/> : null
+          }
         </Flex>
         <Flex xl={{widthMax: "xl", width: true}}>
           <Grid xl={{columns: 3, gap: 4}} m={{columns: 2}} s={{columns: 1}}>
@@ -69,7 +126,8 @@ const UncletHome = () => {
                   <Image src="./assets/unclet/images/static/courses.jpg" alt="Kurse" side="width" rounded={true}/>
                   <Flex xl={{direction: "column", gap: 1}}>
                     <Text type="h2">Kurse</Text>
-                    <Text type="s" primary={false}>Kochen lernen, geniessen erleben – entdecken Sie Ihre kulinarische Seite.</Text>
+                    <Text type="s" primary={false}>Kochen lernen, geniessen erleben – entdecken Sie Ihre kulinarische
+                      Seite.</Text>
                   </Flex>
                   <Text type="p">Erleben Sie eine unterhaltsame und lehrreiche Atmosphäre, die Ihre Kochfähigkeiten auf ein
                     neues Niveau hebt und Ihr Vertrauen in die Küche stärkt. Buchen Sie noch heute einen Kochkurs für sich
@@ -86,7 +144,8 @@ const UncletHome = () => {
             <GridItem xl={{columns: 1}}>
               <Flex xl={{height: true, direction: "column", gap: 1}}>
                 <Text type="h2">Kontakt</Text>
-                <Text type="s">Wenn Sie eine Frage haben oder einen Termin vereinbaren möchten, kontaktieren Sie mich einfach.</Text>
+                <Text type="s">Wenn Sie eine Frage haben oder einen Termin vereinbaren möchten, kontaktieren Sie mich
+                  einfach.</Text>
               </Flex>
             </GridItem>
             <GridItem xl={{columns: 1}}>

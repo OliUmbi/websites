@@ -10,7 +10,6 @@ import ch.oliumbi.api.enums.server.Status;
 import ch.oliumbi.api.server.Endpoint;
 import ch.oliumbi.api.server.request.Parameters;
 import ch.oliumbi.api.server.request.Request;
-import ch.oliumbi.api.server.response.JsonResponse;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.PaginationResponse;
 import ch.oliumbi.api.server.response.Response;
@@ -44,13 +43,14 @@ public class ArticleAll implements Endpoint<Void> {
   @Override
   public Response handle(Request<Void> request) {
 
-    Integer start;
-    Integer size;
-    try {
-      start = start(request.getParameters());
-      size = size(request.getParameters());
-    } catch (Exception e) {
-      return new MessageResponse(Status.BAD_REQUEST, "Start and size are invalid.");
+    Optional<Integer> start = request.getParameters().start();
+    if (start.isEmpty()) {
+      return new MessageResponse(Status.BAD_REQUEST, "Invalid start.");
+    }
+
+    Optional<Integer> size = request.getParameters().size(30);
+    if (size.isEmpty()) {
+      return new MessageResponse(Status.BAD_REQUEST, "Invalid size.");
     }
 
     Optional<List<ArticleAllResponse>> articleAllResponses = database.query(ArticleAllResponse.class, """
@@ -69,13 +69,12 @@ public class ArticleAll implements Endpoint<Void> {
                 published,
                 visible
         """,
-        Param.of("start", start),
-        Param.of("size", size));
+        Param.of("start", start.get()),
+        Param.of("size", size.get()));
 
     if (articleAllResponses.isEmpty()) {
-      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "News-Beiträge konnten nicht geladen werden.");
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to load articles.");
     }
-
 
     Optional<List<Row>> rows = database.query("""
         SELECT  COUNT(*)
@@ -83,44 +82,11 @@ public class ArticleAll implements Endpoint<Void> {
         """);
 
     if (rows.isEmpty()) {
-      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "News-Beiträge konnten nicht geladen werden.");
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to load articles.");
     }
 
     Long total = rows.get().getFirst().getLong("count");
 
     return new PaginationResponse(Status.OK, articleAllResponses.get(), total);
-  }
-
-  // todo move
-  private Integer start(Parameters parameters) throws Exception {
-    Optional<String> parameter = parameters.get("start");
-
-    if (parameter.isEmpty()) {
-      throw new Exception("Start missing.");
-    }
-
-    int start = Integer.parseInt(parameter.get());
-
-    if (start < 0) {
-      throw new Exception("Start is negative.");
-    }
-
-    return start;
-  }
-
-  private Integer size(Parameters parameters) throws Exception {
-    Optional<String> parameter = parameters.get("size");
-
-    if (parameter.isEmpty()) {
-      throw new Exception("Size missing.");
-    }
-
-    int size = Integer.parseInt(parameter.get());
-
-    if (size < 1 || size > 30) {
-      throw new Exception("Start is out of allowed range.");
-    }
-
-    return size;
   }
 }

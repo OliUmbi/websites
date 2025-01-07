@@ -41,15 +41,13 @@ public class DonationProductDonorCreate implements Endpoint<DonationProductDonor
   @Override
   public Response handle(Request<DonationProductDonorCreateRequest> request) {
 
-    if (request.getBody().getDonationProductId() == null ||
-        request.getBody().getFirstname() == null ||
-        request.getBody().getLastname() == null ||
-        request.getBody().getPhone() == null ||
-        request.getBody().getQuantity() == null) {
-      return new MessageResponse(Status.BAD_REQUEST, "Nicht alle Pflichtfelder sind ausgefüllt.");
+    if (!request.getBody().valid()) {
+      return new MessageResponse(Status.BAD_REQUEST, "Invalid body.");
     }
 
-    Optional<Integer> rows = database.update("""
+    UUID id = UUID.randomUUID();
+
+    Optional<Integer> create = database.update("""
             INSERT INTO jublawoma_donation_product_donor (
                       id,
                       donation_product_id,
@@ -67,13 +65,15 @@ public class DonationProductDonorCreate implements Endpoint<DonationProductDonor
                       :quantity,
                       :note)
             """,
-        Param.of("id", UUID.randomUUID()),
+        Param.of("id", id),
         request.getBody());
 
-    if (rows.isEmpty() || rows.get() != 1) {
-      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Ein Fehler ist unterlaufen, die Spende konnte nicht gespeichert werden.");
+    if (create.isEmpty()) {
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to create donation.");
     }
 
-    return new MessageResponse(Status.OK, "Die Spende wurde erfolgreich empfangen. Vielen herzlichen Dank!");
+    // todo maybe email?
+
+    return new MessageResponse(Status.OK, "Successfully created donation.");
   }
 }

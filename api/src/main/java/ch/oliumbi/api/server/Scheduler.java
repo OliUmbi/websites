@@ -8,9 +8,11 @@ public abstract class Scheduler {
 
   private final ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
 
-  public Scheduler(int rate) {
-    scheduledExecutorService.scheduleAtFixedRate(this::scheduled, 1, rate, TimeUnit.MINUTES);
+  public Scheduler() {
+    scheduledExecutorService.scheduleAtFixedRate(this::scheduled, 1, rate(), TimeUnit.MINUTES);
   }
+
+  protected abstract int rate();
 
   protected abstract void scheduled();
 }

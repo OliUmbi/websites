@@ -3,13 +3,11 @@ package ch.oliumbi.api.endpoints.jublawomaadmin.article.delete;
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
 import ch.oliumbi.api.database.Param;
-import ch.oliumbi.api.endpoints.jublawomaadmin.article.byid.ArticleByIdResponse;
 import ch.oliumbi.api.enums.server.Method;
 import ch.oliumbi.api.enums.server.Status;
 import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
 import ch.oliumbi.api.server.Endpoint;
 import ch.oliumbi.api.server.request.Request;
-import ch.oliumbi.api.server.response.JsonResponse;
 import ch.oliumbi.api.server.response.MessageResponse;
 import ch.oliumbi.api.server.response.Response;
 import java.util.List;
@@ -43,10 +41,10 @@ public class ArticleDelete implements Endpoint<Void> {
   @Override
   public Response handle(Request<Void> request) {
 
-    Optional<String> id = request.getPathVariables().get("id");
+    Optional<String> id = request.getPathVariables().getString("id");
 
     if (id.isEmpty()) {
-      return new MessageResponse(Status.BAD_REQUEST, "Artikel nicht gefunden.");
+      return new MessageResponse(Status.BAD_REQUEST, "Invalid id.");
     }
 
     Optional<Integer> delete = database.update("""
@@ -57,9 +55,9 @@ public class ArticleDelete implements Endpoint<Void> {
 
 
     if (delete.isEmpty()) {
-      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "News-Beitrag konnten nicht gelöscht werden.");
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to delete article.");
     }
 
-    return new MessageResponse(Status.OK, "News-Beitrag wurde erfolgreich gelöscht.");
+    return new MessageResponse(Status.OK, "Successfully deleted article.");
   }
 }

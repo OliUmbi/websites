@@ -62,7 +62,7 @@ const InputDate = (props: Props) => {
   useEffect(() => {
     if (props.internal === "") {
       if (props.required) {
-        props.setError("Field is empty")
+        props.setError("Feld ist leer.")
         props.setValid(false)
         return;
       }
@@ -73,20 +73,20 @@ const InputDate = (props: Props) => {
 
     if (!date.valid(props.internal, props.time ? "time" : "date")) {
       // todo translation (probably to different translations)???
-      props.setError("Not in correct format " + (props.time ? "dd.mm.yyyy, mm:ss" : "dd.mm.yyyy"))
+      props.setError("Das Datum ist nicht korrekt formatiert " + (props.time ? "dd.mm.yyyy, mm:ss" : "dd.mm.yyyy"))
       props.setValid(false)
       return
     }
 
     if (props.value) {
       if (props.future && props.value < new Date()) {
-        props.setError("Date cannot be in the past")
+        props.setError("Das Datum kann nicht in der Vergangeheit sein.")
         props.setValid(false)
         return
       }
 
       if (props.past && props.value > new Date()) {
-        props.setError("Date cannot be in the future")
+        props.setError("Das Datum kann nicht in der Zukunft sein.")
         props.setValid(false)
         return
       }

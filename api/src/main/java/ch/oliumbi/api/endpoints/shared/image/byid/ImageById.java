@@ -64,7 +64,7 @@ public class ImageById implements Endpoint<Void> {
   }
 
   private UUID id(PathVariables pathVariables) throws Exception {
-    Optional<String> idPathVariable = pathVariables.get("id");
+    Optional<String> idPathVariable = pathVariables.getString("id");
 
     if (idPathVariable.isEmpty()) {
       throw new Exception("Missing path variable id.");
@@ -79,7 +79,7 @@ public class ImageById implements Endpoint<Void> {
 
   private String size(Parameters parameters) {
 
-    Optional<String> size = parameters.get("size");
+    Optional<String> size = parameters.getString("size");
 
     if (size.isEmpty()) {
       return "xl";

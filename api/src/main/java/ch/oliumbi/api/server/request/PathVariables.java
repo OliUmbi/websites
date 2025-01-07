@@ -23,15 +23,29 @@ public class PathVariables extends ArrayList<PathVariable> {
   }
 
   // todo types
-  public Optional<String> get(String name) {
+  public Optional<String> getString(String name) {
     return this.stream()
         .filter(pathVariable -> pathVariable.getName().equals(name))
         .map(PathVariable::getValue)
         .findFirst();
   }
 
+  public Optional<Integer> getInteger(String name) {
+    Optional<String> value = getString(name);
+
+    if (value.isEmpty()) {
+      return Optional.empty();
+    }
+
+    try {
+      return Optional.of(Integer.parseInt(value.get()));
+    } catch (Exception e) {
+      return Optional.empty();
+    }
+  }
+
   public Optional<UUID> getUUID(String name) {
-    Optional<String> value = get(name);
+    Optional<String> value = getString(name);
 
     if (value.isEmpty()) {
       return Optional.empty();

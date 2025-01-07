@@ -42,10 +42,10 @@ public class DonationProductById implements Endpoint<Void> {
   @Override
   public Response handle(Request<Void> request) {
 
-    Optional<String> id = request.getPathVariables().get("id");
+    Optional<UUID> id = request.getPathVariables().getUUID("id");
 
     if (id.isEmpty()) {
-      return new MessageResponse(Status.BAD_REQUEST, "Spende nicht gefunden.");
+      return new MessageResponse(Status.BAD_REQUEST, "Invalid id.");
     }
 
     Optional<DonationProductByIdResponse> donationProductResponse = database.querySingle(DonationProductByIdResponse.class, """
@@ -62,7 +62,6 @@ public class DonationProductById implements Endpoint<Void> {
                     note
             FROM    jublawoma_donation_product
             WHERE   id = :id
-            LIMIT   1
             INTO    id,
                     name,
                     quantity,
@@ -71,10 +70,10 @@ public class DonationProductById implements Endpoint<Void> {
                     unit,
                     note
             """,
-        Param.of("id", UUID.fromString(id.get())));
+        Param.of("id", id.get()));
 
     if (donationProductResponse.isEmpty()) {
-      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Spende nicht gefunden.");
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to load donation product.");
     }
 
     return new JsonResponse(Status.OK, donationProductResponse.get());

@@ -20,9 +20,13 @@ public class CommunicationScheduler extends Scheduler {
   private final CommunicationEmail communicationEmail;
 
   public CommunicationScheduler(Database database, CommunicationEmail communicationEmail) {
-    super(1);
     this.database = database;
     this.communicationEmail = communicationEmail;
+  }
+
+  @Override
+  protected int rate() {
+    return 1;
   }
 
   @Override
@@ -37,7 +41,7 @@ public class CommunicationScheduler extends Scheduler {
                     title,
                     body
             FROM    shared_communication
-            WHERE   status = :status
+            WHERE   status = CAST(:status as SHARED_COMMUNICATION_STATUS)
             INTO    id,
                     type,
                     status,

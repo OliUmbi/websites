@@ -11,6 +11,8 @@ import JublawomaLegal from "./jublawoma/jublawoma-legal";
 import JublawomaPrivacy from "./jublawoma/jublawoma-privacy";
 import JublawomaNotFound from "./jublawoma/jublawoma-not-found";
 
+// todo refine
+
 export const sites = [
   {
     domain: "jublawoma.ch",
