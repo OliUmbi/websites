@@ -11,9 +11,13 @@ import jakarta.mail.Transport;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import java.util.Properties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Autoload
 public class CommunicationEmail {
+
+  private static final Logger LOGGER = LoggerFactory.getLogger(CommunicationEmail.class);
 
   private final Configuration configuration;
 
@@ -54,6 +58,7 @@ public class CommunicationEmail {
 
       Transport.send(message);
     } catch (Exception e) {
+      LOGGER.error("Failed to send email.", e);
       return false;
     }
 

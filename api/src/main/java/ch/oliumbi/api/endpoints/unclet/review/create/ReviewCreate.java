@@ -83,7 +83,10 @@ public class ReviewCreate implements Endpoint<ReviewCreateRequest> {
     }
 
     // todo refine
-    communicationService.create(SharedCommunicationType.EMAIL, "info@uncle-t.ch", "Neue Bewertung", "https://admin.uncle-t.ch");
+    communicationService.create(SharedCommunicationType.EMAIL, "info@uncle-t.ch", "Neue Bewertung von " + request.getBody().getName(), """
+        Eine neue Bewertung ist auf der Webseite gemacht worden.
+        Du kannst diese hier bearbeiten: https://admin.uncle-t.ch/review
+        """);
 
     return new MessageResponse(Status.OK, "Successfully created review.");
   }

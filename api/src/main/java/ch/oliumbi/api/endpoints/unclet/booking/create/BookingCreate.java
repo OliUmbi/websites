@@ -82,7 +82,10 @@ public class BookingCreate implements Endpoint<BookingCreateRequest> {
     }
 
     // todo refine
-    communicationService.create(SharedCommunicationType.EMAIL, "info@uncle-t.ch", "Neue Buchungsanfrage", "https://admin.uncle-t.ch");
+    communicationService.create(SharedCommunicationType.EMAIL, "info@uncle-t.ch", "Neue Buchungsanfrage von " + request.getBody().getName(), """
+        Eine neue Buchungsanfrage ist auf der Webseite gemacht worden.
+        Du kannst diese hier bearbeiten: https://admin.uncle-t.ch/booking
+        """);
 
     return new MessageResponse(Status.OK, "Successfully created booking.");
   }

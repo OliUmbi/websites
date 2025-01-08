@@ -59,7 +59,7 @@ const UncletAdminBookings = () => {
                   {
                     articleAll.data.value.map((value, index) => (
                         <Flex xl={{direction: "row", align: "center", justify: "between", gap: 2}} key={index}>
-                          <Flex xl={{direction: "row", align: "center", gap: 2}}>
+                          <Flex xl={{direction: "row", align: "center", gap: 2, wrap: "always"}}>
                             <Text type="p">{BookingStatus.translate(value.status)}</Text>
                             <Text type="p" primary={false}>{date.locale(value.date, "date")}</Text>
                             <Text type="p" primary={false}>{value.name}</Text>

@@ -76,7 +76,7 @@ public class CommunicationScheduler extends Scheduler {
 
       if (sent) {
         status = SharedCommunicationStatus.SUCCESS;
-      } else if (attempts > MAX_RETRIES) {
+      } else if (attempts >= MAX_RETRIES) {
         status = SharedCommunicationStatus.ERROR;
       } else {
         status = SharedCommunicationStatus.OPEN;

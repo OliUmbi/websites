@@ -66,7 +66,7 @@ const UncletAdminReviews = () => {
           {
             reviewAll.data ? (
                 <>
-                  <Flex xl={{direction: "row", align: "center", justify: "between", gap: 2}}>
+                  <Flex xl={{direction: "row", align: "center", justify: "between", gap: 2, wrap: "always"}}>
                     <Button onClick={create} highlight={true}>Erstellen</Button>
                     <Pagination {...pagination}/>
                   </Flex>
@@ -79,7 +79,7 @@ const UncletAdminReviews = () => {
                   {
                     reviewAll.data.value.map((value, index) => (
                         <Flex xl={{direction: "row", align: "center", justify: "between", gap: 2}} key={index}>
-                          <Flex xl={{direction: "row", align: "center", gap: 2}}>
+                          <Flex xl={{direction: "row", align: "center", gap: 2, wrap: "always"}}>
                             <Text type="p">{ReviewStatus.translate(value.status)}</Text>
                             <Text type="p">{date.locale(value.date, "date")}</Text>
                             <Text type="p">{value.stars}</Text>
