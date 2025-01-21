@@ -49,6 +49,10 @@ const JublawomaLegal = () => {
               <Text type="p">Raphael Schreiber</Text>
               <Text type="s" primary={false}>Scharleitung</Text>
             </Flex>
+            <Flex xl={{direction: "column"}}>
+              <Text type="p">Lynn Horlacher</Text>
+              <Text type="s" primary={false}>Scharleitung</Text>
+            </Flex>
           </Flex>
         </Flex>
         <Flex xl={{widthMax: "m", width: true, direction: "column", gap: 2}}>

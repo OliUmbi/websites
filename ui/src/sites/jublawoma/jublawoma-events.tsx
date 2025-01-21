@@ -10,25 +10,95 @@ const JublawomaEvents = () => {
 
   let data = [
     {
-      from: "14.12.2024",
-      to: "14.12.2024",
+      from: "01.03.2025",
+      to: "01.03.2025",
+      name: "Kinderfasnacht",
+      location: "Turnhalle Mägenwil",
+      image: "/assets/jublawoma/images/doodles/ballet.svg"
+    },
+    {
+      from: "15.03.2025",
+      to: "15.03.2025",
+      name: "Flohmarkt",
+      location: "Infos folgen",
+      image: "/assets/jublawoma/images/doodles/plant.svg"
+    },
+    {
+      from: "10.05.2025",
+      to: "10.05.2025",
+      name: "Risottoplausch",
+      location: "Aula Mägenwil",
+      image: "/assets/jublawoma/images/doodles/ice-cream.svg"
+    },
+    {
+      from: "17.05.2025",
+      to: "17.05.2025",
+      name: "Nachtgeländespiel",
+      location: "Infos folgen",
+      image: "/assets/jublawoma/images/doodles/running.svg"
+    },
+    {
+      from: "07.06.2025",
+      to: "09.06.2025",
+      name: "Pfingstlager – Jublasurium",
+      location: "Wettingen AG",
+      image: "/assets/jublawoma/images/doodles/float.svg"
+    },
+    {
+      from: "19.08.2025",
+      to: "19.08.2025",
+      name: "Elterninfoabend",
+      location: "Wohlenschwil Pfarreiheim",
+      image: "/assets/jublawoma/images/doodles/reading.svg"
+    },
+    {
+      from: "30.08.2025",
+      to: "30.08.2025",
+      name: "Scharanlass mit Jubla Rütihof",
+      location: "Infos folgen",
+      image: "/assets/jublawoma/images/doodles/dog-jump.svg"
+    },
+    {
+      from: "13.09.2025",
+      to: "13.09.2025",
+      name: "Jubla-Tag",
+      location: "Infos folgen",
+      image: "/assets/jublawoma/images/doodles/selfie.svg"
+    },
+    {
+      from: "27.09.2025",
+      to: "04.10.2025",
+      name: "Herbstlager",
+      location: "Geheim",
+      image: "/assets/jublawoma/images/doodles/messy.svg"
+    },
+    {
+      from: "09.11.2025",
+      to: "09.11.2025",
+      name: "Zrog-lueg Sunntig",
+      location: "Wohlenschwil Pfarreiheim",
+      image: "/assets/jublawoma/images/doodles/reading-sit.svg"
+    },
+    {
+      from: "15.11.2025",
+      to: "15.11.2025",
       name: "Turnhallentag",
-      location: "Mägenwil Turnhalle",
+      location: "Infos folgen",
       image: "/assets/jublawoma/images/doodles/sprinting.svg"
     },
     {
-      from: "15.12.2024",
-      to: "15.12.2024",
-      name: "Waldweihnachten mit Albert Saxer Stiftung",
+      from: "07.12.2025",
+      to: "07.12.2025",
+      name: "Waldweihnachten",
       location: "Mägenwil Steinbruch",
-      image: "/assets/jublawoma/images/doodles/unboxing.svg"
+      image: "/assets/jublawoma/images/doodles/loving.svg"
     },
     {
-      from: "06.01.2025",
-      to: "09.01.2025",
+      from: "05.01.2026",
+      to: "08.01.2026",
       name: "Sternsingen",
-      location: "Wohlenschwil Dorf",
-      image: "/assets/jublawoma/images/doodles/loving.svg"
+      location: "Mägenwil Dorf",
+      image: "/assets/jublawoma/images/doodles/sitting.svg"
     }
   ]
 

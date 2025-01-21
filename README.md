@@ -104,34 +104,7 @@ one project to rule them all
   - t-shirts request
 
 ## uncle-t
-- home
-  - company
-  - blogs
-  - services
-  - reviews
-  - contact
-- private
-  - service
-  - blogs
-  - reviews
-  - contact
-- catering
-  - services
-  - blogs
-  - reviews
-  - contact
-- course
-  - available
-  - review
-  - details
-  - contact
-- about
-  - reviews
-- stories ?? 
-  - catering events done
-  - short case studies
-- instagram
-- more logo
+- instagram images
 
 ## oliumbi
 - projects (technology, methedology, process, result)
@@ -140,6 +113,7 @@ one project to rule them all
   - gyroscope
   - compass
 - blog
+  - usa
   - complexity formula
   - enum to save complexity
   - raw sql / orm

@@ -41,13 +41,12 @@ const JublawomaAbout = () => {
               <Text type="h3">Fabian Stahel</Text>
               <Text type="h3">Saskia Schmid</Text>
               <Text type="h3">Raphael Schreiber</Text>
+              <Text type="h3">Lynn Horlacher</Text>
             </Flex>
           </Flex>
         </Flex>
         <Flex xl={{widthMax: "m", width: true}}>
           <Grid xl={{columns: 3, gap: 4}} s={{columns: 1, gap: 2}}>
-            <GridItem xl={{columns: 3}} s={{columns: 1}}>
-            </GridItem>
             <GridItem xl={{columns: 1}}>
               <Image src="/assets/jublawoma/images/logos/jubla.jpg" alt="Jubla Schweiz" side="width" rounded={false}/>
             </GridItem>
