@@ -26,11 +26,11 @@ const JublawomaArticles = () => {
       params: [
         {
           key: "start",
-          value: 0
+          value: pagination.offset
         },
         {
           key: "size",
-          value: 9
+          value: pagination.size
         }
       ]
     }

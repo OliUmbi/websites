@@ -39,7 +39,8 @@ public class AccountSessionCreate implements Endpoint<AccountSessionCreateReques
   public List<String> routes() {
     return List.of(
         "/jublawoma-admin/account/session",
-        "/unclet-admin/account/session"
+        "/unclet-admin/account/session",
+        "/oliumbi-admin/account/session"
     );
   }
 
@@ -74,6 +75,7 @@ public class AccountSessionCreate implements Endpoint<AccountSessionCreateReques
 
     UUID id = account.get().getUUID("id");
     String token = generateToken();
+    LocalDateTime expires = LocalDateTime.now().plusHours(8);
 
     Optional<Integer> session = database.update("""
             INSERT INTO shared_account_session (
@@ -87,7 +89,7 @@ public class AccountSessionCreate implements Endpoint<AccountSessionCreateReques
             """,
         Param.of("accountId", id),
         Param.of("token", token),
-        Param.of("expires", LocalDateTime.now().plusHours(8)));
+        Param.of("expires", expires));
 
     if (session.isEmpty()) {
       return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to create session.");
@@ -108,7 +110,7 @@ public class AccountSessionCreate implements Endpoint<AccountSessionCreateReques
         .map(row -> row.getEnum("permission", SharedAccountPermissionPermission.class))
         .toList();
 
-    return new JsonResponse(Status.OK, new AccountSessionCreateResponse(id, token, permissions));
+    return new JsonResponse(Status.OK, new AccountSessionCreateResponse(id, token, expires, permissions));
   }
 
   private String generateToken() {

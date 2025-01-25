@@ -2,11 +2,13 @@ import {MarkdownItem} from "../../../interfaces/shared/markdown";
 import Flex from "../../flex/flex";
 import MarkdownEditItem from "./item/markdown-edit-item";
 import IconButton from "../../icon/button/icon-button";
+import {Enviroment} from "../../../enums/shared/enviroment";
 
 interface Props {
   markdown: MarkdownItem[]
   setMarkdown: (callback: ((value: MarkdownItem[]) => MarkdownItem[])) => void
   api: string
+  enviroment: Enviroment
 }
 
 const MarkdownEdit = (props: Props) => {
@@ -50,7 +52,7 @@ const MarkdownEdit = (props: Props) => {
       <Flex xl={{direction: "column", gap: 1}}>
         {
           props.markdown.map((value, index) =>
-              <MarkdownEditItem id={value.id} type={value.type} value={value.value} children={value.children} api={props.api}
+              <MarkdownEditItem id={value.id} type={value.type} value={value.value} children={value.children} api={props.api} enviroment={props.enviroment}
                                 setItem={item => update(index, item)} setPosition={offset => position(index, offset)}
                                 remove={() => remove(index)} key={value.id}/>)
         }

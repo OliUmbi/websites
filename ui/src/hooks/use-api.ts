@@ -13,6 +13,7 @@ interface Param {
 
 interface Payload {
   body?: any,
+  path?: string,
   params?: Param[]
 }
 
@@ -38,7 +39,6 @@ const useApi = <T>(enviroment: Enviroment, method: Method, path: string): {
     let url = ""
     let headers = {}
     let body = null
-    let params = ""
 
     // todo move this somewhere else
     switch (enviroment) {
@@ -62,6 +62,8 @@ const useApi = <T>(enviroment: Enviroment, method: Method, path: string): {
         break;
     }
 
+    url += path
+
     if (payload) {
       if (payload.body) {
         if (payload.body instanceof File) {
@@ -72,8 +74,12 @@ const useApi = <T>(enviroment: Enviroment, method: Method, path: string): {
         }
       }
 
+      if (payload.path) {
+        url += payload.path
+      }
+
       if (payload.params && payload.params.length > 0) {
-        params = "?" + payload.params.map(value => value.key + "=" + value.value).join("&")
+        url += "?" + payload.params.map(value => value.key + "=" + value.value).join("&")
       }
     }
 
@@ -83,7 +89,7 @@ const useApi = <T>(enviroment: Enviroment, method: Method, path: string): {
 
     let response;
     try {
-      response = await fetch(url + path + params, {
+      response = await fetch(url, {
         mode: "cors",
         signal: AbortSignal.timeout(10000),
         method: method,

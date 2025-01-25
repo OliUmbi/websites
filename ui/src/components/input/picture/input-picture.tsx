@@ -22,13 +22,14 @@ interface Props {
   setError: (error: string) => void
   label: string
   api: string
+  enviroment: Enviroment
   disabled?: boolean
 }
 
 const InputPicture = (props: Props) => {
 
   const file = useInput<File>(false)
-  const imageCreate = useApi<IdMessageResponse>(Enviroment.JUBLAWOMA_ADMIN, "POST", "/image")
+  const imageCreate = useApi<IdMessageResponse>(props.enviroment, "POST", "/image")
 
   useEffect(() => {
     if (props.internal) {
@@ -81,7 +82,7 @@ const InputPicture = (props: Props) => {
       <Input label={props.label} required={props.required} error={props.error} disabled={props.disabled || false}>
         <div className="input-picture">
           <Picture api={props.api} id={props.value || ""} alt="Bild" side="width" rounded={true}/>
-          <Flex xl={{direction: "row", align: "end", gap: 1}}>
+          <Flex xl={{direction: "row", align: "end", gap: 1, wrap: "always"}}>
             <InputFile {...file} label="Bild hochladen" image={true}/>
             <Button onClick={create} highlight={false}>Hochladen</Button>
           </Flex>

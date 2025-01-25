@@ -19,6 +19,7 @@ import MarkdownEdit from "../../../components/markdown/edit/markdown-edit";
 import InputPicture from "../../../components/input/picture/input-picture";
 import Text from "../../../components/text/text";
 import {MarkdownItem} from "../../../interfaces/shared/markdown";
+import {MessageResponse} from "../../../interfaces/shared/message";
 
 const JublawomaAdminArticle = () => {
 
@@ -26,8 +27,8 @@ const JublawomaAdminArticle = () => {
     const navigate = useNavigate()
 
     const articleById = useApi<ArticleByIdResponse>(Enviroment.JUBLAWOMA_ADMIN, "GET", "/article/" + id)
-    const articleUpdate = useApi<ArticleByIdResponse>(Enviroment.JUBLAWOMA_ADMIN, "PUT", "/article/" + id)
-    const articleDelete = useApi<ArticleByIdResponse>(Enviroment.JUBLAWOMA_ADMIN, "DELETE", "/article/" + id)
+    const articleUpdate = useApi<MessageResponse>(Enviroment.JUBLAWOMA_ADMIN, "PUT", "/article/" + id)
+    const articleDelete = useApi<MessageResponse>(Enviroment.JUBLAWOMA_ADMIN, "DELETE", "/article/" + id)
 
     const [confirm, setConfirm] = useState<boolean>(false)
 
@@ -97,7 +98,7 @@ const JublawomaAdminArticle = () => {
                         <Flex xl={{widthMax: "xl", width: true, direction: "column"}}>
                             <Grid xl={{columns: 2, gap: 1}} m={{columns: 1}}>
                                 <Flex xl={{direction: "column", gap: 1}}>
-                                    <InputPicture {...image} label="Bild" api={configuration.api.jublawomaAdmin}/>
+                                    <InputPicture {...image} label="Bild" api={configuration.api.jublawomaAdmin} enviroment={Enviroment.JUBLAWOMA_ADMIN}/>
                                 </Flex>
                                 <Flex xl={{direction: "column", gap: 1}}>
                                     <InputText {...title} label="Titel" placeholder="Titel" characters={32}/>
@@ -109,7 +110,7 @@ const JublawomaAdminArticle = () => {
                             </Grid>
                         </Flex>
                         <Flex xl={{widthMax: "m", width: true, direction: "column"}}>
-                            <MarkdownEdit markdown={markdown} setMarkdown={setMarkdown} api={configuration.api.jublawomaAdmin}/>
+                            <MarkdownEdit markdown={markdown} setMarkdown={setMarkdown} api={configuration.api.jublawomaAdmin} enviroment={Enviroment.JUBLAWOMA_ADMIN}/>
                         </Flex>
                         <Flex xl={{widthMax: "xl", width: true, direction: "row", align: "center", justify: "end", gap: 1}}>
                             {

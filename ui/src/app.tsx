@@ -1,11 +1,11 @@
-import OliUmbi from "./sites/oliumbi/oliumbi";
-import OliumbiAdmin from "./sites/oliumbi/admin/oliumbi-admin";
 import Jublawoma from "./sites/jublawoma/jublawoma";
-import Unclet from "./sites/unclet/unclet";
-import {BrowserRouter} from "react-router-dom";
 import JublawomaAdmin from "./sites/jublawoma/admin/jublawoma-admin";
-import "./prototypes/array";
+import Unclet from "./sites/unclet/unclet";
 import UncletAdmin from "./sites/unclet/admin/unclet-admin";
+import Oliumbi from "./sites/oliumbi/oliumbi";
+import OliumbiAdmin from "./sites/oliumbi/admin/oliumbi-admin";
+import {BrowserRouter} from "react-router-dom";
+import "./prototypes/array";
 
 const App = () => {
 
@@ -30,7 +30,7 @@ const App = () => {
           domain === "admin.uncle-t.ch" ? <UncletAdmin/> : ""
         }
         {
-          domain === "oliumbi.ch" ? <OliUmbi/> : ""
+          domain === "oliumbi.ch" || true ? <Oliumbi/> : ""
         }
         {
           domain === "admin.oliumbi.ch" ? <OliumbiAdmin/> : ""

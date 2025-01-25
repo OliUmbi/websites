@@ -3,6 +3,7 @@ import {SharedAccountPermissionPermission} from "../../enums/shared/permission";
 export interface AccountSessionCreateResponse {
   id: string
   token: string
+  expires: string
   permissions: SharedAccountPermissionPermission[]
 }
 

@@ -1,6 +1,7 @@
 package ch.oliumbi.api.endpoints.shared.account.session.create;
 
 import ch.oliumbi.api.enums.shared.SharedAccountPermissionPermission;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -16,5 +17,6 @@ public class AccountSessionCreateResponse {
 
   private UUID id;
   private String token;
+  private LocalDateTime expires;
   private List<SharedAccountPermissionPermission> permissions;
 }

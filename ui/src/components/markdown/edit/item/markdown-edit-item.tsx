@@ -7,7 +7,7 @@ import IconButton from "../../../icon/button/icon-button";
 import InputText from "../../../input/text/input-text";
 import InputNumber from "../../../input/number/input-number";
 import InputPicture from "../../../input/picture/input-picture";
-import {configuration} from "../../../../services/configuration";
+import {Enviroment} from "../../../../enums/shared/enviroment";
 
 interface Props {
   id: string
@@ -15,6 +15,7 @@ interface Props {
   value: any
   children: MarkdownItem[]
   api: string
+  enviroment: Enviroment
   setItem: (value: MarkdownItem) => void
   setPosition: (value: number) => void
   remove: () => void
@@ -117,7 +118,7 @@ const MarkdownEditItem = (props: Props) => {
           type === "paragraph" ? <InputText {...text} label="Paragraph" placeholder="Paragraph" rows={5}/> : null
         }
         {
-          type === "image" ? <InputPicture {...text} label="Bild" api={configuration.api.jublawomaAdmin}/> : null
+          type === "image" ? <InputPicture {...text} label="Bild" api={props.api} enviroment={props.enviroment}/> : null
         }
         {
           type === "flex" ? (

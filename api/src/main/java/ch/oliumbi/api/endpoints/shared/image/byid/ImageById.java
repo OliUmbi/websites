@@ -37,7 +37,11 @@ public class ImageById implements Endpoint<Void> {
   public List<String> routes() {
     return List.of(
         "/jublawoma/image/:id",
-        "/jublawoma-admin/image/:id"
+        "/jublawoma-admin/image/:id",
+        "/unclet/image/:id",
+        "/unclet-admin/image/:id",
+        "/oliumbi/image/:id",
+        "/oliumbi-admin/image/:id"
     );
   }
 
@@ -48,33 +52,18 @@ public class ImageById implements Endpoint<Void> {
 
   @Override
   public Response handle(Request<Void> request) {
-    UUID id;
-    try {
-      id = id(request.getPathVariables());
-    } catch (Exception e) {
-      return new MessageResponse(Status.BAD_REQUEST, "Invalid image id.");
+    Optional<UUID> id = request.getPathVariables().getUUID("id");
+
+    if (id.isEmpty()) {
+      return new MessageResponse(Status.BAD_REQUEST, "Invalid id.");
     }
 
     String root = configuration.string("files.images");
     String size = size(request.getParameters());
 
-    Path path = Path.of(root + "/" + size + "/" + id + ".jpg");
+    Path path = Path.of(root + "/" + size + "/" + id.get() + ".jpg");
 
     return new ResourceResponse(Status.OK, path, ContentType.JPEG, new Header("Cache-Control", "max-age=31536000"));
-  }
-
-  private UUID id(PathVariables pathVariables) throws Exception {
-    Optional<String> idPathVariable = pathVariables.getString("id");
-
-    if (idPathVariable.isEmpty()) {
-      throw new Exception("Missing path variable id.");
-    }
-
-   try {
-      return UUID.fromString(idPathVariable.get());
-    } catch (IllegalArgumentException e) {
-      throw new Exception("Path variable is not a valid id.");
-    }
   }
 
   private String size(Parameters parameters) {

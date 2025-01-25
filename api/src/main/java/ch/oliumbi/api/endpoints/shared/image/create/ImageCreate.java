@@ -45,7 +45,11 @@ public class ImageCreate implements Endpoint<Bytes> {
 
   @Override
   public List<String> routes() {
-    return List.of("/jublawoma-admin/image");
+    return List.of(
+        "/jublawoma-admin/image",
+        "/unclet-admin/image",
+        "/oliumbi-admin/image"
+    );
   }
 
   @Override

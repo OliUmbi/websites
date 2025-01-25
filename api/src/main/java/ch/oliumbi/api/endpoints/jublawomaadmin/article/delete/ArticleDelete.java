@@ -41,7 +41,7 @@ public class ArticleDelete implements Endpoint<Void> {
   @Override
   public Response handle(Request<Void> request) {
 
-    Optional<String> id = request.getPathVariables().getString("id");
+    Optional<UUID> id = request.getPathVariables().getUUID("id");
 
     if (id.isEmpty()) {
       return new MessageResponse(Status.BAD_REQUEST, "Invalid id.");
@@ -51,7 +51,7 @@ public class ArticleDelete implements Endpoint<Void> {
             DELETE FROM jublawoma_article
             WHERE   id = :id
             """,
-        Param.of("id", UUID.fromString(id.get())));
+        Param.of("id", id.get()));
 
 
     if (delete.isEmpty()) {
