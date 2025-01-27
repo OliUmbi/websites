@@ -12,7 +12,7 @@ import {configuration} from "../../services/configuration";
 import {date} from "../../services/date";
 import Grid from "../../components/grid/grid";
 import GridItem from "../../components/grid/item/grid-item";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import IconButton from "../../components/icon/button/icon-button";
 import Intersect from "../../components/intersect/intersect";
 import useInput from "../../hooks/use-input";
@@ -125,28 +125,30 @@ const OliumbiHome = () => {
                   <Flex xl={{direction: "column", gap: 6}}>
                     {
                       [...articles.values()].map((value, index) => (
-                          <Grid xl={{columns: 2, gap: 4}} s={{columns: 1, gap: 2}} key={index}>
-                            <GridItem xl={{columns: 1, rows: 1}}>
-                              <Picture api={configuration.api.oliumbi} id={value.imageId} alt={value.title} side="width"
-                                       rounded={true} ratio="1:1"/>
-                            </GridItem>
-                            <GridItem xl={{columns: 1, rows: 1}}>
-                              <Flex xl={{direction: "column", height: true, justify: "between", gap: 2}}>
-                                <Flex xl={{direction: "column", gap: 2}}>
-                                  <Text type="h2">{value.title}</Text>
-                                  <Flex xl={{direction: "row", gap: 1, wrap: "always"}}>
-                                    <Text type="s" mono={true}>{date.locale(value.published, "date")}</Text>
-                                    <Text type="s" mono={true}>{value.author}</Text>
+                          <Link to={"/article/" + value.id} key={index}>
+                            <Grid xl={{columns: 2, gap: 4}} s={{columns: 1, gap: 2}}>
+                              <GridItem xl={{columns: 1, rows: 1}}>
+                                <Picture api={configuration.api.oliumbi} id={value.imageId} alt={value.title} side="width"
+                                         rounded={true} ratio="1:1"/>
+                              </GridItem>
+                              <GridItem xl={{columns: 1, rows: 1}}>
+                                <Flex xl={{direction: "column", height: true, justify: "between", gap: 2}}>
+                                  <Flex xl={{direction: "column", gap: 2}}>
+                                    <Text type="h2">{value.title}</Text>
+                                    <Flex xl={{direction: "row", gap: 1, wrap: "always"}}>
+                                      <Text type="s" mono={true}>{date.locale(value.published, "date")}</Text>
+                                      <Text type="s" mono={true}>{value.author}</Text>
+                                    </Flex>
+                                    <Text type="p">{value.description}</Text>
                                   </Flex>
-                                  <Text type="p">{value.description}</Text>
+                                  <Flex xl={{direction: "column", align: "end"}}>
+                                    <IconButton size={2} onClick={() => navigate("/article/" + value.id)}
+                                                highlight={false}>arrow-up-right</IconButton>
+                                  </Flex>
                                 </Flex>
-                                <Flex xl={{direction: "column", align: "end"}}>
-                                  <IconButton size={2} onClick={() => navigate("/article/" + value.id)}
-                                              highlight={false}>arrow-up-right</IconButton>
-                                </Flex>
-                              </Flex>
-                            </GridItem>
-                          </Grid>
+                              </GridItem>
+                            </Grid>
+                          </Link>
                       ))
                     }
                   </Flex>
