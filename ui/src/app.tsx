@@ -30,7 +30,7 @@ const App = () => {
           domain === "admin.uncle-t.ch" ? <UncletAdmin/> : ""
         }
         {
-          domain === "oliumbi.ch" || true ? <Oliumbi/> : ""
+          domain === "oliumbi.ch" ? <Oliumbi/> : ""
         }
         {
           domain === "admin.oliumbi.ch" ? <OliumbiAdmin/> : ""

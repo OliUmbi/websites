@@ -2,6 +2,7 @@ package ch.oliumbi.api.endpoints.oliumbiadmin.article.notify;
 
 import ch.oliumbi.api.autoload.Autoload;
 import ch.oliumbi.api.database.Database;
+import ch.oliumbi.api.database.Param;
 import ch.oliumbi.api.database.Row;
 import ch.oliumbi.api.enums.server.Method;
 import ch.oliumbi.api.enums.server.Status;
@@ -51,22 +52,46 @@ public class ArticleNotify implements Endpoint<Void> {
       return new MessageResponse(Status.BAD_REQUEST, "Invalid id.");
     }
 
-    Optional<List<Row>> rows = database.query("""
+    Optional<Row> article = database.querySingle("""
+            SELECT  title,
+                    description,
+                    visible
+            FROM    oliumbi_article
+            WHERE   id = :id
+            """,
+        Param.of("id", id.get()));
+
+    if (article.isEmpty()) {
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to load article.");
+    }
+
+    if (!article.get().getBoolean("visible")) {
+      return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Article is not visible");
+    }
+
+    Optional<List<Row>> emails = database.query("""
         SELECT  email
         FROM    oliumbi_notify
         """);
 
-    if (rows.isEmpty()) {
+    if (emails.isEmpty()) {
       return new MessageResponse(Status.INTERNAL_SERVER_ERROR, "Failed to load notifies.");
     }
 
-    // todo rework
-    for (Row row : rows.get()) {
-      communicationService.create(SharedCommunicationType.EMAIL, row.getString("email"),
-          "[OliUmbi] Neuer Blog-Artikel",
+    for (Row email : emails.get()) {
+      communicationService.create(SharedCommunicationType.EMAIL, email.getString("email"),
+          String.format("Neuer Beitrag \"%s\" auf OliUmbi", article.get().getString("title")),
           String.format("""
-          https://oliumbi.ch/article/%s
-          """, id));
+              Hallo, ich habe einen neuen Beitrag hochzuladen!
+              
+              Link: https://oliumbi.ch/article/%s
+              
+              Wie immer gibt es kleine Einblicke in meinen Alltag in Kalifornien – diesmal:
+              "%s"
+              
+              Liebe Grüsse
+              Oliver
+              """, id.get(), article.get().getString("description")));
     }
 
     return new MessageResponse(Status.OK, "Successfully notified article.");

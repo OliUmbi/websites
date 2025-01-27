@@ -48,6 +48,7 @@ public class CommunicationEmail {
 
       if (configuration.environment() == Environment.DEVELOPMENT) {
         recipient = username;
+        communication.setTitle("[" + communication.getRecipient() + "] " + communication.getTitle());
       }
 
       Message message = new MimeMessage(session);

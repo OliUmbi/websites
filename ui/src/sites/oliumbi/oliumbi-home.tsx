@@ -17,9 +17,13 @@ import IconButton from "../../components/icon/button/icon-button";
 import Intersect from "../../components/intersect/intersect";
 import useInput from "../../hooks/use-input";
 import InputText from "../../components/input/text/input-text";
+import Button from "../../components/button/button";
+import {MessageResponse} from "../../interfaces/shared/message";
 
 const OliumbiHome = () => {
   const articleAll = useApi<PaginationResponse<ArticleAllResponse[]>>(Enviroment.OLIUMBI, "GET", "/article")
+  const notifyCreate = useApi<MessageResponse>(Enviroment.OLIUMBI, "POST", "/notify")
+
   const navigate = useNavigate()
   const size = 5
   const [offset, setOffset] = useState(0)
@@ -67,10 +71,19 @@ const OliumbiHome = () => {
     setOffset(offset + size)
   }
 
-  // todo
-  // general introduction
-  // email signup
-  // no public articles fallback message
+  const notify = () => {
+    if (!email.value) {
+      return
+    }
+
+    const payload = {
+      body: {
+        email: email.value
+      }
+    }
+
+    notifyCreate.execute(payload)
+  }
 
   return (
       <Flex xl={{direction: "column", align: "center", gap: 8}}>
@@ -89,7 +102,19 @@ const OliumbiHome = () => {
               </Flex>
             </GridItem>
             <GridItem xl={{columns: 1}}>
-              <InputText {...email} label="E-Mail" placeholder="root@oliumbi.ch" characters={64}/>
+              <Flex xl={{direction: "column", align: "end", gap: 1}}>
+                <InputText {...email} label="E-Mail" placeholder="root@oliumbi.ch" characters={64}/>
+                <Button onClick={notify} highlight={false} disabled={!email.value}>Benachrichtigen</Button>
+                {
+                  notifyCreate.data ? <Text type="p">E-Mail wurde gespeichert.</Text> : null
+                }
+                {
+                  notifyCreate.error ? <Error message="E-Mail konnte nicht gespeichert werden."/> : null
+                }
+                {
+                  notifyCreate.loading ? <Loading/> : null
+                }
+              </Flex>
             </GridItem>
           </Grid>
         </Flex>
