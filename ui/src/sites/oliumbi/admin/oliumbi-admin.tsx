@@ -15,12 +15,6 @@ import OliumbiAdminNotify from "./oliumbi-admin-notify";
 
 const OliumbiAdmin = () => {
 
-  const configuration = useLocal<Configuration>("configuration")
-
-  useEffect(() => {
-    configuration.setValue({language: Language.ENGLISH})
-  }, [])
-
   return (
       <Shell title="OliUmbi Admin" side={true} links={[
         {name: "Home", to: "/", primary: true},

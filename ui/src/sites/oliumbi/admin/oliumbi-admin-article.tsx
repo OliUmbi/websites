@@ -107,11 +107,11 @@ const OliumbiAdminArticle = () => {
                                 enviroment={Enviroment.OLIUMBI_ADMIN}/>
                   <InputText {...title} label="Title" placeholder="Title" characters={32}/>
                   <InputText {...description} label="Description" placeholder="Description" characters={128} rows={3}/>
-                  <Grid xl={{columns: 2, gap: 1}}>
+                  <Grid xl={{columns: 2, gap: 1}} s={{columns: 1}}>
                     <GridItem xl={{columns: 1}}>
                       <InputDate {...published} label="Date" placeholder="TT.MM.JJJJ"/>
                     </GridItem>
-                    <GridItem xl={{columns: 1, rows: 2}}>
+                    <GridItem xl={{columns: 1, rows: 2}} s={{rows: 1}}>
                       <InputOptions {...visible} label="Visible" options={["Yes", "No"]}/>
                     </GridItem>
                     <GridItem xl={{columns: 1}}>
