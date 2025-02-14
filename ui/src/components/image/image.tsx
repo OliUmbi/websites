@@ -16,3 +16,4 @@ const Image = (props: Props) => {
 }
 
 export default Image;
+ 

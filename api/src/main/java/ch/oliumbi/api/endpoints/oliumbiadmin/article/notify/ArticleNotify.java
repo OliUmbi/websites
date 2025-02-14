@@ -82,7 +82,7 @@ public class ArticleNotify implements Endpoint<Void> {
       communicationService.create(SharedCommunicationType.EMAIL, email.getString("email"),
           String.format("Neuer Beitrag \"%s\" auf OliUmbi", article.get().getString("title")),
           String.format("""
-              Hallo, ich habe einen neuen Beitrag hochzuladen!
+              Hallo, ich habe einen neuen Beitrag hochgeladen!
               
               Link: https://oliumbi.ch/article/%s
               
