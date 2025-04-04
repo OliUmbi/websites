@@ -11,7 +11,7 @@ const JublawomaLegal = () => {
         <Flex xl={{widthMax: "l", width: true}}>
           <Grid xl={{columns: 2, gap: 2}} s={{columns: 1}}>
             <GridItem xl={{columns: 1}}>
-              <Image src="/assets/jublawoma/images/doodles/unboxing.svg" alt="Beitreten" side="width" rounded={false}/>
+              <Image src="/assets/jublawoma/images/doodles/messy.svg" alt="Beitreten" side="width" rounded={false}/>
             </GridItem>
             <GridItem xl={{columns: 1}}>
               <Flex xl={{height: true, direction: "column", justify: "center"}}>

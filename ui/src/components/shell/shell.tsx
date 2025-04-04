@@ -3,7 +3,7 @@ import Image from "../image/image";
 import Text from "../text/text";
 import {ReactNode, useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
-import Drawer from "../drawer/drawer";
+import Sheet from "../sheet/sheet";
 import IconButton from "../icon/button/icon-button";
 import ShellLink from "./link/shell-link";
 import Breadcrumbs from "../breadcrumbs/breadcrumbs";
@@ -55,7 +55,7 @@ const Shell = (props: Props) => {
         </div>
         <div className="shell__navigation" data-side={props.side}>
           <IconButton size={1.5} onClick={() => setOpen(!open)} highlight={false}>menu</IconButton>
-          <Drawer open={open} setOpen={setOpen} title="Navigation">
+          <Sheet open={open} setOpen={setOpen} title="Navigation">
             <Flex xl={{direction: "column", height: true, justify: "center"}}>
               <Flex xl={{direction: "row", gap: 4, wrap: "reverse"}}>
                 <Flex xl={{direction: "column", gap: 1}}>
@@ -76,7 +76,7 @@ const Shell = (props: Props) => {
                 </Flex>
               </Flex>
             </Flex>
-          </Drawer>
+          </Sheet>
         </div>
         <div className="shell__side" data-side={props.side}>
           <Flex xl={{direction: "column", gap: 4}}>
