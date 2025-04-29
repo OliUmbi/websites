@@ -106,8 +106,8 @@ const JublawomaEvents = () => {
       <Flex xl={{direction: "column", align: "center", gap: 4}}>
         {
           data.filter(value => date.convert(value.to) > new Date()).map((value, index) => (
-              <Flex xl={{widthMax: "l", width: true}}>
-                <Grid xl={{columns: 2, gap: 4}} m={{columns: 1, gap: 1}} key={index}>
+              <Flex xl={{widthMax: "l", width: true}} key={index}>
+                <Grid xl={{columns: 2, gap: 4}} m={{columns: 1, gap: 1}}>
                   <GridItem xl={{columns: 1}}>
                     <Image src={value.image} alt="Veranstaltung" side="width" rounded={true}/>
                   </GridItem>
