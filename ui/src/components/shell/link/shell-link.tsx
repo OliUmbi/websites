@@ -12,7 +12,7 @@ interface Props {
 const ShellLink = (props: Props) => {
 
   return (
-      <NavLink className="shell-link" to={props.to} onClick={() => props.onClick()}>
+      <NavLink className="shell-link" to={props.to} target={props.to.startsWith("http") ? "_blank" : "_self"} onClick={() => props.onClick()}>
         <Text type={props.primary ? "h2" : "p"} primary={true}>{props.name}</Text>
       </NavLink>
   )

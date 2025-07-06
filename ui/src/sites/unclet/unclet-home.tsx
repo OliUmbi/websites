@@ -14,6 +14,7 @@ import {date} from "../../services/date";
 import Error from "../../components/error/error";
 import Loading from "../../components/loading/loading";
 import Icon from "../../components/icon/icon";
+import Instagram from "../../components/instagram/instagram";
 
 const UncletHome = () => {
 
@@ -138,6 +139,9 @@ const UncletHome = () => {
               </Flex>
             </GridItem>
           </Grid>
+        </Flex>
+        <Flex xl={{widthMax: "m", width: true}}>
+          <Instagram name="unclet_gmbh"/>
         </Flex>
         <Flex xl={{widthMax: "m", width: true}}>
           <Grid xl={{columns: 2, gap: 4}} s={{columns: 1}}>

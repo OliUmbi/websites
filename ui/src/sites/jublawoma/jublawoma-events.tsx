@@ -5,6 +5,7 @@ import Icon from "../../components/icon/icon";
 import Grid from "../../components/grid/grid";
 import GridItem from "../../components/grid/item/grid-item";
 import Image from "../../components/image/image";
+import Button from "../../components/button/button";
 
 const JublawomaEvents = () => {
 
@@ -104,6 +105,21 @@ const JublawomaEvents = () => {
 
   return (
       <Flex xl={{direction: "column", align: "center", gap: 4}}>
+        <Flex xl={{widthMax: "l", width: true, direction: "column", gap: 1}}>
+          <Grid xl={{columns: 2, gap: 2}} m={{columns: 1}}>
+            <GridItem xl={{columns: 1}}>
+              <Flex xl={{height: true, direction: "column", justify: "center", gap: 2}}>
+                <Text type="h1">Jahreskalender</Text>
+                <Button onClick={() => window.open("/assets/jublawoma/documents/Jahreskalender-Jubla-Woma.pdf")} highlight={true}>PDF Jahreskalender 2025</Button>
+              </Flex>
+            </GridItem>
+            <GridItem xl={{columns: 1}}>
+              <Image src="/assets/jublawoma/images/doodles/rolling.svg" alt="Beitreten" side="width" rounded={false}/>
+            </GridItem>
+          </Grid>
+
+
+        </Flex>
         {
           data.filter(value => date.convert(value.to) > new Date()).map((value, index) => (
               <Flex xl={{widthMax: "l", width: true}} key={index}>
