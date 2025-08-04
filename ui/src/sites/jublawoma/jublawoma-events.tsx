@@ -46,10 +46,17 @@ const JublawomaEvents = () => {
       image: "/assets/jublawoma/images/doodles/float.svg"
     },
     {
+      from: "16.08.2025",
+      to: "16.08.2025",
+      name: "Schnupper-Gruppenstunde",
+      location: "Wohlenschwil Pfarreiheim, 10:00 - 12:00 Uhr",
+      image: "/assets/jublawoma/images/doodles/loving.svg"
+    },
+    {
       from: "19.08.2025",
       to: "19.08.2025",
       name: "Elterninfoabend",
-      location: "Wohlenschwil Pfarreiheim",
+      location: "Wohlenschwil Pfarreiheim, 19:00 - 20:00 Uhr",
       image: "/assets/jublawoma/images/doodles/reading.svg"
     },
     {

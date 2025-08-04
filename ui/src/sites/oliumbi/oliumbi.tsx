@@ -14,8 +14,6 @@ const Oliumbi = () => {
         {name: "GitHub", to: "https://github.com/OliUmbi", primary: false}
       ]}>
         <Routes>
-          <Route path="/" element={<OliumbiHome/>}/>
-          <Route path="/article/:id" element={<OliumbiArticle/>}/>
           <Route path="/*" element={<OliumbiNotFound/>}/>
         </Routes>
       </Shell>

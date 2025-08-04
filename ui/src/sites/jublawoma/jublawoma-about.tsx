@@ -13,64 +13,32 @@ const JublawomaAbout = () => {
             </Flex>
             <Flex xl={{widthMax: "l", width: true}}>
                 <Grid xl={{columns: 2, gap: 4}} m={{columns: 1}}>
-                    <GridItem xl={{columns: 1}}>
-                        <Flex xl={{height: true, direction: "column", justify: "center", gap: 2}}>
-                            <Text type="h2">Unser Leitungsteam</Text>
-                            <Text type="p">Das Leiterteam besteht aus jungen Erwachsenen im Alter von ca. 17 - 25
-                                Jahren. Es trägt bei
-                                allen Aktivitäten viel Verantwortung und leistet wertvolle Präventionsarbeit. Deshalb
-                                legen Blauring &
-                                Jungwacht grossen Wert auf eine nachhaltige und solide Aus- und Weiterbildung der
-                                Leitenden. In
-                                Zusammenarbeit mit Jugend + Sport bieten die Verbände kantonale und schweizerische
-                                Ausbildungskurse an, die
-                                den Jugendlichen die Grundlagen für sinnvolle Kinder- und Jugendarbeit
-                                vermitteln.</Text>
-                            <Text type="p">Jedes Leitungsteam ist Teil der Struktur Blauring & Jungwacht und erhält
-                                daher von mehreren
-                                Seiten Unterstützung. Zum einen wird jede Schar von einem Coach und häufig von einem
-                                Präses begleitet. Als
-                                Menschen mit mehr Lebenserfahrung und entsprechender Ausbildung, sind sie eine Stütze
-                                für das oftmals jüngere
-                                Leitungsteam. Zum anderen wird die Schar als Mitglied des Kantonalvereins von der
-                                ehrenamtlichen
-                                Kantonsleitung betreut und profitiert dadurch von Ausbildungsangeboten, Hilfsmitteln,
-                                Beratung etc.</Text>
-                        </Flex>
+                    <GridItem xl={{columns: 2}} m={{columns: 1}}>
+                        <Text type="h2">Unser Leitungsteam</Text>
                     </GridItem>
                     <GridItem xl={{columns: 1}}>
-                        <Grid xl={{columns: 2, gap: 2}}>
-                            <GridItem xl={{columns: 1}}>
-                                <Image src="/assets/jublawoma/images/people/jonas.jpeg" alt="Jonas Birrer" ratio="1:1"
-                                       side="width" rounded={true}/>
-                            </GridItem>
-                            <GridItem xl={{columns: 1}}>
-                                <Flex xl={{height: true, direction: "column", justify: "center"}}>
-                                    <Text type="h3">Jonas Birrer</Text>
-                                    <Text type="p">Ameisihuufe, Suppegsichter</Text>
-                                </Flex>
-                            </GridItem>
-                            <GridItem xl={{columns: 1}}>
-                                <Image src="/assets/jublawoma/images/people/marith.jpeg" alt="Jonas Birrer" ratio="1:1"
-                                       side="width" rounded={true}/>
-                            </GridItem>
-                            <GridItem xl={{columns: 1}}>
-                                <Flex xl={{height: true, direction: "column", justify: "center"}}>
-                                    <Text type="h3">Marith Hangartner</Text>
-                                    <Text type="p">Ameisihuufe, Suppegsichter</Text>
-                                </Flex>
-                            </GridItem>
-                            <GridItem xl={{columns: 1}}>
-                                <Image src="/assets/jublawoma/images/people/julian.jpeg" alt="Jonas Birrer" ratio="1:1"
-                                       side="width" rounded={true}/>
-                            </GridItem>
-                            <GridItem xl={{columns: 1}}>
-                                <Flex xl={{height: true, direction: "column", justify: "center"}}>
-                                    <Text type="h3">Julian "Ju" Foletti</Text>
-                                    <Text type="p">Ameisihuufe, Suppegsichter</Text>
-                                </Flex>
-                            </GridItem>
-                        </Grid>
+                        <Text type="p">Das Leiterteam besteht aus jungen Erwachsenen im Alter von ca. 17 - 25
+                            Jahren. Es trägt bei
+                            allen Aktivitäten viel Verantwortung und leistet wertvolle Präventionsarbeit. Deshalb
+                            legen Blauring &
+                            Jungwacht grossen Wert auf eine nachhaltige und solide Aus- und Weiterbildung der
+                            Leitenden. In
+                            Zusammenarbeit mit Jugend + Sport bieten die Verbände kantonale und schweizerische
+                            Ausbildungskurse an, die
+                            den Jugendlichen die Grundlagen für sinnvolle Kinder- und Jugendarbeit
+                            vermitteln.</Text>
+                    </GridItem>
+                    <GridItem xl={{columns: 1}}>
+                        <Text type="p">Jedes Leitungsteam ist Teil der Struktur Blauring & Jungwacht und erhält
+                            daher von mehreren
+                            Seiten Unterstützung. Zum einen wird jede Schar von einem Coach und häufig von einem
+                            Präses begleitet. Als
+                            Menschen mit mehr Lebenserfahrung und entsprechender Ausbildung, sind sie eine Stütze
+                            für das oftmals jüngere
+                            Leitungsteam. Zum anderen wird die Schar als Mitglied des Kantonalvereins von der
+                            ehrenamtlichen
+                            Kantonsleitung betreut und profitiert dadurch von Ausbildungsangeboten, Hilfsmitteln,
+                            Beratung etc.</Text>
                     </GridItem>
                 </Grid>
             </Flex>
