@@ -38,6 +38,7 @@
   &__logo {
     grid-row: 1;
     grid-column: 1;
+    max-width: 32rem;
     max-height: 4rem;
     transition: variables.$transition-fast;
     cursor: pointer;
