@@ -1,5 +1,4 @@
 import "./icon.scss";
-import {ReactNode} from "react";
 
 interface Props {
   children: string

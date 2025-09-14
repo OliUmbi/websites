@@ -5,15 +5,11 @@ import GridItem from "../../components/grid/item/grid-item";
 import Image from "../../components/image/image";
 import Button from "../../components/button/button";
 import {useNavigate} from "react-router-dom";
-import Drawer from "../../components/drawer/drawer";
-import {useState} from "react";
-import {date} from "../../services/date";
 import Instagram from "../../components/instagram/instagram";
 
 const JublawomaHome = () => {
 
     const navigate = useNavigate();
-    const [open, setOpen] = useState<boolean>(true)
 
     return (
         <Flex xl={{direction: "column", align: "center", gap: 8}}>
@@ -36,6 +32,15 @@ const JublawomaHome = () => {
                         </Flex>
                     </GridItem>
                 </Grid>
+            </Flex>
+            <Flex xl={{widthMax: "m", width: true}}>
+                <Flex xl={{direction: "column", gap: 1}}>
+                    <Text type="h2">Spendeliste Hela 2025</Text>
+                    <Flex xl={{direction: "row", align: "center", justify: "between", gap: 2}} m={{direction: "column"}}>
+                        <Text type="p">Wie auch schon im letzten Jahr führen wir unsere Spendenliste fürs Hela 2025 digital. Ohne euch gäbe es kein so gutes Essen, vielen Dank für jede Unterstützung!</Text>
+                        <Button onClick={() => navigate("/spenden")} highlight={true}>Zur Spendeliste</Button>
+                    </Flex>
+                </Flex>
             </Flex>
             <Flex xl={{widthMax: "m", width: true}}>
                 <Instagram name="jubla_woma"/>
@@ -132,29 +137,6 @@ const JublawomaHome = () => {
                     </GridItem>
                 </Grid>
             </Flex>
-            {
-                date.convert("11.05.2025") > new Date() ? (
-                    <Drawer open={open} setOpen={setOpen} title="Risotto Plausch">
-                        <Flex xl={{direction: "column", align: "center"}}>
-                            <Flex xl={{widthMax: "m", width: true}}>
-                                <Grid xl={{columns: 2, gap: 4}} m={{columns: 1, gap: 2}}>
-                                    <GridItem xl={{columns: 1}}>
-                                        <Image src="/assets/jublawoma/images/events/risotto.png" alt="Risotto Plausch"
-                                               side="width" rounded={true}/>
-                                    </GridItem>
-                                    <GridItem xl={{columns: 1}}>
-                                        <Flex xl={{height: true, direction: "column", justify: "center"}}>
-                                            <Text type="p" primary={false}>Risotto Plausch</Text>
-                                            <Text type="h2">10 Mai 2025</Text>
-                                            <Text type="h3" primary={false}>18:00 // Schule Mägenwil</Text>
-                                        </Flex>
-                                    </GridItem>
-                                </Grid>
-                            </Flex>
-                        </Flex>
-                    </Drawer>
-                ) : null
-            }
         </Flex>
     )
 }

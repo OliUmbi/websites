@@ -9,7 +9,7 @@ export enum DonationProductUnit {
 }
 
 export namespace DonationProductUnit {
-  export const translate = (value: DonationProductUnit) => {
+  export const translate = (value: DonationProductUnit, quantity: number) => {
     switch (value) {
       case DonationProductUnit.KILOGRAM:
         return "Kilogram";
@@ -18,11 +18,11 @@ export namespace DonationProductUnit {
       case DonationProductUnit.PIECE:
         return "Stück";
       case DonationProductUnit.TUBE:
-        return "Tube";
+        return quantity === 1 ? "Tube" : "Tuben";
       case DonationProductUnit.JAR:
-        return "Glass";
+        return quantity === 1 ? "Glas" : "Gläser";
       case DonationProductUnit.BOX:
-        return "Packung";
+        return quantity === 1 ? "Packung" : "Packungen";
       case DonationProductUnit.FRANCS:
         return "Franken";
     }
