@@ -13,6 +13,7 @@ import JublawomaArticles from "./jublawoma-articles";
 import JublawomaArticle from "./jublawoma-article";
 import {Route, Routes} from "react-router-dom";
 import JublawomaThanks from "./jublawoma-thanks";
+import JublawomaMario from "./jublawoma-mario";
 
 const Jublawoma = () => {
 
@@ -42,6 +43,7 @@ const Jublawoma = () => {
             <Route path="/kontakt" element={<JublawomaContact/>}/>
             <Route path="/impressum" element={<JublawomaLegal/>}/>
             <Route path="/datenschutz" element={<JublawomaPrivacy/>}/>
+            <Route path="/mario" element={<JublawomaMario/>}/>
             <Route path="/*" element={<JublawomaNotFound/>}/>
           </Routes>
         </Shell>

@@ -1,0 +1,31 @@
+@use "../../../styles/variables";
+
+.mario-log {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  height: calc(100dvh - 4rem);
+  padding-right: 0.5rem;
+  overflow-y: hidden;
+  mask-image: linear-gradient(to bottom, white 50%, transparent 100%);
+
+
+  &__change {
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+
+    &[data-positive="true"] {
+      background-color: variables.$mario-daisy;
+      border: 0.25rem solid variables.$mario-mario;
+      box-shadow: 0.5rem 0.5rem variables.$mario-mario;
+    }
+
+    &[data-positive="false"] {
+      background-color: variables.$mario-peach;
+      border: 0.25rem solid variables.$mario-donkey;
+      box-shadow: 0.5rem 0.5rem variables.$mario-donkey;
+    }
+
+  }
+}

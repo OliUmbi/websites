@@ -1,0 +1,12 @@
+@use "../../styles/variables";
+
+.mario {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  background-color: #ffffff;
+  background-image: linear-gradient(145deg, rgba(variables.$mario-mario, 0.2), rgba(variables.$mario-peach, 0.2), rgba(variables.$mario-luigi, 0.2));
+}

@@ -18,7 +18,7 @@ const App = () => {
   return (
       <BrowserRouter>
         {
-          domain === "jublawoma.ch" ? <Jublawoma/> : ""
+          domain === "jublawoma.ch" || true ? <Jublawoma/> : ""
         }
         {
           domain === "admin.jublawoma.ch" ? <JublawomaAdmin/> : ""

@@ -1,0 +1,61 @@
+@use "../../../styles/variables";
+
+.mario-graph {
+
+  &__bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    font-weight: 700;
+    border-radius: 1rem;
+
+    &[data-code="mario"] {
+      background-color: variables.$mario-mario;
+      border: 0.25rem solid variables.$mario-bowser;
+      box-shadow: 0.5rem 0.5rem variables.$mario-bowser;
+    }
+
+    &[data-code="peach"] {
+      background-color: variables.$mario-peach;
+      border: 0.25rem solid variables.$mario-yoshi;
+      box-shadow: 0.5rem 0.5rem variables.$mario-yoshi;
+    }
+
+    &[data-code="luigi"] {
+      background-color: variables.$mario-luigi;
+      border: 0.25rem solid variables.$mario-kamek;
+      box-shadow: 0.5rem 0.5rem variables.$mario-kamek;
+    }
+
+    &[data-code="daisy"] {
+      background-color: variables.$mario-daisy;
+      border: 0.25rem solid variables.$mario-donkey;
+      box-shadow: 0.5rem 0.5rem variables.$mario-donkey;
+    }
+
+    &[data-code="yoshi"] {
+      background-color: variables.$mario-yoshi;
+      border: 0.25rem solid variables.$mario-peach;
+      box-shadow: 0.5rem 0.5rem variables.$mario-peach;
+    }
+
+    &[data-code="kamek"] {
+      background-color: variables.$mario-kamek;
+      border: 0.25rem solid variables.$mario-mario;
+      box-shadow: 0.5rem 0.5rem variables.$mario-mario;
+    }
+
+    &[data-code="donkey"] {
+      background-color: variables.$mario-donkey;
+      border: 0.25rem solid variables.$mario-daisy;
+      box-shadow: 0.5rem 0.5rem variables.$mario-daisy;
+    }
+
+    &[data-code="bowser"] {
+      background-color: variables.$mario-bowser;
+      border: 0.25rem solid variables.$mario-luigi;
+      box-shadow: 0.5rem 0.5rem variables.$mario-luigi;
+    }
+  }
+}
