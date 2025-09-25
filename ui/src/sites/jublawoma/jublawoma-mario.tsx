@@ -8,11 +8,11 @@ const JublawomaAbout = () => {
 
   return (
       <Mario>
-        <Grid xl={{columns: 4, gap: 2}}>
+        <Grid xl={{columns: 4, gap: 2}} m={{columns: 1}}>
           <GridItem xl={{columns: 1}}>
             <MarioLog/>
           </GridItem>
-          <GridItem xl={{columns: 3}}>
+          <GridItem xl={{columns: 3}} m={{columns: 1}}>
             <MarioGraph/>
           </GridItem>
         </Grid>

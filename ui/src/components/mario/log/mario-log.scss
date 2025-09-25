@@ -8,23 +8,30 @@
   height: calc(100dvh - 4rem);
   padding-right: 0.5rem;
   overflow-y: hidden;
-  mask-image: linear-gradient(to bottom, white 50%, transparent 100%);
-
+  mask-image: linear-gradient(to bottom, white 80%, transparent 100%);
 
   &__change {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    align-items: center;
+    gap: 2rem;
     border-radius: 1rem;
-    padding: 1rem 1.5rem;
+    padding: 1rem;
+
+    :first-child {
+      justify-self: end;
+    }
 
     &[data-positive="true"] {
-      background-color: variables.$mario-daisy;
-      border: 0.25rem solid variables.$mario-mario;
-      box-shadow: 0.5rem 0.5rem variables.$mario-mario;
+      background-color: variables.$mario-positive;
+      border: 0.25rem solid darken(variables.$mario-positive, 25);
+      box-shadow: 0.5rem 0.5rem darken(variables.$mario-positive, 24);
     }
 
     &[data-positive="false"] {
-      background-color: variables.$mario-peach;
-      border: 0.25rem solid variables.$mario-donkey;
-      box-shadow: 0.5rem 0.5rem variables.$mario-donkey;
+      background-color: variables.$mario-negative;
+      border: 0.25rem solid darken(variables.$mario-negative, 25);
+      box-shadow: 0.5rem 0.5rem darken(variables.$mario-negative, 24);
     }
 
   }

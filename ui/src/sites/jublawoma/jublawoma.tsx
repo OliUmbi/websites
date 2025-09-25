@@ -14,6 +14,7 @@ import JublawomaArticle from "./jublawoma-article";
 import {Route, Routes} from "react-router-dom";
 import JublawomaThanks from "./jublawoma-thanks";
 import JublawomaMario from "./jublawoma-mario";
+import JublawomaMarioControl from "./jublawoma-mario-control";
 
 const Jublawoma = () => {
 
@@ -44,6 +45,7 @@ const Jublawoma = () => {
             <Route path="/impressum" element={<JublawomaLegal/>}/>
             <Route path="/datenschutz" element={<JublawomaPrivacy/>}/>
             <Route path="/mario" element={<JublawomaMario/>}/>
+            <Route path="/mario/control" element={<JublawomaMarioControl/>}/>
             <Route path="/*" element={<JublawomaNotFound/>}/>
           </Routes>
         </Shell>

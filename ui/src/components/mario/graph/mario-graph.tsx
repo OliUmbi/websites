@@ -1,6 +1,7 @@
 import "./mario-graph.scss"
 import Flex from "../../flex/flex";
 import Text from "../../text/text";
+import {Fragment} from "react";
 
 interface Props {
 }
@@ -24,7 +25,7 @@ const teams = [
   {
     name: "Daisy",
     code: "daisy",
-    points: 18
+    points: -18
   },
   {
     name: "Yoshi",
@@ -51,6 +52,10 @@ const teams = [
 const MarioGraph = (props: Props) => {
 
   const percentage = (team) => {
+    if (team.points <= 0) {
+      return 2
+    }
+
     let highest = 0
 
     teams.forEach(t => {
@@ -64,19 +69,15 @@ const MarioGraph = (props: Props) => {
 
   return (
       <div className="mario-graph">
-        <Flex xl={{width: true, height: true, direction: "column", gap: 2}}>
           {
             teams.sort((a, b) => b.points - a.points).map((team, index) => (
-                <Flex xl={{width: true, height: true, direction: "column", gap: 0.5}} key={index}>
-                  <Flex xl={{width: true, direction: "row", align: "center", justify: "between", gap: 1}} key={index}>
-                    <Text type="h2">{team.name}</Text>
-                    <Text type="h2">{team.points} <Text type="p" primary={false}>Punkte</Text></Text>
-                  </Flex>
+                <Fragment key={index}>
+                  <Text type="h2">{team.points} <Text type="s" primary={false}>Pkt.</Text></Text>
+                  <Text type="h2">{team.name}</Text>
                   <div className="mario-graph__bar" data-code={team.code} style={{width: percentage(team) + "%"}}></div>
-                </Flex>
+                </Fragment>
             ))
           }
-        </Flex>
       </div>
   )
 }
