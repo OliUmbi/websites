@@ -1,83 +1,57 @@
 import "./mario-graph.scss"
-import Flex from "../../flex/flex";
 import Text from "../../text/text";
-import {Fragment} from "react";
+import {Fragment, useEffect} from "react";
+import useApi from "../../../hooks/use-api";
+import {PointBySpaceResponse} from "../../../interfaces/jublawoma/point";
+import {Enviroment} from "../../../enums/shared/enviroment";
+import Error from "../../error/error";
 
 interface Props {
+  url: string
 }
-
-const teams = [
-  {
-    name: "Mario",
-    code: "mario",
-    points: 20
-  },
-  {
-    name: "Peach",
-    code: "peach",
-    points: 34
-  },
-  {
-    name: "Luigi",
-    code: "luigi",
-    points: 14
-  },
-  {
-    name: "Daisy",
-    code: "daisy",
-    points: -18
-  },
-  {
-    name: "Yoshi",
-    code: "yoshi",
-    points: 40
-  },
-  {
-    name: "Kamek",
-    code: "kamek",
-    points: 33
-  },
-  {
-    name: "Donkey Kong",
-    code: "donkey",
-    points: 19
-  },
-  {
-    name: "Bowser",
-    code: "bowser",
-    points: 27
-  }
-]
 
 const MarioGraph = (props: Props) => {
 
-  const percentage = (team) => {
-    if (team.points <= 0) {
+  const points = useApi<PointBySpaceResponse[]>(Enviroment.JUBLAWOMA, "GET", "/point/" + props.url)
+
+  useEffect(() => {
+    points.execute()
+
+    const interval = setInterval(() => points.execute(), 2000)
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const percentage = (point: PointBySpaceResponse) => {
+    if (point.points <= 0) {
       return 2
     }
 
     let highest = 0
 
-    teams.forEach(t => {
+    points.data?.forEach(t => {
       if (t.points > highest) {
         highest = t.points
       }
     })
 
-    return 100 / highest * team.points
+    return 100 / highest * point.points
   }
 
   return (
       <div className="mario-graph">
-          {
-            teams.sort((a, b) => b.points - a.points).map((team, index) => (
-                <Fragment key={index}>
-                  <Text type="h2">{team.points} <Text type="s" primary={false}>Pkt.</Text></Text>
-                  <Text type="h2">{team.name}</Text>
-                  <div className="mario-graph__bar" data-code={team.code} style={{width: percentage(team) + "%"}}></div>
-                </Fragment>
-            ))
-          }
+        {
+          points.data ? points.data.sort((a, b) => b.points - a.points).map((point, index) => (
+              <Fragment key={index}>
+                <Text type="h2">{point.points} <Text type="s" primary={false}>Pkt.</Text></Text>
+                <Text type="h2">{point.name}</Text>
+                <div className="mario-graph__bar" data-code={point.code} style={{width: percentage(point) + "%"}}></div>
+              </Fragment>
+          )) : null
+        }
+        {
+          points.error ? <Error message={points.error}/> : null
+        }
       </div>
   )
 }

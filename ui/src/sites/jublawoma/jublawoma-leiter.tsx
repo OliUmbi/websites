@@ -10,10 +10,10 @@ const JublawomaAbout = () => {
       <Mario>
         <Grid xl={{columns: 4, gap: 1}} m={{columns: 1}}>
           <GridItem xl={{columns: 1}}>
-            <MarioLog url="kids"/>
+            <MarioLog url="adults"/>
           </GridItem>
           <GridItem xl={{columns: 3}} m={{columns: 1}}>
-            <MarioGraph url="kids"/>
+            <MarioGraph url="adults"/>
           </GridItem>
         </Grid>
       </Mario>

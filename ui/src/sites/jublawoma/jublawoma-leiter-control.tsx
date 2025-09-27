@@ -5,7 +5,7 @@ const JublawomaAbout = () => {
 
   return (
       <Mario>
-        <MarioControl title="Kindergame" url="kids"/>
+        <MarioControl title="Leitergame" url="adults"/>
       </Mario>
   )
 }

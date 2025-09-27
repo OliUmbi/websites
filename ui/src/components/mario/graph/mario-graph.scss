@@ -7,10 +7,18 @@
   grid-template-columns: auto auto 1fr;
   align-items: center;
   gap: 2rem;
+  padding: 1rem;
+
+  @media screen and (max-width: variables.$m) {
+    grid-template-columns: auto auto;
+  }
 
   &__bar {
     height: 4rem;
     border-radius: 1rem;
+    background-color: variables.$foreground-secondary;
+    border: 0.25rem solid darken(variables.$foreground-secondary, 25);
+    box-shadow: 0.5rem 0.5rem darken(variables.$foreground-secondary, 24);
 
     &[data-code="mario"] {
       background-color: variables.$mario-mario;
@@ -58,6 +66,10 @@
       background-color: variables.$mario-bowser;
       border: 0.25rem solid darken(variables.$mario-bowser, 25);
       box-shadow: 0.5rem 0.5rem darken(variables.$mario-bowser, 24);
+    }
+
+    @media screen and (max-width: variables.$m) {
+      grid-column: span 2;
     }
   }
 }

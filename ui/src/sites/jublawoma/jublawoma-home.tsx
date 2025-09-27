@@ -34,15 +34,6 @@ const JublawomaHome = () => {
                 </Grid>
             </Flex>
             <Flex xl={{widthMax: "m", width: true}}>
-                <Flex xl={{direction: "column", gap: 1}}>
-                    <Text type="h2">Spendeliste Hela 2025</Text>
-                    <Flex xl={{direction: "row", align: "center", justify: "between", gap: 2}} m={{direction: "column"}}>
-                        <Text type="p">Wie auch schon im letzten Jahr führen wir unsere Spendenliste fürs Hela 2025 digital. Ohne euch gäbe es kein so gutes Essen, vielen Dank für jede Unterstützung!</Text>
-                        <Button onClick={() => navigate("/spenden")} highlight={true}>Zur Spendeliste</Button>
-                    </Flex>
-                </Flex>
-            </Flex>
-            <Flex xl={{widthMax: "m", width: true}}>
                 <Instagram name="jubla_woma"/>
             </Flex>
             <Flex xl={{widthMax: "l", width: true}}>
