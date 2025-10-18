@@ -10,10 +10,7 @@ import JublawomaNotFound from "./jublawoma-not-found";
 import JublawomaArticles from "./jublawoma-articles";
 import JublawomaArticle from "./jublawoma-article";
 import {Route, Routes} from "react-router-dom";
-import JublawomaMario from "./jublawoma-mario";
-import JublawomaMarioControl from "./jublawoma-mario-control";
-import JublawomaLeiter from "./jublawoma-leiter";
-import JublawomaLeiterControl from "./jublawoma-leiter-control";
+import Jublawoma15nerGame from "./jublawoma-15ner-game";
 
 const Jublawoma = () => {
 
@@ -39,10 +36,7 @@ const Jublawoma = () => {
             <Route path="/kontakt" element={<JublawomaContact/>}/>
             <Route path="/impressum" element={<JublawomaLegal/>}/>
             <Route path="/datenschutz" element={<JublawomaPrivacy/>}/>
-            <Route path="/mario" element={<JublawomaMario/>}/>
-            <Route path="/mario-control" element={<JublawomaMarioControl/>}/>
-            <Route path="/leiter" element={<JublawomaLeiter/>}/>
-            <Route path="/leiter-control" element={<JublawomaLeiterControl/>}/>
+            <Route path="/15ner-game" element={<Jublawoma15nerGame/>}/>
             <Route path="/*" element={<JublawomaNotFound/>}/>
           </Routes>
         </Shell>

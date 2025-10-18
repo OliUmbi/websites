@@ -22,6 +22,16 @@ const JublawomaArticles = () => {
   const pagination = usePagination(9);
 
   useEffect(() => {
+    load()
+  }, [pagination.offset]);
+
+  useEffect(() => {
+    if (articleAll.data) {
+      pagination.setTotal(articleAll.data.total)
+    }
+  }, [articleAll.data]);
+
+  const load = () => {
     const payload = {
       params: [
         {
@@ -36,13 +46,7 @@ const JublawomaArticles = () => {
     }
 
     articleAll.execute(payload)
-  }, []);
-
-  useEffect(() => {
-    if (articleAll.data) {
-      pagination.setTotal(articleAll.data.total)
-    }
-  }, [articleAll.data]);
+  }
 
   return (
       <Flex xl={{direction: "column", align: "center"}}>

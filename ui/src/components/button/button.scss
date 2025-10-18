@@ -40,4 +40,8 @@
   &[disabled] {
     opacity: 0.5;
   }
+
+  &[data-square="true"] {
+    padding: 1em;
+  }
 }
