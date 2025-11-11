@@ -95,8 +95,8 @@ const JublawomaEvents = () => {
       image: "/assets/jublawoma/images/doodles/sprinting.svg"
     },
     {
-      from: "07.12.2025",
-      to: "07.12.2025",
+      from: "14.12.2025",
+      to: "14.12.2025",
       name: "Waldweihnachten",
       location: "Mägenwil Steinbruch",
       image: "/assets/jublawoma/images/doodles/loving.svg"
