@@ -8,7 +8,7 @@ RUN mvn dependency:resolve
 COPY ./src ./src
 RUN mvn clean package -DskipTests -Pproduction
 
-FROM openjdk:21-jdk-slim
+FROM eclipse-temurin:23-jre as runtime
 
 WORKDIR /projects
 
