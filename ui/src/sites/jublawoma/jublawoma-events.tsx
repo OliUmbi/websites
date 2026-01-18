@@ -9,106 +9,114 @@ import Button from "../../components/button/button";
 
 const JublawomaEvents = () => {
 
-  let data = [
-    {
-      from: "01.03.2025",
-      to: "01.03.2025",
-      name: "Kinderfasnacht",
-      location: "Turnhalle Mägenwil",
-      image: "/assets/jublawoma/images/doodles/ballet.svg"
-    },
-    {
-      from: "15.03.2025",
-      to: "15.03.2025",
-      name: "Flohmarkt",
-      location: "Infos folgen",
-      image: "/assets/jublawoma/images/doodles/plant.svg"
-    },
-    {
-      from: "10.05.2025",
-      to: "10.05.2025",
-      name: "Risottoplausch",
-      location: "Aula Mägenwil",
-      image: "/assets/jublawoma/images/doodles/ice-cream.svg"
-    },
-    {
-      from: "17.05.2025",
-      to: "17.05.2025",
-      name: "Nachtgeländespiel",
-      location: "Infos folgen",
-      image: "/assets/jublawoma/images/doodles/running.svg"
-    },
-    {
-      from: "07.06.2025",
-      to: "09.06.2025",
-      name: "Pfingstlager – Jublasurium",
-      location: "Wettingen AG",
-      image: "/assets/jublawoma/images/doodles/float.svg"
-    },
-    {
-      from: "16.08.2025",
-      to: "16.08.2025",
-      name: "Schnupper-Gruppenstunde",
-      location: "Wohlenschwil Pfarreiheim, 10:00 - 12:00 Uhr",
-      image: "/assets/jublawoma/images/doodles/loving.svg"
-    },
-    {
-      from: "19.08.2025",
-      to: "19.08.2025",
-      name: "Elterninfoabend",
-      location: "Wohlenschwil Pfarreiheim, 19:00 - 20:00 Uhr",
-      image: "/assets/jublawoma/images/doodles/reading.svg"
-    },
-    {
-      from: "30.08.2025",
-      to: "30.08.2025",
-      name: "Scharanlass mit Jubla Rütihof",
-      location: "Infos folgen",
-      image: "/assets/jublawoma/images/doodles/dog-jump.svg"
-    },
-    {
-      from: "13.09.2025",
-      to: "13.09.2025",
-      name: "Jubla-Tag",
-      location: "Infos folgen",
-      image: "/assets/jublawoma/images/doodles/selfie.svg"
-    },
-    {
-      from: "27.09.2025",
-      to: "04.10.2025",
-      name: "Herbstlager",
-      location: "Geheim",
-      image: "/assets/jublawoma/images/doodles/messy.svg"
-    },
-    {
-      from: "09.11.2025",
-      to: "09.11.2025",
-      name: "Zrog-lueg Sunntig",
-      location: "Wohlenschwil Pfarreiheim",
-      image: "/assets/jublawoma/images/doodles/reading-sit.svg"
-    },
-    {
-      from: "15.11.2025",
-      to: "15.11.2025",
-      name: "Turnhallentag",
-      location: "Infos folgen",
-      image: "/assets/jublawoma/images/doodles/sprinting.svg"
-    },
-    {
-      from: "14.12.2025",
-      to: "14.12.2025",
-      name: "Waldweihnachten",
-      location: "Mägenwil Steinbruch",
-      image: "/assets/jublawoma/images/doodles/loving.svg"
-    },
-    {
-      from: "05.01.2026",
-      to: "08.01.2026",
-      name: "Sternsingen",
-      location: "Mägenwil Dorf",
-      image: "/assets/jublawoma/images/doodles/sitting.svg"
-    }
-  ]
+    let data = [
+        {
+            from: "03.01.2026",
+            to: "03.01.2026",
+            name: "Aussenden Sternsinger",
+            location: "Kirche Wohlenschwil",
+            image: "/assets/jublawoma/images/doodles/strolling.svg"
+        },
+        {
+            from: "05.01.2026",
+            to: "08.01.2026",
+            name: "Sternsingen",
+            location: "Maegenwil Dorf (Obligatorisch fuer alle Kinder der Jubla WoMa)",
+            image: "/assets/jublawoma/images/doodles/groovy.svg"
+        },
+        {
+            from: "17.01.2026",
+            to: "17.01.2026",
+            name: "Schlitteltag",
+            location: "Infos folgen (Anmeldung notwendig)",
+            image: "/assets/jublawoma/images/doodles/roller-skating.svg"
+        },
+        {
+            from: "28.02.2026",
+            to: "28.02.2026",
+            name: "Kinderfasnacht",
+            location: "Aula Maegenwil",
+            image: "/assets/jublawoma/images/doodles/dancing.svg"
+        },
+        {
+            from: "25.04.2026",
+            to: "25.04.2026",
+            name: "Scharanlass",
+            location: "Infos folgen (Findet am Abend statt)",
+            image: "/assets/jublawoma/images/doodles/meeting.svg"
+        },
+        {
+            from: "02.05.2026",
+            to: "02.05.2026",
+            name: "Schnupper-Gruppenstunde 2. Klasse",
+            location: "Wohlenschwil Pfarreiheim",
+            image: "/assets/jublawoma/images/doodles/sitting.svg"
+        },
+        {
+            from: "09.05.2026",
+            to: "09.05.2026",
+            name: "Risottoplausch",
+            location: "Aula Maegenwil",
+            image: "/assets/jublawoma/images/doodles/coffee.svg"
+        },
+        {
+            from: "23.05.2026",
+            to: "25.05.2026",
+            name: "Pfila",
+            location: "Infos folgen (Anmeldung notwendig)",
+            image: "/assets/jublawoma/images/doodles/float.svg"
+        },
+        {
+            from: "24.06.2026",
+            to: "28.06.2026",
+            name: "Jugendfest Mewo",
+            location: "Wohlenschwil",
+            image: "/assets/jublawoma/images/doodles/moshing.svg"
+        },
+        {
+            from: "18.08.2026",
+            to: "18.08.2026",
+            name: "Elterninfoabend",
+            location: "Wohlenschwil Pfarreiheim (Nur fuer Eltern und Angehoerige)",
+            image: "/assets/jublawoma/images/doodles/reading.svg"
+        },
+        {
+            from: "12.09.2026",
+            to: "12.09.2026",
+            name: "Jubla-Tag",
+            location: "Infos folgen",
+            image: "/assets/jublawoma/images/doodles/selfie.svg"
+        },
+        {
+            from: "26.09.2026",
+            to: "03.10.2026",
+            name: "Herbstlager",
+            location: "Geheim (Anmeldung notwendig)",
+            image: "/assets/jublawoma/images/doodles/messy.svg"
+        },
+        {
+            from: "15.11.2026",
+            to: "15.11.2026",
+            name: "Zrog-lueg Sunntig",
+            location: "Wohlenschwil Pfarreiheim",
+            image: "/assets/jublawoma/images/doodles/reading-sit.svg"
+        },
+        {
+            from: "28.11.2026",
+            to: "28.11.2026",
+            name: "Scharanlass",
+            location: "Infos folgen",
+            image: "/assets/jublawoma/images/doodles/jumping.svg"
+        },
+        {
+            from: "04.01.2027",
+            to: "07.01.2027",
+            name: "Sternsingen",
+            location: "Wohlenschwil Dorf",
+            image: "/assets/jublawoma/images/doodles/groovy.svg"
+        }
+    ];
+
 
   return (
       <Flex xl={{direction: "column", align: "center", gap: 4}}>
