@@ -22,7 +22,7 @@ const JublawomaEvents = () => {
             to: "08.01.2026",
             name: "Sternsingen",
             location: "Maegenwil Dorf (Obligatorisch fuer alle Kinder der Jubla WoMa)",
-            image: "/assets/jublawoma/images/doodles/groovy.svg"
+            image: "/assets/jublawoma/images/doodles/dog-jump.svg"
         },
         {
             from: "17.01.2026",
