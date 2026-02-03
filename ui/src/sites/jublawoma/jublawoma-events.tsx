@@ -43,7 +43,7 @@ const JublawomaEvents = () => {
             to: "25.04.2026",
             name: "Scharanlass",
             location: "Infos folgen (Findet am Abend statt)",
-            image: "/assets/jublawoma/images/doodles/meeting.svg"
+            image: "/assets/jublawoma/images/doodles/jumping.svg"
         },
         {
             from: "02.05.2026",
