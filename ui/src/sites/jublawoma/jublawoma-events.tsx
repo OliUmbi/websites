@@ -43,7 +43,7 @@ const JublawomaEvents = () => {
             to: "25.04.2026",
             name: "Scharanlass",
             location: "Infos folgen (Findet am Abend statt)",
-            image: "/assets/jublawoma/images/doodles/meeting.svg"
+            image: "/assets/jublawoma/images/doodles/jumping.svg"
         },
         {
             from: "02.05.2026",
@@ -125,7 +125,7 @@ const JublawomaEvents = () => {
             <GridItem xl={{columns: 1}}>
               <Flex xl={{height: true, direction: "column", justify: "center", gap: 2}}>
                 <Text type="h1">Jahreskalender</Text>
-                <Button onClick={() => window.open("/assets/jublawoma/documents/Jahreskalender-Jubla-Woma.pdf")} highlight={true}>PDF Jahreskalender 2025</Button>
+                <Button onClick={() => window.open("/assets/jublawoma/documents/Jahreskalender-Jubla-Woma.pdf")} highlight={true}>PDF Jahreskalender 2026</Button>
               </Flex>
             </GridItem>
             <GridItem xl={{columns: 1}}>
