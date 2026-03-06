@@ -11,6 +11,7 @@ const App = () => {
 
   // todo make this global and return a enviroment object to get configurations and so on
   let domain = window.location.hostname
+    domain = "jublawoma.ch"
 
   // todo configure with .env
   // todo make more stable
