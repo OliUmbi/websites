@@ -138,16 +138,14 @@ const JublawomaHome = () => {
                     <Drawer open={open} setOpen={setOpen} title="Risotto Plausch">
                         <Flex xl={{direction: "column", align: "center"}}>
                             <Flex xl={{widthMax: "m", width: true}}>
-                                <Grid xl={{columns: 2, gap: 4}} m={{columns: 1, gap: 2}}>
+                                <Grid xl={{columns: 2, gap: 4}} s={{columns: 1, gap: 2}}>
                                     <GridItem xl={{columns: 1}}>
                                         <Image src="/assets/jublawoma/images/events/risotto.png" alt="Risotto Plausch" side="width" rounded={true}/>
                                     </GridItem>
                                     <GridItem xl={{columns: 1}}>
-                                        <Flex xl={{height: true, direction: "column", justify: "center"}}>
-                                            <Text type="p" primary={false}>Risotto Plausch</Text>
-                                            <Text type="h2">9 Mai 2025</Text>
-                                            <Text type="h3" primary={false}>18:00 // Schule Mägenwil</Text>
-                                            <Button onClick={() => window.open("/assets/jublawoma/documents/Risottoplausch-Jubla-Woma.pdf")} highlight={true}>PDF Flyer</Button>
+                                        <Flex xl={{height: true, direction: "column", justify: "center", gap: 1}}>
+                                            <Text type="h2">Risottoplausch</Text>
+                                            <Button onClick={() => window.open("/assets/jublawoma/documents/Risottoplausch-Jubla-Woma.pdf")} highlight={true}>Mehr erfahren</Button>
                                         </Flex>
                                     </GridItem>
                                 </Grid>
