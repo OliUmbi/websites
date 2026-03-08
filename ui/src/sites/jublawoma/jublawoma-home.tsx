@@ -15,7 +15,6 @@ const JublawomaHome = () => {
     const navigate = useNavigate();
     const [open, setOpen] = useState<boolean>(true)
 
-    // @ts-ignore
     return (
         <Flex xl={{direction: "column", align: "center", gap: 8}}>
             <Flex xl={{widthMax: "xl", width: true}}>
