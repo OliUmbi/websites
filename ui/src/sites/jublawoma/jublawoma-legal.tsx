@@ -38,10 +38,6 @@ const JublawomaLegal = () => {
           <Text type="h3">Vertretungsberechtigte Personen</Text>
           <Flex xl={{direction: "row", gap: 2}} s={{direction: "column"}}>
             <Flex xl={{direction: "column"}}>
-              <Text type="p">Saskia Schmid</Text>
-              <Text type="s" primary={false}>Scharleitung</Text>
-            </Flex>
-            <Flex xl={{direction: "column"}}>
               <Text type="p">Fabian Stahel</Text>
               <Text type="s" primary={false}>Scharleitung</Text>
             </Flex>
