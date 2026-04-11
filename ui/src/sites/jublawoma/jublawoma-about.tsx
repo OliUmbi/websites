@@ -50,7 +50,6 @@ const JublawomaAbout = () => {
                             <Flex xl={{direction: "column", gap: 1}} m={{direction: "row"}} s={{direction: "column"}}>
                                 <Text type="p">Raphael Schreiber</Text>
                                 <Text type="p">Lynn Horlacher</Text>
-                                <Text type="p">Saskia Schmid</Text>
                                 <Text type="p">Fabian Stahel</Text>
                             </Flex>
                         </Flex>
