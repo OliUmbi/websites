@@ -17,7 +17,7 @@ export const date = {
                     return null
                 }
 
-                return new Date(year, month - 1, day);
+                return new Date(year, month - 1, day, 12, 0, 0);
             }
 
             if (value.length === 17) {
