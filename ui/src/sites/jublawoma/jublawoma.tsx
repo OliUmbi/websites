@@ -11,6 +11,9 @@ import JublawomaArticles from "./jublawoma-articles";
 import JublawomaArticle from "./jublawoma-article";
 import {Route, Routes} from "react-router-dom";
 import Jublawoma15nerGame from "./jublawoma-15ner-game";
+import JublawomaDonations from "./jublawoma-donations";
+import JublawomaDonate from "./jublawoma-donate";
+import JublawomaThanks from "./jublawoma-thanks";
 
 const Jublawoma = () => {
 
@@ -18,6 +21,7 @@ const Jublawoma = () => {
         <Shell title="Jubla Woma" side={false} logo="/assets/jublawoma/images/logos/logo.png" icon="/assets/jublawoma/images/logos/favicon.ico" links={[
           {name: "Home", to: "/", primary: true},
           {name: "Veranstaltungen", to: "/veranstaltungen", primary: true},
+          {name: "Spenden", to: "/spenden", primary: true},
           {name: "News", to: "/news", primary: true},
           {name: "Über uns", to: "/ueber-uns", primary: true},
           {name: "Beitreten", to: "/beitreten", primary: true},
@@ -36,6 +40,9 @@ const Jublawoma = () => {
             <Route path="/kontakt" element={<JublawomaContact/>}/>
             <Route path="/impressum" element={<JublawomaLegal/>}/>
             <Route path="/datenschutz" element={<JublawomaPrivacy/>}/>
+            <Route path="/spenden" element={<JublawomaDonations/>}/>
+            <Route path="/spenden/:id" element={<JublawomaDonate/>}/>
+            <Route path="/spenden/danke" element={<JublawomaThanks/>}/>
             <Route path="/15ner-game" element={<Jublawoma15nerGame/>}/>
             <Route path="/*" element={<JublawomaNotFound/>}/>
           </Routes>
