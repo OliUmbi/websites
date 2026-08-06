@@ -3,6 +3,7 @@ import GridItem from "../../components/grid/item/grid-item";
 import Text from "../../components/text/text";
 import Image from "../../components/image/image";
 import Flex from "../../components/flex/flex";
+import Anchor from "../../components/anchor/anchor";
 
 const JublawomaAbout = () => {
 
@@ -118,6 +119,13 @@ const JublawomaAbout = () => {
                         </Flex>
                     </GridItem>
                 </Grid>
+            </Flex>
+            <Flex xl={{widthMax: "m", width: true, direction: "column", align: "center", gap: 2}}>
+                <Text type="h2">Gemeinden</Text>
+                <Flex xl={{direction: "row", justify: "center", gap: 4}} s={{direction: "column", align: "center", gap: 2}}>
+                    <Anchor to="https://gemeinde-schweiz.ch/kanton-aargau/maegenwil/">Gemeinde Mägenwil</Anchor>
+                    <Anchor to="https://gemeinde-schweiz.ch/kanton-aargau/wohlenschwil/">Gemeinde Wohlenschwil</Anchor>
+                </Flex>
             </Flex>
         </Flex>
     )
