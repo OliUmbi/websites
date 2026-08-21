@@ -23,7 +23,7 @@ const JublawomaLegal = () => {
         <Flex xl={{widthMax: "m", width: true, direction: "column", gap: 2}}>
           <Text type="h3">Kontakt-Adresse</Text>
           <Flex xl={{direction: "column", gap: 0.5}}>
-            <Text type="p">Jungwacht Blauring WohlenschwII Mägenwil</Text>
+            <Text type="p">Jungwacht Blauring Wohlenschwil Mägenwil</Text>
             <Text type="p">Vogelsangstrasse 2</Text>
             <Text type="p">5512 Wohlenschwil</Text>
           </Flex>
