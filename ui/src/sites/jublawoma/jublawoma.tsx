@@ -14,6 +14,7 @@ import Jublawoma15nerGame from "./jublawoma-15ner-game";
 import JublawomaDonations from "./jublawoma-donations";
 import JublawomaDonate from "./jublawoma-donate";
 import JublawomaThanks from "./jublawoma-thanks";
+import JublawomaLeiterList from "./jublawoma-leiter-list";
 
 const Jublawoma = () => {
 
@@ -36,6 +37,7 @@ const Jublawoma = () => {
             <Route path="/news" element={<JublawomaArticles/>}/>
             <Route path="/news/:id" element={<JublawomaArticle/>}/>
             <Route path="/ueber-uns" element={<JublawomaAbout/>}/>
+            <Route path="/leiter-list" element={<JublawomaLeiterList/>}/>
             <Route path="/beitreten" element={<JublawomaJoin/>}/>
             <Route path="/kontakt" element={<JublawomaContact/>}/>
             <Route path="/impressum" element={<JublawomaLegal/>}/>

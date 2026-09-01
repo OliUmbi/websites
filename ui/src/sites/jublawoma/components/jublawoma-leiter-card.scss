@@ -1,0 +1,9 @@
+.jublawoma-leiter-card {
+  &__image {
+    width: 100%;
+
+    .image[data-rounded="true"] {
+      border-radius: 1.5rem;
+    }
+  }
+}

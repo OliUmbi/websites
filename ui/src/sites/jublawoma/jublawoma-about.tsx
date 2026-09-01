@@ -3,8 +3,19 @@ import GridItem from "../../components/grid/item/grid-item";
 import Text from "../../components/text/text";
 import Image from "../../components/image/image";
 import Flex from "../../components/flex/flex";
+import Button from "../../components/button/button";
+import {useNavigate} from "react-router-dom";
+import {useMemo} from "react";
+import {leiterImages} from "./jublawoma-leiter";
+import JublawomaLeiterCard from "./components/jublawoma-leiter-card";
 
 const JublawomaAbout = () => {
+
+    const navigate = useNavigate();
+
+    const randomLeiterImages = useMemo(() => {
+        return [...leiterImages].sort(() => Math.random() - 0.5).slice(0, 3)
+    }, [])
 
     return (
         <Flex xl={{direction: "column", align: "center", gap: 8}}>
@@ -59,6 +70,21 @@ const JublawomaAbout = () => {
                                rounded={true}/>
                     </GridItem>
                 </Grid>
+            </Flex>
+            <Flex xl={{widthMax: "l", width: true}}>
+                <Flex xl={{direction: "column", align: "center", gap: 4}}>
+                    <Text type="h2">Unsere Leiter</Text>
+                    <Grid xl={{columns: 3, gap: 4}} m={{columns: 1}}>
+                        {
+                            randomLeiterImages.map((value, index) => (
+                                <GridItem xl={{columns: 1}} key={index}>
+                                    <JublawomaLeiterCard image={value}/>
+                                </GridItem>
+                            ))
+                        }
+                    </Grid>
+                    <Button onClick={() => navigate("/leiter-list")} highlight={true}>Alle anzeigen</Button>
+                </Flex>
             </Flex>
             <Flex xl={{widthMax: "m", width: true}}>
                 <Grid xl={{columns: 3, gap: 4}} s={{columns: 1, gap: 2}}>
