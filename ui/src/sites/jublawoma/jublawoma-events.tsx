@@ -95,6 +95,14 @@ const JublawomaEvents = () => {
             image: "/assets/jublawoma/images/doodles/messy.svg"
         },
         {
+            from: "24.10.2026",
+            to: "24.10.2026",
+            name: "Jubliinis Schnuppergruppenstunde",
+            time: "10:00–12:00",
+            location: "Vogelsangstrasse 2",
+            image: "/assets/jublawoma/images/doodles/sitting.svg"
+        },
+        {
             from: "15.11.2026",
             to: "15.11.2026",
             name: "Zrog-lueg Sunntig",
@@ -151,6 +159,7 @@ const JublawomaEvents = () => {
                           <Text type="p"
                                 mono={true}>{date.locale(value.from, "date")}{value.from != value.to ? " - " + date.locale(value.to, "date") : ""}</Text>
                         </Flex>
+                        {value.time && <Text type="p" mono={true}>{value.time}</Text>}
                         <Flex xl={{direction: "row", align: "center", gap: 1}}>
                           <Icon size={1.5}>map-pin</Icon>
                           <Text type="p" mono={true}>{value.location}</Text>
