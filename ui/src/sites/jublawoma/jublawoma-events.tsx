@@ -95,6 +95,13 @@ const JublawomaEvents = () => {
             image: "/assets/jublawoma/images/doodles/messy.svg"
         },
         {
+            from: "24.10.2026",
+            to: "24.10.2026",
+            name: "Jubliinis Schnuppergruppenstunde",
+            location: "Vogelsangstrasse 2",
+            image: "/assets/jublawoma/images/doodles/sitting.svg"
+        },
+        {
             from: "15.11.2026",
             to: "15.11.2026",
             name: "Zrog-lueg Sunntig",
